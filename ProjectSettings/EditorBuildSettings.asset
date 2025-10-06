@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Samples/Meta XR Movement SDK/78.0.0/Body Tracking Samples/Scenes/MovementBody.unity
-    guid: d707936252ce4564e857133f9d24167d
+    path: Assets/Scenes/Clara Testing.unity
+    guid: 68831244f846f984eaa71b11869e7780
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
