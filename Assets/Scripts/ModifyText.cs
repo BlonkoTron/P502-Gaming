@@ -23,16 +23,16 @@ public class ModifyText : MonoBehaviour
     {
         GetRotations();
         xRotationText.text = $"X: {Rotation.x}";
-        xRotationText.text = $"Y: {Rotation.y}";
-        xRotationText.text = $"Z: {Rotation.z}";
+        yRotationText.text = $"Y: {Rotation.y}";
+        zRotationText.text = $"Z: {Rotation.z}";
     }
 
     public void GetRotations()
     {
         lowerArmBone.transform.GetLocalPositionAndRotation(out Vector3 localPosition, out Quaternion localRotation);
-        Rotation.x = localPosition.x;
-        Rotation.y = localPosition.y;
-        Rotation.z = localPosition.z;
+        Rotation.x = localRotation.eulerAngles.x;
+        Rotation.y = localRotation.eulerAngles.y;
+        Rotation.z = localRotation.eulerAngles.z;
     }
 
 }
