@@ -8,12 +8,17 @@ public class ModifyText : MonoBehaviour
     public GameObject handBone;
     Quaternion ArmRotation;
     Quaternion HandRotation;
+ 
     public TMP_Text xRotationText;
     public TMP_Text yRotationText;
     public TMP_Text zRotationText;
     public TMP_Text xHandRotationText;
     public TMP_Text yHandRotationText;
     public TMP_Text zHandRotationText;
+
+    // arm rotation bruger z, med en range fra ca.2-170
+    // hand rotation bruger y, med en range fra ca.-55 til +35 med en mid på ca.40
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
