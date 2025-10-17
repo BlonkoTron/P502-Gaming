@@ -19,6 +19,15 @@ public class IngredientFly : MonoBehaviour
     private int counter = 0;
     public bool trigger = false;
 
+    // Random spawn pos
+    public float MinY = 0;
+    public float MinX = 0;
+    public float MinZ = 0;
+    public float MaxY = 2;
+    public float MaxX = 2;
+    public float MaxZ = 2;
+
+
     void Update()
     {
         if (trigger)
@@ -36,6 +45,10 @@ public class IngredientFly : MonoBehaviour
             return;
         }
 
+        float x = Random.Range(MinX, MaxX);
+        float y = Random.Range(MinY, MaxY);
+        float z = Random.Range(MinZ, MaxZ);
+
         // Create randomIndex and picks a random ingredient prefab from list
         int randomIndex = Random.Range(0, ingredients.Count);
 
@@ -43,7 +56,7 @@ public class IngredientFly : MonoBehaviour
         GameObject chosenIngredient = ingredients[randomIndex];
 
         // Spawn it from "spawnpos gameobject"
-        GameObject obj = Instantiate(chosenIngredient, spawnPos.position, spawnPos.rotation);
+        GameObject obj = Instantiate(chosenIngredient, new Vector3(x,y,z), Quaternion.identity);
 
         // Launch in random direction
         Rigidbody rb = obj.GetComponent<Rigidbody>();
