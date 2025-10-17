@@ -250,10 +250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbeeb20fc79915245bb62cac88e5c8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredient: {fileID: 2394946642324495960, guid: c8d844756eeda214684d467357701f9b, type: 3}
-  spawnpos: {fileID: 244525998}
-  Trigger: 0
+  ingredients:
+  - {fileID: 1083939337998002974, guid: 26d70b863b410c041a5190a5bd4365c1, type: 3}
+  - {fileID: 2394946642324495960, guid: c8d844756eeda214684d467357701f9b, type: 3}
+  - {fileID: 3517169659116801677, guid: e36eca117ad9a874eb74d646bff45ac0, type: 3}
+  - {fileID: 1612116138731328333, guid: 87aafe010ba8e144aa6e3731d2ef1fcd, type: 3}
+  spawnPos: {fileID: 244525999}
   shootForce: 5
+  maxFoodLaunches: 10
+  trigger: 0
 --- !u!1 &1143743458
 GameObject:
   m_ObjectHideFlags: 0

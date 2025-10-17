@@ -1,37 +1,67 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredientfly : MonoBehaviour
+public class IngredientFly : MonoBehaviour
 {
-    public GameObject ingredient;
-    public GameObject spawnpos;
+    //Set up list
+    [Header("Ingredient Prefabs")]
+    public List<GameObject> ingredients;
 
-    public bool Trigger = false;
+    //Set up spawn settings
+    [Header("Spawn Settings")]
+    public Transform spawnPos;
+    public float shootForce = 5f;
 
-    public float shootForce = 5;
+    //Sets the max amount of food
+    public int maxFoodLaunches = 3;
 
-    // Update is called once per frame
+    //Counter for maxFoodLaunches + trigger
+    private int counter = 0;
+    public bool trigger = false;
+
     void Update()
     {
-        if (Trigger == true)
+        if (trigger)
         {
-            Cubelaunch();
+            LaunchRandomIngredient();
         }
     }
 
-    public void Cubelaunch()
+    void LaunchRandomIngredient()
     {
-        //Declares the spawn position
-        GameObject obj = Instantiate(ingredient, spawnpos.transform.position, spawnpos.transform.rotation);
+        if (ingredients.Count == 0)
+        {
+            //Creates a 1 time instance
+            trigger = false;
+            return;
+        }
 
-        //Get rigidbody
+        // Create randomIndex and picks a random ingredient prefab from list
+        int randomIndex = Random.Range(0, ingredients.Count);
+
+        //New gameobject which is the chosen ranodm ingidient
+        GameObject chosenIngredient = ingredients[randomIndex];
+
+        // Spawn it from "spawnpos gameobject"
+        GameObject obj = Instantiate(chosenIngredient, spawnPos.position, spawnPos.rotation);
+
+        // Launch in random direction
         Rigidbody rb = obj.GetComponent<Rigidbody>();
 
-        //Assign random direction to prefab/ingredient
-        Vector3 randomDirection = Random.onUnitSphere;
-        rb.AddForce(randomDirection * shootForce, ForceMode.Impulse);
+        if (rb != null)
+        {
+            Vector3 randomDirection = Random.onUnitSphere;
+            rb.AddForce(randomDirection * shootForce, ForceMode.Impulse);
+        }
 
-        //resets the trigger
-        Trigger = false;
-        
+        // Counts food
+        counter++;
+
+        // Stop after maxFoodLaunches
+        if (counter >= maxFoodLaunches)
+        {
+            counter = 0;
+            trigger = false;
+        }
     }
 }
