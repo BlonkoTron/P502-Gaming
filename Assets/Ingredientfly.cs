@@ -21,7 +21,7 @@ public class Ingredientfly : MonoBehaviour
     public void Cubelaunch()
     {
         //Declares the spawn position
-        GameObject obj = Instantiate(ingredient, transform.position = spawnpos.transform.position, transform.rotation = spawnpos.transform.rotation);
+        GameObject obj = Instantiate(ingredient, spawnpos.transform.position, spawnpos.transform.rotation);
 
         //Get rigidbody
         Rigidbody rb = obj.GetComponent<Rigidbody>();
