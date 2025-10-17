@@ -5,37 +5,34 @@ public class CookBeef : MonoBehaviour
 {
     public Material Raw;
     public Material Cooked;
-    public float Cooktime = 0;
+    public float DesiredCooktime;
+    private float Cooktime;
 
     [SerializeField]
-    private float CookTimeRemain = 0;
+    private float CookTimeRemain;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameObject.GetComponent<MeshRenderer>().material = Raw;
+        Cooktime = DesiredCooktime;
     }
 
-    private void Update()
-    {
-        
-    }
     private void OnTriggerStay (Collider other)
     {
         if (other.CompareTag("Grill"))
         {
-            CookTimeRemain = Cooktime--;
+            CookTimeRemain = DesiredCooktime--;
 
             if (CookTimeRemain <= 0)
             {
-                CookTimeRemain = 0;
-                Cooktime = 0;
                 gameObject.GetComponent<MeshRenderer>().material = Cooked;
             }
         }
-        else
-        {
-            CookTimeRemain = Cooktime;
-        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        DesiredCooktime = Cooktime;
     }
 }
