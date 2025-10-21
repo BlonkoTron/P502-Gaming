@@ -6,9 +6,9 @@ public class Hinge_trigger : MonoBehaviour
     public HingeJoint hinge;
 
     [Header("Trigger Settings")]
-    public float pullAngleThreshold = 40f;  // degrees from rest position
-    public float resetAngle = 100f;          // how far back it must go to reset
-    public float triggerCooldown = 5.0f;    // seconds between triggers
+    public float pullAngleThreshold = 30f;  // degrees from rest position
+    public float resetAngle = 15f;          // how far back it must go to reset
+    public float triggerCooldown = 0.5f;    // seconds between triggers
 
     private bool hasTriggered = false;
     private float lastTriggerTime = 0f;
