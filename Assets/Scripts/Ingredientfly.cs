@@ -27,16 +27,16 @@ public class IngredientFly : MonoBehaviour
     public float MaxX = 2;
     public float MaxZ = 2;
 
-    ButtonVR ButtonVRs;
+    Hinge_trigger Hingetrig;
 
     private void Start()
     {
-        ButtonVRs = GameObject.FindGameObjectWithTag("ButtonVRTag").GetComponent<ButtonVR>();
+        Hingetrig = GameObject.FindGameObjectWithTag("ButtonVRTag").GetComponent<Hinge_trigger>();
     }
 
     void Update()
     {
-        if (ButtonVRs.isPressed == true )
+        if (Hingetrig.hasRung == true )
         {
             LaunchRandomIngredient();
         }
