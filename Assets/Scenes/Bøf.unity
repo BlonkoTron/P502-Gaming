@@ -2351,9 +2351,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1530855543}
-  pullAngleThreshold: 10
-  hasRung: 0
-  currentang: 0
+  pullAngleThreshold: 40
+  resetAngle: 100
+  triggerCooldown: 5
+  SpawnFood: 0
 --- !u!1 &1670617694
 GameObject:
   m_ObjectHideFlags: 0

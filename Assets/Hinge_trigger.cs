@@ -2,10 +2,19 @@
 
 public class Hinge_trigger : MonoBehaviour
 {
-    public HingeJoint hinge;           // Assign in Inspector
-    public float pullAngleThreshold = 40; // Angle to trigger (degrees)
-    public bool hasRung = false;       // Prevent multiple triggers
-    public float currentang;
+    [Header("References")]
+    public HingeJoint hinge;
+
+    [Header("Trigger Settings")]
+    public float pullAngleThreshold = 40f;  // degrees from rest position
+    public float resetAngle = 100f;          // how far back it must go to reset
+    public float triggerCooldown = 5.0f;    // seconds between triggers
+
+    private bool hasTriggered = false;
+    private float lastTriggerTime = 0f;
+    private float smoothedAngle = 0f;
+    public bool SpawnFood = false;
+
     void Start()
     {
         if (hinge == null)
@@ -14,23 +23,30 @@ public class Hinge_trigger : MonoBehaviour
 
     void Update()
     {
-        currentang = Mathf.Abs(hinge.angle); // Absolute value in case of negatives
+        // Smooth the hinge angle to avoid jitter-triggering
+        smoothedAngle = Mathf.Lerp(smoothedAngle, Mathf.Abs(hinge.angle), Time.deltaTime * 10f);
 
-        if (!hasRung && currentang >= pullAngleThreshold)
+        // Check if rope is being pulled beyond threshold
+        if (!hasTriggered && smoothedAngle >= pullAngleThreshold && Time.time - lastTriggerTime > triggerCooldown)
         {
-            hasRung = true;
-            RingBell();
+            hasTriggered = true;
+            lastTriggerTime = Time.time;
+            OnPull();
         }
 
-        // Optional: reset trigger if rope goes back up
-        if (hasRung && currentang < pullAngleThreshold - 10f)
+        // Reset when rope returns up
+        if (hasTriggered && smoothedAngle < resetAngle)
         {
-            hasRung = false;
+            hasTriggered = false;
+            SpawnFood = false;
         }
     }
 
-    void RingBell()
+    void OnPull()
     {
-        Debug.Log("Rope pull");
+        Debug.Log("🔔 Rope pulled!");
+        SpawnFood = true;
+        // Example: spawn something
+        // Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
     }
 }

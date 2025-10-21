@@ -36,7 +36,7 @@ public class IngredientFly : MonoBehaviour
 
     void Update()
     {
-        if (Hingetrig.hasRung == true )
+        if (Hingetrig.SpawnFood == true )
         {
             LaunchRandomIngredient();
         }
