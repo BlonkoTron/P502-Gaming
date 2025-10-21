@@ -27,10 +27,16 @@ public class IngredientFly : MonoBehaviour
     public float MaxX = 2;
     public float MaxZ = 2;
 
+    ButtonVR ButtonVRs;
+
+    private void Start()
+    {
+        ButtonVRs = GameObject.FindGameObjectWithTag("ButtonVRTag").GetComponent<ButtonVR>();
+    }
 
     void Update()
     {
-        if (trigger)
+        if (ButtonVRs.isPressed == true )
         {
             LaunchRandomIngredient();
         }
@@ -41,7 +47,7 @@ public class IngredientFly : MonoBehaviour
         if (ingredients.Count == 0)
         {
             //Creates a 1 time instance
-            trigger = false;
+            //trigger = false;
             return;
         }
 
@@ -74,7 +80,7 @@ public class IngredientFly : MonoBehaviour
         if (counter >= maxFoodLaunches)
         {
             counter = 0;
-            trigger = false;
+            //trigger = false;
         }
     }
 }
