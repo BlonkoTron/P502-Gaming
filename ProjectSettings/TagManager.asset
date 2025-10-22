@@ -30,7 +30,7 @@ TagManager:
   - SamplesInfoPanel
   - QDSUIToggleCheckboxRadio
   - Grill
-  - ButtonVRTag
+  - Ingredient
   layers:
   - Default
   - TransparentFX
