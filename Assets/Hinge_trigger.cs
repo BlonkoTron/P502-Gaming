@@ -8,17 +8,14 @@ public class Hinge_trigger : MonoBehaviour
     public HingeJoint hinge;
 
     [Header("Trigger Settings")]
-    [Tooltip("How far (in meters) the hinge may stretch before triggering.")]
     public float pullDistanceThreshold = 0.5f;
 
-    [Tooltip("How close it must return before rearming the trigger.")]
     public float resetDistance = 0.3f;
 
-    [Tooltip("Cooldown time before it can trigger again.")]
     public float triggerCooldown = 1.0f;
 
     [Header("Events")]
-    public UnityEvent onPulled; // Assign any action (sound, spawn, animation)
+    public UnityEvent onPulled; // Assign actions
 
     private Vector3 localAnchor;
     private Vector3 localConnectedAnchor;
