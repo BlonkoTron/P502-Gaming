@@ -32,7 +32,6 @@ public class IngredientFly : MonoBehaviour
         if (ingredients.Count == 0)
         {
             //Creates a 1 time instance
-            //trigger = false;
             return;
         }
 
@@ -65,7 +64,6 @@ public class IngredientFly : MonoBehaviour
         if (counter >= maxFoodLaunches)
         {
             counter = 0;
-            //trigger = false;
         }
     }
 }

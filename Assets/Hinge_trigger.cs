@@ -25,7 +25,7 @@ public class Hinge_trigger : MonoBehaviour
 
     private float smoothedDistance;
     private float lastTriggerTime;
-    public bool isTriggered;
+    private bool isTriggered;
 
     void Awake()
     {
