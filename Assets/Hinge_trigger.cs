@@ -1,69 +1,74 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(HingeJoint))]
 public class Hinge_trigger : MonoBehaviour
 {
     [Header("References")]
     public HingeJoint hinge;
 
     [Header("Trigger Settings")]
-    public float pullDistanceThreshold = 0.3f; // meters between anchor points
-    public float resetDistance = 0.15f;        // how close it must return to reset
-    public float triggerCooldown = 0.5f;       // seconds between triggers
+    public float pullDistanceThreshold = 0.5f;
 
-    private bool hasTriggered = false;
-    private float lastTriggerTime = 0f;
-    private float smoothedDistance = 0f;
-    public bool SpawnFood = false;
+    public float resetDistance = 0.3f;
 
-    public float distance;
+    public float triggerCooldown = 1.0f;
 
-    private bool cooldown = false;
+    [Header("Events")]
+    public UnityEvent onPulled; // Assign actions
 
-    void Start()
+    private Vector3 localAnchor;
+    private Vector3 localConnectedAnchor;
+
+    private float smoothedDistance;
+    private float lastTriggerTime;
+    private bool isTriggered;
+
+    void Awake()
     {
-        if (hinge == null)
+        if (!hinge)
             hinge = GetComponent<HingeJoint>();
+
+        // Cache local anchors so we don’t keep accessing transforms each frame
+        localAnchor = hinge.anchor;
+        localConnectedAnchor = hinge.connectedAnchor;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (hinge == null || hinge.connectedBody == null)
-            return;
+        if (!hinge || !hinge.connectedBody) return;
 
-        // Calculate current world-space positions of both hinge ends
-        Vector3 anchorWorld = hinge.transform.TransformPoint(hinge.anchor);
-        Vector3 connectedAnchorWorld = hinge.connectedBody.transform.TransformPoint(hinge.connectedAnchor);
+        // Calculate world-space positions once per physics frame
+        Vector3 anchorWorld = hinge.transform.TransformPoint(localAnchor);
+        Vector3 connectedAnchorWorld = hinge.connectedBody.transform.TransformPoint(localConnectedAnchor);
 
-        distance = Vector3.Distance(anchorWorld, connectedAnchorWorld);
+        float distance = Vector3.Distance(anchorWorld, connectedAnchorWorld);
 
-        // Smooth out jitter
-        smoothedDistance = Mathf.Lerp(smoothedDistance, distance, Time.deltaTime * 10f);
+        // Smooth for visual stability
+        smoothedDistance = Mathf.Lerp(smoothedDistance, distance, Time.fixedDeltaTime * 10f);
 
-        // Check for pull
-        if (hasTriggered == false && smoothedDistance >= pullDistanceThreshold && Time.time - lastTriggerTime > triggerCooldown)
+        // --- Trigger Logic ---
+        if (!isTriggered && smoothedDistance >= pullDistanceThreshold && Time.time - lastTriggerTime > triggerCooldown)
         {
-            hasTriggered = true;
+            isTriggered = true;
             lastTriggerTime = Time.time;
-            OnPull();
+            Debug.Log($"[HingeTrigger] Pulled: {smoothedDistance:F3} m");
+            onPulled.Invoke();
         }
 
-        // Reset when the chain relaxes
-        if (hasTriggered && smoothedDistance < resetDistance)
+        // --- Reset Logic ---
+        if (isTriggered && smoothedDistance < resetDistance)
         {
-            hasTriggered = false;
-            SpawnFood = false;
-            cooldown = false;
+            isTriggered = false;
         }
     }
 
-    void OnPull()
+    void OnDrawGizmosSelected()
     {
-        if (cooldown == false)
-        {
-            Debug.Log("Chain stretched beyond threshold!");
-            SpawnFood = true;
-            cooldown = true;
-        }
-        
+        if (hinge == null || hinge.connectedBody == null) return;
+
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(hinge.transform.TransformPoint(hinge.anchor),
+                        hinge.connectedBody.transform.TransformPoint(hinge.connectedAnchor));
     }
 }
