@@ -2651,7 +2651,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  isTriggered: 0
 --- !u!59 &1773175779
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -2660,7 +2659,7 @@ HingeJoint:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773175774}
   serializedVersion: 3
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 1619777856}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
