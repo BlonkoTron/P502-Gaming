@@ -23,9 +23,9 @@ public class IngredientFly : MonoBehaviour
     public float MinY = 0;
     public float MinX = 0;
     public float MinZ = 0;
-    public float MaxY = 2;
-    public float MaxX = 2;
-    public float MaxZ = 2;
+    public float MaxY = 0;
+    public float MaxX = 0;
+    public float MaxZ = 0;
 
     private void Update()
     {
@@ -60,7 +60,7 @@ public class IngredientFly : MonoBehaviour
             GameObject chosenIngredient = ingredients[randomIndex];
 
             // Spawn it from "spawnpos gameobject"
-            GameObject obj = Instantiate(chosenIngredient, new Vector3(x, y, z), Quaternion.identity);
+            GameObject obj = Instantiate(chosenIngredient, spawnPos.position, Quaternion.identity);
 
             // Launch in random direction
             Rigidbody rb = obj.GetComponent<Rigidbody>();
