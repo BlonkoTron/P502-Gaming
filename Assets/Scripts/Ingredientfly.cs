@@ -27,22 +27,7 @@ public class IngredientFly : MonoBehaviour
     public float MaxX = 2;
     public float MaxZ = 2;
 
-    Hinge_trigger Hingetrig;
-
-    private void Start()
-    {
-        Hingetrig = GameObject.FindGameObjectWithTag("ButtonVRTag").GetComponent<Hinge_trigger>();
-    }
-
-    void Update()
-    {
-        if (Hingetrig.SpawnFood == true)
-        {
-            LaunchRandomIngredient();
-        }
-    }
-
-    void LaunchRandomIngredient()
+    public void LaunchRandomIngredient()
     {
         if (ingredients.Count == 0)
         {
