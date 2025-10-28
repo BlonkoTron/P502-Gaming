@@ -31,6 +31,8 @@ TagManager:
   - QDSUIToggleCheckboxRadio
   - Grill
   - Ingredient
+  - ButtonVRTag
+  - Knife
   layers:
   - Default
   - TransparentFX
@@ -44,7 +46,7 @@ TagManager:
   - 
   - Character
   - MirroredCharacter
-  - 
+  - PlanetLight
   - 
   - 
   - 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2475843481235252935
+--- !u!1001 &2155626609830683367
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.7071069
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       propertyPath: m_LocalRotation.y
@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -48,10 +48,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 5a93abfb2f518cb448d6d35df9eb19bf, type: 2}
     - target: {fileID: 919132149155446097, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       propertyPath: m_Name
       value: Receipt
@@ -62,20 +58,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5724527079961572093}
+      addedObject: {fileID: -965926337204526489}
   m_SourcePrefab: {fileID: 100100000, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
---- !u!1 &3358171666935143318 stripped
+--- !u!1 &1237147578233741238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
-  m_PrefabInstance: {fileID: 2475843481235252935}
+  m_PrefabInstance: {fileID: 2155626609830683367}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5724527079961572093
+--- !u!114 &-965926337204526489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3358171666935143318}
+  m_GameObject: {fileID: 1237147578233741238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6933549ba06a40e40b01db63527c4e72, type: 3}
