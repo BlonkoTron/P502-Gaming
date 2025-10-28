@@ -8,7 +8,6 @@ public class IngredientBasics : MonoBehaviour
 {
     public string ingredientName;
     public bool isStackable;
-    public GameObject topSnapPoint;
     public GameObject bottomSnapPoint;
     private XRBaseInteractable interactable;
 
@@ -26,19 +25,17 @@ public class IngredientBasics : MonoBehaviour
 
     private void OnDisable()
     {
+        // Un-subscribe to select event (when let go)
         interactable.selectEntered.RemoveListener(OnSelectEntered);
         interactable.selectExited.RemoveListener(OnSelectExited);
     }
 
+    //When picked up we activate the snap points if they are inactive
     private void OnSelectEntered(SelectEnterEventArgs args)
     {
         if(bottomSnapPoint.activeSelf == false)
         {
             bottomSnapPoint.SetActive(true);
-        }
-        if(topSnapPoint.activeSelf == false)
-        {
-            topSnapPoint.SetActive(true);
         }
     }
 
