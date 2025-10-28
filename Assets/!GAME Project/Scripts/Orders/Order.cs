@@ -26,4 +26,25 @@ public class Order
     public Drink SideOrderDrink;
     public Material receiptMaterial;
 
+    public bool CheckBurgerMatch(List<BurgerIngredient> otherBurger)
+    {
+        var count = 0;
+        foreach (var item in otherBurger)
+        {
+            if (Burger.Contains(item))
+            {
+                count++;
+            }
+        }
+        if (count==otherBurger.Count)
+        {
+            return true;
+        }
+        return false;
+    }
+    public bool CheckDrinkMatch(Drink drink)
+    {
+        if (drink==SideOrderDrink) { return true; }
+        return false;
+    }
 }
