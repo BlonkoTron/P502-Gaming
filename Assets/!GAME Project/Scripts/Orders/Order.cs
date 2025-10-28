@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using UnityEngine;
 public class Order
 {
 
-    public Order(List<BurgerIngredient> burger,Drink drink)
+    public Order(List<BurgerIngredient> burger,Drink drink, Material receiptMat)
     {
         Burger = burger;
         SideOrderDrink = drink;
+        receiptMaterial = receiptMat;
     }
     public enum BurgerIngredient {
         beef,
@@ -22,5 +24,6 @@ public class Order
 
     public List<BurgerIngredient> Burger;
     public Drink SideOrderDrink;
+    public Material receiptMaterial;
 
 }

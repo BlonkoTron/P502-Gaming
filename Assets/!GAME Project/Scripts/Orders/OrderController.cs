@@ -9,8 +9,8 @@ public class OrderController : MonoBehaviour
 
     public OrderDataCollection orderDataCollection;
     private Order activeOrder;
-
-    public UnityEvent OnNewOrderGenerated;
+    private int lastOrderIndex;
+    public UnityEvent<Order> OnNewOrderGenerated;
     public Order ActiveOrder
     {
         get { return activeOrder; }   
@@ -27,15 +27,34 @@ public class OrderController : MonoBehaviour
             Instance = this;
         }
     }
+    /*
     public Order GenererateNewOrder()
     {
         // get a random index from the data of premade orders and make that the new order
         var newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
         var newBurger = orderDataCollection.OrderDatas[newOrderIndex].burgerIngredients;
         var newDrink = orderDataCollection.OrderDatas[newOrderIndex].drink;
-        Order newOrder = new Order(newBurger,newDrink);
+        var newMat = orderDataCollection.OrderDatas[newOrderIndex].receiptMaterial;
+        Order newOrder = new Order(newBurger,newDrink,newMat);
         activeOrder = newOrder;
-        OnNewOrderGenerated.Invoke();
+        OnNewOrderGenerated.Invoke(newOrder);
         return newOrder;
+    } */
+    public void GenererateNewOrder()
+    {
+        // get a random index from the data of premade orders and make that the new order
+        var newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
+        // reroll if same as last order
+        while(newOrderIndex==lastOrderIndex &&orderDataCollection.OrderDatas.Count>1)
+        {
+            newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
+        }
+        lastOrderIndex = newOrderIndex;
+        var newBurger = orderDataCollection.OrderDatas[newOrderIndex].burgerIngredients;
+        var newDrink = orderDataCollection.OrderDatas[newOrderIndex].drink;
+        var newMat = orderDataCollection.OrderDatas[newOrderIndex].receiptMaterial;
+        Order newOrder = new Order(newBurger, newDrink, newMat);
+        activeOrder = newOrder;
+        OnNewOrderGenerated.Invoke(newOrder);
     }
 }

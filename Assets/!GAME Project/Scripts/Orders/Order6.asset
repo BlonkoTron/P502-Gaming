@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5a5aac5b11f7b8408beb03dfbe741c5, type: 3}
-  m_Name: Order2
+  m_Name: Order6
   m_EditorClassIdentifier: 
-  receiptMaterial: {fileID: 2100000, guid: 19aa18ec942652844809999d1e15faa7, type: 2}
-  burgerIngredients: 020000000000000004000000
+  receiptMaterial: {fileID: 2100000, guid: 05ae566d69f84434ea9f2f63918b7a40, type: 2}
+  burgerIngredients: 020000000100000000000000
   drink: 2
