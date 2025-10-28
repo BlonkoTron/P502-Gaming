@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a5aac5b11f7b8408beb03dfbe741c5, type: 3}
+  m_Name: Order4
+  m_EditorClassIdentifier: 
+  receiptMaterial: {fileID: 2100000, guid: e6b12e5d82fc9db4c9b9a8b1ae6ff738, type: 2}
+  burgerIngredients: 0000000004000000
+  drink: 0
