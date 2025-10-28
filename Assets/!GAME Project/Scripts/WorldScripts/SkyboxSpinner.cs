@@ -2,37 +2,65 @@ using UnityEngine;
 
 public class SkyboxSpinner : MonoBehaviour
 {
-    // Public variable to control the rotation speed from the Inspector.
     [Tooltip("The speed at which the skybox will spin, in degrees per second.")]
     public float spinSpeed = 1f;
 
-    // The name of the property in the Skybox material that controls rotation.
-    // Standard Unity Skybox shaders (like 6 Sided, Procedural, etc.) use this.
     private const string RotationProperty = "_Rotation";
-
-    // Private variable to track the current rotation value.
     private float currentRotation = 0f;
+    private Material skyboxMaterial;
 
-    void Update()
+    // A private variable to store the original rotation when the game starts.
+    private float initialRotation = 0f;
+
+    void Start()
     {
-        // 1. Calculate the new rotation amount.
-        // Multiply by Time.deltaTime for frame-rate independence.
-        currentRotation += spinSpeed * Time.deltaTime;
+        // Cache the active Skybox material from the RenderSettings.
+        skyboxMaterial = RenderSettings.skybox;
 
-        // Keep the rotation value within 0-360 degrees to prevent overflow
-        // and large floating-point numbers, though not strictly required.
-        currentRotation %= 360f;
-
-        // 2. Apply the rotation to the active Skybox material.
-        // RenderSettings.skybox is the material currently used by the scene's skybox.
-        if (RenderSettings.skybox != null)
+        if (skyboxMaterial != null)
         {
-            RenderSettings.skybox.SetFloat(RotationProperty, currentRotation);
+            // Store the rotation value as it was when the game launched.
+            initialRotation = skyboxMaterial.GetFloat(RotationProperty);
+            currentRotation = initialRotation;
         }
         else
         {
-            // Optional: Log a warning if no skybox is assigned.
-            Debug.LogWarning("No Skybox material is assigned in RenderSettings. To spin the skybox, ensure one is set.");
+            Debug.LogError("SkyboxSpinner is active but no Skybox material is assigned in RenderSettings.");
+            enabled = false; // Disable the script if no skybox is found.
+        }
+    }
+
+    void Update()
+    {
+        // Only spin if the material exists.
+        if (skyboxMaterial != null)
+        {
+            // Calculate the new rotation amount and keep it within 0-360 degrees.
+            currentRotation += spinSpeed * Time.deltaTime;
+            currentRotation %= 360f;
+
+            // Apply the rotation.
+            skyboxMaterial.SetFloat(RotationProperty, currentRotation);
+        }
+    }
+
+    // Called when the application quits or when you stop playing in the editor.
+    private void OnApplicationQuit()
+    {
+        // Check if we found the material and if its current rotation is different
+        // from the starting rotation (i.e., we actually spun it).
+        if (skyboxMaterial != null)
+        {
+            // **Crucial Step:** Reset the rotation property to its initial value.
+            skyboxMaterial.SetFloat(RotationProperty, initialRotation);
+
+            // Optional: Re-save the settings if you want to be extra safe, though
+            // setting the float value is usually enough for the editor to update.
+#if UNITY_EDITOR
+            // This is only needed if you want the *asset* to be permanently changed, 
+            // but we usually just want the runtime setting reset.
+            // UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(gameObject.scene);
+#endif
         }
     }
 }

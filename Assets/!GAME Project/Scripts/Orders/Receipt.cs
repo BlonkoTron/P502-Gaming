@@ -6,7 +6,7 @@ public class Receipt : MonoBehaviour
 
     private void Awake()
     {
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
     public void UpdateReceiptMaterial(Material mat)
     {
