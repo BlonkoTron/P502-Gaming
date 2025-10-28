@@ -31,6 +31,8 @@ TagManager:
   - QDSUIToggleCheckboxRadio
   - Grill
   - Ingredient
+  - ButtonVRTag
+  - Knife
   layers:
   - Default
   - TransparentFX
