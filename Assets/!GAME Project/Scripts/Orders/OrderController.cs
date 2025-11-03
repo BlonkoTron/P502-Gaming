@@ -57,4 +57,16 @@ public class OrderController : MonoBehaviour
         activeOrder = newOrder;
         OnNewOrderGenerated.Invoke(newOrder);
     }
+    public bool IsOrderFullfilled(List<Order.BurgerIngredient> burger, Order.Drink drink)
+    {
+        bool burgerCorrect = activeOrder.CheckBurgerMatch(burger);
+        bool drinkCorrect = activeOrder.CheckDrinkMatch(drink);
+        if (burgerCorrect && drinkCorrect) 
+        { 
+            return true; 
+        } else
+        {
+            return false;
+        }
+    }
 }
