@@ -35,6 +35,7 @@ TagManager:
   - Knife
   - Plate
   - Stackable
+  - Bell
   layers:
   - Default
   - TransparentFX
