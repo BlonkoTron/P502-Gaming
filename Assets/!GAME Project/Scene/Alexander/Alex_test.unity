@@ -10619,7 +10619,7 @@ MonoBehaviour:
   objectToMonitor: {fileID: 755056520}
   objectToEnable1: {fileID: 78915399}
   objectToEnable2: {fileID: 142362198}
-  rotationThreshold: 0.1
+  rotationThreshold: 10
 --- !u!59 &755056526
 HingeJoint:
   m_ObjectHideFlags: 0
