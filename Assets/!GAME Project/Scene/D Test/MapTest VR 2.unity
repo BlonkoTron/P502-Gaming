@@ -8522,7 +8522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 1366250007}
+  m_InteractionManager: {fileID: 1867461897}
   m_Colliders:
   - {fileID: 1417617642}
   m_InteractionLayers:
@@ -10350,6 +10350,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8462407258123912136, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
   m_PrefabInstance: {fileID: 1867461895}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1867461897 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 309969084315172094, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
+  m_PrefabInstance: {fileID: 1867461895}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1924435284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11560,8 +11571,8 @@ SceneRoots:
   - {fileID: 1867461895}
   - {fileID: 1647044071}
   - {fileID: 875479948}
-  - {fileID: 1634293906}
   - {fileID: 1417617645}
+  - {fileID: 1634293906}
   - {fileID: 1997667685}
   - {fileID: 832513813}
   - {fileID: 7888346347772739694}
