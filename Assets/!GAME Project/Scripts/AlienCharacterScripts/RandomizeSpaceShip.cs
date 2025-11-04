@@ -5,6 +5,9 @@ public class RandomizeSpaceShip : MonoBehaviour
 {
 
     [SerializeField] private List<Material> materialList;
+    [SerializeField] private GameObject Trail_R;
+    [SerializeField] private GameObject Trail_L;
+
 
     private void Awake()
     {
@@ -13,6 +16,7 @@ public class RandomizeSpaceShip : MonoBehaviour
         if (GetComponent<Renderer>() != null)
         {
             GetComponent<Renderer>().material = materialList[randomMaterial];
+
         }
     }
 
