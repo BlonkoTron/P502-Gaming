@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using System.Collections.Generic;
+using System.Collections;
 
 [RequireComponent(typeof(XRGrabInteractable))]
 public class IngredientStackable : MonoBehaviour
@@ -11,11 +13,13 @@ public class IngredientStackable : MonoBehaviour
     private XRGrabInteractable grabInteractable;
     private PlateManager plateManager;
     private Rigidbody rb;
+    private GameObject originalParent;
 
     private void Awake()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         rb = GetComponent<Rigidbody>();
+        originalParent = this.gameObject.transform.parent.gameObject;
 
         // Subscribe to grab and release events
         grabInteractable.selectExited.AddListener(OnReleased);
@@ -31,16 +35,19 @@ public class IngredientStackable : MonoBehaviour
     }
 
     private void OnGrabbed(SelectEnterEventArgs args)
-    {
+    { 
+        rb.isKinematic = false; // Allow free movement again
+
         // When grabbed off the stack
         if (plateManager != null)
             plateManager.OnIngredientRemoved(this);
 
-        rb.isKinematic = false; // Allow free movement again
+       
     }
 
     private void OnReleased(SelectExitEventArgs args)
     {
+        rb.isKinematic = false; // Ensure physics is enabled
         if (plateManager != null)
         if(this.tag == "Stackable")
         {
@@ -56,8 +63,7 @@ public class IngredientStackable : MonoBehaviour
 
     public void Unlock()
     {
-        rb.isKinematic = false;
-        transform.SetParent(null);
+        transform.SetParent(originalParent.transform);
     }
 
     private void OnDestroy()

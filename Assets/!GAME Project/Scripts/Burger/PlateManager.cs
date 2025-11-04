@@ -15,7 +15,12 @@ public class PlateManager : MonoBehaviour
     {
         // 1. Check if ingredient is close enough to the top snap point
         float distance = Vector3.Distance(ingredient.snapBottom.position, topSnapPoint.position);
-        if (distance > snapRange) return;
+        if (distance > snapRange)
+        {
+            ingredient.Unlock(); // Not close enough, unlock if it was locked
+            return;
+        }
+        
 
         // 2. Align ingredient position and rotation
         ingredient.transform.position = topSnapPoint.position - (ingredient.snapBottom.position - ingredient.transform.position);
@@ -43,9 +48,16 @@ public class PlateManager : MonoBehaviour
 
     public void OnIngredientRemoved(IngredientStackable ingredient)
     {
+        ingredient.transform.SetParent(null); // Detach from plate
         if (!stackedIngredients.Contains(ingredient)) return;
+       
+        // Unlock the removed ingredient
+       // ingredient.Unlock();
+        
 
+        // Remove from stack list
         int index = stackedIngredients.IndexOf(ingredient);
+
         // Remove this and all above (if multi-pick removal is ever added)
         stackedIngredients.RemoveRange(index, stackedIngredients.Count - index);
 
@@ -58,6 +70,7 @@ public class PlateManager : MonoBehaviour
             var newTop = stackedIngredients[stackedIngredients.Count - 1];
             newTop.GetComponent<XRGrabInteractable>().enabled = true;
         }
+        
     }
 
     private void MoveSnapPointUp(IngredientStackable ingredient)

@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/Clara Testing.unity
+    path: Assets/!GAME Project/Scene/Clara/Clara Testing.unity
     guid: 68831244f846f984eaa71b11869e7780
   - enabled: 0
     path: "Assets/Samples/Meta XR Interaction \u200BSDK/78.0.0/Example Scenes/LocomotionExamples.unity"
