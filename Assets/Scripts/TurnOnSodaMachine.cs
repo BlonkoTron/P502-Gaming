@@ -3,8 +3,8 @@ using UnityEngine;
 public class TurnOnSodaMachine : MonoBehaviour
 {
     [Header("Objects to Monitor")]
-    [SerializeField] private Transform buttonToMonitor; // The button whose rotation value determines which object to enable
-    [SerializeField] private Transform objectToRotate; // The object that needs to be actively rotating
+    [SerializeField] private GameObject buttonToMonitor; // The button whose rotation value determines which object to enable
+    [SerializeField] private GameObject objectToRotate; // The object that needs to be actively rotating
     
     [Header("Objects to Enable")]
     [SerializeField] private GameObject objectToEnable1; // Object to enable for rotation range 1
@@ -13,9 +13,12 @@ public class TurnOnSodaMachine : MonoBehaviour
     [Header("Button Rotation Settings")]
     [SerializeField] private Vector3 buttonRotationAxis = Vector3.forward; // Which axis to monitor on the button (X, Y, or Z)
     [SerializeField] private float rotationValue1Min = 0f; // Minimum rotation for object 1
-    [SerializeField] private float rotationValue1Max = 90f; // Maximum rotation for object 1
-    [SerializeField] private float rotationValue2Min = 90f; // Minimum rotation for object 2
-    [SerializeField] private float rotationValue2Max = 180f; // Maximum rotation for object 2
+    [SerializeField] private float rotationValue1Max = 179f; // Maximum rotation for object 1
+    [SerializeField] private float rotationValue2Min = 180f; // Minimum rotation for object 2
+    [SerializeField] private float rotationValue2Max = 359f; // Maximum rotation for object 2
+    [SerializeField] private bool clampButtonRotation = true; // Clamp button rotation to prevent over-rotation
+    [SerializeField] private float minButtonRotation = -90f; // Minimum rotation limit (degrees)
+    [SerializeField] private float maxButtonRotation = 90f; // Maximum rotation limit (degrees)
     
     [Header("Wheel Rotation Settings")]
     [SerializeField] private Vector3 wheelRotationAxis = Vector3.up; // Which axis to monitor on the wheel (X, Y, or Z)
@@ -28,29 +31,10 @@ public class TurnOnSodaMachine : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // Validate assignments
-        if (buttonToMonitor == null)
+        // Initialize previous rotation if objectToRotate is assigned
+        if (objectToRotate != null)
         {
-            Debug.LogWarning("Button to monitor not assigned in TurnOnSodaMachine!");
-        }
-        
-        if (objectToRotate == null)
-        {
-            Debug.LogWarning("Object to rotate not assigned in TurnOnSodaMachine!");
-        }
-        else
-        {
-            previousRotation = objectToRotate.rotation;
-        }
-        
-        if (objectToEnable1 == null)
-        {
-            Debug.LogWarning("Object to Enable 1 not assigned in TurnOnSodaMachine!");
-        }
-        
-        if (objectToEnable2 == null)
-        {
-            Debug.LogWarning("Object to Enable 2 not assigned in TurnOnSodaMachine!");
+            previousRotation = objectToRotate.transform.rotation;
         }
     }
 
@@ -59,8 +43,69 @@ public class TurnOnSodaMachine : MonoBehaviour
     {
         if (buttonToMonitor != null && objectToRotate != null)
         {
+            ClampButtonRotation();
             CheckActiveRotation();
             CheckRotationValue();
+        }
+    }
+    
+    // Clamp the button's rotation to prevent over-rotation
+    private void ClampButtonRotation()
+    {
+        if (!clampButtonRotation || buttonToMonitor == null)
+            return;
+        
+        Vector3 currentEuler = buttonToMonitor.transform.localEulerAngles;
+        Vector3 clampedEuler = currentEuler;
+        
+        // Determine which axis to clamp based on buttonRotationAxis
+        if (buttonRotationAxis == Vector3.right || buttonRotationAxis.x > 0.5f)
+        {
+            float angle = currentEuler.x;
+            
+            // Clamp between 0 and 180
+            if (angle > 180f && angle < 270f)
+            {
+                clampedEuler.x = 180f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
+            else if (angle > 270f)
+            {
+                clampedEuler.x = 0f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
+        }
+        else if (buttonRotationAxis == Vector3.up || buttonRotationAxis.y > 0.5f)
+        {
+            float angle = currentEuler.y;
+            
+            // Clamp between 0 and 180
+            if (angle > 180f && angle < 270f)
+            {
+                clampedEuler.y = 180f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
+            else if (angle > 270f)
+            {
+                clampedEuler.y = 0f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
+        }
+        else // Z axis
+        {
+            float angle = currentEuler.z;
+            
+            // Clamp between 0 and 180
+            if (angle > 180f && angle < 270f)
+            {
+                clampedEuler.z = 180f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
+            else if (angle > 270f)
+            {
+                clampedEuler.z = 0f;
+                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+            }
         }
     }
     
@@ -68,7 +113,7 @@ public class TurnOnSodaMachine : MonoBehaviour
     private void CheckActiveRotation()
     {
         // Calculate the angle difference between current and previous rotation
-        float angle = Quaternion.Angle(previousRotation, objectToRotate.rotation);
+        float angle = Quaternion.Angle(previousRotation, objectToRotate.transform.rotation);
         
         // Check if rotation exceeds threshold
         if (angle > rotationThreshold)
@@ -76,7 +121,6 @@ public class TurnOnSodaMachine : MonoBehaviour
             if (!isRotating)
             {
                 isRotating = true;
-                Debug.Log($"{objectToRotate.name} started rotating");
             }
         }
         else
@@ -84,14 +128,13 @@ public class TurnOnSodaMachine : MonoBehaviour
             if (isRotating)
             {
                 isRotating = false;
-                Debug.Log($"{objectToRotate.name} stopped rotating");
                 // Disable all objects when rotation stops
                 DisableAllObjects();
             }
         }
         
         // Update previous rotation
-        previousRotation = objectToRotate.rotation;
+        previousRotation = objectToRotate.transform.rotation;
     }
     
     // Check the current rotation value and enable appropriate objects (only if actively rotating)
@@ -118,7 +161,6 @@ public class TurnOnSodaMachine : MonoBehaviour
                 EnableObject1();
                 DisableObject2();
                 currentActiveObject = 1;
-                Debug.Log($"Button rotation at {currentRotation:F1}° - Enabled Object 1");
             }
         }
         else if (IsInRange(currentRotation, rotationValue2Min, rotationValue2Max))
@@ -129,7 +171,6 @@ public class TurnOnSodaMachine : MonoBehaviour
                 DisableObject1();
                 EnableObject2();
                 currentActiveObject = 2;
-                Debug.Log($"Button rotation at {currentRotation:F1}° - Enabled Object 2");
             }
         }
         else
@@ -140,7 +181,6 @@ public class TurnOnSodaMachine : MonoBehaviour
                 DisableObject1();
                 DisableObject2();
                 currentActiveObject = 0;
-                Debug.Log($"Button rotation at {currentRotation:F1}° - Outside valid ranges");
             }
         }
     }
@@ -148,7 +188,7 @@ public class TurnOnSodaMachine : MonoBehaviour
     // Get the rotation value on the specified axis for the button
     private float GetRotationOnAxis()
     {
-        Vector3 eulerAngles = buttonToMonitor.localEulerAngles;
+        Vector3 eulerAngles = buttonToMonitor.transform.localEulerAngles;
         
         if (buttonRotationAxis == Vector3.right || buttonRotationAxis.x > 0.5f)
         {
@@ -167,7 +207,7 @@ public class TurnOnSodaMachine : MonoBehaviour
     // Get the rotation value on the specified axis for the wheel
     private float GetWheelRotationOnAxis()
     {
-        Vector3 eulerAngles = objectToRotate.localEulerAngles;
+        Vector3 eulerAngles = objectToRotate.transform.localEulerAngles;
         
         if (wheelRotationAxis == Vector3.right || wheelRotationAxis.x > 0.5f)
         {
@@ -189,6 +229,15 @@ public class TurnOnSodaMachine : MonoBehaviour
         while (angle < 0f)
             angle += 360f;
         while (angle >= 360f)
+            angle -= 360f;
+        return angle;
+    }
+    
+    // Normalize angle to -180 to 180 range (for clamping)
+    private float NormalizeAngleTo180(float angle)
+    {
+        angle = NormalizeAngle(angle);
+        if (angle > 180f)
             angle -= 360f;
         return angle;
     }
@@ -256,7 +305,6 @@ public class TurnOnSodaMachine : MonoBehaviour
             DisableObject1();
             DisableObject2();
             currentActiveObject = 0;
-            Debug.Log("Rotation stopped - Disabled all objects");
         }
     }
     
