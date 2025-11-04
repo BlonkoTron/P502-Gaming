@@ -42,7 +42,10 @@ public class IngredientStackable : MonoBehaviour
     private void OnReleased(SelectExitEventArgs args)
     {
         if (plateManager != null)
-            plateManager.TrySnap(this);
+        if(this.tag == "Stackable")
+        {
+             plateManager.TrySnap(this);
+        }
     }
 
     public void LockInPlace(Transform newParent)
