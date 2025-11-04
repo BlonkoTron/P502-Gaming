@@ -1,78 +1,71 @@
 ﻿using UnityEngine;
 
-public class VRCharacterAlignerAdvanced : MonoBehaviour
+public class VRCharacterAligner : MonoBehaviour
 {
-    [Header("XR References")]
-    public Transform xrOrigin;      // XR Origin or Camera Rig
-    public Transform xrHead;        // Main Camera (VR headset)
+    public Transform xrOrigin;   // XR Rig Root
+    public Transform xrHead;     // XR Camera (player head)
 
-    [Header("Character References")]
-    public Transform characterRoot; // Root of the character (hips or full body root)
-    public Transform characterHead; // Head bone or head transform
+    public Transform characterRoot; // Avatar root at hips or pelvis
+    public Transform characterHead; // Avatar head/neck bone
 
-    [Header("Offsets")]
-    public Vector3 positionOffset;   // Manual fine-tune offset
-    public Vector3 rotationOffset;   // Yaw rotation adjustment (in degrees)
-    [Tooltip("Use this to adjust how high or low the model appears relative to the XR rig.")]
-    public float heightOffset = 0f;  // Y offset in meters
+    [Range(0.5f, 2.0f)]
+    public float characterScale = 1.0f;
 
-    [Header("Scale Settings")]
-    [Tooltip("Uniformly scales the character to better match player height.")]
-    [Range(0.5f, 2f)]
-    public float characterScale = 1.0f; // Global scale multiplier
-
-    [Header("Alignment Options")]
-    public bool alignOnStart = true;
-    public bool alignRotationToXR = true;
     public bool keepFeetOnGround = true;
+    public bool followContinuously = false;
 
-    void Start()
+    private float headHeightOffset;
+
+    private void Start()
     {
-        if (alignOnStart)
-            AlignCharacterWithXR();
+        if (!ValidRefs()) return;
+
+        // Store the avatar’s original head height from root
+        headHeightOffset = characterHead.position.y - characterRoot.position.y;
+
+        Align();
     }
 
-    [ContextMenu("Align Character Now")]
-    public void AlignCharacterWithXR()
+    private void Update()
     {
-        if (!xrOrigin || !xrHead || !characterRoot || !characterHead)
-        {
-            Debug.LogWarning("❌ VRCharacterAlignerAdvanced: Missing references!");
-            return;
-        }
+        if (followContinuously)
+            Align();
+    }
 
-        // Step 1: Apply scale
+    void Align()
+    {
+        if (!ValidRefs()) return;
+
+        // ✅ 1. Scale avatar around root BEFORE aligning
         characterRoot.localScale = Vector3.one * characterScale;
 
-        // Step 2: Move character root to XR origin position + offset
-        characterRoot.position = xrOrigin.position + positionOffset;
+        // ✅ 2. Rotate avatar to match XR direction (Y only)
+        Vector3 forward = xrHead.forward;
+        forward.y = 0f;
+        characterRoot.rotation = Quaternion.LookRotation(forward);
 
-        // Step 3: Rotate character to match XR orientation (only Y-axis)
-        if (alignRotationToXR)
-        {
-            Vector3 xrForward = xrOrigin.forward;
-            xrForward.y = 0;
-            Quaternion flatRotation = Quaternion.LookRotation(xrForward);
-            characterRoot.rotation = flatRotation * Quaternion.Euler(rotationOffset);
-        }
+        // ✅ 3. Position avatar so character head = XR head
+        Vector3 targetPosition = xrHead.position - (characterHead.position - characterRoot.position);
+        characterRoot.position = targetPosition;
 
-        // Step 4: Align character head to XR headset
-        Vector3 headOffset = xrHead.position - characterHead.position;
-        characterRoot.position += headOffset;
-
-        // Step 5: Apply manual height adjustment
-        characterRoot.position += Vector3.up * heightOffset;
-
-        // Step 6: Keep character feet on ground (optional)
+        // ✅ 4. Keep feet grounded (optional)
         if (keepFeetOnGround)
         {
             characterRoot.position = new Vector3(
                 characterRoot.position.x,
-                xrOrigin.position.y,
+                xrOrigin.position.y - headHeightOffset,
                 characterRoot.position.z
             );
         }
+    }
 
-        Debug.Log($"✅ Character aligned and scaled. Scale: {characterScale}, Height offset: {heightOffset}");
+    bool ValidRefs()
+    {
+        if (!xrOrigin || !xrHead || !characterRoot || !characterHead)
+        {
+            Debug.LogWarning("⚠️ Missing reference in VRCharacterAligner!");
+            return false;
+        }
+        return true;
     }
 }

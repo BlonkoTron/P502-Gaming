@@ -1705,13 +1705,9 @@ MonoBehaviour:
   xrHead: {fileID: 182974749}
   characterRoot: {fileID: 1730709257}
   characterHead: {fileID: 1730709272}
-  positionOffset: {x: 0, y: 2.5, z: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
-  heightOffset: 0
   characterScale: 1
-  alignOnStart: 0
-  alignRotationToXR: 1
   keepFeetOnGround: 1
+  followContinuously: 1
 --- !u!114 &1730709306
 MonoBehaviour:
   m_ObjectHideFlags: 0
