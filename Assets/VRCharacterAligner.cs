@@ -1,18 +1,22 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class VRCharacterAligner : MonoBehaviour
+public class VRCharacterAlignerAdvanced : MonoBehaviour
 {
-    [Header("References")]
-    public Transform xrRig;          // XR Origin or Camera Rig root
-    public Transform xrHead;         // The VR camera (head)
-    public Transform characterRoot;  // The character model root (hips or main transform)
+    [Header("XR References")]
+    public Transform xrOrigin;      // XR Origin or Camera Rig
+    public Transform xrHead;        // Main Camera (VR headset)
+
+    [Header("Character References")]
+    public Transform characterRoot; // Root of the character (hips or full body root)
+    public Transform characterHead; // Head bone or head transform
 
     [Header("Offsets")]
-    public Vector3 positionOffset;   // Manual adjustment for fine-tuning
-    public Vector3 rotationOffset;   // Manual rotation offset (in degrees)
+    public Vector3 positionOffset;  // Manual fine-tune offset for character placement
+    public Vector3 rotationOffset;  // Yaw rotation adjustment (in degrees)
 
-    [Header("Auto Align")]
-    public bool alignOnStart = true; // Automatically align when pressing Play
+    [Header("Alignment Options")]
+    public bool alignOnStart = true;
+    public bool alignRotationToXR = true;
 
     void Start()
     {
@@ -23,23 +27,35 @@ public class VRCharacterAligner : MonoBehaviour
     [ContextMenu("Align Character Now")]
     public void AlignCharacterWithXR()
     {
-        if (xrRig == null || xrHead == null || characterRoot == null)
+        if (!xrOrigin || !xrHead || !characterRoot || !characterHead)
         {
-            Debug.LogWarning("Missing references in VRCharacterAligner!");
+            Debug.LogWarning("❌ VRCharacterAlignerAdvanced: Missing references!");
             return;
         }
 
-        // Calculate head-level position difference
-        Vector3 headPosition = xrHead.position;
-        Vector3 characterPosition = characterRoot.position;
+        // Step 1: Move character root to XR origin position
+        characterRoot.position = xrOrigin.position + positionOffset;
 
-        // Align character hips roughly to XR Rig position
-        Vector3 offset = headPosition - characterPosition;
-        offset.y = 0; // Keep character feet on ground level
+        // Step 2: Rotate character to match XR orientation (only Y-axis)
+        if (alignRotationToXR)
+        {
+            Vector3 xrForward = xrOrigin.forward;
+            xrForward.y = 0;
+            Quaternion flatRotation = Quaternion.LookRotation(xrForward);
+            characterRoot.rotation = flatRotation * Quaternion.Euler(rotationOffset);
+        }
 
-        characterRoot.position += offset + positionOffset;
+        // Step 3: Align character head to XR headset
+        Vector3 headOffset = xrHead.position - characterHead.position;
+        characterRoot.position += headOffset;
 
-        // Apply rotation offset (useful if character faces wrong direction)
-        characterRoot.rotation = Quaternion.Euler(rotationOffset) * Quaternion.Euler(0, xrRig.eulerAngles.y, 0);
+        // Optional: Keep character on ground plane (don’t lift feet off floor)
+        characterRoot.position = new Vector3(
+            characterRoot.position.x,
+            xrOrigin.position.y,
+            characterRoot.position.z
+        );
+
+        Debug.Log("✅ Character aligned with XR rig successfully!");
     }
 }
