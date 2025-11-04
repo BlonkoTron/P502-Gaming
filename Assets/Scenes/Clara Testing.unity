@@ -254,8 +254,8 @@ GameObject:
   - component: {fileID: 137089709}
   - component: {fileID: 137089712}
   - component: {fileID: 137089711}
-  - component: {fileID: 137089710}
   - component: {fileID: 137089713}
+  - component: {fileID: 137089714}
   m_Layer: 0
   m_Name: BurgerBunBottomPrefab
   m_TagString: Stackable
@@ -280,27 +280,6 @@ Transform:
   - {fileID: 509846301}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &137089710
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137089708}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &137089711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,6 +447,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 813135887}
+--- !u!64 &137089714
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137089708}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5492528018528932776, guid: ee12c982e9d82794482cc3fc5c727cd9, type: 3}
 --- !u!1 &234149431
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,8 +989,8 @@ GameObject:
   - component: {fileID: 491370757}
   - component: {fileID: 491370756}
   - component: {fileID: 491370755}
-  - component: {fileID: 491370754}
   - component: {fileID: 491370753}
+  - component: {fileID: 491370758}
   m_Layer: 0
   m_Name: BurgerBunTopPrefab
   m_TagString: Stackable
@@ -1010,27 +1011,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 2023560193}
---- !u!65 &491370754
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 491370752}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &491370755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1202,6 +1182,28 @@ Transform:
   - {fileID: 829789703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &491370758
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491370752}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4735324417962281163, guid: f768fa047ebfdef478a005fd13262c5d, type: 3}
 --- !u!1001 &509846300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1275,8 +1277,8 @@ GameObject:
   - component: {fileID: 550027051}
   - component: {fileID: 550027050}
   - component: {fileID: 550027049}
-  - component: {fileID: 550027048}
   - component: {fileID: 550027047}
+  - component: {fileID: 550027052}
   m_Layer: 0
   m_Name: CutTomatoPrefab
   m_TagString: Stackable
@@ -1297,27 +1299,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 299109465}
---- !u!65 &550027048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 550027046}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &550027049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1489,6 +1470,28 @@ Transform:
   - {fileID: 113946791}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &550027052
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550027046}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1340541719380434750, guid: af7322f24c933d54f9c2626478f61fa8, type: 3}
 --- !u!1 &686305092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,8 +1796,8 @@ GameObject:
   - component: {fileID: 758918217}
   - component: {fileID: 758918216}
   - component: {fileID: 758918215}
-  - component: {fileID: 758918214}
   - component: {fileID: 758918213}
+  - component: {fileID: 758918218}
   m_Layer: 0
   m_Name: SquezedKetflupPrefab
   m_TagString: Stackable
@@ -1815,27 +1818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 363826952}
---- !u!65 &758918214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 758918212}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &758918215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2007,6 +1989,28 @@ Transform:
   - {fileID: 363826952}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &758918218
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758918212}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6526078932420169661, guid: edf339e714f00084fb0cc258a6351611, type: 3}
 --- !u!1 &813135886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,8 +2225,8 @@ GameObject:
   - component: {fileID: 1040237934}
   - component: {fileID: 1040237933}
   - component: {fileID: 1040237932}
-  - component: {fileID: 1040237931}
   - component: {fileID: 1040237930}
+  - component: {fileID: 1040237935}
   m_Layer: 0
   m_Name: SquezedGroolePrefab
   m_TagString: Stackable
@@ -2243,27 +2247,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 1842643896}
---- !u!65 &1040237931
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1040237929}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &1040237932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2435,6 +2418,28 @@ Transform:
   - {fileID: 105393170}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1040237935
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040237929}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8400132896337358946, guid: 4d9e0a95b70041240ae58b1b4a662324, type: 3}
 --- !u!1001 &1057371349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2547,7 +2552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b972fda01ffa31549b93e2c2864660c8, type: 3}
       propertyPath: m_Name
-      value: CutSalatMesh
+      value: CutSaladMesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4032,8 +4037,8 @@ GameObject:
   - component: {fileID: 1684473892}
   - component: {fileID: 1684473891}
   - component: {fileID: 1684473890}
-  - component: {fileID: 1684473889}
   - component: {fileID: 1684473888}
+  - component: {fileID: 1684473893}
   m_Layer: 0
   m_Name: CookedBeefPrefab
   m_TagString: Stackable
@@ -4054,27 +4059,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 687167196}
---- !u!65 &1684473889
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684473887}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &1684473890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4246,6 +4230,28 @@ Transform:
   - {fileID: 1057371350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1684473893
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684473887}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3485366260697867770, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
 --- !u!1 &1691787786
 GameObject:
   m_ObjectHideFlags: 0
@@ -4393,10 +4399,10 @@ GameObject:
   - component: {fileID: 1715135218}
   - component: {fileID: 1715135217}
   - component: {fileID: 1715135216}
-  - component: {fileID: 1715135215}
   - component: {fileID: 1715135214}
+  - component: {fileID: 1715135219}
   m_Layer: 0
-  m_Name: CutLettucePrefab
+  m_Name: CutSaladPrefab
   m_TagString: Stackable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4415,27 +4421,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 977349062}
---- !u!65 &1715135215
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1715135213}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.04, z: 0.2}
-  m_Center: {x: 0, y: 0.02, z: 0}
 --- !u!114 &1715135216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4607,6 +4592,28 @@ Transform:
   - {fileID: 1092953144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1715135219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1715135213}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2597519522473998463, guid: b972fda01ffa31549b93e2c2864660c8, type: 3}
 --- !u!1 &1750075604
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,8 +5168,6 @@ SceneRoots:
   - {fileID: 1825408695}
   - {fileID: 1970774220}
   - {fileID: 937303689}
-  - {fileID: 137089709}
-  - {fileID: 491370757}
   - {fileID: 382020547}
   - {fileID: 2013704505}
   - {fileID: 550027051}
@@ -5170,5 +5175,7 @@ SceneRoots:
   - {fileID: 1684473892}
   - {fileID: 758918217}
   - {fileID: 1040237934}
+  - {fileID: 137089709}
+  - {fileID: 491370757}
   - {fileID: 357527424}
   - {fileID: 1372123961}
