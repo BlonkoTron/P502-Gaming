@@ -11,12 +11,20 @@ public class VRCharacterAlignerAdvanced : MonoBehaviour
     public Transform characterHead; // Head bone or head transform
 
     [Header("Offsets")]
-    public Vector3 positionOffset;  // Manual fine-tune offset for character placement
-    public Vector3 rotationOffset;  // Yaw rotation adjustment (in degrees)
+    public Vector3 positionOffset;   // Manual fine-tune offset
+    public Vector3 rotationOffset;   // Yaw rotation adjustment (in degrees)
+    [Tooltip("Use this to adjust how high or low the model appears relative to the XR rig.")]
+    public float heightOffset = 0f;  // Y offset in meters
+
+    [Header("Scale Settings")]
+    [Tooltip("Uniformly scales the character to better match player height.")]
+    [Range(0.5f, 2f)]
+    public float characterScale = 1.0f; // Global scale multiplier
 
     [Header("Alignment Options")]
     public bool alignOnStart = true;
     public bool alignRotationToXR = true;
+    public bool keepFeetOnGround = true;
 
     void Start()
     {
@@ -33,10 +41,13 @@ public class VRCharacterAlignerAdvanced : MonoBehaviour
             return;
         }
 
-        // Step 1: Move character root to XR origin position
+        // Step 1: Apply scale
+        characterRoot.localScale = Vector3.one * characterScale;
+
+        // Step 2: Move character root to XR origin position + offset
         characterRoot.position = xrOrigin.position + positionOffset;
 
-        // Step 2: Rotate character to match XR orientation (only Y-axis)
+        // Step 3: Rotate character to match XR orientation (only Y-axis)
         if (alignRotationToXR)
         {
             Vector3 xrForward = xrOrigin.forward;
@@ -45,17 +56,23 @@ public class VRCharacterAlignerAdvanced : MonoBehaviour
             characterRoot.rotation = flatRotation * Quaternion.Euler(rotationOffset);
         }
 
-        // Step 3: Align character head to XR headset
+        // Step 4: Align character head to XR headset
         Vector3 headOffset = xrHead.position - characterHead.position;
         characterRoot.position += headOffset;
 
-        // Optional: Keep character on ground plane (don’t lift feet off floor)
-        characterRoot.position = new Vector3(
-            characterRoot.position.x,
-            xrOrigin.position.y,
-            characterRoot.position.z
-        );
+        // Step 5: Apply manual height adjustment
+        characterRoot.position += Vector3.up * heightOffset;
 
-        Debug.Log("✅ Character aligned with XR rig successfully!");
+        // Step 6: Keep character feet on ground (optional)
+        if (keepFeetOnGround)
+        {
+            characterRoot.position = new Vector3(
+                characterRoot.position.x,
+                xrOrigin.position.y,
+                characterRoot.position.z
+            );
+        }
+
+        Debug.Log($"✅ Character aligned and scaled. Scale: {characterScale}, Height offset: {heightOffset}");
     }
 }

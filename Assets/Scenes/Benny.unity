@@ -1073,6 +1073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7904883879130571778, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1094,10 +1098,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6264177465661457572, guid: edb8211d56a2e5041aa978c607238c89, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 52e07543174a6f043b12bdc5a9df1778, type: 2}
     - target: {fileID: 6410990763302873119, guid: edb8211d56a2e5041aa978c607238c89, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 28f8a0c66e4cd754d87e37cafb4e1bee, type: 2}
+      objectReference: {fileID: 2100000, guid: d26cce46dafaefe45931e5d320fe6066, type: 2}
     - target: {fileID: 6828512031302365636, guid: edb8211d56a2e5041aa978c607238c89, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.846866
@@ -1642,10 +1650,13 @@ MonoBehaviour:
   rightArmIK: {fileID: 1516875277}
   leftHandTarget: {fileID: 541569240}
   rightHandTarget: {fileID: 1809908521}
+  leftElbowHint: {fileID: 2006296536}
+  rightElbowHint: {fileID: 1688262475}
   leftHandRotationOffset: {x: 90, y: 0, z: 0}
   rightHandRotationOffset: {x: 90, y: 0, z: 0}
   mirrorLeftHand: 1
   mirrorRightHand: 1
+  autoEnableIK: 1
 --- !u!114 &1730709304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,12 +1671,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xrOrigin: {fileID: 813146956}
   xrHead: {fileID: 182974749}
-  characterRoot: {fileID: 1730709299}
-  characterHead: {fileID: 1730709271}
-  positionOffset: {x: 0, y: 0, z: 0}
+  characterRoot: {fileID: 1730709257}
+  characterHead: {fileID: 1730709272}
+  positionOffset: {x: 0, y: 2.5, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  alignOnStart: 1
+  heightOffset: 0
+  characterScale: 1
+  alignOnStart: 0
   alignRotationToXR: 1
+  keepFeetOnGround: 1
 --- !u!114 &1730709306
 MonoBehaviour:
   m_ObjectHideFlags: 0
