@@ -10079,6 +10079,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!59 &197356931
+HingeJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197356924}
+  serializedVersion: 3
+  m_ConnectedBody: {fileID: 1512399593}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_Anchor: {x: 0, y: 0.0013000594, z: 0}
+  m_Axis: {x: 0, y: 0, z: 1}
+  m_AutoConfigureConnectedAnchor: 1
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_UseSpring: 0
+  m_Spring:
+    spring: 0
+    damper: 0
+    targetPosition: 0
+  m_UseMotor: 0
+  m_Motor:
+    targetVelocity: 0
+    force: 0
+    freeSpin: 0
+  m_UseLimits: 0
+  m_ExtendedLimits: 0
+  m_UseAcceleration: 0
+  m_Limits:
+    min: 0
+    max: 0
+    bounciness: 0
+    bounceMinVelocity: 0.2
+    contactDistance: 0
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!1 &596881698
 GameObject:
   m_ObjectHideFlags: 0
@@ -10557,11 +10596,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5325030374154028337, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
   m_PrefabInstance: {fileID: 1101653749}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &755056520 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7914292035904942195, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
-  m_PrefabInstance: {fileID: 1101653749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &755056523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10616,9 +10650,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb7a054af3cfa4cae97e7966c4327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToMonitor: {fileID: 755056520}
+  buttonToMonitor: {fileID: 0}
+  objectToRotate: {fileID: 0}
   objectToEnable1: {fileID: 78915399}
   objectToEnable2: {fileID: 142362198}
+  buttonRotationAxis: {x: 0, y: 0, z: 1}
+  rotationValue1Min: 0
+  rotationValue1Max: 90
+  rotationValue2Min: 90
+  rotationValue2Max: 180
+  wheelRotationAxis: {x: 0, y: 1, z: 0}
   rotationThreshold: 10
 --- !u!59 &755056526
 HingeJoint:
@@ -15600,6 +15641,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6821887585681450876, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 197356929}
+    - targetCorrespondingSourceObject: {fileID: 6821887585681450876, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 197356931}
     - targetCorrespondingSourceObject: {fileID: -617216038306276258, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1512399591}
@@ -16646,6 +16690,63 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1586831698
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.613432
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.725
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.6689205
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: m_Name
+      value: Beef
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
 --- !u!1001 &1618216088
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17262,11 +17363,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7248070322280535687, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
   m_PrefabInstance: {fileID: 1101653749}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2101750383 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3749952859884817945, guid: 71d1824fe8001854596d1e5dfd9cbc49, type: 3}
-  m_PrefabInstance: {fileID: 1101653749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &2101750386
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17321,9 +17417,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fdb7a054af3cfa4cae97e7966c4327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToMonitor: {fileID: 2101750383}
+  buttonToMonitor: {fileID: 0}
+  objectToRotate: {fileID: 0}
   objectToEnable1: {fileID: 78915399}
   objectToEnable2: {fileID: 142362198}
+  buttonRotationAxis: {x: 0, y: 0, z: 1}
+  rotationValue1Min: 0
+  rotationValue1Max: 90
+  rotationValue2Min: 90
+  rotationValue2Max: 180
+  wheelRotationAxis: {x: 0, y: 1, z: 0}
   rotationThreshold: 0.1
 --- !u!59 &2101750389
 HingeJoint:
@@ -17657,3 +17760,4 @@ SceneRoots:
   - {fileID: 142362201}
   - {fileID: 1302349005}
   - {fileID: 45393567}
+  - {fileID: 1586831698}
