@@ -11,20 +11,32 @@ public class VRArmIKController : MonoBehaviour
     public Transform leftHandTarget;
     public Transform rightHandTarget;
 
+    [Header("Rotation Offsets")]
+    public Vector3 leftHandRotationOffset = new Vector3(0f, 0f, 0f);
+    public Vector3 rightHandRotationOffset = new Vector3(0f, 0f, 0f);
+
+    [Header("Mirror Fix (180° flip)")]
+    public bool mirrorLeftHand = false;
+    public bool mirrorRightHand = false;
+
     void Update()
     {
-        if (leftArmIK != null && leftHandTarget != null)
+        if (leftArmIK && leftHandTarget)
         {
+            Quaternion rot = leftHandTarget.rotation * Quaternion.Euler(leftHandRotationOffset);
+            if (mirrorLeftHand) rot *= Quaternion.Euler(0, 180f, 0); // flip across Y axis
             leftArmIK.data.target.position = leftHandTarget.position;
-            leftArmIK.data.target.rotation = leftHandTarget.rotation;
-            leftArmIK.weight = 1.0f; // ensure active
+            leftArmIK.data.target.rotation = rot;
+            leftArmIK.weight = 1f;
         }
 
-        if (rightArmIK != null && rightHandTarget != null)
+        if (rightArmIK && rightHandTarget)
         {
+            Quaternion rot = rightHandTarget.rotation * Quaternion.Euler(rightHandRotationOffset);
+            if (mirrorRightHand) rot *= Quaternion.Euler(0, 180f, 0);
             rightArmIK.data.target.position = rightHandTarget.position;
-            rightArmIK.data.target.rotation = rightHandTarget.rotation;
-            rightArmIK.weight = 1.0f;
+            rightArmIK.data.target.rotation = rot;
+            rightArmIK.weight = 1f;
         }
     }
 }
