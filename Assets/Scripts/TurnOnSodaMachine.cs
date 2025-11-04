@@ -3,30 +3,44 @@ using UnityEngine;
 public class TurnOnSodaMachine : MonoBehaviour
 {
     [Header("Objects to Monitor")]
-    [SerializeField] private Transform objectToMonitor; // The object whose rotation we're tracking
+    [SerializeField] private Transform buttonToMonitor; // The button whose rotation value determines which object to enable
+    [SerializeField] private Transform objectToRotate; // The object that needs to be actively rotating
     
     [Header("Objects to Enable")]
-    [SerializeField] private GameObject objectToEnable1; // First object to enable when rotation detected
-    [SerializeField] private GameObject objectToEnable2; // Second object to enable when rotation detected
+    [SerializeField] private GameObject objectToEnable1; // Object to enable for rotation range 1
+    [SerializeField] private GameObject objectToEnable2; // Object to enable for rotation range 2
     
-    [Header("Rotation Settings")]
-    [SerializeField] private float rotationThreshold = 0.1f; // Minimum rotation change to detect (in degrees)
+    [Header("Button Rotation Settings")]
+    [SerializeField] private Vector3 buttonRotationAxis = Vector3.forward; // Which axis to monitor on the button (X, Y, or Z)
+    [SerializeField] private float rotationValue1Min = 0f; // Minimum rotation for object 1
+    [SerializeField] private float rotationValue1Max = 90f; // Maximum rotation for object 1
+    [SerializeField] private float rotationValue2Min = 90f; // Minimum rotation for object 2
+    [SerializeField] private float rotationValue2Max = 180f; // Maximum rotation for object 2
+    
+    [Header("Wheel Rotation Settings")]
+    [SerializeField] private Vector3 wheelRotationAxis = Vector3.up; // Which axis to monitor on the wheel (X, Y, or Z)
+    [SerializeField] private float rotationThreshold = 0.1f; // Minimum rotation change to detect active rotation
     
     private Quaternion previousRotation;
     private bool isRotating = false;
-    private bool objectsEnabled = false;
+    private int currentActiveObject = 0; // 0 = none, 1 = object1, 2 = object2
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Validate assignments
-        if (objectToMonitor == null)
+        if (buttonToMonitor == null)
         {
-            Debug.LogWarning("Object to monitor not assigned in TurnOnSodaMachine!");
+            Debug.LogWarning("Button to monitor not assigned in TurnOnSodaMachine!");
+        }
+        
+        if (objectToRotate == null)
+        {
+            Debug.LogWarning("Object to rotate not assigned in TurnOnSodaMachine!");
         }
         else
         {
-            previousRotation = objectToMonitor.rotation;
+            previousRotation = objectToRotate.rotation;
         }
         
         if (objectToEnable1 == null)
@@ -43,17 +57,18 @@ public class TurnOnSodaMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (objectToMonitor != null)
+        if (buttonToMonitor != null && objectToRotate != null)
         {
-            CheckRotation();
+            CheckActiveRotation();
+            CheckRotationValue();
         }
     }
     
-    // Check if the object is rotating
-    private void CheckRotation()
+    // Check if the objectToRotate is actively rotating
+    private void CheckActiveRotation()
     {
         // Calculate the angle difference between current and previous rotation
-        float angle = Quaternion.Angle(previousRotation, objectToMonitor.rotation);
+        float angle = Quaternion.Angle(previousRotation, objectToRotate.rotation);
         
         // Check if rotation exceeds threshold
         if (angle > rotationThreshold)
@@ -61,8 +76,7 @@ public class TurnOnSodaMachine : MonoBehaviour
             if (!isRotating)
             {
                 isRotating = true;
-                Debug.Log($"{objectToMonitor.name} started rotating - angle change: {angle:F2} degrees");
-                HandleRotationStarted();
+                Debug.Log($"{objectToRotate.name} started rotating");
             }
         }
         else
@@ -70,70 +84,185 @@ public class TurnOnSodaMachine : MonoBehaviour
             if (isRotating)
             {
                 isRotating = false;
-                Debug.Log($"{objectToMonitor.name} stopped rotating");
-                HandleRotationStopped();
+                Debug.Log($"{objectToRotate.name} stopped rotating");
+                // Disable all objects when rotation stops
+                DisableAllObjects();
             }
         }
         
         // Update previous rotation
-        previousRotation = objectToMonitor.rotation;
+        previousRotation = objectToRotate.rotation;
     }
     
-    // Called when rotation starts
-    private void HandleRotationStarted()
+    // Check the current rotation value and enable appropriate objects (only if actively rotating)
+    private void CheckRotationValue()
     {
-        if (!objectsEnabled)
+        // Only enable objects if actively rotating
+        if (!isRotating)
         {
-            EnableObjects();
-            objectsEnabled = true;
+            return;
+        }
+        
+        // Get the rotation angle based on the specified axis
+        float currentRotation = GetRotationOnAxis();
+        
+        // Normalize the angle to 0-360 range
+        currentRotation = NormalizeAngle(currentRotation);
+        
+        // Check which rotation range the button is in
+        if (IsInRange(currentRotation, rotationValue1Min, rotationValue1Max))
+        {
+            // Enable object 1, disable object 2
+            if (currentActiveObject != 1)
+            {
+                EnableObject1();
+                DisableObject2();
+                currentActiveObject = 1;
+                Debug.Log($"Button rotation at {currentRotation:F1}° - Enabled Object 1");
+            }
+        }
+        else if (IsInRange(currentRotation, rotationValue2Min, rotationValue2Max))
+        {
+            // Enable object 2, disable object 1
+            if (currentActiveObject != 2)
+            {
+                DisableObject1();
+                EnableObject2();
+                currentActiveObject = 2;
+                Debug.Log($"Button rotation at {currentRotation:F1}° - Enabled Object 2");
+            }
+        }
+        else
+        {
+            // Outside both ranges, disable both objects
+            if (currentActiveObject != 0)
+            {
+                DisableObject1();
+                DisableObject2();
+                currentActiveObject = 0;
+                Debug.Log($"Button rotation at {currentRotation:F1}° - Outside valid ranges");
+            }
         }
     }
     
-    // Called when rotation stops
-    private void HandleRotationStopped()
+    // Get the rotation value on the specified axis for the button
+    private float GetRotationOnAxis()
     {
-        if (objectsEnabled)
+        Vector3 eulerAngles = buttonToMonitor.localEulerAngles;
+        
+        if (buttonRotationAxis == Vector3.right || buttonRotationAxis.x > 0.5f)
         {
-            DisableObjects();
-            objectsEnabled = false;
+            return eulerAngles.x;
+        }
+        else if (buttonRotationAxis == Vector3.up || buttonRotationAxis.y > 0.5f)
+        {
+            return eulerAngles.y;
+        }
+        else // Default to Z axis
+        {
+            return eulerAngles.z;
         }
     }
     
-    // Enable both objects
-    private void EnableObjects()
+    // Get the rotation value on the specified axis for the wheel
+    private float GetWheelRotationOnAxis()
+    {
+        Vector3 eulerAngles = objectToRotate.localEulerAngles;
+        
+        if (wheelRotationAxis == Vector3.right || wheelRotationAxis.x > 0.5f)
+        {
+            return eulerAngles.x;
+        }
+        else if (wheelRotationAxis == Vector3.up || wheelRotationAxis.y > 0.5f)
+        {
+            return eulerAngles.y;
+        }
+        else // Default to Z axis
+        {
+            return eulerAngles.z;
+        }
+    }
+    
+    // Normalize angle to 0-360 range
+    private float NormalizeAngle(float angle)
+    {
+        while (angle < 0f)
+            angle += 360f;
+        while (angle >= 360f)
+            angle -= 360f;
+        return angle;
+    }
+    
+    // Check if a value is within a range (handles wrapping around 360)
+    private bool IsInRange(float value, float min, float max)
+    {
+        // Normalize all values
+        value = NormalizeAngle(value);
+        min = NormalizeAngle(min);
+        max = NormalizeAngle(max);
+        
+        // Handle range that wraps around 360
+        if (min > max)
+        {
+            return value >= min || value <= max;
+        }
+        else
+        {
+            return value >= min && value <= max;
+        }
+    }
+    
+    // Enable object 1
+    private void EnableObject1()
     {
         if (objectToEnable1 != null)
         {
             objectToEnable1.SetActive(true);
-            Debug.Log($"Enabled: {objectToEnable1.name}");
-        }
-        
-        if (objectToEnable2 != null)
-        {
-            objectToEnable2.SetActive(true);
-            Debug.Log($"Enabled: {objectToEnable2.name}");
         }
     }
     
-    // Disable both objects
-    private void DisableObjects()
+    // Disable object 1
+    private void DisableObject1()
     {
         if (objectToEnable1 != null)
         {
             objectToEnable1.SetActive(false);
-            Debug.Log($"Disabled: {objectToEnable1.name}");
-        }
-        
-        if (objectToEnable2 != null)
-        {
-            objectToEnable2.SetActive(false);
-            Debug.Log($"Disabled: {objectToEnable2.name}");
         }
     }
     
-    // Public method to manually check if object is rotating
-    public bool IsRotating()
+    // Enable object 2
+    private void EnableObject2()
     {
-        return isRotating;
+        if (objectToEnable2 != null)
+        {
+            objectToEnable2.SetActive(true);
+        }
+    }
+    
+    // Disable object 2
+    private void DisableObject2()
+    {
+        if (objectToEnable2 != null)
+        {
+            objectToEnable2.SetActive(false);
+        }
+    }
+    
+    // Disable all objects
+    private void DisableAllObjects()
+    {
+        if (currentActiveObject != 0)
+        {
+            DisableObject1();
+            DisableObject2();
+            currentActiveObject = 0;
+            Debug.Log("Rotation stopped - Disabled all objects");
+        }
+    }
+    
+    // Public method to get current rotation value
+    public float GetCurrentRotation()
+    {
+        return buttonToMonitor != null ? GetRotationOnAxis() : 0f;
     }
 }
