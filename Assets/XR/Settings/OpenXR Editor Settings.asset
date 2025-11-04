@@ -15,8 +15,6 @@ MonoBehaviour:
   Keys: 0700000001000000
   Values:
   - featureSets: []
-  - featureSets:
-    - com.meta.openxr.featureset.metaxr
-    - com.unity.openxr.featureset.meta
+  - featureSets: []
   m_vulkanAdditionalGraphicsQueue: 0
   m_vulkanOffscreenSwapchainNoMainDisplay: 1
