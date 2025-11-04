@@ -9,7 +9,7 @@ public class PlateManager : MonoBehaviour
     public Transform topSnapPoint;
     public float snapRange = 0.05f;  // How close an ingredient must be to snap
 
-    private List<IngredientStackable> stackedIngredients = new List<IngredientStackable>();
+    public List<IngredientStackable> stackedIngredients = new List<IngredientStackable>();
 
     public void TrySnap(IngredientStackable ingredient)
     {
