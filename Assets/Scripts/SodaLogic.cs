@@ -8,6 +8,11 @@ public class SodaLogic : MonoBehaviour
     [SerializeField] private GameObject NebulaBlast; // Second object to check if enabled
     [SerializeField] private Collider specificCollider; // The specific collider to detect contact with
     
+    [Header("Material Settings")]
+    [SerializeField] private GameObject objectToChangeMaterial; // The object whose material will change
+    [SerializeField] private Material moonJuiceMaterial; // Material to apply when MoonJuice is enabled
+    [SerializeField] private Material nebulaBlastMaterial; // Material to apply when NebulaBlast is enabled
+    
     [Header("Settings")]
     [SerializeField] private bool enableOnAction = true; // If true, enables object on action; if false, disables it
     [SerializeField] private float requiredContactTime = 3f; // Time in seconds that contact must be maintained
@@ -15,6 +20,7 @@ public class SodaLogic : MonoBehaviour
     private bool actionTriggered = false;
     private bool isColliding = false;
     private float currentContactTime = 3f;
+    private Renderer objectRenderer; // Cached renderer component
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +41,27 @@ public class SodaLogic : MonoBehaviour
         if (specificCollider == null)
         {
             Debug.LogWarning("Specific Collider not assigned in SodaLogic!");
+        }
+        if (objectToChangeMaterial == null)
+        {
+            Debug.LogWarning("Object to change material not assigned in SodaLogic!");
+        }
+        else
+        {
+            // Cache the renderer component
+            objectRenderer = objectToChangeMaterial.GetComponent<Renderer>();
+            if (objectRenderer == null)
+            {
+                Debug.LogError("Object to change material doesn't have a Renderer component!");
+            }
+        }
+        if (moonJuiceMaterial == null)
+        {
+            Debug.LogWarning("MoonJuice Material not assigned in SodaLogic!");
+        }
+        if (nebulaBlastMaterial == null)
+        {
+            Debug.LogWarning("NebulaBlast Material not assigned in SodaLogic!");
         }
     }
 
@@ -90,18 +117,42 @@ public class SodaLogic : MonoBehaviour
         if (moonJuiceActive && nebulaBlastActive)
         {
             Debug.Log("Both MoonJuice and NebulaBlast were enabled when timer completed");
+            // If both are active, prioritize MoonJuice
+            ChangeMaterialToMoonJuice();
         }
         else if (moonJuiceActive)
         {
             Debug.Log("MoonJuice was enabled when timer completed");
+            ChangeMaterialToMoonJuice();
         }
         else if (nebulaBlastActive)
         {
             Debug.Log("NebulaBlast was enabled when timer completed");
+            ChangeMaterialToNebulaBlast();
         }
         else
         {
             Debug.LogWarning("Timer completed but no condition objects were enabled!");
+        }
+    }
+    
+    // Change material to MoonJuice material
+    private void ChangeMaterialToMoonJuice()
+    {
+        if (objectRenderer != null && moonJuiceMaterial != null)
+        {
+            objectRenderer.material = moonJuiceMaterial;
+            Debug.Log($"Changed material to MoonJuice material on {objectToChangeMaterial.name}");
+        }
+    }
+    
+    // Change material to NebulaBlast material
+    private void ChangeMaterialToNebulaBlast()
+    {
+        if (objectRenderer != null && nebulaBlastMaterial != null)
+        {
+            objectRenderer.material = nebulaBlastMaterial;
+            Debug.Log($"Changed material to NebulaBlast material on {objectToChangeMaterial.name}");
         }
     }
     
