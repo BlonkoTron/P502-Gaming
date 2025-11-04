@@ -27,5 +27,9 @@ public class CustomerController : MonoBehaviour
 
     }
 
+    public void EndOrder()
+    {
+        currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone"); 
+    }
 
 }

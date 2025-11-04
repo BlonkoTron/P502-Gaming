@@ -600,7 +600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a7bda679dac768544b532b7e61e8f865, type: 3}
       propertyPath: m_Name
-      value: SpaceShip
+      value: SpaceShipCustomer
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
