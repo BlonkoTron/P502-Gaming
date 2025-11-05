@@ -1,47 +1,33 @@
 ﻿using UnityEngine;
 
-public class XROriginAlignToCharacter : MonoBehaviour
+public class FollowXRPlayer : MonoBehaviour
 {
-    [Header("XR References")]
-    public Transform xrOrigin;  // XR Rig Root
-    public Transform xrHead;    // XR Camera (player head in XR rig)
+    [Header("XR Rig or Player Root")]
+    [Tooltip("The root object of your XR rig (e.g., XR Origin).")]
+    public Transform xrRig;
 
-    [Header("Character Reference")]
-    public Transform characterHead; // Character’s head/neck bone
-
-    [Header("Options")]
-    public bool alignOnStart = true;
-    public bool continuousAlignment = false; // keep aligning each frame
-
-    private void Start()
-    {
-        if (alignOnStart)
-            AlignOriginToCharacterHead();
-    }
+    [Header("Follow Settings")]
+    [Tooltip("How quickly the model follows the XR player position.")]
+    public float positionSmoothSpeed = 5f;
+    [Tooltip("How quickly the model follows the XR player rotation.")]
+    public float rotationSmoothSpeed = 5f;
 
     private void LateUpdate()
     {
-        // Continuously keep camera inside character’s head
-        if (continuousAlignment)
-            AlignOriginToCharacterHead();
-    }
+        if (xrRig == null) return;
 
-    [ContextMenu("Align Now")]
-    public void AlignOriginToCharacterHead()
-    {
-        if (!xrOrigin || !xrHead || !characterHead)
-        {
-            Debug.LogWarning("⚠️ Missing reference in XROriginAlignToCharacter!");
-            return;
-        }
+        // Smooth follow position
+        transform.position = Vector3.Lerp(
+            transform.position,
+            xrRig.position,
+            Time.deltaTime * positionSmoothSpeed
+        );
 
-        // --- POSITION ALIGNMENT ---
-        Vector3 headOffset = xrHead.position - xrOrigin.position;
-        xrOrigin.position = characterHead.position - headOffset;
-
-        // --- ROTATION ALIGNMENT ---
-        // Rotate the XR Origin so that the XR head forward matches the character's head forward
-        Quaternion headRotationOffset = Quaternion.Inverse(xrHead.rotation) * xrOrigin.rotation;
-        xrOrigin.rotation = characterHead.rotation * headRotationOffset;
+        // Smooth follow rotation
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation,
+            xrRig.rotation,
+            Time.deltaTime * rotationSmoothSpeed
+        );
     }
 }

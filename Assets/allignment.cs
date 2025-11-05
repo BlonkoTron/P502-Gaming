@@ -40,6 +40,12 @@ public class VRArmIKController : MonoBehaviour
     public bool followHeadPosition = true;
     public bool followHeadRotation = true;
 
+    [Header("Spine Tracking")]
+    public Transform spineBottom;    // e.g. hips or pelvis
+    public Transform spineTop;       // e.g. upper spine or chest bone
+    public bool followSpine = true;
+    public float spineFollowSpeed = 5f;
+
     private float leftArmLength;
     private float rightArmLength;
 
@@ -60,9 +66,13 @@ public class VRArmIKController : MonoBehaviour
 
     void Update()
     {
+        // Arm IK Updates
         UpdateArmIK(leftArmIK, leftHandTarget, leftElbowHint, leftShoulder, leftArmLength, leftHandRotationOffset, mirrorLeftHand);
         UpdateArmIK(rightArmIK, rightHandTarget, rightElbowHint, rightShoulder, rightArmLength, rightHandRotationOffset, mirrorRightHand);
+
+        // Head & Spine Updates
         UpdateHeadTracking();
+        UpdateSpineFollow();
     }
 
     void UpdateArmIK(TwoBoneIKConstraint ik, Transform handTarget, Transform elbowHint, Transform shoulder, float armLength, Vector3 rotationOffset, bool mirror)
@@ -100,5 +110,21 @@ public class VRArmIKController : MonoBehaviour
 
         if (followHeadRotation)
             headBone.rotation = vrCamera.rotation;
+    }
+
+    void UpdateSpineFollow()
+    {
+        if (!followSpine || spineBottom == null || spineTop == null || headBone == null)
+            return;
+
+        // Get direction from bottom of spine to head
+        Vector3 targetDirection = (headBone.position - spineBottom.position).normalized;
+
+        // Smoothly rotate the spine top toward the head
+        Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
+        spineTop.rotation = Quaternion.Slerp(spineTop.rotation, targetRotation, Time.deltaTime * spineFollowSpeed);
+
+        // Optionally move the spine top slightly toward the head for a natural bend
+        spineTop.position = Vector3.Lerp(spineTop.position, headBone.position, Time.deltaTime * (spineFollowSpeed * 0.5f));
     }
 }
