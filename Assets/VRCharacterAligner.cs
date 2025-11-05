@@ -1,71 +1,47 @@
 ﻿using UnityEngine;
 
-public class VRCharacterAligner : MonoBehaviour
+public class XROriginAlignToCharacter : MonoBehaviour
 {
-    public Transform xrOrigin;   // XR Rig Root
-    public Transform xrHead;     // XR Camera (player head)
+    [Header("XR References")]
+    public Transform xrOrigin;  // XR Rig Root
+    public Transform xrHead;    // XR Camera (player head in XR rig)
 
-    public Transform characterRoot; // Avatar root at hips or pelvis
-    public Transform characterHead; // Avatar head/neck bone
+    [Header("Character Reference")]
+    public Transform characterHead; // Character’s head/neck bone
 
-    [Range(0.5f, 2.0f)]
-    public float characterScale = 1.0f;
-
-    public bool keepFeetOnGround = true;
-    public bool followContinuously = false;
-
-    private float headHeightOffset;
+    [Header("Options")]
+    public bool alignOnStart = true;
+    public bool continuousAlignment = false; // keep aligning each frame
 
     private void Start()
     {
-        if (!ValidRefs()) return;
-
-        // Store the avatar’s original head height from root
-        headHeightOffset = characterHead.position.y - characterRoot.position.y;
-
-        Align();
+        if (alignOnStart)
+            AlignOriginToCharacterHead();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (followContinuously)
-            Align();
+        // Continuously keep camera inside character’s head
+        if (continuousAlignment)
+            AlignOriginToCharacterHead();
     }
 
-    void Align()
+    [ContextMenu("Align Now")]
+    public void AlignOriginToCharacterHead()
     {
-        if (!ValidRefs()) return;
-
-        // ✅ 1. Scale avatar around root BEFORE aligning
-        characterRoot.localScale = Vector3.one * characterScale;
-
-        // ✅ 2. Rotate avatar to match XR direction (Y only)
-        Vector3 forward = xrHead.forward;
-        forward.y = 0f;
-        characterRoot.rotation = Quaternion.LookRotation(forward);
-
-        // ✅ 3. Position avatar so character head = XR head
-        Vector3 targetPosition = xrHead.position - (characterHead.position - characterRoot.position);
-        characterRoot.position = targetPosition;
-
-        // ✅ 4. Keep feet grounded (optional)
-        if (keepFeetOnGround)
+        if (!xrOrigin || !xrHead || !characterHead)
         {
-            characterRoot.position = new Vector3(
-                characterRoot.position.x,
-                xrOrigin.position.y - headHeightOffset,
-                characterRoot.position.z
-            );
+            Debug.LogWarning("⚠️ Missing reference in XROriginAlignToCharacter!");
+            return;
         }
-    }
 
-    bool ValidRefs()
-    {
-        if (!xrOrigin || !xrHead || !characterRoot || !characterHead)
-        {
-            Debug.LogWarning("⚠️ Missing reference in VRCharacterAligner!");
-            return false;
-        }
-        return true;
+        // --- POSITION ALIGNMENT ---
+        Vector3 headOffset = xrHead.position - xrOrigin.position;
+        xrOrigin.position = characterHead.position - headOffset;
+
+        // --- ROTATION ALIGNMENT ---
+        // Rotate the XR Origin so that the XR head forward matches the character's head forward
+        Quaternion headRotationOffset = Quaternion.Inverse(xrHead.rotation) * xrOrigin.rotation;
+        xrOrigin.rotation = characterHead.rotation * headRotationOffset;
     }
 }

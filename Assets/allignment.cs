@@ -16,55 +16,89 @@ public class VRArmIKController : MonoBehaviour
     public Transform rightElbowHint;
 
     [Header("Rotation Offsets")]
-    public Vector3 leftHandRotationOffset = new Vector3(0f, 0f, 0f);
-    public Vector3 rightHandRotationOffset = new Vector3(0f, 0f, 0f);
+    public Vector3 leftHandRotationOffset = Vector3.zero;
+    public Vector3 rightHandRotationOffset = Vector3.zero;
 
     [Header("Mirror Fix (180° flip)")]
     public bool mirrorLeftHand = false;
     public bool mirrorRightHand = false;
 
     [Header("Settings")]
-    public bool autoEnableIK = true;  // makes sure weight stays at 1
+    public bool autoEnableIK = true;
+
+    [Header("Character Arm Joints")]
+    public Transform leftShoulder;
+    public Transform rightShoulder;
+    public Transform leftElbow;
+    public Transform rightElbow;
+    public float armLengthMultiplier = 1.0f;
+
+    [Header("Head Tracking")]
+    public Transform vrCamera;       // Your XR Camera (headset)
+    public Transform headBone;       // The avatar's head bone
+    public Vector3 headOffset = Vector3.zero;
+    public bool followHeadPosition = true;
+    public bool followHeadRotation = true;
+
+    private float leftArmLength;
+    private float rightArmLength;
+
+    void Start()
+    {
+        // Precalculate character arm lengths
+        if (leftShoulder && leftElbow && leftArmIK)
+        {
+            leftArmLength = (leftElbow.position - leftShoulder.position).magnitude +
+                            (leftArmIK.data.tip.position - leftElbow.position).magnitude;
+        }
+        if (rightShoulder && rightElbow && rightArmIK)
+        {
+            rightArmLength = (rightElbow.position - rightShoulder.position).magnitude +
+                             (rightArmIK.data.tip.position - rightElbow.position).magnitude;
+        }
+    }
 
     void Update()
     {
-        // LEFT ARM
-        if (leftArmIK && leftHandTarget)
-        {
-            var data = leftArmIK.data;
+        UpdateArmIK(leftArmIK, leftHandTarget, leftElbowHint, leftShoulder, leftArmLength, leftHandRotationOffset, mirrorLeftHand);
+        UpdateArmIK(rightArmIK, rightHandTarget, rightElbowHint, rightShoulder, rightArmLength, rightHandRotationOffset, mirrorRightHand);
+        UpdateHeadTracking();
+    }
 
-            // Target position + rotation
-            Quaternion rot = leftHandTarget.rotation * Quaternion.Euler(leftHandRotationOffset);
-            if (mirrorLeftHand) rot *= Quaternion.Euler(0, 180f, 0);
-            data.target.position = leftHandTarget.position;
-            data.target.rotation = rot;
+    void UpdateArmIK(TwoBoneIKConstraint ik, Transform handTarget, Transform elbowHint, Transform shoulder, float armLength, Vector3 rotationOffset, bool mirror)
+    {
+        if (ik == null || handTarget == null || shoulder == null) return;
 
-            // Hint (elbow)
-            if (leftElbowHint != null)
-                data.hint.position = leftElbowHint.position;
+        var data = ik.data;
 
-            // Enable IK weight if desired
-            if (autoEnableIK)
-                leftArmIK.weight = 1f;
-        }
+        // Calculate target position clamped to arm length
+        Vector3 shoulderToHand = handTarget.position - shoulder.position;
+        float dist = shoulderToHand.magnitude;
+        Vector3 clampedPos = shoulder.position + shoulderToHand.normalized * Mathf.Min(dist, armLength * armLengthMultiplier);
 
-        // RIGHT ARM
-        if (rightArmIK && rightHandTarget)
-        {
-            var data = rightArmIK.data;
+        // Set rotation
+        Quaternion rot = handTarget.rotation * Quaternion.Euler(rotationOffset);
+        if (mirror) rot *= Quaternion.Euler(0, 180f, 0);
 
-            // Target position + rotation
-            Quaternion rot = rightHandTarget.rotation * Quaternion.Euler(rightHandRotationOffset);
-            if (mirrorRightHand) rot *= Quaternion.Euler(0, 180f, 0);
-            data.target.position = rightHandTarget.position;
-            data.target.rotation = rot;
+        data.target.position = clampedPos;
+        data.target.rotation = rot;
 
-            // Hint (elbow)
-            if (rightElbowHint != null)
-                data.hint.position = rightElbowHint.position;
+        // Elbow hint
+        if (elbowHint != null)
+            data.hint.position = elbowHint.position;
 
-            if (autoEnableIK)
-                rightArmIK.weight = 1f;
-        }
+        if (autoEnableIK)
+            ik.weight = 1f;
+    }
+
+    void UpdateHeadTracking()
+    {
+        if (vrCamera == null || headBone == null) return;
+
+        if (followHeadPosition)
+            headBone.position = vrCamera.position + headOffset;
+
+        if (followHeadRotation)
+            headBone.rotation = vrCamera.rotation;
     }
 }
