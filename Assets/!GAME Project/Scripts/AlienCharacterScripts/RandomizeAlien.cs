@@ -24,6 +24,7 @@ public class RandomizeAlien : MonoBehaviour
         int randomHat = Random.Range(0, hatList.Count+1);
         if (randomHat != hatList.Count)
         {
+            Debug.Log("Rando hat is: " + randomHat);
             hatList[randomHat].SetActive(true);
         }
 
