@@ -4155,14 +4155,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandXR: {fileID: 541569240}
   rightHandXR: {fileID: 1809908521}
+  leftElbowXR: {fileID: 1865850360}
+  rightElbowXR: {fileID: 539293200}
   leftArmTarget: {fileID: 1047723110}
   rightArmTarget: {fileID: 2139604701}
+  leftElbowTarget: {fileID: 1963915455}
+  rightElbowTarget: {fileID: 127501768}
   followSpeed: 10
-  positionOffset: {x: 0, y: 0, z: 0}
-  leftRotationOffset: {x: 0, y: 0, z: 180}
-  rightRotationOffset: {x: 0, y: 0, z: 0}
+  handPositionOffset: {x: 0, y: 0, z: 0}
+  elbowPositionOffset: {x: 0, y: 0, z: 0}
+  leftHandRotationOffset: {x: 0, y: 0, z: 180}
+  rightHandRotationOffset: {x: 0, y: 0, z: 0}
+  leftElbowRotationOffset: {x: 0, y: 0, z: 0}
+  rightElbowRotationOffset: {x: 0, y: 0, z: 0}
   mirrorLeftHand: 0
   mirrorRightHand: 1
+  mirrorLeftElbow: 0
+  mirrorRightElbow: 0
 --- !u!1 &1428724487
 GameObject:
   m_ObjectHideFlags: 0
