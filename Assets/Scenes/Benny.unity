@@ -4112,6 +4112,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1424808536}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1424808537}
     - targetCorrespondingSourceObject: {fileID: -2407699025559542186, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1154399633}
@@ -4155,23 +4158,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftHandXR: {fileID: 541569240}
   rightHandXR: {fileID: 1809908521}
-  leftElbowXR: {fileID: 1865850360}
-  rightElbowXR: {fileID: 539293200}
   leftArmTarget: {fileID: 1047723110}
   rightArmTarget: {fileID: 2139604701}
   leftElbowTarget: {fileID: 1963915455}
   rightElbowTarget: {fileID: 127501768}
+  leftShoulder: {fileID: 2099214978}
+  rightShoulder: {fileID: 1932030872}
   followSpeed: 10
   handPositionOffset: {x: 0, y: 0, z: 0}
-  elbowPositionOffset: {x: 0, y: 0, z: 0}
   leftHandRotationOffset: {x: 0, y: 0, z: 180}
   rightHandRotationOffset: {x: 0, y: 0, z: 0}
+  elbowBendRatio: 0.5
+  elbowOutwardOffset: 0.2
+  elbowDownOffset: -0.05
   leftElbowRotationOffset: {x: 0, y: 0, z: 0}
   rightElbowRotationOffset: {x: 0, y: 0, z: 0}
   mirrorLeftHand: 0
   mirrorRightHand: 1
-  mirrorLeftElbow: 0
-  mirrorRightElbow: 0
+--- !u!114 &1424808537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193892663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842c559735404f248baba0d27808327a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shoulder: {fileID: 2099214978}
+  elbow: {fileID: 1963915455}
+  hand: {fileID: 1047723110}
+  currentBendAngle: 0
+  minAngle: 0
+  maxAngle: 0
+  rangeOfMotion: 0
 --- !u!1 &1428724487
 GameObject:
   m_ObjectHideFlags: 0
