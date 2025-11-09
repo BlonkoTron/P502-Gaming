@@ -4087,6 +4087,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FpsArmsHigh
       objectReference: {fileID: 0}
+    - target: {fileID: 3332206330062641030, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1ac81472100012544a7c7054e364f208, type: 2}
     - target: {fileID: 4500490061184958026, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.101
