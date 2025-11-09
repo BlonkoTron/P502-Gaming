@@ -4170,9 +4170,9 @@ MonoBehaviour:
   rightHandRotationOffset: {x: 0, y: 0, z: 0}
   elbowBendRatio: 0.5
   elbowOutwardOffset: 0.2
-  elbowDownOffset: -0.05
-  leftElbowRotationOffset: {x: 0, y: 0, z: 0}
-  rightElbowRotationOffset: {x: 0, y: 0, z: 0}
+  elbowDownOffset: -0.3
+  leftElbowRotationOffset: {x: 1, y: 0, z: 0}
+  rightElbowRotationOffset: {x: 1, y: 0, z: 0}
   mirrorLeftHand: 0
   mirrorRightHand: 1
 --- !u!114 &1424808537
