@@ -137,7 +137,10 @@ PrefabInstance:
       addedObject: {fileID: 6426056462947258998}
     - targetCorrespondingSourceObject: {fileID: -1289116109422142528, guid: 2d854bfb232928448ba3f26b85f99086, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3061818656079340948}
+      addedObject: {fileID: 5305455290923091577}
+    - targetCorrespondingSourceObject: {fileID: -1289116109422142528, guid: 2d854bfb232928448ba3f26b85f99086, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3267544768113710975}
   m_SourcePrefab: {fileID: 100100000, guid: 2d854bfb232928448ba3f26b85f99086, type: 3}
 --- !u!1 &797842884741403934 stripped
 GameObject:
@@ -610,9 +613,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 2830534591708937500}
-  pullDistanceThreshold: 0.5
-  resetDistance: 0.5
-  triggerCooldown: 1
+  pullDistanceThreshold: 0.05
+  resetDistance: 0.05
+  triggerCooldown: 2
   onPulled:
     m_PersistentCalls:
       m_Calls:
@@ -667,7 +670,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &3061818656079340948
+--- !u!114 &5305455290923091577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -794,6 +797,27 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!65 &3267544768113710975
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798095690207790161}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03, y: 0.03, z: 0.03}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8974087493837460507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4819001077394492298, guid: 2d854bfb232928448ba3f26b85f99086, type: 3}
