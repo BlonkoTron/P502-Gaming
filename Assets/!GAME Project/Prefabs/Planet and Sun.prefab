@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4399428332834247726}
-  orbitSpeed: 3
+  orbitSpeed: 1
   orbitAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &6643356564222182249
 GameObject:

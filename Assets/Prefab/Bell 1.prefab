@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.0638046
+      value: 25.548044
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2287
+      value: -1.1460035
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5563695
+      value: 6.701124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.753
       objectReference: {fileID: 0}
+    - target: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
+      propertyPath: m_TagString
+      value: Bell
+      objectReference: {fileID: 0}
     - target: {fileID: -2859109400176981367, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -95,6 +99,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882896536601734793}
+    - targetCorrespondingSourceObject: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6730196236494382641}
   m_SourcePrefab: {fileID: 100100000, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
 --- !u!1 &2128434628458366018 stripped
 GameObject:
@@ -147,8 +154,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.09753473, y: 0.09742535, z: 0.20254987}
-  m_Center: {x: 0.0001663491, y: 0.000111673, z: -0.09287988}
+  m_Size: {x: 0.1, y: 0.09, z: 0.09}
+  m_Center: {x: 0.0001663491, y: 0, z: -0.15}
 --- !u!145 &1882896536601734793
 SpringJoint:
   m_ObjectHideFlags: 0
@@ -173,6 +180,19 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 50
   m_ConnectedMassScale: 5
+--- !u!114 &6730196236494382641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128434628458366018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0287659747e8241b3d8456ba628fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bellCooldown: 5
 --- !u!1 &3627091407510604290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
@@ -220,7 +240,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
