@@ -10,11 +10,13 @@ public class Order
         receiptMaterial = receiptMat;
     }
     public enum BurgerIngredient {
-        beef,
-        salad,
-        tomato,
-        ketflup,
-        Groole
+        Beef,
+        Salad,
+        Tomato,
+        Ketflup,
+        Groole,
+        Top_bun,
+        Bottom_bun
     }
     public enum Drink {
         none,

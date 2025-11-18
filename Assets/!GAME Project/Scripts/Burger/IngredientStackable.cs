@@ -10,6 +10,8 @@ public class IngredientStackable : MonoBehaviour
     [Header("Snap Reference Point")]
     public Transform snapBottom; // The point that aligns with the plate's top snap point
 
+    public Order.BurgerIngredient ingredientType;
+
     private XRGrabInteractable grabInteractable;
     private PlateManager plateManager;
     private Rigidbody rb;
