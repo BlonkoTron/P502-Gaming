@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a3319ba4-117b-437d-8394-6cec1068fd9c}">
+		<property name="assetPath">
+			<value>Test/Ronald McDonald insanity.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>318.38040816326532</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3310dc39-3316-4a32-88ac-8feaff80e785}</destination>
+		</relationship>
+	</object>
+</objects>
