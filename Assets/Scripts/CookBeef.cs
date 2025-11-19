@@ -88,12 +88,12 @@ public class CookBeef : MonoBehaviour
 
     IEnumerator CheckFlip()
     {
-        // Give player some time to flip
+        // Give player time to flip
         yield return new WaitForSeconds(fliptimethreshold);
 
         float yRot = transform.eulerAngles.y;
 
-        // If burger was turned around
+        // If burger is turned around
         if (Mathf.Abs(yRot - 180f) < 20f && halfCookedReached)
         {
             isflipped = true;
