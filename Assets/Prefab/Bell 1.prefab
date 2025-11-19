@@ -10,27 +10,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.17803259
+      value: 0.11612
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.17803259
+      value: 0.11612
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.17803259
+      value: 0.11612
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.644325
+      value: 25.548044
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7513019
+      value: -1.1460035
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.631766
+      value: 6.701124
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,6 +60,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7550554499349809241, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.753
+      objectReference: {fileID: 0}
+    - target: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
+      propertyPath: m_TagString
+      value: Bell
+      objectReference: {fileID: 0}
     - target: {fileID: -2859109400176981367, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -72,10 +80,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bell 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
-      propertyPath: m_TagString
-      value: Bell
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -86,9 +90,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4417131726386767580}
-    - targetCorrespondingSourceObject: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7278961640830602091}
     - targetCorrespondingSourceObject: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5864063443205606330}
@@ -98,6 +99,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1882896536601734793}
+    - targetCorrespondingSourceObject: {fileID: 8889031649138704972, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6730196236494382641}
   m_SourcePrefab: {fileID: 100100000, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
 --- !u!1 &2128434628458366018 stripped
 GameObject:
@@ -146,12 +150,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.09753473, y: 0.09742535, z: 0.20254987}
-  m_Center: {x: 0.0001663491, y: 0.000111673, z: -0.09287988}
+  m_Size: {x: 0.1, y: 0.09, z: 0.09}
+  m_Center: {x: 0.0001663491, y: 0, z: -0.15}
 --- !u!145 &1882896536601734793
 SpringJoint:
   m_ObjectHideFlags: 0
@@ -163,8 +167,8 @@ SpringJoint:
   m_ConnectedBody: {fileID: 1418488662576761139}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
-  m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_AutoConfigureConnectedAnchor: 0
+  m_ConnectedAnchor: {x: 0, y: 0.005, z: 0.02}
   m_Spring: 200
   m_Damper: 5
   m_MinDistance: 0
@@ -174,8 +178,21 @@ SpringJoint:
   m_BreakTorque: Infinity
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  m_MassScale: 50
+  m_ConnectedMassScale: 5
+--- !u!114 &6730196236494382641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2128434628458366018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0287659747e8241b3d8456ba628fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bellCooldown: 5
 --- !u!1 &3627091407510604290 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3133498875991405556, guid: 49c6accf83cc5294ea9bc6def3a3ff8d, type: 3}
@@ -203,7 +220,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
@@ -223,22 +240,9 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.020039799, y: 0.020039795, z: 0.0038876175}
   m_Center: {x: 0, y: 0, z: 0.002029999}
---- !u!114 &7278961640830602091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3627091407510604290}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0287659747e8241b3d8456ba628fa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bellCooldown: 1
