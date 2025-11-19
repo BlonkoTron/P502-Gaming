@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
@@ -29,6 +30,13 @@ public class TrayManager : MonoBehaviour
         sodaSocket.selectEntered.AddListener(SetSodaOnTray);
         sodaSocket.selectExited.AddListener(RemoveSodaOnTray);
     }
+    private void OnDestroy()
+    {
+        plateSocket.selectEntered.RemoveListener(SetPlateOnTray);
+        plateSocket.selectExited.RemoveListener(RemovePlateOnTray);
+        sodaSocket.selectEntered.RemoveListener(SetSodaOnTray);
+        sodaSocket.selectExited.RemoveListener(RemoveSodaOnTray);
+    }
 
     private void RemoveSodaOnTray(SelectExitEventArgs arg0)
     {
@@ -51,4 +59,21 @@ public class TrayManager : MonoBehaviour
         plateOnTray = arg0.interactableObject.transform.gameObject;
         Debug.Log(plateOnTray);
     }
+    public List<Order.BurgerIngredient> GetBurgerOnTray()
+    {
+        if (plateOnTray!=null)
+        {
+            return plateOnTray.GetComponent<PlateManager>().GetBurgerIngredients();
+        }
+        return null;
+    }
+    public Order.Drink GetDrinkOnTray()
+    {
+        if (sodaOnTray!=null)
+        {
+            // get the type of drink
+        }
+        return Order.Drink.none;
+    }
+
 }
