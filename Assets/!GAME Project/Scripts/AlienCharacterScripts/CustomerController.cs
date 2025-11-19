@@ -13,7 +13,6 @@ public class CustomerController : MonoBehaviour
 
     private void Start()
     {
-        NewCustomer();
         OrderController.Instance.OnOrderFullfilled.AddListener(EndOrder);
     }
     private void OnDestroy()
