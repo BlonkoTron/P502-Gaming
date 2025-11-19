@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 public class Bell : MonoBehaviour
 {
-    public UnityAction OnBellPressed;
+    public UnityEvent OnBellPressed;
     [SerializeField] private float bellCooldown = 1f;
     private float lastBellPressTime;
 
@@ -13,7 +13,7 @@ public class Bell : MonoBehaviour
         if (other.CompareTag("Bell") && Time.time>lastBellPressTime+bellCooldown)
         {
             lastBellPressTime = Time.time;
-            OnBellPressed?.Invoke();
+            OnBellPressed.Invoke();
             Debug.Log("Ding");
         }
     }
