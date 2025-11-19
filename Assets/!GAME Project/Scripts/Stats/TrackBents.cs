@@ -3,6 +3,7 @@ using UnityEngine;
 public class TrackBents : MonoBehaviour
 {
     [SerializeField] private PlayerSetUp playerSetUp;
+    [SerializeField] private PlayerStats playerStats;
 
     [SerializeField] private GameObject shoulderJointLeft;
     [SerializeField] private GameObject elbowJointLeft;
@@ -19,6 +20,9 @@ public class TrackBents : MonoBehaviour
     private float aDistance;
     private float bDistance;
     private float cDistance;
+
+    private double bent;
+    private bool isReset;
 
     private void Start()
     {
@@ -37,6 +41,8 @@ public class TrackBents : MonoBehaviour
 
         aDistance = Vector3.Distance(elbowJoint.transform.position, handJoint.transform.position);
         bDistance = Vector3.Distance(shoulderJoint.transform.position, elbowJoint.transform.position);
+
+        isReset = true;
     }
 
 
@@ -44,13 +50,32 @@ public class TrackBents : MonoBehaviour
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
+        CheckBent();
     }
 
 
 
     private void CalculateBent(float c, float a, float b)
     {
-        double cosC = (Mathf.Pow(a,2)+Mathf.Pow(b,2)-Mathf.Pow(c,2))/(2.0*a*b);
+        bent = (Mathf.Pow(a,2)+Mathf.Pow(b,2)-Mathf.Pow(c,2))/(2.0*a*b);
+    }
+
+    private void CheckBent()
+    {
+        if (bent <= playerSetUp.bentROMIn && isReset)
+        {
+            playerStats.nrOfBentsIn += 1;
+            isReset = false;
+        }
+        else if (bent >= playerSetUp.bentROMOut &&  isReset)
+        {
+            playerStats.nrOfBentsOut += 1;
+            isReset = false;
+        }
+        else
+        {
+            isReset = true;
+        }
     }
 
 }
