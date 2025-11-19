@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d542babb830284d82b4a2d66746562, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  nrOfBentsIn: 0
+  nrOfBentsOut: 0
+  nrOfRotationsUp: 0
+  nrOfRotationsDown: 0

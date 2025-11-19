@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 8311644605846969222}
+  ingredientType: 6
 --- !u!64 &7796859793205264614
 MeshCollider:
   m_ObjectHideFlags: 0
