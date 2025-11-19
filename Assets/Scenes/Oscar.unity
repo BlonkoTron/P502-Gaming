@@ -1439,6 +1439,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Armperson
       objectReference: {fileID: 0}
+    - target: {fileID: 2382796249907942260, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.63541

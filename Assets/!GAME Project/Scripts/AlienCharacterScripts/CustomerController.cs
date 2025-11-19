@@ -14,8 +14,12 @@ public class CustomerController : MonoBehaviour
     private void Start()
     {
         NewCustomer();
+        OrderController.Instance.OnOrderFullfilled.AddListener(EndOrder);
     }
-
+    private void OnDestroy()
+    {
+        OrderController.Instance.OnOrderFullfilled.RemoveListener(EndOrder);
+    }
     public void NewCustomer()
     {
         if (currentCustomer != null)
@@ -27,7 +31,7 @@ public class CustomerController : MonoBehaviour
 
     }
 
-    public void EndOrder()
+    public void EndOrder(bool correctOrder)
     {
         currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone"); 
     }
