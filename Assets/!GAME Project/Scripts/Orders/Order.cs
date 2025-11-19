@@ -10,16 +10,18 @@ public class Order
         receiptMaterial = receiptMat;
     }
     public enum BurgerIngredient {
-        beef,
-        salad,
-        tomato,
-        ketflup,
-        Groole
+        Beef,
+        Salad,
+        Tomato,
+        Ketflup,
+        Groole,
+        Top_bun,
+        Bottom_bun
     }
     public enum Drink {
         none,
-        red,
-        pink
+        Moon_juice,
+        Nebula_blast
     }
 
     public List<BurgerIngredient> Burger;
@@ -28,6 +30,7 @@ public class Order
 
     public bool CheckBurgerMatch(List<BurgerIngredient> otherBurger)
     {
+        if (otherBurger==null) { return false; }
         var count = 0;
         foreach (var item in otherBurger)
         {

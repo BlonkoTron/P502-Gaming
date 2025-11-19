@@ -11,6 +11,8 @@ public class OrderController : MonoBehaviour
     private Order activeOrder;
     private int lastOrderIndex;
     public UnityEvent<Order> OnNewOrderGenerated;
+    public UnityEvent<bool> OnOrderFullfilled;
+    private Bell bell;
     public Order ActiveOrder
     {
         get { return activeOrder; }   
@@ -27,19 +29,19 @@ public class OrderController : MonoBehaviour
             Instance = this;
         }
     }
-    /*
-    public Order GenererateNewOrder()
+    private void Start()
     {
-        // get a random index from the data of premade orders and make that the new order
-        var newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
-        var newBurger = orderDataCollection.OrderDatas[newOrderIndex].burgerIngredients;
-        var newDrink = orderDataCollection.OrderDatas[newOrderIndex].drink;
-        var newMat = orderDataCollection.OrderDatas[newOrderIndex].receiptMaterial;
-        Order newOrder = new Order(newBurger,newDrink,newMat);
-        activeOrder = newOrder;
-        OnNewOrderGenerated.Invoke(newOrder);
-        return newOrder;
-    } */
+        bell = FindAnyObjectByType<Bell>();
+        if (bell!=null)
+        {
+            bell.OnBellPressed.AddListener(CheckOrder);
+        }
+    }
+    private void OnDestroy()
+    {
+        bell.OnBellPressed.RemoveListener(CheckOrder);
+
+    }
     public void GenererateNewOrder()
     {
         // get a random index from the data of premade orders and make that the new order
@@ -68,5 +70,19 @@ public class OrderController : MonoBehaviour
         {
             return false;
         }
+    }
+    private void CheckOrder()
+    {
+        var trayBurger = TrayManager.Instance.GetBurgerOnTray();
+        var traySoda = TrayManager.Instance.GetDrinkOnTray();
+
+        bool OrderCorrect = IsOrderFullfilled(trayBurger,traySoda);
+        OnOrderFullfilled.Invoke(OrderCorrect);
+
+        if (OrderCorrect)
+        {
+            Debug.Log("order was correct");
+        }
+        else { Debug.Log("Order was wrong"); }
     }
 }

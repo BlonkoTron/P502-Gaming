@@ -103,5 +103,14 @@ public class PlateManager : MonoBehaviour
             bounds.Encapsulate(col.bounds);
         return bounds;
     }
+    public List<Order.BurgerIngredient> GetBurgerIngredients()
+    {
+        List<Order.BurgerIngredient> myIngredients= new List<Order.BurgerIngredient>();
+        foreach(IngredientStackable ingredient in stackedIngredients)
+        {
+            myIngredients.Add(ingredient.ingredientType);
+        }
+        return myIngredients;
+    }
 }
 
