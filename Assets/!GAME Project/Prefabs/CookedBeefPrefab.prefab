@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7868273425807636185}
   - component: {fileID: 1407484840678472483}
   - component: {fileID: 285285855705229664}
-  - component: {fileID: 4051023140509761042}
+  - component: {fileID: 3304038256104482195}
+  - component: {fileID: 2837460753939949749}
   m_Layer: 0
   m_Name: CookedBeefPrefab
   m_TagString: Stackable
@@ -198,14 +199,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6847485712896760778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1eb0ed50de38894fad37922b760142e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   snapBottom: {fileID: 8919539719491533656}
---- !u!64 &4051023140509761042
-MeshCollider:
+--- !u!65 &3304038256104482195
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -222,10 +223,29 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3485366260697867770, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 0.02, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2837460753939949749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847485712896760778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514c0c314e523784b879609d6cd455f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Raw: {fileID: 2100000, guid: 76d54aac5a70a2a41996f0006264aafd, type: 2}
+  Halfcooked: {fileID: 2100000, guid: a50cf736a8229ed478a199d6af8948be, type: 2}
+  Cooked: {fileID: 2100000, guid: 599103bb17cf40a4bb2b27acfac423f2, type: 2}
+  Burnt: {fileID: 2100000, guid: 926a443c17dff1944bee39ad32d40b89, type: 2}
+  beef: {fileID: 5222391013609667947}
+  DesiredCooktime: 20
+  Cooktime: 0
+  fliptimethreshold: 5
 --- !u!1 &7921073036458537665
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,6 +325,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 76d54aac5a70a2a41996f0006264aafd, type: 2}
     - target: {fileID: 919132149155446097, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
       propertyPath: m_Name
       value: CookedBeefMesh
@@ -317,5 +341,10 @@ PrefabInstance:
 --- !u!4 &4842064875286243281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
+  m_PrefabInstance: {fileID: 4951920154824425530}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5222391013609667947 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
   m_PrefabInstance: {fileID: 4951920154824425530}
   m_PrefabAsset: {fileID: 0}
