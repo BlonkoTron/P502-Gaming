@@ -247,11 +247,6 @@ Transform:
   - {fileID: 2133138651}
   m_Father: {fileID: 800987614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &182974749 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3069622182759743920, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-  m_PrefabInstance: {fileID: 7693682855891362492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &193333093
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,11 +1148,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1762334609}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &541569240 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6860500417561330213, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-  m_PrefabInstance: {fileID: 7693682855891362492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &584737034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,11 +1880,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 47918128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &813146956 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8578763393757906240, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-  m_PrefabInstance: {fileID: 7693682855891362492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &813722037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,11 +2773,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003aa8e076a1dbc43ba65fdc44e831d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrRig: {fileID: 813146956}
-  Camoffset: {fileID: 813146956}
-  Headpos: {fileID: 657242744}
-  positionSmoothSpeed: 5
-  rotationSmoothSpeed: 5
 --- !u!114 &1250429769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,33 +2785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ca7d56e0f8c3de49ba6447828dcc8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftArmIK: {fileID: 841502581}
-  rightArmIK: {fileID: 1311381158}
-  leftHandTarget: {fileID: 541569240}
-  rightHandTarget: {fileID: 1809908521}
-  leftElbowHint: {fileID: 0}
-  rightElbowHint: {fileID: 0}
-  leftHandRotationOffset: {x: 90, y: 0, z: 0}
-  rightHandRotationOffset: {x: 90, y: 0, z: 0}
-  mirrorLeftHand: 1
-  mirrorRightHand: 1
-  autoEnableIK: 1
-  leftShoulder: {fileID: 964299964}
-  rightShoulder: {fileID: 800987614}
-  leftElbow: {fileID: 1695674368}
-  rightElbow: {fileID: 2133138651}
-  armLengthMultiplier: 1
-  vrCamera: {fileID: 182974749}
-  headBone: {fileID: 0}
-  headOffset: {x: 0, y: 0, z: 0}
-  followHeadPosition: 1
-  followHeadRotation: 1
-  spineBottom: {fileID: 0}
-  spineTop: {fileID: 0}
-  followSpine: 1
-  spineFollowSpeed: 5
-  leftArmLength: 0
-  rightArmLength: 0
 --- !u!114 &1250429770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2844,11 +2797,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c10233b7c1d4ed54bb8a21b5262d288b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xrOrigin: {fileID: 0}
-  characterRoot: {fileID: 0}
-  positionOffset: {x: 0, y: 0, z: 0}
-  rotationOffset: {x: 0, y: 0, z: 0}
-  followRotation: 1
 --- !u!1 &1267000160
 GameObject:
   m_ObjectHideFlags: 0
@@ -4366,11 +4314,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1462178949}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1809908521 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1546131149204439341, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-  m_PrefabInstance: {fileID: 7693682855891362492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1901032060
 GameObject:
   m_ObjectHideFlags: 0
@@ -4865,6 +4808,22 @@ PrefabInstance:
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: followSpeed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: handPositionOffsetleft.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: handPositionOffsetleft.z
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: handPositionOffsetright.z
+      value: -0.07
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
