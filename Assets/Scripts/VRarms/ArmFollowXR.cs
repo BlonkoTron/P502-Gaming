@@ -20,7 +20,8 @@ public class ArmFollowXR : MonoBehaviour
 
     [Header("Follow Settings")]
     public float followSpeed = 10f;
-    public Vector3 handPositionOffset;
+    public Vector3 handPositionOffsetleft;
+    public Vector3 handPositionOffsetright;
     public Vector3 leftHandRotationOffset;
     public Vector3 rightHandRotationOffset;
 
@@ -40,10 +41,10 @@ public class ArmFollowXR : MonoBehaviour
     {
         // --- HANDS ---
         if (leftHandXR && leftArmTarget)
-            FollowTarget(leftArmTarget, leftHandXR, leftHandRotationOffset, handPositionOffset, mirrorLeftHand);
+            FollowTarget(leftArmTarget, leftHandXR, leftHandRotationOffset, handPositionOffsetleft, mirrorLeftHand);
 
         if (rightHandXR && rightArmTarget)
-            FollowTarget(rightArmTarget, rightHandXR, rightHandRotationOffset, handPositionOffset, mirrorRightHand);
+            FollowTarget(rightArmTarget, rightHandXR, rightHandRotationOffset, handPositionOffsetright, mirrorRightHand);
 
         // --- ELBOWS ---
         if (leftShoulder && leftArmTarget && leftElbowTarget)
