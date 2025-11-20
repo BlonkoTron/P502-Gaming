@@ -1635,6 +1635,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSetUp: {fileID: 11400000, guid: 4e64de0be8146d341831ccf3b5aae16f, type: 2}
   playerStats: {fileID: 11400000, guid: 5d89870ca76d3644988294473b5cb66d, type: 2}
+  handJointLeft: {fileID: 720496184}
+  handJointRight: {fileID: 1835589270}
 --- !u!114 &1306462511
 MonoBehaviour:
   m_ObjectHideFlags: 0
