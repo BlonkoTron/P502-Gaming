@@ -1348,8 +1348,9 @@ MonoBehaviour:
   rightElbowTarget: {fileID: 1856728116571919776}
   leftShoulder: {fileID: 6908006492601300361}
   rightShoulder: {fileID: 6326749195205601034}
-  followSpeed: 10
-  handPositionOffset: {x: 0, y: 0, z: 0}
+  followSpeed: 100
+  handPositionOffsetleft: {x: 0.04, y: 0, z: -0.09}
+  handPositionOffsetright: {x: 0, y: 0, z: -0.07}
   leftHandRotationOffset: {x: 0, y: 0, z: 180}
   rightHandRotationOffset: {x: 0, y: 0, z: 0}
   elbowBendRatio: 0.5

@@ -4814,14 +4814,6 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-      propertyPath: handPositionOffset.x
-      value: 0.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-      propertyPath: handPositionOffset.z
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8274380364433622364, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: handPositionOffsetleft.x
       value: 0.04
       objectReference: {fileID: 0}
