@@ -77,8 +77,7 @@ public class TriggeredRaycast : MonoBehaviour
 
             if (plate != null)
             {
-                Vector3 spawnPos = hit.point + spawnUpOffset;
-                SpawnSauce(plate, spawnPos);
+                SpawnSauce(plate, plate.topSnapPoint.position);
             }
             else
             {
