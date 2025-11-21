@@ -38,7 +38,7 @@ public class Grill : MonoBehaviour
 
             if (GrillIcon != null && GrillBarImage != null)
             {
-                GrillIcon.SetFloat("name", knob.value);
+                GrillIcon.SetFloat("KnobTurn", knob.value);
                 GrillBarImage.fillAmount = knob.value;
 
                 if (knob.value >= 0.9f)
