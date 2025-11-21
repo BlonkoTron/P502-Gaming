@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Order4
   m_EditorClassIdentifier: 
   receiptMaterial: {fileID: 2100000, guid: e6b12e5d82fc9db4c9b9a8b1ae6ff738, type: 2}
-  burgerIngredients: 0000000004000000
+  burgerIngredients: 05000000000000000400000006000000
   drink: 0

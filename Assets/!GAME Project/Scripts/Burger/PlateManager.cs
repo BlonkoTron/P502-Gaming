@@ -73,6 +73,15 @@ public class PlateManager : MonoBehaviour
         
     }
 
+    public IngredientStackable GetTopStackIngredient()
+    {
+        if (stackedIngredients.Count == 0)
+            return null;
+
+        return stackedIngredients[stackedIngredients.Count - 1];
+    }
+
+
     private void MoveSnapPointUp(IngredientStackable ingredient)
     {
         // Move the snap point upward by the height of the new ingredient

@@ -27,11 +27,16 @@ public class CookBeef : MonoBehaviour
     [SerializeField] private bool isflipped = false;
     [SerializeField] private bool halfCookedReached = false;
 
+
+    private Grill grill;
+
     void Start()
     {
         // Initialize runtime values
         Cooktime = DesiredCooktime;
         HalfwayPoint = DesiredCooktime / 2f;
+
+        grill = null;
 
         // Default material
         beef.GetComponent<MeshRenderer>().material = Raw;
@@ -42,39 +47,51 @@ public class CookBeef : MonoBehaviour
         if (!other.CompareTag("Grill"))
             return;
 
-        // Reduce cooking time
-        Cooktime -= Time.deltaTime;
-
-        // ---- HALF COOKED SIDE ----
-        if (Cooktime <= HalfwayPoint && !isflipped)
+        if (grill == null)
         {
-            beef.GetComponent<MeshRenderer>().material = Halfcooked;
-            halfCookedReached = true;
-
-            // If player never flips → burn
-            if (Cooktime <= 0f)
-            {
-                beef.GetComponent<MeshRenderer>().material = Burnt;
-            }
+            grill = other.GetComponent<Grill>();
         }
-
-        // ---- SECOND SIDE ----
-        if (halfCookedReached && isflipped)
+        else
         {
-            if (Cooktime <= 0f)
+            if (grill.grillOn)
             {
-                // Cooked first
-                beef.GetComponent<MeshRenderer>().material = Cooked;
+                // Reduce cooking time
+                Cooktime -= Time.deltaTime;
 
-                // Start burning countdown
-                OvercookTimer -= Time.deltaTime;
-
-                if (OvercookTimer <= 0f)
+                // ---- HALF COOKED SIDE ----
+                if (Cooktime <= HalfwayPoint && !isflipped)
                 {
-                    beef.GetComponent<MeshRenderer>().material = Burnt;
+                    beef.GetComponent<MeshRenderer>().material = Halfcooked;
+                    halfCookedReached = true;
+
+                    // If player never flips → burn
+                    if (Cooktime <= 0f)
+                    {
+                        beef.GetComponent<MeshRenderer>().material = Burnt;
+                    }
+                }
+
+                // ---- SECOND SIDE ----
+                if (halfCookedReached && isflipped)
+                {
+                    if (Cooktime <= 0f)
+                    {
+                        // Cooked first
+                        beef.GetComponent<MeshRenderer>().material = Cooked;
+
+                        // Start burning countdown
+                        OvercookTimer -= Time.deltaTime;
+
+                        if (OvercookTimer <= 0f)
+                        {
+                            beef.GetComponent<MeshRenderer>().material = Burnt;
+                        }
+                    }
                 }
             }
+            
         }
+
     }
 
     private void OnTriggerExit(Collider other)
