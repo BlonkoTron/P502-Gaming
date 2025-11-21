@@ -13,6 +13,7 @@ public class OrderController : MonoBehaviour
     public UnityEvent<Order> OnNewOrderGenerated;
     public UnityEvent<bool> OnOrderFullfilled;
     private Bell bell;
+    [HideInInspector] public int correctOrdersServed = 0;
     public Order ActiveOrder
     {
         get { return activeOrder; }   
@@ -77,12 +78,14 @@ public class OrderController : MonoBehaviour
         var traySoda = TrayManager.Instance.GetDrinkOnTray();
 
         bool OrderCorrect = IsOrderFullfilled(trayBurger,traySoda);
-        OnOrderFullfilled.Invoke(OrderCorrect);
 
         if (OrderCorrect)
         {
+            correctOrdersServed++;
             Debug.Log("order was correct");
         }
         else { Debug.Log("Order was wrong"); }
+
+        OnOrderFullfilled.Invoke(OrderCorrect);
     }
 }
