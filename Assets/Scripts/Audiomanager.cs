@@ -16,19 +16,24 @@ public class Audiomanager : MonoBehaviour
         instance = this;
     }
 
-    // Create and start a sound with control
-    public EventInstance PlaySound(EventReference sound, Vector3 worldPos)
+    // Play a sound at a specific position
+    public EventInstance PlaySound(EventReference sound, Vector3 position)
     {
         EventInstance instance = RuntimeManager.CreateInstance(sound);
-        instance.set3DAttributes(RuntimeUtils.To3DAttributes(worldPos));
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
         instance.start();
         return instance;
     }
 
     public void StopSound(EventInstance instance)
     {
-        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT); // Or .IMMEDIATE
+        instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
+    }
+
+    public void UpdateSoundPosition(EventInstance instance, Vector3 position)
+    {
+        instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
     }
 
     public void PauseSound(EventInstance instance, bool pause)
@@ -36,4 +41,3 @@ public class Audiomanager : MonoBehaviour
         instance.setPaused(pause);
     }
 }
-
