@@ -458,7 +458,7 @@ MonoBehaviour:
   GrillIcon: {fileID: 6044062867194338515}
   GrillBarImage: {fileID: 38143522976977282}
   GrillHalf_C: {r: 0.75294125, g: 0.77647066, b: 0.4431373, a: 1}
-  Grillfull_C: {r: 1, g: 0.6156863, b: 0, a: 0}
+  Grillfull_C: {r: 1, g: 0.6156863, b: 0, a: 1}
   KnobObj: {fileID: 8886271371108062568}
 --- !u!1 &6242116800407250675
 GameObject:
