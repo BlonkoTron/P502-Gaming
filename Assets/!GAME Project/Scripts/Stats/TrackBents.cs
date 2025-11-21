@@ -22,6 +22,7 @@ public class TrackBents : MonoBehaviour
     private float cDistance;
 
     private double bent;
+    private float angleDegrees;
     private bool isReset;
 
     private void Start()
@@ -46,7 +47,7 @@ public class TrackBents : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
@@ -58,21 +59,26 @@ public class TrackBents : MonoBehaviour
     private void CalculateBent(float c, float a, float b)
     {
         bent = (Mathf.Pow(a,2)+Mathf.Pow(b,2)-Mathf.Pow(c,2))/(2.0*a*b);
+        angleDegrees = Mathf.Acos((float)bent) * Mathf.Rad2Deg;
+
+        //Debug.Log(angleDegrees);
     }
 
     private void CheckBent()
     {
-        if (bent <= playerSetUp.bentROMIn && isReset)
+        if (angleDegrees <= playerSetUp.bentROMIn && isReset)
         {
             playerStats.nrOfBentsIn += 1;
+            Debug.Log("BENT IN! Total Bents In: " + playerStats.nrOfBentsIn);
             isReset = false;
         }
-        else if (bent >= playerSetUp.bentROMOut &&  isReset)
+        else if (angleDegrees >= playerSetUp.bentROMOut &&  isReset)
         {
             playerStats.nrOfBentsOut += 1;
+            Debug.Log("BENT OUT! Total Bents Out: " + playerStats.nrOfBentsOut);
             isReset = false;
         }
-        else
+        else if (angleDegrees > playerSetUp.bentROMIn && angleDegrees < playerSetUp.bentROMOut)
         {
             isReset = true;
         }

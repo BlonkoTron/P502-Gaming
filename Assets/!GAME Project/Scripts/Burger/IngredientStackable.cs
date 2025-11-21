@@ -47,7 +47,7 @@ public class IngredientStackable : MonoBehaviour
        
     }
 
-    private void OnReleased(SelectExitEventArgs args)
+    public void OnReleased(SelectExitEventArgs args)
     {
         rb.isKinematic = false; // Ensure physics is enabled
         if (plateManager != null)

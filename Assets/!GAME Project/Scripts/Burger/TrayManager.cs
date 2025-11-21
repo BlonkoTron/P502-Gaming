@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 public class TrayManager : MonoBehaviour
 {
@@ -11,6 +13,10 @@ public class TrayManager : MonoBehaviour
     private GameObject plateOnTray,sodaOnTray;
 
     [SerializeField] private XRSocketInteractor plateSocket,sodaSocket;
+
+    public UnityEvent<GameObject> OnPlateAddedToTray;
+    public UnityEvent<GameObject> OnSodaAddedToTray;
+
 
     private void Awake()
     {
@@ -47,6 +53,7 @@ public class TrayManager : MonoBehaviour
     {
         sodaOnTray = arg0.interactableObject.transform.gameObject;
         Debug.Log(sodaOnTray);
+        OnSodaAddedToTray.Invoke(sodaOnTray);
     }
 
     private void RemovePlateOnTray(SelectExitEventArgs arg0)
@@ -58,6 +65,7 @@ public class TrayManager : MonoBehaviour
     {
         plateOnTray = arg0.interactableObject.transform.gameObject;
         Debug.Log(plateOnTray);
+        OnPlateAddedToTray.Invoke(plateOnTray);
     }
     public List<Order.BurgerIngredient> GetBurgerOnTray()
     {
