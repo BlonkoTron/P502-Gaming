@@ -1,264 +1,102 @@
 using UnityEngine;
+using UnityEngine.Events;
+using System.Collections;
 
 public class TurnOnSodaMachine : MonoBehaviour
 {
-    [Header("Objects to Monitor")]
-    [SerializeField] private GameObject buttonToMonitor; // The button whose rotation value determines which object to enable
-    [SerializeField] private GameObject objectToRotate; // The object that needs to be actively rotating
-    
     [Header("Objects to Enable")]
-    [SerializeField] private GameObject objectToEnable1; // Object to enable for rotation range 1
-    [SerializeField] private GameObject objectToEnable2; // Object to enable for rotation range 2
+    [SerializeField] private GameObject objectToEnable1; // Object to enable when event 1 is triggered
+    [SerializeField] private GameObject objectToEnable2; // Object to enable when event 2 is triggered
     
-    [Header("Button Rotation Settings")]
-    [SerializeField] private Vector3 buttonRotationAxis = Vector3.forward; // Which axis to monitor on the button (X, Y, or Z)
-    [SerializeField] private float rotationValue1Min = 0f; // Minimum rotation for object 1
-    [SerializeField] private float rotationValue1Max = 179f; // Maximum rotation for object 1
-    [SerializeField] private float rotationValue2Min = 180f; // Minimum rotation for object 2
-    [SerializeField] private float rotationValue2Max = 359f; // Maximum rotation for object 2
-    [SerializeField] private bool clampButtonRotation = true; // Clamp button rotation to prevent over-rotation
-    [SerializeField] private float minButtonRotation = -90f; // Minimum rotation limit (degrees)
-    [SerializeField] private float maxButtonRotation = 90f; // Maximum rotation limit (degrees)
+    [Header("Enable Duration")]
+    [SerializeField] private float enableDuration = 4f; // Duration in seconds to keep objects enabled
     
-    [Header("Wheel Rotation Settings")]
-    [SerializeField] private Vector3 wheelRotationAxis = Vector3.up; // Which axis to monitor on the wheel (X, Y, or Z)
-    [SerializeField] private float rotationThreshold = 0.1f; // Minimum rotation change to detect active rotation
+    [Header("Unity Events")]
+    [Tooltip("Subscribe to this event to enable object 1")]
+    public UnityEvent onEnableMoonJuice;
+    [Tooltip("Subscribe to this event to enable object 2")]
+    public UnityEvent onEnableNebulaBlast;
+    [Tooltip("Subscribe to this event to disable all objects")]
+    public UnityEvent onDisableAll;
     
-    private Quaternion previousRotation;
-    private bool isRotating = false;
     private int currentActiveObject = 0; // 0 = none, 1 = object1, 2 = object2
+    private Coroutine disableCoroutine;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
-        // Initialize previous rotation if objectToRotate is assigned
-        if (objectToRotate != null)
-        {
-            previousRotation = objectToRotate.transform.rotation;
-        }
+        // Subscribe to Unity Events
+        if (onEnableMoonJuice == null)
+            onEnableMoonJuice = new UnityEvent();
+        if (onEnableNebulaBlast == null)
+            onEnableNebulaBlast = new UnityEvent();
+        if (onDisableAll == null)
+            onDisableAll = new UnityEvent();
+            
+        onEnableMoonJuice.AddListener(HandleEnableObject1);
+        onEnableNebulaBlast.AddListener(HandleEnableObject2);
+        onDisableAll.AddListener(HandleDisableAll);
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnDisable()
     {
-        if (buttonToMonitor != null && objectToRotate != null)
-        {
-            ClampButtonRotation();
-            CheckActiveRotation();
-            CheckRotationValue();
-        }
+        // Unsubscribe from Unity Events
+        onEnableMoonJuice.RemoveListener(HandleEnableObject1);
+        onEnableNebulaBlast.RemoveListener(HandleEnableObject2);
+        onDisableAll.RemoveListener(HandleDisableAll);
     }
     
-    // Clamp the button's rotation to prevent over-rotation
-    private void ClampButtonRotation()
+    // Public methods that can be called from Unity Events or other scripts
+    public void HandleEnableObject1()
     {
-        if (!clampButtonRotation || buttonToMonitor == null)
-            return;
-        
-        Vector3 currentEuler = buttonToMonitor.transform.localEulerAngles;
-        Vector3 clampedEuler = currentEuler;
-        
-        // Determine which axis to clamp based on buttonRotationAxis
-        if (buttonRotationAxis == Vector3.right || buttonRotationAxis.x > 0.5f)
+        if (currentActiveObject != 1)
         {
-            float angle = currentEuler.x;
+            EnableObject1();
+            DisableObject2();
+            currentActiveObject = 1;
             
-            // Clamp between 0 and 180
-            if (angle > 180f && angle < 270f)
+            // Stop any existing disable coroutine and start a new one
+            if (disableCoroutine != null)
             {
-                clampedEuler.x = 180f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+                StopCoroutine(disableCoroutine);
             }
-            else if (angle > 270f)
-            {
-                clampedEuler.x = 0f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
-            }
+            disableCoroutine = StartCoroutine(DisableAfterDelay());
         }
-        else if (buttonRotationAxis == Vector3.up || buttonRotationAxis.y > 0.5f)
+    }
+    
+    public void HandleEnableObject2()
+    {
+        if (currentActiveObject != 2)
         {
-            float angle = currentEuler.y;
+            DisableObject1();
+            EnableObject2();
+            currentActiveObject = 2;
             
-            // Clamp between 0 and 180
-            if (angle > 180f && angle < 270f)
+            // Stop any existing disable coroutine and start a new one
+            if (disableCoroutine != null)
             {
-                clampedEuler.y = 180f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
+                StopCoroutine(disableCoroutine);
             }
-            else if (angle > 270f)
-            {
-                clampedEuler.y = 0f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
-            }
-        }
-        else // Z axis
-        {
-            float angle = currentEuler.z;
-            
-            // Clamp between 0 and 180
-            if (angle > 180f && angle < 270f)
-            {
-                clampedEuler.z = 180f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
-            }
-            else if (angle > 270f)
-            {
-                clampedEuler.z = 0f;
-                buttonToMonitor.transform.localEulerAngles = clampedEuler;
-            }
+            disableCoroutine = StartCoroutine(DisableAfterDelay());
         }
     }
     
-    // Check if the objectToRotate is actively rotating
-    private void CheckActiveRotation()
+    public void HandleDisableAll()
     {
-        // Calculate the angle difference between current and previous rotation
-        float angle = Quaternion.Angle(previousRotation, objectToRotate.transform.rotation);
-        
-        // Check if rotation exceeds threshold
-        if (angle > rotationThreshold)
+        // Stop any existing disable coroutine
+        if (disableCoroutine != null)
         {
-            if (!isRotating)
-            {
-                isRotating = true;
-            }
+            StopCoroutine(disableCoroutine);
+            disableCoroutine = null;
         }
-        else
-        {
-            if (isRotating)
-            {
-                isRotating = false;
-                // Disable all objects when rotation stops
-                DisableAllObjects();
-            }
-        }
-        
-        // Update previous rotation
-        previousRotation = objectToRotate.transform.rotation;
+        DisableAllObjects();
     }
     
-    // Check the current rotation value and enable appropriate objects (only if actively rotating)
-    private void CheckRotationValue()
+    // Coroutine to disable objects after the specified duration
+    private IEnumerator DisableAfterDelay()
     {
-        // Only enable objects if actively rotating
-        if (!isRotating)
-        {
-            return;
-        }
-        
-        // Get the rotation angle based on the specified axis
-        float currentRotation = GetRotationOnAxis();
-        
-        // Normalize the angle to 0-360 range
-        currentRotation = NormalizeAngle(currentRotation);
-        
-        // Check which rotation range the button is in
-        if (IsInRange(currentRotation, rotationValue1Min, rotationValue1Max))
-        {
-            // Enable object 1, disable object 2
-            if (currentActiveObject != 1)
-            {
-                EnableObject1();
-                DisableObject2();
-                currentActiveObject = 1;
-            }
-        }
-        else if (IsInRange(currentRotation, rotationValue2Min, rotationValue2Max))
-        {
-            // Enable object 2, disable object 1
-            if (currentActiveObject != 2)
-            {
-                DisableObject1();
-                EnableObject2();
-                currentActiveObject = 2;
-            }
-        }
-        else
-        {
-            // Outside both ranges, disable both objects
-            if (currentActiveObject != 0)
-            {
-                DisableObject1();
-                DisableObject2();
-                currentActiveObject = 0;
-            }
-        }
-    }
-    
-    // Get the rotation value on the specified axis for the button
-    private float GetRotationOnAxis()
-    {
-        Vector3 eulerAngles = buttonToMonitor.transform.localEulerAngles;
-        
-        if (buttonRotationAxis == Vector3.right || buttonRotationAxis.x > 0.5f)
-        {
-            return eulerAngles.x;
-        }
-        else if (buttonRotationAxis == Vector3.up || buttonRotationAxis.y > 0.5f)
-        {
-            return eulerAngles.y;
-        }
-        else // Default to Z axis
-        {
-            return eulerAngles.z;
-        }
-    }
-    
-    // Get the rotation value on the specified axis for the wheel
-    private float GetWheelRotationOnAxis()
-    {
-        Vector3 eulerAngles = objectToRotate.transform.localEulerAngles;
-        
-        if (wheelRotationAxis == Vector3.right || wheelRotationAxis.x > 0.5f)
-        {
-            return eulerAngles.x;
-        }
-        else if (wheelRotationAxis == Vector3.up || wheelRotationAxis.y > 0.5f)
-        {
-            return eulerAngles.y;
-        }
-        else // Default to Z axis
-        {
-            return eulerAngles.z;
-        }
-    }
-    
-    // Normalize angle to 0-360 range
-    private float NormalizeAngle(float angle)
-    {
-        while (angle < 0f)
-            angle += 360f;
-        while (angle >= 360f)
-            angle -= 360f;
-        return angle;
-    }
-    
-    // Normalize angle to -180 to 180 range (for clamping)
-    private float NormalizeAngleTo180(float angle)
-    {
-        angle = NormalizeAngle(angle);
-        if (angle > 180f)
-            angle -= 360f;
-        return angle;
-    }
-    
-    // Check if a value is within a range (handles wrapping around 360)
-    private bool IsInRange(float value, float min, float max)
-    {
-        // Normalize all values
-        value = NormalizeAngle(value);
-        min = NormalizeAngle(min);
-        max = NormalizeAngle(max);
-        
-        // Handle range that wraps around 360
-        if (min > max)
-        {
-            return value >= min || value <= max;
-        }
-        else
-        {
-            return value >= min && value <= max;
-        }
+        yield return new WaitForSeconds(enableDuration);
+        DisableAllObjects();
+        disableCoroutine = null;
     }
     
     // Enable object 1
@@ -306,11 +144,5 @@ public class TurnOnSodaMachine : MonoBehaviour
             DisableObject2();
             currentActiveObject = 0;
         }
-    }
-    
-    // Public method to get current rotation value
-    public float GetCurrentRotation()
-    {
-        return buttonToMonitor != null ? GetRotationOnAxis() : 0f;
     }
 }
