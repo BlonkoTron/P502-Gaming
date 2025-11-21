@@ -7408,6 +7408,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 904908629413285604, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableMoonJuice.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableNebulaBlast.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableMoonJuice.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableNebulaBlast.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableMoonJuice.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994575226439131019, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
+      propertyPath: onEnableNebulaBlast.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8142184507209167676, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
       propertyPath: m_Name
       value: SODA_machine
@@ -7521,6 +7549,34 @@ PrefabInstance:
       propertyPath: specificCollider
       value: 
       objectReference: {fileID: 3367939153165954562}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999392
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.0029967404
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.009484975
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.004758557
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.549
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
