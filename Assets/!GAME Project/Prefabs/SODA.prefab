@@ -120,7 +120,7 @@ MonoBehaviour:
   targetObject: {fileID: 7326570722178786769}
   MoonJuice: {fileID: 0}
   NebulaBlast: {fileID: 0}
-  specificCollider: {fileID: 0}
+  specificCollider: {fileID: 904908629413285604, guid: e57df03ca080cdc41be151ee5a13ce6e, type: 3}
   objectToChangeMaterial: {fileID: 7326570722178786769}
   moonJuiceMaterial: {fileID: 2100000, guid: 9cc3c05e9c575c443ae58fd37025b830, type: 2}
   nebulaBlastMaterial: {fileID: 2100000, guid: 0263c1135ffa4e0458b62e26cf04e8de, type: 2}
