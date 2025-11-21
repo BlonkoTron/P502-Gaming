@@ -11,7 +11,7 @@ public class TrackRotations : MonoBehaviour
 
     private GameObject handJoint;
 
-    private float angleDegrees;
+    public float angleDegrees;
     private bool isReset;
 
     private float rotationDown;

@@ -24,7 +24,7 @@ public class TrackBents : MonoBehaviour
     private float cDistance;
 
     private double bent;
-    private float angleDegrees;
+    public float angleDegrees;
     private bool isReset;
     private bool tracking;
 
