@@ -24,25 +24,6 @@ public class Grill : MonoBehaviour
 
     private void Update()
     {
-        if (GrillIcon != null && GrillBarImage != null)
-        {
-            GrillIcon.SetFloat("name", knob.value);
-            GrillBarImage.fillAmount = knob.value;
-
-            if (knob.value >= 0.9f) 
-            {
-                GrillBarImage.color = Grillfull_C;
-            }
-            else if (knob.value > 0.5f && knob.value < 0.9f)
-            {
-                GrillBarImage.color = GrillHalf_C;
-            }
-            else
-            {
-                GrillBarImage.color = Color.white;
-            }
-        }
-
         if (knob != null)
         {
             if (knob.value > onThreshold)
@@ -54,6 +35,26 @@ public class Grill : MonoBehaviour
             {
                 grillOn = false;
             }
+
+            if (GrillIcon != null && GrillBarImage != null)
+            {
+                GrillIcon.SetFloat("name", knob.value);
+                GrillBarImage.fillAmount = knob.value;
+
+                if (knob.value >= 0.9f)
+                {
+                    GrillBarImage.color = Grillfull_C;
+                }
+                else if (knob.value > 0.5f && knob.value < 0.9f)
+                {
+                    GrillBarImage.color = GrillHalf_C;
+                }
+                else
+                {
+                    GrillBarImage.color = Color.white;
+                }
+            }
+
         }
     }
 
