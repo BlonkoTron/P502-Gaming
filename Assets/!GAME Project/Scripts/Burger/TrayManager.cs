@@ -35,6 +35,7 @@ public class TrayManager : MonoBehaviour
         plateSocket.selectExited.AddListener(RemovePlateOnTray);
         sodaSocket.selectEntered.AddListener(SetSodaOnTray);
         sodaSocket.selectExited.AddListener(RemoveSodaOnTray);
+        OrderController.Instance.OnOrderFullfilled.AddListener(ClearTray);
     }
     private void OnDestroy()
     {
@@ -66,6 +67,15 @@ public class TrayManager : MonoBehaviour
         plateOnTray = arg0.interactableObject.transform.gameObject;
         Debug.Log(plateOnTray);
         OnPlateAddedToTray.Invoke(plateOnTray);
+    }
+    private void ClearTray(bool fullfilled)
+    {
+        Destroy(sodaOnTray);
+        var plateChild = plateOnTray.GetComponentInChildren<Transform>();
+        foreach (Transform child in plateChild)
+        {
+            Destroy(child.gameObject);
+        }
     }
     public List<Order.BurgerIngredient> GetBurgerOnTray()
     {
