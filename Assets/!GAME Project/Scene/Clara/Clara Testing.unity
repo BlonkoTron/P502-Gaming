@@ -359,7 +359,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4875407762366504152, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
       propertyPath: spawnUpOffset.y
-      value: 0.005
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 6847021672090247825, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
       propertyPath: m_Name
@@ -2967,6 +2967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3978223351633726326, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4525900574393902968, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
       propertyPath: m_Name
       value: PlatePrefab
@@ -3018,7 +3022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087434966248681109, guid: 1b7ecb835cc0ee248abdb1a89022a951, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.53380036
+      value: -0.423
       objectReference: {fileID: 0}
     - target: {fileID: 7087434966248681109, guid: 1b7ecb835cc0ee248abdb1a89022a951, type: 3}
       propertyPath: m_LocalPosition.y
