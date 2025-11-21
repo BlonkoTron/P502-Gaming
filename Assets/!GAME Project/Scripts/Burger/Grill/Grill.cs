@@ -4,8 +4,9 @@ using UnityEngine;
 public class Grill : MonoBehaviour
 {
     public bool grillOn = false;
-
     [SerializeField] private float onThreshold = 0.9f;
+
+    [SerializeField] private GameObject grillIndicator;
 
     [SerializeField] private GameObject KnobObj;
     private XRKnob knob;
@@ -23,13 +24,32 @@ public class Grill : MonoBehaviour
             if (knob.value > onThreshold)
             { 
                 grillOn = true;
-                Debug.Log("GRILL POWER ON");
+                
             }
             else
             {
                 grillOn = false;
-                Debug.Log("GRILL POWER OFF");
             }
+
+            if (grillOn) 
+            { 
+                if (grillIndicator != null && !grillIndicator.gameObject.activeInHierarchy)
+                {
+                    grillIndicator.gameObject.SetActive(true);
+                }        
+            
+            }
+            else if (grillIndicator != null && grillIndicator.gameObject.activeInHierarchy)
+            {
+
+                grillIndicator.gameObject.SetActive(false);
+
+            }
+
+
+
+           
+
         }
     }
 
