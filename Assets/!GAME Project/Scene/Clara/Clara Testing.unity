@@ -357,6 +357,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4875407762366504152, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
+      propertyPath: spawnUpOffset.y
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 6847021672090247825, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
       propertyPath: m_Name
       value: Grool
@@ -3199,6 +3203,10 @@ PrefabInstance:
       propertyPath: sauce
       value: 
       objectReference: {fileID: 1227420442543478760, guid: 7c8aae3795a4f1649b64e45de971df99, type: 3}
+    - target: {fileID: 4875407762366504152, guid: ff8af1e3a295fe94bb0b2da7c45e169f, type: 3}
+      propertyPath: spawnUpOffset.y
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 6847021672090247825, guid: ff8af1e3a295fe94bb0b2da7c45e169f, type: 3}
       propertyPath: m_Name
       value: Ketflup

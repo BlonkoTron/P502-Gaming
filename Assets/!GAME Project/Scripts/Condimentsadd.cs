@@ -35,18 +35,26 @@ public class TriggeredRaycast : MonoBehaviour
     void Update()
     {
         var rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        var leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
 
         // === BACK TRIGGER (Index trigger) ===
-        if (rightHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        if (rightHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValueR))
         {
-            if (triggerValue > 0.1f)
-                Debug.Log("Back trigger pulled: " + triggerValue);
+            if (triggerValueR > 0.1f)
+                Debug.Log("Back trigger pulled: " + triggerValueR);
+        }
+
+        // === BACK TRIGGER (Index trigger) ===
+        if (leftHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValueL))
+        {
+            if (triggerValueL > 0.1f)
+                Debug.Log("Back trigger pulled: " + triggerValueL);
         }
 
         // If someone set the bool true, and we're not on cooldown:
         if (grab.isSelected && !onCooldown)
         {
-            if (triggerValue > 0.1f)
+            if (triggerValueR > 0.1f || triggerValueL > 0.1f)
             {
                 Debug.Log("shootgoo");
                 FireRaycast();
