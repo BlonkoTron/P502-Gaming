@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &793591092863075408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7744787797014577537}
+  - component: {fileID: 3274649754058933091}
+  m_Layer: 0
+  m_Name: Knife Edge
+  m_TagString: Knife
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7744787797014577537
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793591092863075408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4327948425373752669}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3274649754058933091
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793591092863075408}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.981688, y: 1, z: 1.8458039}
+  m_Center: {x: -3.097865, y: 0, z: 2.7701354}
 --- !u!1 &5263987160540964564
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,7 +106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.432
+      value: 24.35
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.y
@@ -61,11 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.63
+      value: 5.864
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999625
+      value: 0.7132102
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalRotation.x
@@ -73,7 +126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.008669198
+      value: -0.7009502
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalRotation.z
@@ -85,7 +138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0.993
+      value: -89.007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -101,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_TagString
-      value: Knife
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -109,6 +162,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2265150674858267151}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7744787797014577537}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       insertIndex: -1
@@ -119,9 +175,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1758285474951753556}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5085668925752762260}
   m_SourcePrefab: {fileID: 100100000, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
 --- !u!1 &3982350323412715495 stripped
 GameObject:
@@ -227,7 +280,7 @@ MonoBehaviour:
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
-  m_AttachTransform: {fileID: 0}
+  m_AttachTransform: {fileID: 2265150674858267151}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -235,7 +288,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 1
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -303,20 +356,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.9617214, y: 1.9999999, z: 4.52858}
   m_Center: {x: -2.2560635, y: 0, z: 1.2642901}
---- !u!114 &5085668925752762260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3982350323412715495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde40b65c9ed5c043b342a54e7d2aaed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ingredient: {fileID: 0}
-  Cut_Ingredient: {fileID: 5265902554537905292, guid: 93c006b7b1d85974e9e950e49b1ca63f, type: 3}
 --- !u!4 &4327948425373752669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
