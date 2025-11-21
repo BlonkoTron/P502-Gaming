@@ -1,15 +1,18 @@
 using UnityEngine;
-using static UnityEngine.Rendering.GPUSort;
+using System.Collections;
 
 public class TriggeredRaycast : MonoBehaviour
 {
-    public bool raycastActive = false;
+    [Header("Raycast Settings")]
+    public bool raycastActive = false;      // Turn this true to fire ray once
     public float rayDistance = 10f;
 
+    [Header("Sauce to Spawn")]
     public GameObject sauce;
 
-    [Header("Tag Filter")]
-    public string targetTag = "Stackable";
+    [Header("Cooldown Settings")]
+    public float cooldown = 1f;
+    private bool onCooldown = false;
 
     [Header("Ray Offset (Local Space)")]
     public Vector3 positionOffset = Vector3.zero;
@@ -17,44 +20,85 @@ public class TriggeredRaycast : MonoBehaviour
     [Header("Rotation Offset (Local Euler Angles)")]
     public Vector3 rotationOffset = Vector3.zero;
 
+    [Header("Spawn Offset (World space)")]
+    public Vector3 spawnUpOffset = new Vector3(0f, 0.02f, 0f);
+
     void Update()
     {
-        if (raycastActive)
+        // If someone set the bool true, and we're not on cooldown:
+        if (raycastActive && !onCooldown)
         {
             FireRaycast();
+
+            // Consume the trigger immediately
             raycastActive = false;
         }
-            
     }
 
     void FireRaycast()
     {
         RaycastHit hit;
 
-        // Convert local position offset into world space
         Vector3 origin = transform.TransformPoint(positionOffset);
-
-        // Apply rotation offset to direction
         Quaternion rot = transform.rotation * Quaternion.Euler(rotationOffset);
         Vector3 direction = rot * Vector3.forward;
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance))
         {
-            if (hit.collider.CompareTag(targetTag))
+            // Look for plate on hit object or its parents
+            PlateManager plate = hit.collider.GetComponentInParent<PlateManager>();
+
+            if (plate != null)
             {
-                GameObject Sauces = Instantiate(sauce);
-                Sauces.transform.position = hit.transform.position;
-                IngredientStackable sb = Sauces.GetComponent<IngredientStackable>();
-                sb.OnReleased(null);
-                //onreleas
+                Vector3 spawnPos = hit.point + spawnUpOffset;
+                SpawnSauce(plate, spawnPos);
             }
             else
             {
-                Debug.Log("No burger/snap");
+                Debug.Log("Raycast hit something, but no PlateManager found.");
+                StartCoroutine(CooldownRoutine());
             }
         }
+        else
+        {
+            Debug.Log("Raycast didn't hit anything.");
+            StartCoroutine(CooldownRoutine());
+        }
 
-        // Debug ray so you can see it in Scene view
-        Debug.DrawRay(origin, direction * rayDistance, Color.red);
+        Debug.DrawRay(origin, direction * rayDistance, Color.red, 0.25f);
+    }
+
+    void SpawnSauce(PlateManager plate, Vector3 spawnPosition)
+    {
+        if (sauce == null)
+        {
+            Debug.LogError("TriggeredRaycast: Sauce prefab is not assigned!");
+            StartCoroutine(CooldownRoutine());
+            return;
+        }
+
+        // Instantiate at the hit location
+        GameObject sauceObj = Instantiate(sauce, spawnPosition, Quaternion.identity);
+
+        IngredientStackable stackable = sauceObj.GetComponent<IngredientStackable>();
+        if (stackable == null)
+        {
+            Debug.LogError("Sauce prefab is missing IngredientStackable!");
+            Destroy(sauceObj);
+            StartCoroutine(CooldownRoutine());
+            return;
+        }
+
+        // Snap just like a real ingredient
+        plate.TrySnap(stackable);
+
+        StartCoroutine(CooldownRoutine());
+    }
+
+    IEnumerator CooldownRoutine()
+    {
+        onCooldown = true;
+        yield return new WaitForSeconds(cooldown);
+        onCooldown = false;
     }
 }
