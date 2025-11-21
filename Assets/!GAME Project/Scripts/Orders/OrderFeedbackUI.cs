@@ -9,6 +9,7 @@ public class OrderFeedbackUI : MonoBehaviour
     [SerializeField] private Image OrderFullfillImage;
     [SerializeField] private GameObject OrderFullFilledPanel;
     [SerializeField] private Sprite orderCorrectSprite, orderWrongSprite;
+    private float panelAnimationTime = 4;
     void Start()
     {
         orderController = OrderController.Instance;
@@ -22,7 +23,7 @@ public class OrderFeedbackUI : MonoBehaviour
     }
     private void OrderController_OnOrderFullfilled(bool correctOrder)
     {
-        OrderFullFilledPanel.SetActive(true);
+        StartCoroutine(OrderFullfillpanelAnimate());
         if (correctOrder)
         {
             OrderFullfillImage.sprite = orderCorrectSprite;
@@ -30,5 +31,11 @@ public class OrderFeedbackUI : MonoBehaviour
         {
             OrderFullfillImage.sprite = orderWrongSprite;
         }
+    }
+    private IEnumerator OrderFullfillpanelAnimate()
+    {
+        OrderFullFilledPanel.SetActive(true);
+        yield return new WaitForSeconds(panelAnimationTime);
+        OrderFullFilledPanel.SetActive(false);
     }
 }
