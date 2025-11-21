@@ -5,7 +5,6 @@ public class PlayerCalibrations : MonoBehaviour
 {
     [SerializeField] private PlayerSetUp playerSetUp;
 
-
     [Header("Dropdowns")]
     [SerializeField] private Dropdown bentInDrop;
     [SerializeField] private Dropdown bentOutDrop;
@@ -18,9 +17,7 @@ public class PlayerCalibrations : MonoBehaviour
 
     [Header("Choose Configuration")]
     [SerializeField] private GameObject manuelConfigButton;
-    [SerializeField] private GameObject autoConfigButton;
-
-   
+    [SerializeField] private GameObject autoConfigButton;   
      
     public void ChooseLeftArm()
     {
@@ -49,8 +46,6 @@ public class PlayerCalibrations : MonoBehaviour
         autoConfigButton.GetComponent<Image>().color = Color.green;
         manuelConfigButton.GetComponent<Image>().color = Color.white;
     }
-
-
 
     public void UpdateBentROMIn()
     {
@@ -130,7 +125,6 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-
     public void UpdateRotationROMDown()
     {
          switch (rotationDownDrop.value)
@@ -159,6 +153,15 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
+    public void SetBentROMInAuto()
+    {
+       
+    }
+
+    public void SetBentROMDown()
+    {
+
+    }
 
 
 

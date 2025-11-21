@@ -62,9 +62,9 @@ public class TrackBents : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!tracking) return;
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
+        if (!tracking) return;
         CheckBent();
     }
 
@@ -74,8 +74,6 @@ public class TrackBents : MonoBehaviour
     {
         bent = (Mathf.Pow(a,2)+Mathf.Pow(b,2)-Mathf.Pow(c,2))/(2.0*a*b);
         angleDegrees = Mathf.Acos((float)bent) * Mathf.Rad2Deg;
-
-        //Debug.Log(angleDegrees);
     }
 
     private void CheckBent()
