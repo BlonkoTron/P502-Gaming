@@ -8,6 +8,7 @@ public class GraphManager : MonoBehaviour
     void Start()
     {
         DaysSave save = saveSystem.Load();
-        graphGenerator.DrawGraph(save.data);
+
+        graphGenerator.InitializeGraph(save.dates, save.data);
     }
 }

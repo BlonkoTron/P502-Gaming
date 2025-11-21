@@ -250,6 +250,8 @@ MonoBehaviour:
   fliptimethreshold: 5
   isflipped: 0
   halfCookedReached: 0
+  cookedParticle: {fileID: 4765213176015788571, guid: b186e89ec8a7afa4f99f0cf698d6f7b3, type: 3}
+  burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
 --- !u!114 &871668504160185310
 MonoBehaviour:
   m_ObjectHideFlags: 0

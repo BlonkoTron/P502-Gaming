@@ -7,6 +7,7 @@ public class OrderControllerVisuals : MonoBehaviour
     private OrderController _orderController;
 
     [SerializeField] private GameObject receiptPrefab;
+    [SerializeField] private GameObject NewOrderParticle;
 
     void Awake()
     {
@@ -22,6 +23,10 @@ public class OrderControllerVisuals : MonoBehaviour
         {
             receipt.UpdateReceiptMaterial(order.receiptMaterial);
         } 
+        if (NewOrderParticle!=null)
+        {
+            Instantiate(NewOrderParticle, transform.position, Quaternion.identity);
+        }
     }
     private void OnDestroy()
     {

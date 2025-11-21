@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] PlayerSetUp playerSetUp;
+    public GraphGenerator graph;
 
     [Header("Main Menu Panels")]
     [SerializeField] GameObject welcomePanel;
@@ -17,14 +18,29 @@ public class MainMenuManager : MonoBehaviour
     [Header("Other GameObjects")]
     [SerializeField] Button startGameButton;
     [SerializeField] GameObject missingConfigText;
+   
 
-  
+
+
 
     private void Start()
     { 
         GoToPanel(welcomePanel);
         CheckIfConfigured();
     }
+
+    public void ShowBents()
+    {
+        graph.showBents = true;
+        graph.Redraw();
+    }
+
+    public void ShowRotations()
+    {
+        graph.showBents = false;
+        graph.Redraw();
+    }
+
 
     private void CheckIfConfigured()
     {
