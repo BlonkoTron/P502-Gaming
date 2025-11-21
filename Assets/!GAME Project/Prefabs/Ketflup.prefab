@@ -229,7 +229,7 @@ MonoBehaviour:
   cooldown: 1
   positionOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: -90, y: 0, z: 0}
-  spawnUpOffset: {x: 0, y: 0.02, z: 0}
+  spawnUpOffset: {x: 0, y: 0.001, z: 0}
 --- !u!1001 &5213381151656494628
 PrefabInstance:
   m_ObjectHideFlags: 0

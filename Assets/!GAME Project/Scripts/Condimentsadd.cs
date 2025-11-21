@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
@@ -6,7 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class TriggeredRaycast : MonoBehaviour
 {
     [Header("Raycast Settings")]
-    public bool raycastActive = false;      // Turn this true to fire ray once
+    public bool raycastActive = false;
     public float rayDistance = 10f;
 
     XRGrabInteractable grab;
@@ -24,9 +24,6 @@ public class TriggeredRaycast : MonoBehaviour
     [Header("Rotation Offset (Local Euler Angles)")]
     public Vector3 rotationOffset = Vector3.zero;
 
-    [Header("Spawn Offset (World space)")]
-    public Vector3 spawnUpOffset = new Vector3(0f, 0.02f, 0f);
-
     private void Start()
     {
         grab = GetComponent<XRGrabInteractable>();
@@ -35,20 +32,16 @@ public class TriggeredRaycast : MonoBehaviour
     void Update()
     {
         var rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
+        var leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
 
-        // === BACK TRIGGER (Index trigger) ===
-        if (rightHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
-        {
-            if (triggerValue > 0.1f)
-                Debug.Log("Back trigger pulled: " + triggerValue);
-        }
+        rightHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValueR);
+        leftHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValueL);
 
-        // If someone set the bool true, and we're not on cooldown:
+        // Fire only when held & trigger squeezed
         if (grab.isSelected && !onCooldown)
         {
-            if (triggerValue > 0.1f)
+            if (triggerValueR > 0.1f || triggerValueL > 0.1f)
             {
-                Debug.Log("shootgoo");
                 FireRaycast();
             }
         }
@@ -64,23 +57,22 @@ public class TriggeredRaycast : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance))
         {
-            // Look for plate on hit object or its parents
             PlateManager plate = hit.collider.GetComponentInParent<PlateManager>();
 
             if (plate != null)
             {
-                Vector3 spawnPos = hit.point + spawnUpOffset;
+                // Spawn visually where the ray hits — actual snap happens after physics update
+                Vector3 spawnPos = hit.point;
+
                 SpawnSauce(plate, spawnPos);
             }
             else
             {
-                Debug.Log("Raycast hit something, but no PlateManager found.");
                 StartCoroutine(CooldownRoutine());
             }
         }
         else
         {
-            Debug.Log("Raycast didn't hit anything.");
             StartCoroutine(CooldownRoutine());
         }
 
@@ -96,7 +88,7 @@ public class TriggeredRaycast : MonoBehaviour
             return;
         }
 
-        // Instantiate at the hit location
+        // Instantiate normally
         GameObject sauceObj = Instantiate(sauce, spawnPosition, Quaternion.identity);
 
         IngredientStackable stackable = sauceObj.GetComponent<IngredientStackable>();
@@ -108,10 +100,19 @@ public class TriggeredRaycast : MonoBehaviour
             return;
         }
 
-        // Snap just like a real ingredient
-        plate.TrySnap(stackable);
+        // ---- MAIN FIX: Delay snapping until physics has updated ----
+        StartCoroutine(DelayedSnap(plate, stackable));
 
         StartCoroutine(CooldownRoutine());
+    }
+
+    private IEnumerator DelayedSnap(PlateManager plate, IngredientStackable stackable)
+    {
+        // Wait for physics to stabilize bounding box
+        yield return new WaitForFixedUpdate();
+
+        // Now colliders have correct bounds → no giant offset
+        plate.TrySnap(stackable);
     }
 
     IEnumerator CooldownRoutine()

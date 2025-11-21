@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Tv : MonoBehaviour
@@ -7,6 +8,8 @@ public class Tv : MonoBehaviour
     public bool halt = false;
 
     public int timer;
+
+    public int view = 0 ;
 
     //Set up list
     [Header("Ingredient Prefabs")]
@@ -29,9 +32,14 @@ public class Tv : MonoBehaviour
 
         yield return new WaitForSeconds(timer);
 
-        int randomIndex = Random.Range(0, video.Count);
+        view++;
 
-        gameObject.GetComponent<MeshRenderer>().material = video[randomIndex];
+        if (view == video.Count)
+        {
+            view = 0;
+        }
+
+        gameObject.GetComponent<MeshRenderer>().material = video[view];
 
         halt = false;
     }

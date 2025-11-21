@@ -27,6 +27,8 @@ public class CookBeef : MonoBehaviour
     [SerializeField] private bool isflipped = false;
     [SerializeField] private bool halfCookedReached = false;
 
+    [SerializeField] private GameObject cookedParticle, burntParticle;
+
 
     private Grill grill;
 
@@ -63,11 +65,14 @@ public class CookBeef : MonoBehaviour
                 {
                     beef.GetComponent<MeshRenderer>().material = Halfcooked;
                     halfCookedReached = true;
+                    Instantiate(cookedParticle, transform.position,Quaternion.identity);
 
                     // If player never flips → burn
                     if (Cooktime <= 0f)
                     {
                         beef.GetComponent<MeshRenderer>().material = Burnt;
+                        Instantiate(burntParticle, transform.position, Quaternion.identity);
+
                     }
                 }
 
@@ -78,6 +83,8 @@ public class CookBeef : MonoBehaviour
                     {
                         // Cooked first
                         beef.GetComponent<MeshRenderer>().material = Cooked;
+                        Instantiate(cookedParticle, transform.position, Quaternion.identity);
+
 
                         // Start burning countdown
                         OvercookTimer -= Time.deltaTime;
@@ -85,6 +92,7 @@ public class CookBeef : MonoBehaviour
                         if (OvercookTimer <= 0f)
                         {
                             beef.GetComponent<MeshRenderer>().material = Burnt;
+                            Instantiate(burntParticle, transform.position, Quaternion.identity);
                         }
                     }
                 }
