@@ -25,18 +25,50 @@ public class SodaLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Find MoonJuice and NebulaBlast GameObjects if not assigned
+        if (MoonJuice == null)
+        {
+            MoonJuice = GameObject.Find("MoonJuice");
+            if (MoonJuice == null)
+            {
+                Debug.LogWarning("MoonJuice GameObject named 'MoonJuice' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found MoonJuice GameObject: " + MoonJuice.name);
+            }
+        }
+        
+        if (NebulaBlast == null)
+        {
+            NebulaBlast = GameObject.Find("NebulaBlast");
+            if (NebulaBlast == null)
+            {
+                Debug.LogWarning("NebulaBlast GameObject named 'NebulaBlast' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found NebulaBlast GameObject: " + NebulaBlast.name);
+            }
+        }
+
+        if (specificCollider == null)
+        {
+            specificCollider = GetComponent<Collider>();
+            if (specificCollider == null)
+            {
+                Debug.LogWarning("Specific Collider not assigned in SodaLogic!");
+            }
+            else
+            {
+                Debug.Log("Using Collider from this GameObject: " + specificCollider.name);
+            }
+        }
+        
         // Ensure all objects are assigned
         if (targetObject == null)
         {
             Debug.LogWarning("Target object not assigned in SodaLogic!");
-        }
-        if (MoonJuice == null)
-        {
-            Debug.LogWarning("MoonJuice not assigned in SodaLogic!");
-        }
-        if (NebulaBlast == null)
-        {
-            Debug.LogWarning("NebulaBlast not assigned in SodaLogic!");
         }
         if (specificCollider == null)
         {
