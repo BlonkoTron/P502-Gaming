@@ -8,4 +8,7 @@ public class PlayerSetUp : ScriptableObject
     public float bentROMOut;
     public float rotationROMUp;
     public float rotationROMDown;
+
+    public bool isConfigured;
+    public bool isManualConfig;
 }

@@ -1,3 +1,5 @@
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class TrackBents : MonoBehaviour
@@ -24,9 +26,20 @@ public class TrackBents : MonoBehaviour
     private double bent;
     private float angleDegrees;
     private bool isReset;
+    private bool tracking;
 
     private void Start()
     {
+        UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.name == "MainGameScene")
+        {
+            tracking = false;
+        }
+        else
+        {
+            tracking = true;
+        }
+
         if (playerSetUp.isRightArm)
         {
             shoulderJoint = shoulderJointRight;
@@ -49,6 +62,7 @@ public class TrackBents : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!tracking) return;
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
         CheckBent();

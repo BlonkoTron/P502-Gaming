@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrackRotations : MonoBehaviour
 {
@@ -16,9 +17,21 @@ public class TrackRotations : MonoBehaviour
     private float rotationDown;
     private float rotationUp;
 
+    private bool tracking;
+
 
     private void Start()
     {
+        UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
+        if (currentScene.name == "MainGameScene")
+        {
+            tracking = false;
+        }
+        else
+        {
+            tracking = true;
+        }
+
         if (playerSetUp.isRightArm)
         {
             handJoint = handJointRight;
@@ -34,6 +47,7 @@ public class TrackRotations : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!tracking) return;
         CalculateRotation();
         CheckRotation();
     }
