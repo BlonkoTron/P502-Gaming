@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2246362597651587557}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -10.773516, y: -10.773516, z: -5.6147313}
+  m_LocalScale: {x: -10.773515, y: -10.773514, z: -5.614731}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1118271071777029186}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_Father: {fileID: 175833507922650310}
+  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
 --- !u!33 &7512825679013520953
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -148,6 +148,38 @@ Transform:
   - {fileID: 7664071038481283575}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &5841285202464824355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 175833507922650310}
+  m_Layer: 0
+  m_Name: KnobOffset
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &175833507922650310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5841285202464824355}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3625860252639178811}
+  m_Father: {fileID: 1118271071777029186}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &6030082853391721970
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,7 +541,7 @@ PrefabInstance:
     - target: {fileID: 6530887417407076849, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_Handle
       value: 
-      objectReference: {fileID: 1118271071777029186}
+      objectReference: {fileID: 175833507922650310}
     - target: {fileID: 8864930785584074588, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.000049591064
@@ -558,7 +590,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8864930785584074588, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3625860252639178811}
+      addedObject: {fileID: 175833507922650310}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
 --- !u!4 &1118271071777029186 stripped
