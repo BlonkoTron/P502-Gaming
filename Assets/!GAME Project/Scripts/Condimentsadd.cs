@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class TriggeredRaycast : MonoBehaviour
 {
     [Header("Raycast Settings")]
     public bool raycastActive = false;      // Turn this true to fire ray once
     public float rayDistance = 10f;
+
+    XRGrabInteractable grab;
 
     [Header("Sauce to Spawn")]
     public GameObject sauce;
@@ -23,15 +27,30 @@ public class TriggeredRaycast : MonoBehaviour
     [Header("Spawn Offset (World space)")]
     public Vector3 spawnUpOffset = new Vector3(0f, 0.02f, 0f);
 
+    private void Start()
+    {
+        grab = GetComponent<XRGrabInteractable>();
+    }
+
     void Update()
     {
-        // If someone set the bool true, and we're not on cooldown:
-        if (raycastActive && !onCooldown)
-        {
-            FireRaycast();
+        var rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
 
-            // Consume the trigger immediately
-            raycastActive = false;
+        // === BACK TRIGGER (Index trigger) ===
+        if (rightHand.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue))
+        {
+            if (triggerValue > 0.1f)
+                Debug.Log("Back trigger pulled: " + triggerValue);
+        }
+
+        // If someone set the bool true, and we're not on cooldown:
+        if (grab.isSelected && !onCooldown)
+        {
+            if (triggerValue > 0.1f)
+            {
+                Debug.Log("shootgoo");
+                FireRaycast();
+            }
         }
     }
 
