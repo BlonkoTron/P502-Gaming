@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class CookBeef : MonoBehaviour
@@ -8,6 +10,9 @@ public class CookBeef : MonoBehaviour
     public Material Halfcooked;
     public Material Cooked;
     public Material Burnt;
+
+    private EventInstance beefcook;
+    [SerializeField] private EventReference beefed;
 
     // Reference to beef object to change material
     public GameObject beef;
@@ -59,6 +64,8 @@ public class CookBeef : MonoBehaviour
             {
                 // Reduce cooking time
                 Cooktime -= Time.deltaTime;
+                Audiomanager.instance.UpdateSoundPosition(beefcook, transform.position);
+
 
                 // ---- HALF COOKED SIDE ----
                 if (Cooktime <= HalfwayPoint && !isflipped)
@@ -106,6 +113,7 @@ public class CookBeef : MonoBehaviour
     {
         if (other.CompareTag("Grill"))
         {
+            Audiomanager.instance.StopSound(beefcook);
             // Start checking rotation after leaving the grill
             StartCoroutine(CheckFlip());
         }

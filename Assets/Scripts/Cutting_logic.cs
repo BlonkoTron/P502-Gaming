@@ -1,10 +1,15 @@
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class Cutting_logic : MonoBehaviour
 {
     [Header("Current ingredient")]
     public GameObject Ingredient;
+
+    private EventInstance Cutsound;
+    [SerializeField] private EventReference Cutting;
 
     [Header("Cut ingredient")]
     public GameObject Cut_Ingredient;
@@ -24,6 +29,7 @@ public class Cutting_logic : MonoBehaviour
         if (other.gameObject.CompareTag("Knife"))
         {
             Destroy(Ingredient);
+            Audiomanager.instance.UpdateSoundPosition(Cutsound, transform.position);
             Instantiate(Cut_Ingredient,Ingredient_position.transform.position, Quaternion.identity);
         }
     }

@@ -2,9 +2,15 @@
 using System.Collections;
 using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using FMOD.Studio;
+using FMODUnity;
 
 public class TriggeredRaycast : MonoBehaviour
 {
+
+    private EventInstance Saucesquirt;
+    [SerializeField] private EventReference saucesound;
+
     [Header("Raycast Settings")]
     public bool raycastActive = false;
     public float rayDistance = 10f;
@@ -65,6 +71,7 @@ public class TriggeredRaycast : MonoBehaviour
                 Vector3 spawnPos = hit.point;
 
                 SpawnSauce(plate, spawnPos);
+                Audiomanager.instance.UpdateSoundPosition(Saucesquirt, transform.position);
             }
             else
             {
