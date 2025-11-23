@@ -1278,7 +1278,7 @@ GameObject:
   - component: {fileID: 999667621}
   m_Layer: 0
   m_Name: NebulaBlast
-  m_TagString: Untagged
+  m_TagString: NebulaBlast
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5455,7 +5455,7 @@ GameObject:
   - component: {fileID: 1092333670}
   m_Layer: 0
   m_Name: MoonJuice
-  m_TagString: Untagged
+  m_TagString: MoonJuice
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8563,7 +8563,7 @@ GameObject:
   - component: {fileID: 6785264628542568587}
   m_Layer: 0
   m_Name: SODA_machine
-  m_TagString: Untagged
+  m_TagString: SodaMachine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14965,6 +14965,10 @@ PrefabInstance:
       propertyPath: specificCollider
       value: 
       objectReference: {fileID: 6785264628542568587}
+    - target: {fileID: 5670877366843056983, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      propertyPath: moonJuiceChildName
+      value: MoonJuiceParticle
+      objectReference: {fileID: 0}
     - target: {fileID: 7186326997239295137, guid: 45b9a232206292940a7034c843ca485a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9999392
