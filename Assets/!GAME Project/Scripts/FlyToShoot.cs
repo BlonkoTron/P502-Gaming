@@ -16,6 +16,8 @@ public class FlyToShoot : MonoBehaviour
     private void Start()
     {
         Spacedoorscript = GameObject.Find("Roof").GetComponent<SpaceDoor>();
+        Outposition = GameObject.Find("Ingredient-kill-collider").transform;
+        Rigidbody = GetComponent<Rigidbody>();
     }
     // Update is called once per frame
     void Update()
