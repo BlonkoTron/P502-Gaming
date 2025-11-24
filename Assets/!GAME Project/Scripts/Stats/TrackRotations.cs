@@ -11,7 +11,7 @@ public class TrackRotations : MonoBehaviour
 
     private GameObject handJoint;
 
-    private float angleDegrees;
+    public float angleDegrees;
     private bool isReset;
 
     private float rotationDown;
@@ -47,15 +47,14 @@ public class TrackRotations : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!tracking) return;
         CalculateRotation();
+        if (!tracking) return;
         CheckRotation();
     }
 
     private void CalculateRotation()
     {
         angleDegrees = handJoint.transform.rotation.eulerAngles.z;
-        //Debug.Log("Current Rotation Angle: " + angleDegrees);
     }
 
     private void CheckRotation()

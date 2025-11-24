@@ -30,7 +30,6 @@ public class IngredientStackable : MonoBehaviour
 
     private void Start()
     {
-        // Option 1: Assign manually in inspector
         // Option 2: Find it automatically
         if (plateManager == null)
             plateManager = FindFirstObjectByType<PlateManager>();
@@ -43,8 +42,6 @@ public class IngredientStackable : MonoBehaviour
         // When grabbed off the stack
         if (plateManager != null)
             plateManager.OnIngredientRemoved(this);
-
-       
     }
 
     public void OnReleased(SelectExitEventArgs args)
