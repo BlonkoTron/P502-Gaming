@@ -15,12 +15,12 @@ public class FlyToShoot : MonoBehaviour
 
     private void Start()
     {
-        Spacedoorscript = GameObject.Find("shoottest").GetComponent<SpaceDoor>();
+        Spacedoorscript = GameObject.Find("Roof").GetComponent<SpaceDoor>();
     }
     // Update is called once per frame
     void Update()
     {
-        if (Spacedoorscript.Doorpress == true)
+        if (Spacedoorscript.cooldown == true)
         {
             flyouts();
         }
@@ -29,7 +29,7 @@ public class FlyToShoot : MonoBehaviour
     public void flyouts()
     {
         Vector3 direction = (Outposition.position - transform.position).normalized;
-
+        Debug.Log("forceadd");
         // Apply force toward the target
         Rigidbody.AddForce(direction * forceStrength);
     }
