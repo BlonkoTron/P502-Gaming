@@ -29,6 +29,8 @@ public class MainMenuManager : MonoBehaviour
         CheckIfConfigured();
     }
 
+    
+
     public void ShowBents()
     {
         graph.showBents = true;
@@ -90,8 +92,8 @@ public class MainMenuManager : MonoBehaviour
 
 
     public void StartGame()
-    {         // Load the main game scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainGameScene"); // Replace with your main game scene name
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
 }
