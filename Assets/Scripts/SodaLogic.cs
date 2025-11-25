@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 
 public class SodaLogic : MonoBehaviour
@@ -27,6 +28,9 @@ public class SodaLogic : MonoBehaviour
     private Renderer objectRenderer; // Cached renderer component
     private GameObject moonJuiceChild; // Child object of MoonJuice to check
     private GameObject nebulaBlastChild; // Child object of NebulaBlast to check
+
+    public Order.Drink drinkType;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -226,6 +230,7 @@ public class SodaLogic : MonoBehaviour
         if (objectRenderer != null && moonJuiceMaterial != null)
         {
             objectRenderer.material = moonJuiceMaterial;
+            drinkType = Order.Drink.Moon_juice;
             Debug.Log($"Changed material to MoonJuice material on {objectToChangeMaterial.name}");
         }
     }
@@ -236,6 +241,7 @@ public class SodaLogic : MonoBehaviour
         if (objectRenderer != null && nebulaBlastMaterial != null)
         {
             objectRenderer.material = nebulaBlastMaterial;
+            drinkType = Order.Drink.Nebula_blast;
             Debug.Log($"Changed material to NebulaBlast material on {objectToChangeMaterial.name}");
         }
     }
