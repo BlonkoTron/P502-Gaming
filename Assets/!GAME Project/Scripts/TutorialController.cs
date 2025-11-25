@@ -9,7 +9,7 @@ public class TutorialController : MonoBehaviour
 {
     public static TutorialController Instance;
 
-    [SerializeField] private GameObject foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial,bellTutorial;
+    [SerializeField] private GameObject foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial,bellTutorial,sodaButtonTutorial,sodaHandleTutorial;
 
     private Hinge_trigger hingeTrigger;
     private XRBaseInteractable knife;
@@ -26,7 +26,7 @@ public class TutorialController : MonoBehaviour
     }
     private void Start()
     {
-        GameObject[] objects = new GameObject[] { foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial, bellTutorial };
+        GameObject[] objects = new GameObject[] { foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial, bellTutorial,sodaButtonTutorial,sodaHandleTutorial };
         foreach(GameObject t in objects)
         {
             t.SetActive(false);
@@ -40,10 +40,6 @@ public class TutorialController : MonoBehaviour
         if (OrderController.Instance!=null)
         {
             OrderController.Instance.OnNewOrderGenerated.AddListener(ShowFoodTubeTutorial);
-        }
-        if (TrayManager.Instance!=null)
-        {
-            TrayManager.Instance.OnPlateAddedToTray.AddListener(ShowBellTutorial);
         }
         if (knife!=null)
         {
@@ -93,10 +89,10 @@ public class TutorialController : MonoBehaviour
     public void HideBeefCookingTutorial()
     {
         beefCookingTutorial.SetActive(false);
+        ShowSodaButtonTutorial();
     }
-    public void ShowBellTutorial(GameObject obj)
+    public void ShowBellTutorial()
     {
-        TrayManager.Instance.OnPlateAddedToTray.RemoveListener(ShowBellTutorial);
         bellTutorial.SetActive(true);
         var bell = FindAnyObjectByType<Bell>();
         if (bell!=null)
@@ -109,5 +105,22 @@ public class TutorialController : MonoBehaviour
         var bell = FindAnyObjectByType<Bell>();
         bell.OnBellPressed.RemoveListener(HideBellTutorial);
         bellTutorial.SetActive(false);
+    }
+    public void ShowSodaButtonTutorial()
+    {
+        sodaButtonTutorial.SetActive(true);
+    }
+    public void HideSodaButtonTutorial()
+    {
+        sodaButtonTutorial.SetActive(false);
+        ShowSodaHandleTutorial();
+    }
+    public void ShowSodaHandleTutorial()
+    {
+        sodaHandleTutorial.SetActive(true);
+    }
+    public void HideSodaHandleTutorial()
+    {
+        sodaHandleTutorial.SetActive(false);
     }
 }

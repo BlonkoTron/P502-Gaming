@@ -14,7 +14,6 @@ public class TrayManager : MonoBehaviour
 
     [SerializeField] private XRSocketInteractor plateSocket,sodaSocket;
 
-    public UnityEvent<GameObject> OnPlateAddedToTray;
     public UnityEvent<GameObject> OnSodaAddedToTray;
 
 
@@ -31,16 +30,13 @@ public class TrayManager : MonoBehaviour
     }
     private void Start()
     {
-        plateSocket.selectEntered.AddListener(SetPlateOnTray);
-        plateSocket.selectExited.AddListener(RemovePlateOnTray);
         sodaSocket.selectEntered.AddListener(SetSodaOnTray);
         sodaSocket.selectExited.AddListener(RemoveSodaOnTray);
         OrderController.Instance.OnOrderFullfilled.AddListener(ClearTray);
+        plateOnTray = FindAnyObjectByType<PlateManager>().gameObject;
     }
     private void OnDestroy()
     {
-        plateSocket.selectEntered.RemoveListener(SetPlateOnTray);
-        plateSocket.selectExited.RemoveListener(RemovePlateOnTray);
         sodaSocket.selectEntered.RemoveListener(SetSodaOnTray);
         sodaSocket.selectExited.RemoveListener(RemoveSodaOnTray);
     }
@@ -56,25 +52,16 @@ public class TrayManager : MonoBehaviour
         Debug.Log(sodaOnTray);
         OnSodaAddedToTray.Invoke(sodaOnTray);
     }
-
-    private void RemovePlateOnTray(SelectExitEventArgs arg0)
-    {
-        plateOnTray = null;
-    }
-
-    private void SetPlateOnTray(SelectEnterEventArgs arg0)
-    {
-        plateOnTray = arg0.interactableObject.transform.gameObject;
-        Debug.Log(plateOnTray);
-        OnPlateAddedToTray.Invoke(plateOnTray);
-    }
     private void ClearTray(bool fullfilled)
     {
         Destroy(sodaOnTray);
         var plateChild = plateOnTray.GetComponentInChildren<Transform>();
         foreach (Transform child in plateChild)
         {
-            Destroy(child.gameObject);
+            if (child.CompareTag("Stackable"))
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
     public List<Order.BurgerIngredient> GetBurgerOnTray()
@@ -89,7 +76,7 @@ public class TrayManager : MonoBehaviour
     {
         if (sodaOnTray!=null)
         {
-            // get the type of drink
+            return sodaOnTray.GetComponent<SodaLogic>().drinkType;
         }
         return Order.Drink.none;
     }

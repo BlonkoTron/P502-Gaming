@@ -536,8 +536,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../../504-gameelbow/504-gameelbow.fspro
-  sourceBankPath: ../../../504-gameelbow/Build
+  sourceProjectPath: Assets/504-gameelbow/504-gameelbow.fspro
+  sourceBankPath: Assets/504-gameelbow/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
