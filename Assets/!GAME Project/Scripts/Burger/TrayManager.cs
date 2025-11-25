@@ -76,7 +76,7 @@ public class TrayManager : MonoBehaviour
     {
         if (sodaOnTray!=null)
         {
-            // get the type of drink
+            return sodaOnTray.GetComponent<SodaLogic>().drinkType;
         }
         return Order.Drink.none;
     }
