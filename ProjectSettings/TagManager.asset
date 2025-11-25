@@ -36,6 +36,9 @@ TagManager:
   - Plate
   - Stackable
   - Bell
+  - SodaMachine
+  - NebulaBlast
+  - MoonJuice
   layers:
   - Default
   - TransparentFX

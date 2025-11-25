@@ -77,6 +77,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
       insertIndex: -1
       addedObject: {fileID: -8323974335360438790}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7975657380971697280}
   m_SourcePrefab: {fileID: 100100000, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}
 --- !u!1 &1237147578233741238 stripped
 GameObject:
@@ -223,7 +226,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 0
+  m_MovementType: 2
   m_PredictedVisualsTransform: {fileID: 1751568935102937112}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -270,6 +273,18 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &7975657380971697280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237147578233741238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1900778005486830860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c07f0d958f5992b48976c38c408a0a7b, type: 3}

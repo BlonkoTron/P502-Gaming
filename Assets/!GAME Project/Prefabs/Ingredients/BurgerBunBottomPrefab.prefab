@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8882091548790406691}
   - component: {fileID: 7059969493632943839}
   - component: {fileID: -8103920119070918170}
+  - component: {fileID: 445988180593543387}
   m_Layer: 0
   m_Name: BurgerBunBottomPrefab
   m_TagString: Stackable
@@ -95,7 +96,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &6273205922030063804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +171,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -270,6 +271,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &445988180593543387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6145670217918332362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71146ac20b380634ab983506198789e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Outposition: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  forceStrength: 1
+  Spacedoorscript: {fileID: 0}
 --- !u!1001 &9210563064175671962
 PrefabInstance:
   m_ObjectHideFlags: 0

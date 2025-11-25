@@ -1,10 +1,14 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class PlayerCalibrations : MonoBehaviour
 {
     [SerializeField] private PlayerSetUp playerSetUp;
-
+    [SerializeField] TrackBents trackBents;
+    [SerializeField] TrackRotations trackRotations;
 
     [Header("Dropdowns")]
     [SerializeField] private Dropdown bentInDrop;
@@ -20,8 +24,88 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private GameObject manuelConfigButton;
     [SerializeField] private GameObject autoConfigButton;
 
-   
-     
+    private int autoConfigNr;
+
+    private UnityEngine.XR.InputDevice controller;
+
+    private void Start()
+    {
+        autoConfigNr = 0;
+    }
+
+    private void FixedUpdate()
+    {
+        if (controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float triggerValue))
+        {
+            bool isPressed = triggerValue > 0.1f; // Adjust threshold if needed
+
+            if(isPressed)
+            {
+                switch (autoConfigNr)
+                {
+                    case 0:
+                        SetBentROMInAuto();
+                        break;
+                    case 1:
+                        SetBentROMDown();
+                        break;
+                    case 2:
+                        SetRotationROMUp();
+                        break;
+                    case 3:
+                        SetRotationROMDown();
+                        break;
+                }
+            }
+        }
+    }
+
+
+    public void AddAutoConficNr()
+    {
+         autoConfigNr++;
+    }
+
+    public void ResetAutoConficNr()
+    {
+        autoConfigNr = 0;
+    }
+
+    public void StartAutoConfig()
+    {
+        if (playerSetUp.isRightArm)
+        {
+            InitializeRightController();
+        }
+        else
+        {
+            InitializeLeftController();
+        }
+    }
+
+    private void InitializeRightController()
+    {
+        List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
+        InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
+        InputDevices.GetDevicesWithCharacteristics(rightControllerCharacteristics, devices);
+
+        if (devices.Count > 0)
+        {
+            controller = devices[0];
+        }
+    }
+
+    private void InitializeLeftController()
+    {
+        List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
+        InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
+        InputDevices.GetDevicesWithCharacteristics(leftControllerCharacteristics, devices);
+        if (devices.Count > 0)
+        {
+            controller = devices[0];
+        }
+    }
+
     public void ChooseLeftArm()
     {
         playerSetUp.isRightArm = false;
@@ -49,8 +133,6 @@ public class PlayerCalibrations : MonoBehaviour
         autoConfigButton.GetComponent<Image>().color = Color.green;
         manuelConfigButton.GetComponent<Image>().color = Color.white;
     }
-
-
 
     public void UpdateBentROMIn()
     {
@@ -130,7 +212,6 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-
     public void UpdateRotationROMDown()
     {
          switch (rotationDownDrop.value)
@@ -159,9 +240,25 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
+    public void SetBentROMInAuto()
+    {
+       playerSetUp.bentROMIn = trackBents.angleDegrees;
+    }
 
+    public void SetBentROMDown()
+    {
+        playerSetUp.bentROMOut = trackBents.angleDegrees;
+    }
 
+    public void SetRotationROMUp()
+    {
+        playerSetUp.rotationROMUp = 190 + trackRotations.angleDegrees;
+    }
 
+    public void SetRotationROMDown()
+    {
+        playerSetUp.rotationROMDown = 190 - trackRotations.angleDegrees;
+    }
 
 
 }

@@ -8,6 +8,10 @@ public class SodaLogic : MonoBehaviour
     [SerializeField] private GameObject NebulaBlast; // Second object to check if enabled
     [SerializeField] private Collider specificCollider; // The specific collider to detect contact with
     
+    [Header("Child Object Names")]
+    [SerializeField] private string moonJuiceChildName = ""; // Name of child object to check in MoonJuice
+    [SerializeField] private string nebulaBlastChildName = ""; // Name of child object to check in NebulaBlast
+    
     [Header("Material Settings")]
     [SerializeField] private GameObject objectToChangeMaterial; // The object whose material will change
     [SerializeField] private Material moonJuiceMaterial; // Material to apply when MoonJuice is enabled
@@ -21,22 +25,101 @@ public class SodaLogic : MonoBehaviour
     private bool isColliding = false;
     private float currentContactTime = 3f;
     private Renderer objectRenderer; // Cached renderer component
+    private GameObject moonJuiceChild; // Child object of MoonJuice to check
+    private GameObject nebulaBlastChild; // Child object of NebulaBlast to check
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // Find MoonJuice and NebulaBlast GameObjects if not assigned
+        if (MoonJuice == null)
+        {
+            MoonJuice = GameObject.FindWithTag("MoonJuice");
+            if (MoonJuice == null)
+            {
+                Debug.LogWarning("MoonJuice GameObject with tag 'MoonJuice' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found MoonJuice GameObject: " + MoonJuice.name);
+            }
+        }
+        
+        if (NebulaBlast == null)
+        {
+            NebulaBlast = GameObject.FindWithTag("NebulaBlast");
+            if (NebulaBlast == null)
+            {
+                Debug.LogWarning("NebulaBlast GameObject with tag 'NebulaBlast' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found NebulaBlast GameObject: " + NebulaBlast.name);
+            }
+        }
+
+        if (specificCollider == null)
+        {
+            GameObject sodaMachine = GameObject.FindWithTag("SodaMachine");
+            if (sodaMachine != null)
+            {
+                specificCollider = sodaMachine.GetComponent<Collider>();
+                if (specificCollider == null)
+                {
+                    Debug.LogWarning("SODA_machine found but has no Collider component!");
+                }
+                else
+                {
+                    Debug.Log("Found collider on SODA_machine: " + specificCollider.name);
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GameObject with tag 'SodaMachine' not found in scene!");
+            }
+        }
+        
+        // Find child objects if names are specified
+        if (MoonJuice != null && !string.IsNullOrEmpty(moonJuiceChildName))
+        {
+            Transform childTransform = MoonJuice.transform.Find(moonJuiceChildName);
+            if (childTransform != null)
+            {
+                moonJuiceChild = childTransform.gameObject;
+                Debug.Log($"Found child '{moonJuiceChildName}' in MoonJuice");
+            }
+            else
+            {
+                Debug.LogWarning($"Child '{moonJuiceChildName}' not found in MoonJuice!");
+            }
+        }
+        else if (MoonJuice != null)
+        {
+            Debug.LogWarning("MoonJuice child name not specified!");
+        }
+        
+        if (NebulaBlast != null && !string.IsNullOrEmpty(nebulaBlastChildName))
+        {
+            Transform childTransform = NebulaBlast.transform.Find(nebulaBlastChildName);
+            if (childTransform != null)
+            {
+                nebulaBlastChild = childTransform.gameObject;
+                Debug.Log($"Found child '{nebulaBlastChildName}' in NebulaBlast");
+            }
+            else
+            {
+                Debug.LogWarning($"Child '{nebulaBlastChildName}' not found in NebulaBlast!");
+            }
+        }
+        else if (NebulaBlast != null)
+        {
+            Debug.LogWarning("NebulaBlast child name not specified!");
+        }
+        
         // Ensure all objects are assigned
         if (targetObject == null)
         {
             Debug.LogWarning("Target object not assigned in SodaLogic!");
-        }
-        if (MoonJuice == null)
-        {
-            Debug.LogWarning("MoonJuice not assigned in SodaLogic!");
-        }
-        if (NebulaBlast == null)
-        {
-            Debug.LogWarning("NebulaBlast not assigned in SodaLogic!");
         }
         if (specificCollider == null)
         {
@@ -111,8 +194,9 @@ public class SodaLogic : MonoBehaviour
     // Log which condition objects are currently active
     private void LogActiveConditionObjects()
     {
-        bool moonJuiceActive = MoonJuice != null && MoonJuice.activeInHierarchy;
-        bool nebulaBlastActive = NebulaBlast != null && NebulaBlast.activeInHierarchy;
+        // Only check child objects
+        bool moonJuiceActive = moonJuiceChild != null && moonJuiceChild.activeInHierarchy;
+        bool nebulaBlastActive = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy;
         
         if (moonJuiceActive && nebulaBlastActive)
         {
@@ -159,8 +243,9 @@ public class SodaLogic : MonoBehaviour
     // Check if either of the condition objects is active/enabled
     private bool IsEitherConditionObjectActive()
     {
-        bool MoonJuiceActive = MoonJuice != null && MoonJuice.activeInHierarchy;
-        bool NebulaBlastActive = NebulaBlast != null && NebulaBlast.activeInHierarchy;
+        // Only check child objects
+        bool MoonJuiceActive = moonJuiceChild != null && moonJuiceChild.activeInHierarchy;
+        bool NebulaBlastActive = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy;
 
         return MoonJuiceActive || NebulaBlastActive;
     }
