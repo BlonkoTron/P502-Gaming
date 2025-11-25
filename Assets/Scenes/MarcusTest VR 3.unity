@@ -6112,10 +6112,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Armperson
       objectReference: {fileID: 0}
+    - target: {fileID: 3415341856882785689, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3666974420177269422, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_AttachTransform
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5154285121642958534, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5154285121642958534, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f95c205049f12cc4cb5bd57dbded286c, type: 2}
+    - target: {fileID: 5154285121642958534, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: -361308126989364725, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 24.813
