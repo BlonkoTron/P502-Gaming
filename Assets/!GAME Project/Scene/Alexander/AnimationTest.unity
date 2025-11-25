@@ -7535,6 +7535,14 @@ PrefabInstance:
       propertyPath: m_RequestedTrackingOriginMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0ca43c2b7522ca0499c46a8a4598c40c, type: 2}
     - target: {fileID: 2382796249907942260, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_Name
       value: Armperson
