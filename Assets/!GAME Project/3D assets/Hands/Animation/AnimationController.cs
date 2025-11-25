@@ -7,7 +7,10 @@ public class AnimationController : MonoBehaviour
     public InputActionProperty grabAction;
     public InputActionProperty triggerAction;
 
-    public Animator righthandAnimator;
+    public InputActionProperty grabActionLeft;
+    public InputActionProperty triggerActionLeft;
+
+    public Animator handAnimator;
 
 
 
@@ -21,10 +24,17 @@ public class AnimationController : MonoBehaviour
     void Update()
     {
         float grabValue = grabAction.action.ReadValue<float>();
-        righthandAnimator.SetFloat("grab", grabValue);
+        handAnimator.SetFloat("grab", grabValue);
 
 
         float triggerValue = triggerAction.action.ReadValue<float>();
-        righthandAnimator.SetFloat("trigger", triggerValue);
+        handAnimator.SetFloat("trigger", triggerValue);
+
+        float grabValueLeft = grabActionLeft.action.ReadValue<float>();
+        handAnimator.SetFloat("grabLeft", grabValueLeft);
+
+        float triggerValueLeft = triggerActionLeft.action.ReadValue<float>();
+        handAnimator.SetFloat("triggerLeft", triggerValueLeft);
+
     }
 }

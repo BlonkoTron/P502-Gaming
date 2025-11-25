@@ -6266,11 +6266,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3976662514230705942, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
   m_PrefabInstance: {fileID: 1102918442}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &856750828 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-  m_PrefabInstance: {fileID: 1102918442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &856750829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6307,7 +6302,31 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  righthandAnimator: {fileID: 856750828}
+  grabActionLeft:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Grab Action Left
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 43406893-32b6-4edd-9c59-dac98c3c60cc
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  triggerActionLeft:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Trigger Action Left
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 19d271a4-3427-42cb-8a88-9fae38fcba45
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  handAnimator: {fileID: 0}
 --- !u!1 &903627983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7578,6 +7597,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122618772}
     m_Modifications:
+    - target: {fileID: 931559687259248243, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 12.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 931559687259248243, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -67.408
+      objectReference: {fileID: 0}
+    - target: {fileID: 931559687259248243, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 95.118
+      objectReference: {fileID: 0}
     - target: {fileID: 1082793904260096680, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_RequestedTrackingOriginMode
       value: 2
