@@ -6261,6 +6261,53 @@ MonoBehaviour:
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
+--- !u!1 &856750825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3976662514230705942, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+  m_PrefabInstance: {fileID: 1102918442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &856750828 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+  m_PrefabInstance: {fileID: 1102918442}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &856750829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856750825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7ee4721727bdd458db7580f65c75b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 56dc5c25-5436-479d-8ac2-40a526d2874d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  triggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6aaa7c62-ba62-4565-9a85-c7e8d32fee75
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  righthandAnimator: {fileID: 856750828}
 --- !u!1 &903627983
 GameObject:
   m_ObjectHideFlags: 0
@@ -7535,6 +7582,18 @@ PrefabInstance:
       propertyPath: m_RequestedTrackingOriginMode
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 0ca43c2b7522ca0499c46a8a4598c40c, type: 2}
+    - target: {fileID: 2276358678060123810, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2382796249907942260, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_Name
       value: Armperson
@@ -7590,7 +7649,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3976662514230705942, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 856750829}
   m_SourcePrefab: {fileID: 100100000, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
 --- !u!20 &1102918443 stripped
 Camera:

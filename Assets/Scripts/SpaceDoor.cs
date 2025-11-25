@@ -13,7 +13,7 @@ public class SpaceDoor : MonoBehaviour
     //waittime between open/close
     public float waitTime = 2.0f;
 
-    private void Update()
+    public void Update()
     {
         if ((Doorpress == true) && (cooldown == false))
         {
@@ -41,5 +41,12 @@ public class SpaceDoor : MonoBehaviour
         Spacedoor.SetBool("Open", false);
         cooldown = false;
         Debug.Log("timer done");
+    }
+
+    public void ButtonOpenRoof()
+    {
+        opening();
+        cooldown = true;
+
     }
 }
