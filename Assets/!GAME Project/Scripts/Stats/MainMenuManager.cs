@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +19,6 @@ public class MainMenuManager : MonoBehaviour
     [Header("Other GameObjects")]
     [SerializeField] Button startGameButton;
     [SerializeField] GameObject missingConfigText;
-   
-
-
 
 
     private void Start()
@@ -28,8 +26,6 @@ public class MainMenuManager : MonoBehaviour
         GoToPanel(welcomePanel);
         CheckIfConfigured();
     }
-
-    
 
     public void ShowBents()
     {
