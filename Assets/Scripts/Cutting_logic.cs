@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Cutting_logic : MonoBehaviour
 {
+
+    Transform parentT;
+
     [Header("Current ingredient")]
     public GameObject Ingredient;
 
@@ -11,6 +14,12 @@ public class Cutting_logic : MonoBehaviour
 
     //Get the current position of the ingredient which needs to be cut
     private Transform Ingredient_position;
+
+
+    private void Start()
+    {
+        parentT = this.transform.parent;
+    }
 
     private void Update()
     {
@@ -24,7 +33,7 @@ public class Cutting_logic : MonoBehaviour
         if (other.gameObject.CompareTag("Knife"))
         {
             Destroy(Ingredient);
-            Instantiate(Cut_Ingredient,Ingredient_position.transform.position, Quaternion.identity);
+            Instantiate(Cut_Ingredient,Ingredient_position.transform.position, Quaternion.identity, parent:parentT);
         }
     }
 }
