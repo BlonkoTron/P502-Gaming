@@ -5444,7 +5444,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -5927,7 +5927,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -6027,7 +6027,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -6095,15 +6095,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606984352401130583}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9999871, z: -0, w: 0.005086452}
-  m_LocalPosition: {x: 0.29937592, y: 0.69546586, z: -0.3055025}
-  m_LocalScale: {x: 0.047648992, y: 0.047648992, z: 0.047648992}
+  m_LocalRotation: {x: 0.9659134, y: 0.25881562, z: 0.004913062, w: 0.0013165325}
+  m_LocalPosition: {x: 0.057, y: 0.064, z: -0.055}
+  m_LocalScale: {x: 0.02261993, y: 0.02261993, z: 0.02261993}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3438037482906350811}
   - {fileID: 1728640538673107480}
   m_Father: {fileID: 7597548219075933260}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.417, z: 150}
 --- !u!1 &1659037502257761577
 GameObject:
   m_ObjectHideFlags: 0
@@ -6161,7 +6161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055461546755687985}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7035009, z: -0, w: 0.7106943}
+  m_LocalRotation: {x: 0, y: -0.7035001, z: 0, w: 0.71069515}
   m_LocalPosition: {x: 23.744, y: -1.170527, z: 10.332}
   m_LocalScale: {x: 2.0253, y: 2.0253, z: 2.0253}
   m_ConstrainProportionsScale: 0
@@ -6285,7 +6285,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -6385,7 +6385,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -6487,7 +6487,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -6926,7 +6926,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -7026,7 +7026,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -12087,7 +12087,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -12189,7 +12189,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -12468,7 +12468,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -12568,7 +12568,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -12963,7 +12963,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -13063,7 +13063,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -13163,7 +13163,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -13263,7 +13263,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
@@ -13331,12 +13331,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9066426388359714035}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9999871, z: -0, w: 0.005086452}
-  m_LocalPosition: {x: 0.2895417, y: 0.69546586, z: 0.6611539}
-  m_LocalScale: {x: 0.047648992, y: 0.047648992, z: 0.047648992}
+  m_LocalRotation: {x: 0.9659134, y: 0.25881562, z: 0.004913062, w: 0.0013165325}
+  m_LocalPosition: {x: 0.052, y: 0.064, z: 0.404}
+  m_LocalScale: {x: 0.02261993, y: 0.02261993, z: 0.02261993}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1560709890429295057}
   - {fileID: 7253760793894544614}
   m_Father: {fileID: 7597548219075933260}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 179.417, z: 150}
