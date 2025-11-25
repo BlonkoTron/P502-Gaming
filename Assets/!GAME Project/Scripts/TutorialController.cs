@@ -41,10 +41,6 @@ public class TutorialController : MonoBehaviour
         {
             OrderController.Instance.OnNewOrderGenerated.AddListener(ShowFoodTubeTutorial);
         }
-        if (TrayManager.Instance!=null)
-        {
-            TrayManager.Instance.OnPlateAddedToTray.AddListener(ShowBellTutorial);
-        }
         if (knife!=null)
         {
             knife.firstSelectEntered.AddListener(HideCuttingTutorial);
@@ -95,9 +91,8 @@ public class TutorialController : MonoBehaviour
         beefCookingTutorial.SetActive(false);
         ShowSodaButtonTutorial();
     }
-    public void ShowBellTutorial(GameObject obj)
+    public void ShowBellTutorial()
     {
-        TrayManager.Instance.OnPlateAddedToTray.RemoveListener(ShowBellTutorial);
         bellTutorial.SetActive(true);
         var bell = FindAnyObjectByType<Bell>();
         if (bell!=null)
