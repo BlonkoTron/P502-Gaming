@@ -29,7 +29,7 @@ public class SodaLogic : MonoBehaviour
     private GameObject moonJuiceChild; // Child object of MoonJuice to check
     private GameObject nebulaBlastChild; // Child object of NebulaBlast to check
 
-    private Order.Drink drinkType;
+    public Order.Drink drinkType;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
