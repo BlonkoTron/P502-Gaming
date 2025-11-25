@@ -1401,8 +1401,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224136732}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1640396, y: 0.6984385, z: -1.6159377}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -2.971, y: 0.6984385, z: 0.476}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1410,7 +1410,7 @@ Transform:
   - {fileID: 1365655281}
   - {fileID: 332238237}
   m_Father: {fileID: 122618772}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &240067895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7075,7 +7075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818483363135603526, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1229
+      value: 0.258
       objectReference: {fileID: 0}
     - target: {fileID: 2818483363135603526, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13265,7 +13265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1300489611
 Transform:
   m_ObjectHideFlags: 0
@@ -16236,6 +16236,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7865523820140408570, guid: 2ae63f60275bfce42b3b869f67a3fee0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bbb56ac3cf3c61a46ab3887c0fdbda8f, type: 2}
+    - target: {fileID: 8644427602593602580, guid: 2ae63f60275bfce42b3b869f67a3fee0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: bbb56ac3cf3c61a46ab3887c0fdbda8f, type: 2}
     - target: {fileID: 8647745128064493827, guid: 2ae63f60275bfce42b3b869f67a3fee0, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -18935,6 +18943,10 @@ PrefabInstance:
     - target: {fileID: 2143887385365818954, guid: c81b07667ca972145b1e9c146d4db27a, type: 3}
       propertyPath: m_Name
       value: TutorialController
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076708943721434517, guid: c81b07667ca972145b1e9c146d4db27a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.108
       objectReference: {fileID: 0}
     - target: {fileID: 6707349684207900744, guid: c81b07667ca972145b1e9c146d4db27a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29935,7 +29947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915851012597306956, guid: 8b1e4d351ba5c1542963836fb3511b12, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.47241592
+      value: -0.09151602
       objectReference: {fileID: 0}
     - target: {fileID: 4915851012597306956, guid: 8b1e4d351ba5c1542963836fb3511b12, type: 3}
       propertyPath: m_LocalRotation.w
