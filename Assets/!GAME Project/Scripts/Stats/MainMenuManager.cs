@@ -79,11 +79,11 @@ public class MainMenuManager : MonoBehaviour
     {
         if (playerSetUp.isManualConfig)
         {
-            GoToPanel(manuelConfigurationPanel);
+            StartCoroutine(DelayGoToPanel(0.5f, manuelConfigurationPanel));
         }
         else
         {
-            GoToPanel(automaticConfigurationPanel);
+            StartCoroutine(DelayGoToPanel(0.5f, automaticConfigurationPanel));
         }
     }
     
