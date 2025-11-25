@@ -242,15 +242,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Raw: {fileID: 2100000, guid: 76d54aac5a70a2a41996f0006264aafd, type: 2}
-  Halfcooked: {fileID: 2100000, guid: a50cf736a8229ed478a199d6af8948be, type: 2}
+  HalfCooked: {fileID: 2100000, guid: a50cf736a8229ed478a199d6af8948be, type: 2}
   Cooked: {fileID: 2100000, guid: 599103bb17cf40a4bb2b27acfac423f2, type: 2}
   Burnt: {fileID: 2100000, guid: 926a443c17dff1944bee39ad32d40b89, type: 2}
   beef: {fileID: 5222391013609667947}
   DesiredCooktime: 20
-  Cooktime: 0
-  fliptimethreshold: 5
-  isflipped: 0
-  halfCookedReached: 0
+  flipTimeThreshold: 5
   cookedParticle: {fileID: 4765213176015788571, guid: b186e89ec8a7afa4f99f0cf698d6f7b3, type: 3}
   burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
 --- !u!114 &871668504160185310

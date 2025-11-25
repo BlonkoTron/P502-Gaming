@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(IngredientStackable))]
 public class CookBeef : MonoBehaviour
 {
     // Materials for the different stages of cooking
     public Material Raw;
-    public Material Halfcooked;
+    public Material HalfCooked;
     public Material Cooked;
     public Material Burnt;
 
@@ -16,20 +17,23 @@ public class CookBeef : MonoBehaviour
     [SerializeField] private float DesiredCooktime = 1000f;
 
     // Runtime values (not saved in inspector)
-    [SerializeField] private float Cooktime;
+    private float Cooktime;
     private float HalfwayPoint;
     private float OvercookTimer = 10f;
 
     // How much time the player has to flip
-    public float fliptimethreshold = 5f;
+    public float flipTimeThreshold = 5f;
 
     // State flags
-    [SerializeField] private bool isflipped = false;
-    [SerializeField] private bool halfCookedReached = false;
+    private bool isflipped = false;
+    private bool halfCookedReached = false;
+    private bool isCooked = false;
+    private bool isBurnt = false;
 
     [SerializeField] private GameObject cookedParticle, burntParticle;
 
 
+    private IngredientStackable ingredientStackable;
     private Grill grill;
 
     void Start()
@@ -37,7 +41,8 @@ public class CookBeef : MonoBehaviour
         // Initialize runtime values
         Cooktime = DesiredCooktime;
         HalfwayPoint = DesiredCooktime / 2f;
-
+        ingredientStackable = GetComponent<IngredientStackable>();
+        ingredientStackable.enabled = false;
         grill = null;
 
         // Default material
@@ -53,53 +58,65 @@ public class CookBeef : MonoBehaviour
         {
             grill = other.GetComponent<Grill>();
         }
-        else
+        else if (grill.grillOn)
         {
-            if (grill.grillOn)
+            // Reduce cooking time
+            Cooktime -= Time.deltaTime;
+
+            // ---- HALF COOKED SIDE ----
+            if (Cooktime <= HalfwayPoint && !isflipped)
             {
-                // Reduce cooking time
-                Cooktime -= Time.deltaTime;
-
-                // ---- HALF COOKED SIDE ----
-                if (Cooktime <= HalfwayPoint && !isflipped)
+                if (!halfCookedReached)
                 {
-                    beef.GetComponent<MeshRenderer>().material = Halfcooked;
-                    halfCookedReached = true;
-                    Instantiate(cookedParticle, transform.position,Quaternion.identity);
-
-                    // If player never flips → burn
-                    if (Cooktime <= 0f)
-                    {
-                        beef.GetComponent<MeshRenderer>().material = Burnt;
-                        Instantiate(burntParticle, transform.position, Quaternion.identity);
-
-                    }
+                    BeefHalfCooked();
                 }
 
-                // ---- SECOND SIDE ----
-                if (halfCookedReached && isflipped)
+                // If player never flips → burn
+                if (Cooktime <= 0f && !isBurnt)
                 {
-                    if (Cooktime <= 0f)
+                    BeefBurnt();
+                }
+            }
+            // ---- SECOND SIDE ----
+            if (halfCookedReached && isflipped)
+            {
+                if (Cooktime <= 0f && !isBurnt)
+                {
+                    // Cooked first
+                    if (!isCooked)
                     {
-                        // Cooked first
-                        beef.GetComponent<MeshRenderer>().material = Cooked;
-                        Instantiate(cookedParticle, transform.position, Quaternion.identity);
+                        BeefCooked();
+                    }
+                    // Start burning countdown
+                    OvercookTimer -= Time.deltaTime;
 
-
-                        // Start burning countdown
-                        OvercookTimer -= Time.deltaTime;
-
-                        if (OvercookTimer <= 0f)
-                        {
-                            beef.GetComponent<MeshRenderer>().material = Burnt;
-                            Instantiate(burntParticle, transform.position, Quaternion.identity);
-                        }
+                    if (OvercookTimer <= 0f && !isBurnt)
+                    {
+                        BeefBurnt();
                     }
                 }
             }
-            
         }
-
+    }
+    private void BeefHalfCooked()
+    {
+        beef.GetComponent<MeshRenderer>().material = HalfCooked;
+        halfCookedReached = true;
+        Instantiate(cookedParticle, transform.position, Quaternion.identity);
+    }
+    private void BeefCooked()
+    {
+        beef.GetComponent<MeshRenderer>().material = Cooked;
+        Instantiate(cookedParticle, transform.position, Quaternion.identity);
+        ingredientStackable.enabled = true;
+        isCooked = true;
+    }
+    private void BeefBurnt()
+    {
+        beef.GetComponent<MeshRenderer>().material = Burnt;
+        Instantiate(burntParticle, transform.position, Quaternion.identity);
+        ingredientStackable.enabled = false;
+        isBurnt = true;
     }
 
     private void OnTriggerExit(Collider other)
@@ -114,7 +131,7 @@ public class CookBeef : MonoBehaviour
     IEnumerator CheckFlip()
     {
         // Give player time to flip
-        yield return new WaitForSeconds(fliptimethreshold);
+        yield return new WaitForSeconds(flipTimeThreshold);
 
         float yRot = transform.eulerAngles.y;
 
