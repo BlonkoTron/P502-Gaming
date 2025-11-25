@@ -260,5 +260,14 @@ public class PlayerCalibrations : MonoBehaviour
         playerSetUp.rotationROMDown = 190 - trackRotations.angleDegrees;
     }
 
+    public void ResetAllSetUp()
+    {
+        playerSetUp.rotationROMUp = 0;
+        playerSetUp.rotationROMDown = 0;
+        playerSetUp.bentROMIn = 0;
+        playerSetUp.bentROMOut = 0;
+
+        playerSetUp.isConfigured = false;
+    }
 
 }
