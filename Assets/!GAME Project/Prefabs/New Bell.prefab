@@ -5120,7 +5120,7 @@ GameObject:
   - component: {fileID: 6561645088974127963}
   m_Layer: 0
   m_Name: New Bell
-  m_TagString: Untagged
+  m_TagString: Bell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5296,7 +5296,6 @@ MonoBehaviour:
   OnBellPressed:
     m_PersistentCalls:
       m_Calls: []
-  bellCooldown: 1
 --- !u!1 &6815604141919545835
 GameObject:
   m_ObjectHideFlags: 0
