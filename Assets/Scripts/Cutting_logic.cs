@@ -29,7 +29,7 @@ public class Cutting_logic : MonoBehaviour
         if (other.gameObject.CompareTag("Knife"))
         {
             Destroy(Ingredient);
-            Audiomanager.instance.UpdateSoundPosition(Cutsound, transform.position);
+            Cutsound = Audiomanager.instance.PlaySound(Cutting, transform.position);
             Instantiate(Cut_Ingredient,Ingredient_position.transform.position, Quaternion.identity);
         }
     }

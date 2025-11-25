@@ -1542,6 +1542,50 @@ MonoBehaviour:
       Data4: 0
     Path: 
   Cut_Ingredient: {fileID: 5265902554537905292, guid: 93c006b7b1d85974e9e950e49b1ca63f, type: 3}
+--- !u!1 &1449023340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1449023342}
+  - component: {fileID: 1449023341}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1449023341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449023340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9016f8d3b48f724aa11c4226bfa7aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1449023342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449023340}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.2939866, y: -3.2815497, z: -2.252965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1549816392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2206,7 +2250,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1776739028345063909, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2435,16 +2480,44 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2092271856}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: resetAngle
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: triggerAngle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: resetDistance
-      value: 0.05
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Path
+      value: event:/WorldSFX/Ropetight
       objectReference: {fileID: 0}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: triggerCooldown
-      value: 2
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data1
+      value: -1958155338
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data2
+      value: 1131688112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data3
+      value: 1413752474
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data4
+      value: -1377919759
       objectReference: {fileID: 0}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: pullDistanceThreshold
-      value: 0.05
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: onPulled.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2481,3 +2554,4 @@ SceneRoots:
   - {fileID: 318897921}
   - {fileID: 781729867}
   - {fileID: 1633276725}
+  - {fileID: 1449023342}

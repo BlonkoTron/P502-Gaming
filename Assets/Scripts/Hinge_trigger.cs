@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using FMOD.Studio;
+using FMODUnity;
+using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(HingeJoint))]
@@ -20,6 +22,9 @@ public class Hinge_trigger : MonoBehaviour
 
     [Header("Events")]
     public UnityEvent onPulled;
+
+    private EventInstance Ropepull;
+    [SerializeField] private EventReference ropinger;
 
     private bool isTriggered;
     private float lastTriggerTime;
@@ -54,6 +59,7 @@ public class Hinge_trigger : MonoBehaviour
 
         if (!isTriggered && (anglePulled || distancePulled) && Time.time - lastTriggerTime > triggerCooldown)
         {
+            Ropepull = Audiomanager.instance.PlaySound(ropinger, transform.position);
             isTriggered = true;
             lastTriggerTime = Time.time;
             Debug.Log($"[HingeTrigger] Pulled (Angle:{angle:F2} Dist:{smoothedDistance:F3})");
