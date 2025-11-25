@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3947761248897466323}
   - component: {fileID: 629622834878501974}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tomato COL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +145,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6089110636516407385}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4791480510759625972}
   m_SourcePrefab: {fileID: 100100000, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
 --- !u!1 &8270663794711048887 stripped
 GameObject:
@@ -341,7 +344,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &6089110636516407385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +357,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4791480510759625972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270663794711048887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71146ac20b380634ab983506198789e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Outposition: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  forceStrength: 1
+  Spacedoorscript: {fileID: 0}
 --- !u!4 &8758547218562017293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}

@@ -7,7 +7,8 @@ public class StickyPlater : MonoBehaviour
     {
         ingredientrigid = other.gameObject.GetComponent<Rigidbody>();
         ingredientrigid.isKinematic = true;
-        ingredientrigid.transform.rotation = Quaternion.identity;
+        ingredientrigid.isKinematic = false;
+        //ingredientrigid.transform.rotation = Quaternion.identity;
     }
 
     private void OnTriggerExit(Collider other)

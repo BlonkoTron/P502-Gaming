@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3304038256104482195}
   - component: {fileID: 2837460753939949749}
   - component: {fileID: 871668504160185310}
+  - component: {fileID: -3167924467404326646}
   m_Layer: 0
   m_Name: CookedBeefPrefab
   m_TagString: Stackable
@@ -65,7 +66,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &1407484840678472483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,15 +242,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Raw: {fileID: 2100000, guid: 76d54aac5a70a2a41996f0006264aafd, type: 2}
-  Halfcooked: {fileID: 2100000, guid: a50cf736a8229ed478a199d6af8948be, type: 2}
+  HalfCooked: {fileID: 2100000, guid: a50cf736a8229ed478a199d6af8948be, type: 2}
   Cooked: {fileID: 2100000, guid: 599103bb17cf40a4bb2b27acfac423f2, type: 2}
   Burnt: {fileID: 2100000, guid: 926a443c17dff1944bee39ad32d40b89, type: 2}
   beef: {fileID: 5222391013609667947}
   DesiredCooktime: 20
-  Cooktime: 0
-  fliptimethreshold: 5
-  isflipped: 0
-  halfCookedReached: 0
+  flipTimeThreshold: 5
   cookedParticle: {fileID: 4765213176015788571, guid: b186e89ec8a7afa4f99f0cf698d6f7b3, type: 3}
   burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
 --- !u!114 &871668504160185310
@@ -259,11 +257,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6847485712896760778}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-3167924467404326646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847485712896760778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71146ac20b380634ab983506198789e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Outposition: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  forceStrength: 1
+  Spacedoorscript: {fileID: 0}
 --- !u!1 &7921073036458537665
 GameObject:
   m_ObjectHideFlags: 0

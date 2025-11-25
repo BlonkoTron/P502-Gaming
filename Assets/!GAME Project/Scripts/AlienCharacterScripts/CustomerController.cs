@@ -32,7 +32,10 @@ public class CustomerController : MonoBehaviour
 
     public void EndOrder(bool correctOrder)
     {
-        currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone"); 
+        if (currentCustomer!=null)
+        {
+            currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone");
+        }
     }
 
 }

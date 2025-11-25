@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -24,6 +25,17 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private GameObject manuelConfigButton;
     [SerializeField] private GameObject autoConfigButton;
 
+    [Header("Auto Configuration")]
+    [SerializeField] TMP_Text bentInROMText;
+    [SerializeField] TMP_Text bentOutROMText;
+    [SerializeField] TMP_Text rotationUpROMText;
+    [SerializeField] TMP_Text rotationDownROMText;
+    
+    [SerializeField] private Button bentInButton;
+    [SerializeField] private Button bentOutButton;
+    [SerializeField] private Button rotationUpButton;
+    [SerializeField] private Button rotationDownButton;
+
     private int autoConfigNr;
 
     private UnityEngine.XR.InputDevice controller;
@@ -44,16 +56,25 @@ public class PlayerCalibrations : MonoBehaviour
                 switch (autoConfigNr)
                 {
                     case 0:
+                        Debug.Log("Trigger pressed - Setting Bent ROM In");
                         SetBentROMInAuto();
+                        bentInROMText.text = "Bent ROM In: " + playerSetUp.bentROMIn.ToString();
+                        ActivateButton(bentInButton);
                         break;
                     case 1:
                         SetBentROMDown();
+                        bentOutROMText.text = "Bent ROM Out: " + playerSetUp.bentROMOut.ToString();
+                        ActivateButton(bentOutButton);
                         break;
                     case 2:
                         SetRotationROMUp();
+                        rotationUpROMText.text = "Rotation ROM Up: " + playerSetUp.rotationROMUp.ToString();
+                        ActivateButton(rotationUpButton);
                         break;
                     case 3:
                         SetRotationROMDown();
+                        rotationDownROMText.text = "Rotation ROM Down: " + playerSetUp.rotationROMDown.ToString();
+                        ActivateButton(rotationDownButton);
                         break;
                 }
             }
@@ -259,6 +280,49 @@ public class PlayerCalibrations : MonoBehaviour
     {
         playerSetUp.rotationROMDown = 190 - trackRotations.angleDegrees;
     }
+
+    public void ResetAllSetUp()
+    {
+        playerSetUp.rotationROMUp = 0;
+        playerSetUp.rotationROMDown = 0;
+        playerSetUp.bentROMIn = 0;
+        playerSetUp.bentROMOut = 0;
+
+        playerSetUp.isConfigured = false;
+    }
+
+    public void ActivateButton(Button button)
+    {
+        switch (autoConfigNr)
+        {
+            case 0:
+                if (playerSetUp.bentROMIn != 0)
+                {
+                    button.interactable = true;
+                }
+                break;
+            case 1:
+                if (playerSetUp.bentROMOut != 0)
+                {
+                    button.interactable = true;
+                }
+                break;
+            case 2:
+                if (playerSetUp.rotationROMUp != 0)
+                {
+                    button.interactable = true;
+                }
+                break;
+            case 3:
+                if (playerSetUp.rotationROMDown != 0)
+                {
+                    button.interactable = true;
+                }
+                break;
+        }
+    }
+
+
 
 
 }

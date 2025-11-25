@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 520136078694274868}
   - component: {fileID: -1605436236464960253}
   - component: {fileID: -4901581936005801321}
+  - component: {fileID: -8313105105630190510}
   m_Layer: 0
   m_Name: CutSaladPrefab
   m_TagString: Stackable
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -236,7 +237,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &-1605436236464960253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,11 +266,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2865726061224958163}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8313105105630190510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2865726061224958163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71146ac20b380634ab983506198789e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Outposition: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  forceStrength: 1
+  Spacedoorscript: {fileID: 0}
 --- !u!1001 &2914021641181663259
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class IngredientFly : MonoBehaviour
 {
+
+    [SerializeField] GameObject parent;
+    
+
+
     //Set up list
     [Header("Ingredient Prefabs")]
     public List<GameObject> ingredients;
@@ -26,6 +31,8 @@ public class IngredientFly : MonoBehaviour
     public float MaxY = 0;
     public float MaxX = 0;
     public float MaxZ = 0;
+
+   
 
     private void Update()
     {
@@ -60,7 +67,7 @@ public class IngredientFly : MonoBehaviour
             GameObject chosenIngredient = ingredients[randomIndex];
 
             // Spawn it from "spawnpos gameobject"
-            GameObject obj = Instantiate(chosenIngredient, spawnPos.position, Quaternion.identity);
+            GameObject obj = Instantiate(chosenIngredient, spawnPos.position, Quaternion.identity, parent:parent.transform);
 
             // Launch in random direction
             Rigidbody rb = obj.GetComponent<Rigidbody>();
