@@ -1536,11 +1536,11 @@ MonoBehaviour:
   Ingredient: {fileID: 1309324692}
   Cutting:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1636397518
+      Data2: 1100264756
+      Data3: -501485937
+      Data4: -518836998
+    Path: event:/WorldSFX/Cutting_1
   Cut_Ingredient: {fileID: 5265902554537905292, guid: 93c006b7b1d85974e9e950e49b1ca63f, type: 3}
 --- !u!1 &1449023340
 GameObject:
