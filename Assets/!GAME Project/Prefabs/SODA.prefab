@@ -189,6 +189,7 @@ MonoBehaviour:
   nebulaBlastMaterial: {fileID: 2100000, guid: 0263c1135ffa4e0458b62e26cf04e8de, type: 2}
   enableOnAction: 1
   requiredContactTime: 1
+  drinkType: 0
 --- !u!65 &8385813383050747398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -232,11 +233,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2097992664663945144
 MonoBehaviour:
   m_ObjectHideFlags: 0
