@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -85,11 +86,35 @@ public class MainMenuManager : MonoBehaviour
             GoToPanel(automaticConfigurationPanel);
         }
     }
+    
 
+    public void StartDelayGoToPanel(GameObject panel)
+    {
+        StartCoroutine (DelayGoToPanel(0.5f, panel));
+    }
 
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
+
+    IEnumerator DelayGoToPanel(float delay, GameObject panel)
+    {
+        // Disable all panels
+        welcomePanel.SetActive(false);
+        selectArmPanel.SetActive(false);
+        chooseConfigurationPanel.SetActive(false);
+        manuelConfigurationPanel.SetActive(false);
+        automaticConfigurationPanel.SetActive(false);
+        startGamePanel.SetActive(false);
+        statsPanel.SetActive(false);
+
+        yield return new WaitForSeconds(delay);
+
+        panel.SetActive(true);
+
+    }
+
+    
 
 }

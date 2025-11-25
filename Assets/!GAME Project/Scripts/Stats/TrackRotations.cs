@@ -48,8 +48,13 @@ public class TrackRotations : MonoBehaviour
     private void FixedUpdate()
     {
         CalculateRotation();
-        if (!tracking) return;
-        CheckRotation();
+        if (!tracking)
+        { return; }
+        else
+        {
+            CheckRotation();
+        }
+            
     }
 
     private void CalculateRotation()
