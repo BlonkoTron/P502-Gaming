@@ -7,29 +7,29 @@ public class Hinge_trigger : MonoBehaviour
     [Header("References")]
     public HingeJoint hinge;
 
-    [Header("Trigger Settings")]
-    public float pullDistanceThreshold = 0.5f;
+    [Header("Angle Trigger")]
+    public float triggerAngle = 10f;
+    public float resetAngle = 5f;
 
-    public float resetDistance = 0.3f;
+    [Header("Pull Trigger")]
+    public float pullDistanceThreshold = 0.1f;
+    public float resetDistance = 0.05f;
 
-    public float triggerCooldown = 1.0f;
+    [Header("Cooldown")]
+    public float triggerCooldown = 1f;
 
     [Header("Events")]
-    public UnityEvent onPulled; // Assign actions
+    public UnityEvent onPulled;
 
+    private bool isTriggered;
+    private float lastTriggerTime;
     private Vector3 localAnchor;
     private Vector3 localConnectedAnchor;
-
     private float smoothedDistance;
-    private float lastTriggerTime;
-    private bool isTriggered;
 
     void Awake()
     {
-        if (!hinge)
-            hinge = GetComponent<HingeJoint>();
-
-        // Cache local anchors so we don’t keep accessing transforms each frame
+        if (!hinge) hinge = GetComponent<HingeJoint>();
         localAnchor = hinge.anchor;
         localConnectedAnchor = hinge.connectedAnchor;
     }
@@ -38,37 +38,33 @@ public class Hinge_trigger : MonoBehaviour
     {
         if (!hinge || !hinge.connectedBody) return;
 
-        // Calculate world-space positions once per physics frame
-        Vector3 anchorWorld = hinge.transform.TransformPoint(localAnchor);
-        Vector3 connectedAnchorWorld = hinge.connectedBody.transform.TransformPoint(localConnectedAnchor);
+        // -------- Angle --------
+        float angle = Mathf.Abs(hinge.angle);
 
-        float distance = Vector3.Distance(anchorWorld, connectedAnchorWorld);
+        // -------- Pull Distance in world space --------
+        Vector3 worldA = hinge.transform.TransformPoint(localAnchor);
+        Vector3 worldB = hinge.connectedBody.transform.TransformPoint(localConnectedAnchor);
 
-        // Smooth for visual stability
-        smoothedDistance = Mathf.Lerp(smoothedDistance, distance, Time.fixedDeltaTime * 10f);
+        float rawDistance = Vector3.Distance(worldA, worldB);
+        smoothedDistance = Mathf.Lerp(smoothedDistance, rawDistance, 0.12f);
 
-        // --- Trigger Logic ---
-        if (!isTriggered && smoothedDistance >= pullDistanceThreshold && Time.time - lastTriggerTime > triggerCooldown)
+        // --- Can trigger?
+        bool anglePulled = angle >= triggerAngle;
+        bool distancePulled = smoothedDistance >= pullDistanceThreshold;
+
+        if (!isTriggered && (anglePulled || distancePulled) && Time.time - lastTriggerTime > triggerCooldown)
         {
             isTriggered = true;
             lastTriggerTime = Time.time;
-            Debug.Log($"[HingeTrigger] Pulled: {smoothedDistance:F3} m");
+            Debug.Log($"[HingeTrigger] Pulled (Angle:{angle:F2} Dist:{smoothedDistance:F3})");
             onPulled.Invoke();
         }
 
-        // --- Reset Logic ---
-        if (isTriggered && smoothedDistance < resetDistance)
-        {
+        // --- Reset logic ---
+        bool angleReset = angle <= resetAngle;
+        bool distanceReset = smoothedDistance <= resetDistance;
+
+        if (isTriggered && angleReset && distanceReset)
             isTriggered = false;
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (hinge == null || hinge.connectedBody == null) return;
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(hinge.transform.TransformPoint(hinge.anchor),
-                        hinge.connectedBody.transform.TransformPoint(hinge.connectedAnchor));
     }
 }
