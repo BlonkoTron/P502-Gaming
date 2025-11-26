@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6660678051706032021}
   - component: {fileID: 1695529411062829975}
   - component: {fileID: 4301913139231807153}
-  - component: {fileID: 2040549146032823594}
+  - component: {fileID: 4170063952179745355}
   m_Layer: 0
   m_Name: Attach point
   m_TagString: Untagged
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!54 &2040549146032823594
+--- !u!54 &4170063952179745355
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
