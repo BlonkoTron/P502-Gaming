@@ -39,5 +39,15 @@ public class OrderControllerVisuals : MonoBehaviour
         _orderController.OnNewOrderGenerated.RemoveListener(OnNewOrder);
 
     }
+    public void PrintExtraReceipt()
+    {
+        var receiptObj = Instantiate(receiptPrefab, this.transform);
+        var receipt = receiptObj.GetComponent<Receipt>();
+        if (receipt != null)
+        {
+            receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
+            Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
+        }
+    }
 
 }
