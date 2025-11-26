@@ -3390,6 +3390,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: -0.015402138
       objectReference: {fileID: 0}
+    - target: {fileID: 6168343431301838855, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: dailySaveSystem
+      value: 
+      objectReference: {fileID: 1275112619}
     - target: {fileID: 8162812758005855592, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -12190,6 +12194,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+--- !u!114 &1275112619 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7484079565237712931, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+  m_PrefabInstance: {fileID: 1275112618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d93243fceec940f48b485d479f854c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1300489610
 GameObject:
   m_ObjectHideFlags: 0

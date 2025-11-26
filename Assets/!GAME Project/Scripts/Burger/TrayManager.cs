@@ -10,6 +10,8 @@ public class TrayManager : MonoBehaviour
 {
     public static TrayManager Instance;
 
+    [SerializeField] private DailySaveSystem dailySaveSystem;
+
     private GameObject plateOnTray,sodaOnTray;
 
     [SerializeField] private XRSocketInteractor plateSocket,sodaSocket;
@@ -64,6 +66,7 @@ public class TrayManager : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+        dailySaveSystem.SaveToday();
     }
     public List<Order.BurgerIngredient> GetBurgerOnTray()
     {
