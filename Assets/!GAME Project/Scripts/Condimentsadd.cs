@@ -71,7 +71,7 @@ public class TriggeredRaycast : MonoBehaviour
                 Vector3 spawnPos = hit.point;
 
                 SpawnSauce(plate, spawnPos);
-                Audiomanager.instance.UpdateSoundPosition(Saucesquirt, transform.position);
+                Saucesquirt = Audiomanager.instance.PlaySound(saucesound, transform.position);
             }
             else
             {
