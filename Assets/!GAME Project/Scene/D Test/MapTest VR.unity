@@ -3353,6 +3353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbeeb20fc79915245bb62cac88e5c8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   ingredients:
   - {fileID: 1083939337998002974, guid: 26d70b863b410c041a5190a5bd4365c1, type: 3}
   - {fileID: 2394946642324495960, guid: c8d844756eeda214684d467357701f9b, type: 3}
@@ -8224,6 +8225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1655404380}
+  triggerAngle: 10
+  resetAngle: 5
   pullDistanceThreshold: 0.5
   resetDistance: 0.5
   triggerCooldown: 1
@@ -8242,6 +8245,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ropinger:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!54 &1066201216
 Rigidbody:
   m_ObjectHideFlags: 0

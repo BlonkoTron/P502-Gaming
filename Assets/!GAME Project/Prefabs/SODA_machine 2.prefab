@@ -5430,7 +5430,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 584618398574349866}
   serializedVersion: 4
-  m_Mass: 1.8
+  m_Mass: 1.6
   m_Drag: 0.5
   m_AngularDrag: 1.8
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -5913,7 +5913,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140517967989764956}
   serializedVersion: 4
-  m_Mass: 0.8
+  m_Mass: 0.6
   m_Drag: 0.2
   m_AngularDrag: 0.8
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6013,7 +6013,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143521960403622656}
   serializedVersion: 4
-  m_Mass: 1.4
+  m_Mass: 1.2
   m_Drag: 0.35
   m_AngularDrag: 1.4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6271,7 +6271,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2293314817351507218}
   serializedVersion: 4
-  m_Mass: 1.2
+  m_Mass: 1
   m_Drag: 0.3
   m_AngularDrag: 1.2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6371,7 +6371,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410436033683810921}
   serializedVersion: 4
-  m_Mass: 1.6
+  m_Mass: 1.4
   m_Drag: 0.4
   m_AngularDrag: 1.6
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6473,7 +6473,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2483020902878163533}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -6504,8 +6504,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ccbf18b118e0a4a8d5ff08a84c35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hinge: {fileID: 7351280222244208846}
-  pullDistanceThreshold: 0.05
+  hinge: {fileID: 1303771855703223501}
+  pullDistanceThreshold: 0.07
   resetDistance: 0.05
   triggerCooldown: 2
   onPulled:
@@ -6642,7 +6642,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -6912,7 +6912,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4267972782586668870}
   serializedVersion: 4
-  m_Mass: 1.4
+  m_Mass: 1.2
   m_Drag: 0.35
   m_AngularDrag: 1.4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -7012,7 +7012,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4291477473377756417}
   serializedVersion: 4
-  m_Mass: 1.6
+  m_Mass: 1.4
   m_Drag: 0.4
   m_AngularDrag: 1.6
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12073,7 +12073,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4817100122214994561}
   serializedVersion: 4
-  m_Mass: 2
+  m_Mass: 1.8
   m_Drag: 0.7
   m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12175,7 +12175,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4841302472664427732}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 2
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12206,8 +12206,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ccbf18b118e0a4a8d5ff08a84c35aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hinge: {fileID: 2657639966794261248}
-  pullDistanceThreshold: 0.05
+  hinge: {fileID: 777836597430274728}
+  pullDistanceThreshold: 0.07
   resetDistance: 0.05
   triggerCooldown: 2
   onPulled:
@@ -12216,6 +12216,18 @@ MonoBehaviour:
       - m_Target: {fileID: 384292976962399598}
         m_TargetAssemblyTypeName: TurnOnSodaMachine, Assembly-CSharp
         m_MethodName: HandleEnableObject1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
+        m_MethodName: HideSodaHandleTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12344,7 +12356,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 2
+  m_MovementType: 0
   m_PredictedVisualsTransform: {fileID: 0}
   m_VelocityDamping: 1
   m_VelocityScale: 1
@@ -12454,7 +12466,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5675309754036422985}
   serializedVersion: 4
-  m_Mass: 1.8
+  m_Mass: 1.6
   m_Drag: 0.5
   m_AngularDrag: 1.8
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12554,7 +12566,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6598350339877935561}
   serializedVersion: 4
-  m_Mass: 1.2
+  m_Mass: 1
   m_Drag: 0.3
   m_AngularDrag: 1.2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -12949,7 +12961,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8682102114051277341}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.8
   m_Drag: 0.25
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -13049,7 +13061,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8826916966154299850}
   serializedVersion: 4
-  m_Mass: 2
+  m_Mass: 1.8
   m_Drag: 0.7
   m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -13149,7 +13161,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8849486774940575245}
   serializedVersion: 4
-  m_Mass: 0.8
+  m_Mass: 0.6
   m_Drag: 0.2
   m_AngularDrag: 0.8
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -13249,7 +13261,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9011732577495206360}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.8
   m_Drag: 0.25
   m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
