@@ -27,10 +27,8 @@ public class SpaceDoor : MonoBehaviour
 
     public void opening()
     {
-        //activate the animator and sets the tier
-        Spacedoor.SetBool("Open", true);
-        Spacedoor.SetBool("Close", false);
-        StartCoroutine(Timer(waitTime));
+        ButtonOpenRoof();
+        cooldown = true;
     }
 
     IEnumerator Timer(float duration)
@@ -45,8 +43,12 @@ public class SpaceDoor : MonoBehaviour
 
     public void ButtonOpenRoof()
     {
-        opening();
-        cooldown = true;
+       
+
+        //activate the animator and sets the tier
+        Spacedoor.SetBool("Open", true);
+        Spacedoor.SetBool("Close", false);
+        StartCoroutine(Timer(waitTime));
 
     }
 }
