@@ -1743,9 +1743,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842c559735404f248baba0d27808327a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shoulder: {fileID: 0}
-  elbow: {fileID: 0}
-  hand: {fileID: 0}
+  shoulder: {fileID: 2901556891735860082}
+  elbow: {fileID: 479122332998210938}
+  hand: {fileID: 8112664057598569571}
   currentBendAngle: 0
   minAngle: 0
   maxAngle: 0
@@ -2944,27 +2944,27 @@ PrefabInstance:
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: handJointLeft
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6031824902147241386}
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: elbowJointLeft
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6029846415531930425}
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: handJointRight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6233553659706651265}
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: elbowJointRight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6396062916685638508}
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: shoulderJointLeft
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5981286627157758798}
     - target: {fileID: 136953740654236519, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: shoulderJointRight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3445798649545524770}
     - target: {fileID: 269144597080957406, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3203,11 +3203,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2382796249907942260, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_Name
-      value: Armperson Variant
+      value: Armperson(RightArm)
       objectReference: {fileID: 0}
     - target: {fileID: 3415341856882785689, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3666974420177269422, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3666974420177269422, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_AttachTransform
@@ -3231,15 +3235,15 @@ PrefabInstance:
       objectReference: {fileID: -361308126989364725, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.813
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.23
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.129
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3276,11 +3280,11 @@ PrefabInstance:
     - target: {fileID: 7117997741516493596, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: handJointLeft
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 531469583688820325}
     - target: {fileID: 7117997741516493596, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: handJointRight
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5882550916544294745}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 7311799410623521809, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
