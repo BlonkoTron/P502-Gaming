@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -5,6 +7,9 @@ using UnityEngine.Events;
 public class OrderControllerVisuals : MonoBehaviour
 {
     private OrderController _orderController;
+
+    private EventInstance Orders;
+    [SerializeField] private EventReference Ordersound;
 
     [SerializeField] private GameObject receiptPrefab;
     [SerializeField] private GameObject NewOrderParticle;
@@ -22,6 +27,7 @@ public class OrderControllerVisuals : MonoBehaviour
         if (receipt!=null)
         {
             receipt.UpdateReceiptMaterial(order.receiptMaterial);
+            Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
         } 
         if (NewOrderParticle!=null)
         {

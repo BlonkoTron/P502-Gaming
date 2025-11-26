@@ -33,6 +33,7 @@ public class Audiomanager : MonoBehaviour
 
     public void UpdateSoundPosition(EventInstance instance, Vector3 position)
     {
+        //HAS TO BE CALLE DIN UPDATE TO WORK!!!!
         instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));
     }
 

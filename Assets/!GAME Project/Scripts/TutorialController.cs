@@ -122,5 +122,6 @@ public class TutorialController : MonoBehaviour
     public void HideSodaHandleTutorial()
     {
         sodaHandleTutorial.SetActive(false);
+        ShowBellTutorial();
     }
 }

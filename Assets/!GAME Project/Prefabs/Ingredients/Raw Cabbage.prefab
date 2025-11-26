@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6803186752879081927}
   - component: {fileID: 787365596324872504}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cabbage COL
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -64,8 +64,12 @@ public class TrackBents : MonoBehaviour
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
-        if (!tracking) return;
-        CheckBent();
+        if (!tracking)
+        { return; }
+        else
+        {
+            CheckBent();
+        }
     }
 
 
