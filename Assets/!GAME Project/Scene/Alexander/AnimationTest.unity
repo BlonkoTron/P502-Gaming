@@ -7183,9 +7183,65 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122618772}
     m_Modifications:
+    - target: {fileID: 1303771855703223501, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1303771855703223501, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2055461546755687985, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: m_Name
       value: SODA_machine 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805669492392015272, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805669492392015272, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598549284654676263, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598549284654676263, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042501131915477000, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6042501131915477000, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427426091122704657, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6427426091122704657, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497906975265146605, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6497906975265146605, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351280222244208846, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351280222244208846, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7597548219075933260, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7226,6 +7282,14 @@ PrefabInstance:
     - target: {fileID: 7597548219075933260, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607541572763589412, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_MassScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8607541572763589412, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: m_ConnectedMassScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
