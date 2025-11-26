@@ -4,8 +4,13 @@ using UnityEngine.UI;
 
 public class Grill : MonoBehaviour
 {
+
+    [Header("GrillStats")]
     public bool grillOn = false;
     [SerializeField] private float onThreshold = 0.9f;
+    [SerializeField] private float grillTurnOffRate;
+    [SerializeField] private float turnOffTimerMax;
+    private float turnOffTimer; 
 
     [SerializeField] private Animator GrillIcon;
     [SerializeField] private Image GrillBarImage;
@@ -20,6 +25,7 @@ public class Grill : MonoBehaviour
     private void Start()
     {
         knob = KnobObj.GetComponent<XRKnob>();
+        turnOffTimer = turnOffTimerMax;
     }
 
     private void Update()
@@ -56,8 +62,26 @@ public class Grill : MonoBehaviour
             }
 
         }
+
     }
 
+    private void FixedUpdate()
+    {
+
+        if (knob.value > 0.05f)
+        {
+            if (turnOffTimer > 0)
+            {
+                turnOffTimer -= Time.fixedDeltaTime;
+            }
+            else
+            {
+                turnOffTimer = turnOffTimerMax;
+                knob.value -= grillTurnOffRate;
+
+            }
+        }
+    }
 
 
 }
