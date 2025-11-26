@@ -31,10 +31,10 @@ public class AnimationController : MonoBehaviour
         handAnimator.SetFloat("trigger", triggerValue);
 
         float grabValueLeft = grabActionLeft.action.ReadValue<float>();
-        handAnimator.SetFloat("grabLeft", grabValueLeft);
+        handAnimator.SetFloat("grab", grabValueLeft);
 
         float triggerValueLeft = triggerActionLeft.action.ReadValue<float>();
-        handAnimator.SetFloat("triggerLeft", triggerValueLeft);
+        handAnimator.SetFloat("trigger", triggerValueLeft);
 
     }
 }
