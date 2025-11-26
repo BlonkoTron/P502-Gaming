@@ -25,7 +25,7 @@ public class CookBeef : MonoBehaviour
     public float flipTimeThreshold = 5f;
 
     // State flags
-    private bool isflipped = false;
+    public bool isflipped = false;
     private bool halfCookedReached = false;
     private bool isCooked = false;
     private bool isBurnt = false;
@@ -133,10 +133,11 @@ public class CookBeef : MonoBehaviour
         // Give player time to flip
         yield return new WaitForSeconds(flipTimeThreshold);
 
-        float yRot = transform.eulerAngles.y;
+        float zRot = transform.eulerAngles.z;
+        float xRot = transform.eulerAngles.x;
 
         // If burger is turned around
-        if (Mathf.Abs(yRot - 180f) < 20f && halfCookedReached)
+        if (Mathf.Abs(zRot - 180f) < 20f || Mathf.Abs(xRot - 180f) < 20f && halfCookedReached)
         {
             isflipped = true;
         }
