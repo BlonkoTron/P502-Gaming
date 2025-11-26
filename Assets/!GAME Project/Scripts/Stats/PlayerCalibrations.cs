@@ -18,8 +18,8 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private Dropdown rotationDownDrop;
 
     [Header("Choose Arm")]
-    [SerializeField] private GameObject leftButton;
-    [SerializeField] private GameObject rightButton;
+    //[SerializeField] private GameObject leftButton;
+    //[SerializeField] private GameObject rightButton;
 
     [Header("Choose Configuration")]
     [SerializeField] private GameObject manuelConfigButton;
@@ -130,15 +130,15 @@ public class PlayerCalibrations : MonoBehaviour
     public void ChooseLeftArm()
     {
         playerSetUp.isRightArm = false;
-        leftButton.GetComponent<Image>().color = Color.green;
-        rightButton.GetComponent<Image>().color = Color.white;
+        //leftButton.GetComponent<Image>().color = Color.green;
+        //rightButton.GetComponent<Image>().color = Color.white;
     }
 
     public void ChooseRightArm()
     {
         playerSetUp.isRightArm = true;
-        rightButton.GetComponent<Image>().color = Color.green;
-        leftButton.GetComponent<Image>().color = Color.white;
+        //rightButton.GetComponent<Image>().color = Color.green;
+        //leftButton.GetComponent<Image>().color = Color.white;
     }
 
     public void ChooseManualConfig()
