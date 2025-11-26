@@ -6505,6 +6505,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 1303771855703223501}
+  triggerAngle: 10
+  resetAngle: 5
   pullDistanceThreshold: 0.07
   resetDistance: 0.05
   triggerCooldown: 2
@@ -6523,6 +6525,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ropinger:
+    Guid:
+      Data1: -1958155338
+      Data2: 1131688112
+      Data3: 1413752474
+      Data4: -1377919759
+    Path: event:/WorldSFX/Ropetight
 --- !u!59 &6042501131915477000
 HingeJoint:
   m_ObjectHideFlags: 0
@@ -12207,6 +12216,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hinge: {fileID: 777836597430274728}
+  triggerAngle: 10
+  resetAngle: 5
   pullDistanceThreshold: 0.07
   resetDistance: 0.05
   triggerCooldown: 2
@@ -12237,6 +12248,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ropinger:
+    Guid:
+      Data1: -1958155338
+      Data2: 1131688112
+      Data3: 1413752474
+      Data4: -1377919759
+    Path: event:/WorldSFX/Ropetight
 --- !u!59 &6082086237691551816
 HingeJoint:
   m_ObjectHideFlags: 0

@@ -77,13 +77,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbeeb20fc79915245bb62cac88e5c8cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parent: {fileID: 0}
   ingredients:
   - {fileID: 6145670217918332362, guid: 9478030194a1c3b49a22851cf6583043, type: 3}
-  - {fileID: 2394946642324495960, guid: c8d844756eeda214684d467357701f9b, type: 3}
-  - {fileID: 3517169659116801677, guid: e36eca117ad9a874eb74d646bff45ac0, type: 3}
-  - {fileID: 1612116138731328333, guid: 87aafe010ba8e144aa6e3731d2ef1fcd, type: 3}
-  - {fileID: 8270663794711048887, guid: 2f8bf17b0ac467744ad2e5bc8019dace, type: 3}
+  - {fileID: 667755094469889102, guid: ef066b3b4a589de4585f68b936a74b5d, type: 3}
+  - {fileID: 9186421766269536267, guid: 7694c106e330a1b419f913ffebe3505f, type: 3}
   - {fileID: 6346530925271436082, guid: aa15df2a2a5f18e4a843e7ada12aa2c3, type: 3}
+  - {fileID: 8270663794711048887, guid: 3195255fdbeab204996a5176dda75112, type: 3}
   spawnPos: {fileID: 4031708282184896189}
   shootForce: 5
   maxFoodLaunches: 5
@@ -170,9 +170,33 @@ PrefabInstance:
       propertyPath: m_MovementType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7936862910064138879, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: resetDistance
       value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Path
+      value: event:/WorldSFX/Ropetight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data1
+      value: -1958155338
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data2
+      value: 1131688112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data3
+      value: 1413752474
+      objectReference: {fileID: 0}
+    - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
+      propertyPath: ropinger.Guid.Data4
+      value: -1377919759
       objectReference: {fileID: 0}
     - target: {fileID: 8874212716109860460, guid: d37e9875e3564e248b766aaf49e2acc9, type: 3}
       propertyPath: pullDistanceThreshold
