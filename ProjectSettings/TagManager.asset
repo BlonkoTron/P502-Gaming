@@ -39,6 +39,7 @@ TagManager:
   - SodaMachine
   - NebulaBlast
   - MoonJuice
+  - RespawnZone
   layers:
   - Default
   - TransparentFX
