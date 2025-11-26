@@ -158,7 +158,7 @@ MonoBehaviour:
   m_StartingInteractionStrengthFilters: []
   m_AttachTransform: {fileID: 0}
   m_SecondaryAttachTransform: {fileID: 0}
-  m_UseDynamicAttach: 0
+  m_UseDynamicAttach: 1
   m_MatchAttachPosition: 1
   m_MatchAttachRotation: 1
   m_SnapToColliderVolume: 1
@@ -223,6 +223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 029f1f1f5cd059f47809e852e1f27dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saucesound:
+    Guid:
+      Data1: -1787168629
+      Data2: 1174399098
+      Data3: 1780545197
+      Data4: -1221424198
+    Path: event:/WorldSFX/Condimentsplat
   raycastActive: 0
   rayDistance: 10
   sauce: {fileID: 7309740273392145619, guid: 9b77d8c1d7eb94d4880fcb8485caa884, type: 3}
