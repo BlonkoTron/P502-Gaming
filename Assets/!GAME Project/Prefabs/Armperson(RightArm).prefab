@@ -655,6 +655,14 @@ MonoBehaviour:
   rightButton: {fileID: 0}
   manuelConfigButton: {fileID: 0}
   autoConfigButton: {fileID: 0}
+  bentInROMText: {fileID: 0}
+  bentOutROMText: {fileID: 0}
+  rotationUpROMText: {fileID: 0}
+  rotationDownROMText: {fileID: 0}
+  bentInButton: {fileID: 0}
+  bentOutButton: {fileID: 0}
+  rotationUpButton: {fileID: 0}
+  rotationDownButton: {fileID: 0}
 --- !u!114 &6304081019623657510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,6 +1465,7 @@ GameObject:
   - component: {fileID: 4028580938613086055}
   - component: {fileID: 4176783988589400498}
   - component: {fileID: 242519412805971837}
+  - component: {fileID: 6732830728033354959}
   m_Layer: 0
   m_Name: Reference
   m_TagString: Untagged
@@ -1491,7 +1500,7 @@ Animator:
   m_GameObject: {fileID: 5130057091460588873}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0ca43c2b7522ca0499c46a8a4598c40c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1519,6 +1528,67 @@ MonoBehaviour:
   - m_Rig: {fileID: 5479516710704834838}
     m_Active: 1
   m_Effectors: []
+--- !u!114 &6732830728033354959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130057091460588873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7ee4721727bdd458db7580f65c75b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: acccbf50-967b-4b9d-9aed-8e1b106940d4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  triggerAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: d94b5cf0-781b-45d3-a606-b6d098166aae
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  grabActionLeft:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Action Left
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: ce4ec11e-f142-4677-b377-408f4ef78b93
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  triggerActionLeft:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Trigger Action Left
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 3a273bf9-8fc4-49dd-8a3f-1990ad4005b9
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  handAnimator: {fileID: 4176783988589400498}
 --- !u!1 &5282016212932818735
 GameObject:
   m_ObjectHideFlags: 0
@@ -3235,19 +3305,19 @@ PrefabInstance:
       objectReference: {fileID: -361308126989364725, guid: b4b1991a1215f184cbd555a1a8e60f81, type: 3}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 24.788
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.598
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.982
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.6996633
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3255,7 +3325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7144727
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalRotation.z
@@ -3267,7 +3337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 91.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5656295081384134169, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
