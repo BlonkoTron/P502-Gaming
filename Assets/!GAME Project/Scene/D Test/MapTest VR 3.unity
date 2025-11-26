@@ -6449,6 +6449,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: ropinger.Path
+      value: event:/WorldSFX/Ropetight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: ropinger.Guid.Data1
+      value: -1958155338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: ropinger.Guid.Data2
+      value: 1131688112
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: ropinger.Guid.Data3
+      value: 1413752474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
+      propertyPath: ropinger.Guid.Data4
+      value: -1377919759
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825186509374947394, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: onPulled.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
