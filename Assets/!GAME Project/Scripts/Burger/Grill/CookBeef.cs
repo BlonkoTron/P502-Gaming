@@ -30,7 +30,7 @@ public class CookBeef : MonoBehaviour
     private bool isCooked = false;
     private bool isBurnt = false;
 
-    [SerializeField] private GameObject cookedParticle, burntParticle;
+    [SerializeField] private GameObject cookedParticle, burntParticle, cookingSteam;
 
 
     private IngredientStackable ingredientStackable;
@@ -44,6 +44,12 @@ public class CookBeef : MonoBehaviour
         ingredientStackable = GetComponent<IngredientStackable>();
         ingredientStackable.enabled = false;
         grill = null;
+
+        if (cookingSteam != null) 
+        {
+            cookingSteam.gameObject.SetActive(false);
+        }
+        
 
         // Default material
         beef.GetComponent<MeshRenderer>().material = Raw;
@@ -62,6 +68,11 @@ public class CookBeef : MonoBehaviour
         {
             // Reduce cooking time
             Cooktime -= Time.deltaTime;
+
+            if (!cookingSteam.gameObject.activeSelf)
+            {
+                cookingSteam.gameObject.SetActive(true);
+            }
 
             // ---- HALF COOKED SIDE ----
             if (Cooktime <= HalfwayPoint && !isflipped)
@@ -124,6 +135,11 @@ public class CookBeef : MonoBehaviour
         if (other.CompareTag("Grill"))
         {
             // Start checking rotation after leaving the grill
+            if (cookingSteam.gameObject.activeSelf)
+            {
+                cookingSteam.gameObject.SetActive(false);
+            }
+
             StartCoroutine(CheckFlip());
         }
     }
@@ -142,4 +158,5 @@ public class CookBeef : MonoBehaviour
             isflipped = true;
         }
     }
-}
+
+    }
