@@ -152,6 +152,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2097992664663945144}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5252370336780972953}
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8363732473076545954}
@@ -365,6 +368,22 @@ MonoBehaviour:
   m_LimitAngularVelocity: 0
   m_MaxLinearVelocityDelta: 10
   m_MaxAngularVelocityDelta: 20
+--- !u!114 &5252370336780972953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779105116244002582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71146ac20b380634ab983506198789e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Outposition: {fileID: 0}
+  Rigidbody: {fileID: 0}
+  forceStrength: 1
+  Spacedoorscript: {fileID: 0}
 --- !u!1 &2794735244233405511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}

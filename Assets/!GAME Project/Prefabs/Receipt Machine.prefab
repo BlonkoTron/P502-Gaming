@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.55
+      value: -0.26004028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.032
+      value: 0.11243856
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.309
+      value: -0.09151602
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalRotation.w
@@ -108,7 +108,19 @@ MonoBehaviour:
   orderDataCollection: {fileID: 11400000, guid: ca50baf3c7a30284da4e9066493566a9, type: 2}
   OnNewOrderGenerated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7745476329975161787}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnOrderFullfilled:
     m_PersistentCalls:
       m_Calls: []
@@ -127,11 +139,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ordersound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 998333915
+      Data2: 1100053495
+      Data3: 1816861619
+      Data4: -687028660
+    Path: event:/WorldSFX/Faxorder
   receiptPrefab: {fileID: 1237147578233741238, guid: bcb4c6ae3980d27499a1727eb84f4c2f, type: 3}
   NewOrderParticle: {fileID: 0}
 --- !u!1001 &5144341790738830972
@@ -194,5 +206,10 @@ PrefabInstance:
 --- !u!4 &3238469484780617225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7752108160925902965, guid: 343313c74e990184b98db01e97fc4ad3, type: 3}
+  m_PrefabInstance: {fileID: 5144341790738830972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7745476329975161787 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3177617419215762887, guid: 343313c74e990184b98db01e97fc4ad3, type: 3}
   m_PrefabInstance: {fileID: 5144341790738830972}
   m_PrefabAsset: {fileID: 0}

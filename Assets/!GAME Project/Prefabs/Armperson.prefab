@@ -1684,6 +1684,14 @@ MonoBehaviour:
   rightButton: {fileID: 0}
   manuelConfigButton: {fileID: 0}
   autoConfigButton: {fileID: 0}
+  bentInROMText: {fileID: 0}
+  bentOutROMText: {fileID: 0}
+  rotationUpROMText: {fileID: 0}
+  rotationDownROMText: {fileID: 0}
+  bentInButton: {fileID: 0}
+  bentOutButton: {fileID: 0}
+  rotationUpButton: {fileID: 0}
+  rotationDownButton: {fileID: 0}
 --- !u!114 &136953740654236519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2267,7 +2275,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1776739028345063909, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 62095212596265053, guid: 5e21b548f304642419c6630e9be9544f, type: 3}
