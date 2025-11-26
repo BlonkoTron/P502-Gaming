@@ -94,7 +94,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.08000001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalScale.y
@@ -102,19 +102,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.023558615
+      value: 0.023558611
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 24.35
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.015
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.864
+      value: -0.076
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}
       propertyPath: m_LocalRotation.w
@@ -207,7 +207,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &7291296502775660033
 MonoBehaviour:
   m_ObjectHideFlags: 0

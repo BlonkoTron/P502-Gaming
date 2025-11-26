@@ -22,15 +22,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.55
+      value: -0.26004028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.032
+      value: 0.11243856
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.309
+      value: -0.09151602
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fb9c4fc514288434e8ce09880b2ac983, type: 3}
       propertyPath: m_LocalRotation.w
@@ -137,7 +137,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe53244b361fd904f9c53721e377a267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ordersound:
+    Guid:
+      Data1: 998333915
+      Data2: 1100053495
+      Data3: 1816861619
+      Data4: -687028660
+    Path: event:/WorldSFX/Faxorder
   receiptPrefab: {fileID: 1237147578233741238, guid: bcb4c6ae3980d27499a1727eb84f4c2f, type: 3}
+  NewOrderParticle: {fileID: 0}
 --- !u!1001 &5144341790738830972
 PrefabInstance:
   m_ObjectHideFlags: 0

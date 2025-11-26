@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 390131541092105237, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_Name
-      value: Armperson(LeftArm) 1
+      value: Armperson(LeftArm)
       objectReference: {fileID: 0}
     - target: {fileID: 1580278458029294023, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_LocalPosition.x
