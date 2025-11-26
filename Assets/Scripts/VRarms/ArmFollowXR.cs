@@ -18,6 +18,12 @@ public class ArmFollowXR : MonoBehaviour
     public Transform leftShoulder;
     public Transform rightShoulder;
 
+    [Header("Shoulder Offsets")]
+    public Vector3 leftShoulderPositionOffset;
+    public Vector3 rightShoulderPositionOffset;
+    public Vector3 leftShoulderRotationOffset;
+    public Vector3 rightShoulderRotationOffset;
+
     [Header("Follow Settings")]
     public float followSpeed = 10f;
     public Vector3 handPositionOffsetleft;
@@ -46,12 +52,28 @@ public class ArmFollowXR : MonoBehaviour
         if (rightHandXR && rightArmTarget)
             FollowTarget(rightArmTarget, rightHandXR, rightHandRotationOffset, handPositionOffsetright, mirrorRightHand);
 
-        // --- ELBOWS ---
+        Transform GetVirtualShoulder(Transform baseShoulder, Vector3 posOffset, Vector3 rotOffset)
+        {
+            GameObject temp = new GameObject("VirtualShoulderTemp");
+            temp.transform.position = baseShoulder.position + baseShoulder.TransformDirection(posOffset);
+            temp.transform.rotation = baseShoulder.rotation * Quaternion.Euler(rotOffset);
+            return temp.transform;
+        }
+
+
         if (leftShoulder && leftArmTarget && leftElbowTarget)
-            UpdateElbow(leftShoulder, leftArmTarget, leftElbowTarget, true, leftElbowRotationOffset);
+        {
+            Transform virtualShoulder = GetVirtualShoulder(leftShoulder, leftShoulderPositionOffset, leftShoulderRotationOffset);
+            UpdateElbow(virtualShoulder, leftArmTarget, leftElbowTarget, true, leftElbowRotationOffset);
+            Destroy(virtualShoulder.gameObject);
+        }
 
         if (rightShoulder && rightArmTarget && rightElbowTarget)
-            UpdateElbow(rightShoulder, rightArmTarget, rightElbowTarget, false, rightElbowRotationOffset);
+        {
+            Transform virtualShoulder = GetVirtualShoulder(rightShoulder, rightShoulderPositionOffset, rightShoulderRotationOffset);
+            UpdateElbow(virtualShoulder, rightArmTarget, rightElbowTarget, false, rightElbowRotationOffset);
+            Destroy(virtualShoulder.gameObject);
+        }
     }
 
     void FollowTarget(Transform target, Transform xrSource, Vector3 rotationOffset, Vector3 positionOffset, bool mirror)

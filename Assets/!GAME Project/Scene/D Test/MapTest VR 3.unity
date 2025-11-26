@@ -23190,6 +23190,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7015623763276146186, guid: 52858ed4705ada14295690d7cb14e3f4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.11
+      objectReference: {fileID: 0}
     - target: {fileID: 7752403287576103680, guid: 52858ed4705ada14295690d7cb14e3f4, type: 3}
       propertyPath: m_Name
       value: Respawnzone
