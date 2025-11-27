@@ -289,7 +289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1131113323909908007, guid: 7210bf39fd8f1134b89b0407d2420830, type: 3}
       propertyPath: grillTurnOffRate
-      value: 0.0025
+      value: 0.004
       objectReference: {fileID: 0}
     - target: {fileID: 1337940915589384972, guid: 7210bf39fd8f1134b89b0407d2420830, type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.size

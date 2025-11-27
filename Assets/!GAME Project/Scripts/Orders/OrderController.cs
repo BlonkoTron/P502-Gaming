@@ -75,6 +75,11 @@ public class OrderController : MonoBehaviour
     }
     private void CheckOrder()
     {
+        if (activeOrder==null)
+        {
+            Debug.Log("No active order");
+            return; 
+        }
         var trayBurger = TrayManager.Instance.GetBurgerOnTray();
         var traySoda = TrayManager.Instance.GetDrinkOnTray();
 
