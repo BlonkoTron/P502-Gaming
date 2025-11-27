@@ -15,7 +15,7 @@ public class Respawn : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check for a tag
-        if (other.CompareTag("RespawnZone"));
+        if (other.tag == "RespawnZone")
         {
             // Reset spawn/pos/rot
             transform.position = startPosition;
@@ -28,22 +28,6 @@ public class Respawn : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
             }
-        }
-    }
-
-
-    public void Respawner()
-    {
-        // Reset spawn/pos/rot
-        transform.position = startPosition;
-        transform.rotation = startRotation;
-
-        // Reset physics
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
         }
     }
 }
