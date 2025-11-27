@@ -155,6 +155,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5252370336780972953}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1480858671530358779}
     - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8363732473076545954}
@@ -185,6 +188,8 @@ MonoBehaviour:
   MoonJuice: {fileID: 0}
   NebulaBlast: {fileID: 0}
   specificCollider: {fileID: 0}
+  NebulaBlastColliderZone: {fileID: 0}
+  MoonJuiceColliderZone: {fileID: 0}
   moonJuiceChildName: MoonJuiceParticle
   nebulaBlastChildName: NebulaBlastParticle
   objectToChangeMaterial: {fileID: 7326570722178786769}
@@ -384,6 +389,18 @@ MonoBehaviour:
   Rigidbody: {fileID: 0}
   forceStrength: 1
   Spacedoorscript: {fileID: 0}
+--- !u!114 &1480858671530358779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779105116244002582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2794735244233405511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: adbbe8847efa85d44bb1b5180659958b, type: 3}

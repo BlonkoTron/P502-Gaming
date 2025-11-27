@@ -40,6 +40,8 @@ TagManager:
   - NebulaBlast
   - MoonJuice
   - RespawnZone
+  - MoonJuiceZone
+  - NebulaBlastZone
   layers:
   - Default
   - TransparentFX

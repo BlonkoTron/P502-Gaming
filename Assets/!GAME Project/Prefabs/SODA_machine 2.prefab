@@ -6894,7 +6894,7 @@ GameObject:
   - component: {fileID: 6619839690717093958}
   m_Layer: 0
   m_Name: SodaAttachMoon
-  m_TagString: Untagged
+  m_TagString: MoonJuiceZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6908,7 +6908,7 @@ Transform:
   m_GameObject: {fileID: 3654014737173257782}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.000686, y: -0.00276, z: 0.000811}
+  m_LocalPosition: {x: 0.000686, y: -0.00276, z: 0.000785}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6979,8 +6979,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.00070007495, y: 0.00021815511, z: 0.00062630716}
-  m_Center: {x: 0.0000128090915, y: 0.0001703202, z: -0.00000041113114}
+  m_Size: {x: 0.0005459293, y: 0.0006824259, z: 0.0005227606}
+  m_Center: {x: -0.000116368676, y: 0.0004024556, z: 0.000051362094}
 --- !u!1 &4267972782586668870
 GameObject:
   m_ObjectHideFlags: 0
@@ -12657,7 +12657,7 @@ GameObject:
   - component: {fileID: 2131633324983447099}
   m_Layer: 0
   m_Name: SodaAttachNebula
-  m_TagString: Untagged
+  m_TagString: NebulaBlastZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12671,7 +12671,7 @@ Transform:
   m_GameObject: {fileID: 6101923335022608020}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0.000702, y: -0.00074, z: 0.000821}
+  m_LocalPosition: {x: 0.000702, y: -0.00074, z: 0.000795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12742,8 +12742,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0006013102, y: 0.00021732254, z: 0.0005855891}
-  m_Center: {x: -0.00024324449, y: 0.00019123458, z: 0.00008404106}
+  m_Size: {x: 0.0006013102, y: 0.0007334246, z: 0.0005577614}
+  m_Center: {x: -0.00024324463, y: 0.0004492856, z: 0.000070127135}
 --- !u!1 &6598350339877935561
 GameObject:
   m_ObjectHideFlags: 0
