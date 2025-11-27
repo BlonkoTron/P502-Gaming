@@ -12,7 +12,6 @@ public class OrderControllerVisuals : MonoBehaviour
     [SerializeField] private EventReference Ordersound;
 
     [SerializeField] private GameObject receiptPrefab;
-    [SerializeField] private GameObject NewOrderParticle;
 
     void Awake()
     {
@@ -23,10 +22,6 @@ public class OrderControllerVisuals : MonoBehaviour
     private void OnNewOrder(Order order)
     {
         PrintReceipt();
-        if (NewOrderParticle != null)
-        {
-            Instantiate(NewOrderParticle, transform.position, Quaternion.identity);
-        }
     }
     private void OnDestroy()
     {
