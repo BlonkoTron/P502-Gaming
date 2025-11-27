@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 2302067781466019798}
     - target: {fileID: 2214847345401000681, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PrintExtraReceipt
+      value: PrintReceipt
       objectReference: {fileID: 0}
     - target: {fileID: 2214847345401000681, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -105,8 +105,16 @@ PrefabInstance:
       value: 0.5669
       objectReference: {fileID: 0}
     - target: {fileID: 2921129920613854200, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921129920613854200, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0389
+      value: -0.0329
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921129920613854200, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3813694848045737215, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: m_Mesh
@@ -376,7 +384,6 @@ MonoBehaviour:
       Data4: -687028660
     Path: event:/WorldSFX/Faxorder
   receiptPrefab: {fileID: 1237147578233741238, guid: bcb4c6ae3980d27499a1727eb84f4c2f, type: 3}
-  NewOrderParticle: {fileID: 0}
 --- !u!1001 &5144341790738830972
 PrefabInstance:
   m_ObjectHideFlags: 0
