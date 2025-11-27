@@ -2025,6 +2025,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3896220713439048139, guid: 9805999b7d84d9145b5055507694a8fa, type: 3}
   m_PrefabInstance: {fileID: 624410076}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &345831105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1779105116244002582, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+  m_PrefabInstance: {fileID: 1652678802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &345831112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345831105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &348030538
 Mesh:
   m_ObjectHideFlags: 0
@@ -6900,14 +6917,6 @@ PrefabInstance:
     - target: {fileID: 2055461546755687985, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: m_Name
       value: SODA_machine 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3922634207847547612, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.000795
-      objectReference: {fileID: 0}
-    - target: {fileID: 5915798764129767724, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.000785
       objectReference: {fileID: 0}
     - target: {fileID: 7597548219075933260, guid: aec52d5390a8c9e49a1a484c907df8f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16847,7 +16856,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1779105116244002582, guid: 45b9a232206292940a7034c843ca485a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 345831112}
   m_SourcePrefab: {fileID: 100100000, guid: 45b9a232206292940a7034c843ca485a, type: 3}
 --- !u!1 &1718440905 stripped
 GameObject:
@@ -29415,6 +29427,14 @@ PrefabInstance:
     - target: {fileID: 5725004075270606070, guid: 8b1e4d351ba5c1542963836fb3511b12, type: 3}
       propertyPath: m_Name
       value: Receipt Machine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667493263191065658, guid: 8b1e4d351ba5c1542963836fb3511b12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000000065552676
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667493263191065658, guid: 8b1e4d351ba5c1542963836fb3511b12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.15000054
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
