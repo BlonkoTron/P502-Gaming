@@ -58,7 +58,7 @@ public class TrayManager : MonoBehaviour
     {
         Destroy(sodaOnTray);
         var plateChild = plateOnTray.GetComponentInChildren<Transform>();
-        plateChild.GetComponent<PlateManager>().ResetPlate();
+        plateOnTray.GetComponent<PlateManager>().ResetPlate();
         foreach (Transform child in plateChild)
         {
             if (child.CompareTag("Stackable"))
