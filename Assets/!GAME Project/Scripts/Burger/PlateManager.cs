@@ -130,7 +130,7 @@ public class PlateManager : MonoBehaviour
 
     public void ResetPlate()
     {
-        topSnapPoint.position = originalTopSnapPoint.position;
+        topSnapPoint = originalTopSnapPoint;
     }
 }
 
