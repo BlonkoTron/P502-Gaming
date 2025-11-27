@@ -1895,19 +1895,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006000031
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.069461465
+      value: -0.0381
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0024999976
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1915,15 +1915,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 2827906875059762858, guid: b51d9cea1122ff64a905ef7167a01e6a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3320,12 +3320,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 122618772}
     m_Modifications:
     - target: {fileID: 66167965183232673, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: m_Size.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 66167965183232673, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_Size.y
-      value: 0.026743531
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 66167965183232673, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 66167965183232673, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_Center.y
-      value: 0.02517575
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 720141159300051853, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0024
       objectReference: {fileID: 0}
     - target: {fileID: 785499220662028616, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3387,9 +3399,13 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.0049113035
       objectReference: {fileID: 0}
+    - target: {fileID: 3114871244148533059, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4339950872099965644, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.021
+      value: 0.021
       objectReference: {fileID: 0}
     - target: {fileID: 5583426739548730106, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_Size.y
@@ -3403,6 +3419,10 @@ PrefabInstance:
       propertyPath: dailySaveSystem
       value: 
       objectReference: {fileID: 1275112619}
+    - target: {fileID: 8059779221362505751, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8162812758005855592, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: m_IsActive
       value: 1
