@@ -651,8 +651,6 @@ MonoBehaviour:
   bentOutDrop: {fileID: 0}
   rotationUpDrop: {fileID: 0}
   rotationDownDrop: {fileID: 0}
-  leftButton: {fileID: 0}
-  rightButton: {fileID: 0}
   manuelConfigButton: {fileID: 0}
   autoConfigButton: {fileID: 0}
   bentInROMText: {fileID: 0}
@@ -1789,6 +1787,10 @@ MonoBehaviour:
   rightElbowTarget: {fileID: 479122332998210938}
   leftShoulder: {fileID: 3164512247031701416}
   rightShoulder: {fileID: 2901556891735860082}
+  leftShoulderPositionOffset: {x: 0, y: 0, z: 0}
+  rightShoulderPositionOffset: {x: 0, y: 0, z: 0}
+  leftShoulderRotationOffset: {x: 0, y: 0, z: 0}
+  rightShoulderRotationOffset: {x: 0, y: 0, z: 0}
   followSpeed: 100
   handPositionOffsetleft: {x: 0.04, y: 0, z: -0.09}
   handPositionOffsetright: {x: 0, y: 0, z: -0.07}
@@ -8227,6 +8229,10 @@ PrefabInstance:
     - target: {fileID: 269144597080957406, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222516676163617139, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1301862443979204802, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_Enabled
