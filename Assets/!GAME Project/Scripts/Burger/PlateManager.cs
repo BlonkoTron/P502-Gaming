@@ -12,10 +12,7 @@ public class PlateManager : MonoBehaviour
 
     public List<IngredientStackable> stackedIngredients = new List<IngredientStackable>();
 
-    private void Start()
-    {
-        originalTopSnapPoint = topSnapPoint;
-    }
+  
 
     public void TrySnap(IngredientStackable ingredient)
     {
@@ -100,7 +97,8 @@ public class PlateManager : MonoBehaviour
         if (stackedIngredients.Count == 0)
         {
             // Reset to plate level
-            topSnapPoint.localPosition = Vector3.up * 0.02f;
+            //topSnapPoint.localPosition = Vector3.up * 0.02f;
+            topSnapPoint.position = originalTopSnapPoint.position;
             return;
         }
 
@@ -130,7 +128,11 @@ public class PlateManager : MonoBehaviour
 
     public void ResetPlate()
     {
-        topSnapPoint = originalTopSnapPoint;
+        Debug.Log("Resetting Plate");
+        stackedIngredients.Clear();
+        MoveSnapPointDown();
+        //topSnapPoint.position = originalTopSnapPoint.position;
+        
     }
 }
 
