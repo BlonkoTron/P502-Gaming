@@ -36,6 +36,11 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private Button rotationUpButton;
     [SerializeField] private Button rotationDownButton;
 
+    public bool configBentIn;
+    public bool configBentOut;
+    public bool configRotationUp;
+    public bool configRotationDown;
+
     private int autoConfigNr;
 
     private UnityEngine.XR.InputDevice controller;
@@ -45,6 +50,8 @@ public class PlayerCalibrations : MonoBehaviour
         autoConfigNr = 0;
     }
 
+
+    //this needs to be changed 
     private void FixedUpdate()
     {
         if (controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float triggerValue))
@@ -130,6 +137,7 @@ public class PlayerCalibrations : MonoBehaviour
     public void ChooseLeftArm()
     {
         playerSetUp.isRightArm = false;
+        InitializeLeftController();
         //leftButton.GetComponent<Image>().color = Color.green;
         //rightButton.GetComponent<Image>().color = Color.white;
     }
@@ -137,6 +145,7 @@ public class PlayerCalibrations : MonoBehaviour
     public void ChooseRightArm()
     {
         playerSetUp.isRightArm = true;
+        InitializeRightController();
         //rightButton.GetComponent<Image>().color = Color.green;
         //leftButton.GetComponent<Image>().color = Color.white;
     }
