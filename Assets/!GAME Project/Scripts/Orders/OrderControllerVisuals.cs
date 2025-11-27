@@ -45,7 +45,10 @@ public class OrderControllerVisuals : MonoBehaviour
         var receipt = receiptObj.GetComponent<Receipt>();
         if (receipt != null)
         {
-            receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
+            if (OrderController.Instance.ActiveOrder!=null)
+            {
+                receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
+            }
             Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
         }
     }
