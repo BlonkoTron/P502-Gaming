@@ -283,6 +283,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.y
       value: -0.7071068
       objectReference: {fileID: 0}
+    - target: {fileID: 1131113323909908007, guid: 7210bf39fd8f1134b89b0407d2420830, type: 3}
+      propertyPath: turnOffTimerMax
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1131113323909908007, guid: 7210bf39fd8f1134b89b0407d2420830, type: 3}
+      propertyPath: grillTurnOffRate
+      value: 0.0025
+      objectReference: {fileID: 0}
     - target: {fileID: 1337940915589384972, guid: 7210bf39fd8f1134b89b0407d2420830, type: 3}
       propertyPath: m_FirstSelectEntered.m_PersistentCalls.m_Calls.Array.size
       value: 1

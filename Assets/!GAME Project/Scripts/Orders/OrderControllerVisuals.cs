@@ -12,7 +12,6 @@ public class OrderControllerVisuals : MonoBehaviour
     [SerializeField] private EventReference Ordersound;
 
     [SerializeField] private GameObject receiptPrefab;
-    [SerializeField] private GameObject NewOrderParticle;
 
     void Awake()
     {
@@ -22,30 +21,23 @@ public class OrderControllerVisuals : MonoBehaviour
     }
     private void OnNewOrder(Order order)
     {
-        var receiptObj = Instantiate(receiptPrefab, this.transform);
-         var receipt =receiptObj.GetComponent<Receipt>();
-        if (receipt!=null)
-        {
-            receipt.UpdateReceiptMaterial(order.receiptMaterial);
-            Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
-        } 
-        if (NewOrderParticle!=null)
-        {
-            Instantiate(NewOrderParticle, transform.position, Quaternion.identity);
-        }
+        PrintReceipt();
     }
     private void OnDestroy()
     {
         _orderController.OnNewOrderGenerated.RemoveListener(OnNewOrder);
 
     }
-    public void PrintExtraReceipt()
+    public void PrintReceipt()
     {
         var receiptObj = Instantiate(receiptPrefab, this.transform);
         var receipt = receiptObj.GetComponent<Receipt>();
         if (receipt != null)
         {
-            receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
+            if (OrderController.Instance.ActiveOrder!=null)
+            {
+                receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
+            }
             Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
         }
     }

@@ -8,6 +8,9 @@ public class SodaLogic : MonoBehaviour
     [SerializeField] private GameObject MoonJuice; // First object to check if enabled
     [SerializeField] private GameObject NebulaBlast; // Second object to check if enabled
     [SerializeField] private Collider specificCollider; // The specific collider to detect contact with
+    [SerializeField] private Collider NebulaBlastColliderZone; // Collider for NebulaBlast
+    [SerializeField] private Collider MoonJuiceColliderZone; // Collider for MoonJuice
+
     
     [Header("Child Object Names")]
     [SerializeField] private string moonJuiceChildName = ""; // Name of child object to check in MoonJuice
@@ -28,6 +31,8 @@ public class SodaLogic : MonoBehaviour
     private Renderer objectRenderer; // Cached renderer component
     private GameObject moonJuiceChild; // Child object of MoonJuice to check
     private GameObject nebulaBlastChild; // Child object of NebulaBlast to check
+    private bool isInMoonJuiceZone = false;
+    private bool isInNebulaBlastZone = false;
 
     public Order.Drink drinkType;
 
@@ -35,6 +40,33 @@ public class SodaLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
+        if (MoonJuiceColliderZone == null)
+        {
+            MoonJuiceColliderZone = GameObject.FindWithTag("MoonJuiceZone")?.GetComponent<Collider>();
+            if (MoonJuiceColliderZone == null)
+            {
+                Debug.LogWarning("MoonJuiceColliderZone with tag 'MoonJuiceZone' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found MoonJuiceColliderZone: " + MoonJuiceColliderZone.name);
+            }
+        }
+
+        if (NebulaBlastColliderZone == null)
+        {
+            NebulaBlastColliderZone = GameObject.FindWithTag("NebulaBlastZone")?.GetComponent<Collider>();
+            if (NebulaBlastColliderZone == null)
+            {
+                Debug.LogWarning("NebulaBlastColliderZone with tag 'NebulaBlastZone' not found in scene!");
+            }
+            else
+            {
+                Debug.Log("Found NebulaBlastColliderZone: " + NebulaBlastColliderZone.name);
+            }
+        }
+
         // Find MoonJuice and NebulaBlast GameObjects if not assigned
         if (MoonJuice == null)
         {
@@ -102,6 +134,8 @@ public class SodaLogic : MonoBehaviour
             Debug.LogWarning("MoonJuice child name not specified!");
         }
         
+        
+
         if (NebulaBlast != null && !string.IsNullOrEmpty(nebulaBlastChildName))
         {
             Transform childTransform = NebulaBlast.transform.Find(nebulaBlastChildName);
@@ -162,9 +196,11 @@ public class SodaLogic : MonoBehaviour
     // Check if conditions are met: either object is enabled AND collision is happening
     private void CheckConditionsAndTrigger()
     {
-        bool conditionsActive = IsEitherConditionObjectActive();
+        bool moonJuiceConditionMet = moonJuiceChild != null && moonJuiceChild.activeInHierarchy && isInMoonJuiceZone;
+        bool nebulaBlastConditionMet = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy && isInNebulaBlastZone;
+        bool conditionsActive = moonJuiceConditionMet || nebulaBlastConditionMet;
         
-        if (conditionsActive && isColliding && !actionTriggered)
+        if (conditionsActive && !actionTriggered)
         {
             // Increment contact time while conditions are met
             currentContactTime += Time.deltaTime;
@@ -198,29 +234,28 @@ public class SodaLogic : MonoBehaviour
     // Log which condition objects are currently active
     private void LogActiveConditionObjects()
     {
-        // Only check child objects
-        bool moonJuiceActive = moonJuiceChild != null && moonJuiceChild.activeInHierarchy;
-        bool nebulaBlastActive = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy;
+        // Check which zone the object is in and which child is active
+        bool moonJuiceConditionMet = moonJuiceChild != null && moonJuiceChild.activeInHierarchy && isInMoonJuiceZone;
+        bool nebulaBlastConditionMet = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy && isInNebulaBlastZone;
         
-        if (moonJuiceActive && nebulaBlastActive)
+        if (moonJuiceConditionMet && nebulaBlastConditionMet)
         {
-            Debug.Log("Both MoonJuice and NebulaBlast were enabled when timer completed");
-            // If both are active, prioritize MoonJuice
+            Debug.Log("Both MoonJuice zone and NebulaBlast zone conditions met - prioritizing MoonJuice");
             ChangeMaterialToMoonJuice();
         }
-        else if (moonJuiceActive)
+        else if (moonJuiceConditionMet)
         {
-            Debug.Log("MoonJuice was enabled when timer completed");
+            Debug.Log("MoonJuice condition met: in MoonJuice zone with MoonJuice child enabled");
             ChangeMaterialToMoonJuice();
         }
-        else if (nebulaBlastActive)
+        else if (nebulaBlastConditionMet)
         {
-            Debug.Log("NebulaBlast was enabled when timer completed");
+            Debug.Log("NebulaBlast condition met: in NebulaBlast zone with NebulaBlast child enabled");
             ChangeMaterialToNebulaBlast();
         }
         else
         {
-            Debug.LogWarning("Timer completed but no condition objects were enabled!");
+            Debug.LogWarning("Timer completed but no zone/child condition was met!");
         }
     }
     
@@ -313,6 +348,18 @@ public class SodaLogic : MonoBehaviour
     // Collision detection - triggers when collision starts
     private void OnTriggerEnter(Collider other)
     {
+        if (MoonJuiceColliderZone != null && other == MoonJuiceColliderZone)
+        {
+            isInMoonJuiceZone = true;
+            Debug.Log($"Entered MoonJuice zone: {other.name} - Timer started");
+        }
+        else if (NebulaBlastColliderZone != null && other == NebulaBlastColliderZone)
+        {
+            isInNebulaBlastZone = true;
+            Debug.Log($"Entered NebulaBlast zone: {other.name} - Timer started");
+        }
+        
+        // Maintain backward compatibility with specificCollider
         if (specificCollider != null && other == specificCollider)
         {
             isColliding = true;
@@ -323,6 +370,22 @@ public class SodaLogic : MonoBehaviour
     // Collision detection - triggers when collision ends
     private void OnTriggerExit(Collider other)
     {
+        if (MoonJuiceColliderZone != null && other == MoonJuiceColliderZone)
+        {
+            isInMoonJuiceZone = false;
+            Debug.Log($"Exited MoonJuice zone: {other.name} after {currentContactTime:F2} seconds");
+            currentContactTime = 0f; // Reset timer
+            actionTriggered = false; // Allow action to trigger again when collision resumes
+        }
+        else if (NebulaBlastColliderZone != null && other == NebulaBlastColliderZone)
+        {
+            isInNebulaBlastZone = false;
+            Debug.Log($"Exited NebulaBlast zone: {other.name} after {currentContactTime:F2} seconds");
+            currentContactTime = 0f; // Reset timer
+            actionTriggered = false; // Allow action to trigger again when collision resumes
+        }
+        
+        // Maintain backward compatibility with specificCollider
         if (specificCollider != null && other == specificCollider)
         {
             isColliding = false;
@@ -335,6 +398,18 @@ public class SodaLogic : MonoBehaviour
     // Alternative collision detection using OnCollisionEnter (for non-trigger colliders)
     private void OnCollisionEnter(Collision collision)
     {
+        if (MoonJuiceColliderZone != null && collision.collider == MoonJuiceColliderZone)
+        {
+            isInMoonJuiceZone = true;
+            Debug.Log($"Entered MoonJuice zone: {collision.gameObject.name} - Timer started");
+        }
+        else if (NebulaBlastColliderZone != null && collision.collider == NebulaBlastColliderZone)
+        {
+            isInNebulaBlastZone = true;
+            Debug.Log($"Entered NebulaBlast zone: {collision.gameObject.name} - Timer started");
+        }
+        
+        // Maintain backward compatibility with specificCollider
         if (specificCollider != null && collision.collider == specificCollider)
         {
             isColliding = true;
@@ -345,6 +420,22 @@ public class SodaLogic : MonoBehaviour
     // Alternative collision detection using OnCollisionExit (for non-trigger colliders)
     private void OnCollisionExit(Collision collision)
     {
+        if (MoonJuiceColliderZone != null && collision.collider == MoonJuiceColliderZone)
+        {
+            isInMoonJuiceZone = false;
+            Debug.Log($"Exited MoonJuice zone: {collision.gameObject.name} after {currentContactTime:F2} seconds");
+            currentContactTime = 0f; // Reset timer
+            actionTriggered = false; // Allow action to trigger again when collision resumes
+        }
+        else if (NebulaBlastColliderZone != null && collision.collider == NebulaBlastColliderZone)
+        {
+            isInNebulaBlastZone = false;
+            Debug.Log($"Exited NebulaBlast zone: {collision.gameObject.name} after {currentContactTime:F2} seconds");
+            currentContactTime = 0f; // Reset timer
+            actionTriggered = false; // Allow action to trigger again when collision resumes
+        }
+        
+        // Maintain backward compatibility with specificCollider
         if (specificCollider != null && collision.collider == specificCollider)
         {
             isColliding = false;
