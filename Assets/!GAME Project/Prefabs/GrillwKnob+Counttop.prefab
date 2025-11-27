@@ -454,11 +454,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grillOn: 0
-  onThreshold: 0.9
+  onThreshold: 0.05
+  grillTurnOffRate: 0.005
+  turnOffTimerMax: 0.5
   GrillIcon: {fileID: 6044062867194338515}
   GrillBarImage: {fileID: 38143522976977282}
-  GrillHalf_C: {r: 0.75294125, g: 0.77647066, b: 0.4431373, a: 1}
-  Grillfull_C: {r: 1, g: 0.6156863, b: 0, a: 1}
+  GrillHalf_C: {r: 1, g: 0.8601764, b: 0.28490567, a: 1}
+  Grillfull_C: {r: 1, g: 0.46729827, b: 0, a: 1}
   KnobObj: {fileID: 8886271371108062568}
 --- !u!1 &6242116800407250675
 GameObject:
@@ -753,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2224261485402360553, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.571
+      value: 0.544
       objectReference: {fileID: 0}
     - target: {fileID: 2224261485402360553, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -825,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8864930785584074588, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.012
       objectReference: {fileID: 0}
     - target: {fileID: 8864930785584074588, guid: 29529d949c965f643befe6cfcd1e372c, type: 3}
       propertyPath: m_LocalPosition.y
