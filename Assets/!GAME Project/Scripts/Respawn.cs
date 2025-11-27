@@ -15,7 +15,7 @@ public class Respawn : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Check for a tag
-        if (other.tag == "RespawnZone")
+        if (other.CompareTag("RespawnZone"))
         {
             // Reset spawn/pos/rot
             transform.position = startPosition;
