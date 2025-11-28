@@ -68,23 +68,26 @@ public class PlayerCalibrations : MonoBehaviour
 
             if(isPressed)
             {
-                Debug.Log("Trigger pressed");
                 switch (autoConfigNr)
                 {
                     case 0:
                         SetBentROMInAuto();
+                        Debug.Log("Bent In Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMIn, bentInCheckmark);
                         break;
                     case 1:
                         SetBentROMDown();
+                        Debug.Log("Bent Out Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMOut, bentOutCheckmark);
                         break;
                     case 2:
                         SetRotationROMUp();
+                        Debug.Log("Rotation Up Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMUp, rotationUpCheckmark);
                         break;
                     case 3:
                         SetRotationROMDown();
+                        Debug.Log("Rotation Down Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMDown, rotationDownCheckmark);
                         break;
                 }
