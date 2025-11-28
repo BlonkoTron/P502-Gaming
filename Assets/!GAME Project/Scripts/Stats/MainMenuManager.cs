@@ -16,6 +16,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject automaticConfigurationPanel;
     [SerializeField] GameObject startGamePanel;
     [SerializeField] GameObject statsPanel;
+    [SerializeField] GameObject calibrationPanel;
 
     [Header("Other GameObjects")]
     [SerializeField] Button startGameButton;
@@ -71,6 +72,7 @@ public class MainMenuManager : MonoBehaviour
         automaticConfigurationPanel.SetActive(false);
         startGamePanel.SetActive(false);
         statsPanel.SetActive(false);
+        calibrationPanel.SetActive(false);
         // Enable the selected panel
         panel.SetActive(true);
     }

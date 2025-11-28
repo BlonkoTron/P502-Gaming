@@ -233,6 +233,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -40.789
       objectReference: {fileID: 0}
+    - target: {fileID: 4875407762366504152, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 122618771}
     - target: {fileID: 6847021672090247825, guid: b5ef9e00a8f5aee4895396faf0d530c9, type: 3}
       propertyPath: m_Name
       value: Grool
@@ -17221,6 +17225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 122618772}
     m_Modifications:
+    - target: {fileID: 4875407762366504152, guid: ff8af1e3a295fe94bb0b2da7c45e169f, type: 3}
+      propertyPath: parent
+      value: 
+      objectReference: {fileID: 122618771}
     - target: {fileID: 6847021672090247825, guid: ff8af1e3a295fe94bb0b2da7c45e169f, type: 3}
       propertyPath: m_Name
       value: Ketflup
