@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1c87c5cf-6a3a-43ee-a16a-2cbf90aa238a}">
+		<property name="assetPath">
+			<value>spaceship-whoosh-video-game-sound-320171.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>8.0979591836734688</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3310dc39-3316-4a32-88ac-8feaff80e785}</destination>
+		</relationship>
+	</object>
+</objects>
