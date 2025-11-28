@@ -1,10 +1,13 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class Respawn : MonoBehaviour
 {
     private Vector3 startPosition;
     private Quaternion startRotation;
+    private XRGrabInteractable grabInteractable;
 
     public bool Grabbed = false;
 
@@ -22,6 +25,43 @@ public class Respawn : MonoBehaviour
         // Save spawn
         startPosition = transform.position;
         startRotation = transform.rotation;
+
+        // Get XR Grab Interactable component
+        grabInteractable = GetComponent<XRGrabInteractable>();
+        
+        if (grabInteractable != null)
+        {
+            // Subscribe to grab events
+            grabInteractable.selectEntered.AddListener(OnGrabbed);
+            grabInteractable.selectExited.AddListener(OnReleased);
+        }
+    }
+
+    void OnDestroy()
+    {
+        // Unsubscribe from events to prevent memory leaks
+        if (grabInteractable != null)
+        {
+            grabInteractable.selectEntered.RemoveListener(OnGrabbed);
+            grabInteractable.selectExited.RemoveListener(OnReleased);
+        }
+    }
+
+    private void OnGrabbed(SelectEnterEventArgs args)
+    {
+        Grabbed = true;
+        
+        // Stop respawn timer when grabbed
+        if (respawnCoroutine != null)
+        {
+            StopCoroutine(respawnCoroutine);
+            respawnCoroutine = null;
+        }
+    }
+
+    private void OnReleased(SelectExitEventArgs args)
+    {
+        Grabbed = false;
     }
 
     void Update()
