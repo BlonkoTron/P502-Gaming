@@ -37,7 +37,7 @@ public class Order
                 count++;
             }
         }
-        if (count==otherBurger.Count)
+        if (count==Burger.Count)
         {
             return true;
         }
