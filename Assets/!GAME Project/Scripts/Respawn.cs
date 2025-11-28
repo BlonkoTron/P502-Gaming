@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Respawn : MonoBehaviour
@@ -14,8 +15,7 @@ public class Respawn : MonoBehaviour
     [Tooltip("Time in seconds before respawning")]
     public float respawnDelay = 30.0f;
 
-    private float timer = 0f;
-    private bool hasLeftStartPosition = false;
+    private Coroutine respawnCoroutine;
 
     void Start()
     {
@@ -31,34 +31,34 @@ public class Respawn : MonoBehaviour
         // Check if object has left the start position
         if (distanceFromStart > distanceThreshold)
         {
-            if (!hasLeftStartPosition)
+            // Start coroutine if not already running
+            if (respawnCoroutine == null)
             {
-                hasLeftStartPosition = true;
-                timer = 0f;
+                respawnCoroutine = StartCoroutine(RespawnTimer());
             }
-
-            // Increment timer
-            timer += Time.deltaTime;
-            
-            
-            // Respawn after delay
-            if (timer >= respawnDelay && !Grabbed)
-            {
-                Respawner();
-                timer = 0f;
-                hasLeftStartPosition = false;
-            }
-            
         }
         else
         {
-            // Reset timer if object returns to start position
-            if (hasLeftStartPosition)
+            // Stop coroutine if object returns to start position
+            if (respawnCoroutine != null)
             {
-                hasLeftStartPosition = false;
-                timer = 0f;
+                StopCoroutine(respawnCoroutine);
+                respawnCoroutine = null;
             }
         }
+    }
+
+    private IEnumerator RespawnTimer()
+    {
+        yield return new WaitForSeconds(respawnDelay);
+        
+        // Only respawn if not grabbed
+        if (!Grabbed)
+        {
+            Respawner();
+        }
+        
+        respawnCoroutine = null;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -78,9 +78,12 @@ public class Respawn : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
 
-            // Reset timer
-            timer = 0f;
-            hasLeftStartPosition = false;
+            // Stop respawn coroutine
+            if (respawnCoroutine != null)
+            {
+                StopCoroutine(respawnCoroutine);
+                respawnCoroutine = null;
+            }
         }
     }
 
