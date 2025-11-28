@@ -126,7 +126,19 @@ MonoBehaviour:
       m_Calls: []
   m_FirstSelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6719465044599657149}
+        m_TargetAssemblyTypeName: Respawn, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -249,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9646be45b273d404486dd87cbd3a14ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Grabbed: 0
+  distanceThreshold: 1
+  respawnDelay: 2
 --- !u!1001 &646837067818937434
 PrefabInstance:
   m_ObjectHideFlags: 0
