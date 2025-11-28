@@ -10,11 +10,6 @@ public class MainMenuManager : MonoBehaviour
 
     [Header("Main Menu Panels")]
     [SerializeField] GameObject welcomePanel;
-    [SerializeField] GameObject selectArmPanel;
-    [SerializeField] GameObject chooseConfigurationPanel;
-    [SerializeField] GameObject manuelConfigurationPanel;
-    [SerializeField] GameObject automaticConfigurationPanel;
-    [SerializeField] GameObject startGamePanel;
     [SerializeField] GameObject statsPanel;
     [SerializeField] GameObject calibrationPanel;
 
@@ -66,29 +61,11 @@ public class MainMenuManager : MonoBehaviour
     {         
         // Disable all panels
         welcomePanel.SetActive(false);
-        selectArmPanel.SetActive(false);
-        chooseConfigurationPanel.SetActive(false);
-        manuelConfigurationPanel.SetActive(false);
-        automaticConfigurationPanel.SetActive(false);
-        startGamePanel.SetActive(false);
         statsPanel.SetActive(false);
         calibrationPanel.SetActive(false);
         // Enable the selected panel
         panel.SetActive(true);
     }
-
-    public void GoToCalibrationPanel()
-    {
-        if (playerSetUp.isManualConfig)
-        {
-            StartCoroutine(DelayGoToPanel(0.5f, manuelConfigurationPanel));
-        }
-        else
-        {
-            StartCoroutine(DelayGoToPanel(0.5f, automaticConfigurationPanel));
-        }
-    }
-    
 
     public void StartDelayGoToPanel(GameObject panel)
     {
@@ -104,12 +81,8 @@ public class MainMenuManager : MonoBehaviour
     {
         // Disable all panels
         welcomePanel.SetActive(false);
-        selectArmPanel.SetActive(false);
-        chooseConfigurationPanel.SetActive(false);
-        manuelConfigurationPanel.SetActive(false);
-        automaticConfigurationPanel.SetActive(false);
-        startGamePanel.SetActive(false);
         statsPanel.SetActive(false);
+        calibrationPanel.SetActive(false);
 
         yield return new WaitForSeconds(delay);
 
