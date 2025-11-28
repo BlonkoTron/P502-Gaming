@@ -251,7 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Grabbed: 0
   distanceThreshold: 1.2
-  respawnDelay: 2
+  respawnDelay: 15
 --- !u!1001 &646837067818937434
 PrefabInstance:
   m_ObjectHideFlags: 0
