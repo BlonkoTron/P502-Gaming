@@ -11,6 +11,8 @@ public class TriggeredRaycast : MonoBehaviour
     private EventInstance Saucesquirt;
     [SerializeField] private EventReference saucesound;
 
+    [SerializeField] GameObject parent;
+
     [Header("Raycast Settings")]
     public bool raycastActive = false;
     public float rayDistance = 10f;
@@ -96,7 +98,7 @@ public class TriggeredRaycast : MonoBehaviour
         }
 
         // Instantiate normally
-        GameObject sauceObj = Instantiate(sauce, spawnPosition, Quaternion.identity);
+        GameObject sauceObj = Instantiate(sauce, spawnPosition, Quaternion.identity, parent: parent.transform);
 
         IngredientStackable stackable = sauceObj.GetComponent<IngredientStackable>();
         if (stackable == null)
