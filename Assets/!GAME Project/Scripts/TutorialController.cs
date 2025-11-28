@@ -12,6 +12,7 @@ public class TutorialController : MonoBehaviour
     [SerializeField] private GameObject foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial,bellTutorial,sodaButtonTutorial,sodaHandleTutorial;
 
     private Hinge_trigger hingeTrigger;
+    private Grill grill;
     private XRBaseInteractable knife;
     private void Awake()
     {
@@ -36,6 +37,11 @@ public class TutorialController : MonoBehaviour
         if (knifeObj != null)
         {
             knife = knifeObj.GetComponent<XRBaseInteractable>();
+        }
+        grill = FindAnyObjectByType<Grill>();
+        if (grill!=null)
+        {
+            grill.OnGrillTUrnedOn.AddListener(HideStoveKnobTutorial);
         }
         if (OrderController.Instance!=null)
         {
@@ -72,6 +78,7 @@ public class TutorialController : MonoBehaviour
         knife.firstSelectEntered.RemoveListener(HideCuttingTutorial);
         cuttingTutorial.SetActive(false);
         ShowStoveKnobTutorial();
+        ShowBeefCookingTutorial();
     }
     public void ShowStoveKnobTutorial()
     {
@@ -79,8 +86,9 @@ public class TutorialController : MonoBehaviour
     }
     public void HideStoveKnobTutorial()
     {
+        grill.OnGrillTUrnedOn.RemoveListener(HideStoveKnobTutorial);
         stoveKnobTutorial.SetActive(false);
-        ShowBeefCookingTutorial();
+        HideBeefCookingTutorial();
     }
     public void ShowBeefCookingTutorial()
     {
