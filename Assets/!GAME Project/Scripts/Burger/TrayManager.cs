@@ -11,6 +11,7 @@ public class TrayManager : MonoBehaviour
     public static TrayManager Instance;
 
     [SerializeField] private DailySaveSystem dailySaveSystem;
+    [SerializeField] private PlateManager plateManager;
 
     private GameObject plateOnTray,sodaOnTray;
 
@@ -58,7 +59,7 @@ public class TrayManager : MonoBehaviour
     {
         Destroy(sodaOnTray);
         var plateChild = plateOnTray.GetComponentInChildren<Transform>();
-        plateChild.GetComponent<PlateManager>().ResetPlate();
+        plateManager.ResetPlate();
         foreach (Transform child in plateChild)
         {
             if (child.CompareTag("Stackable"))

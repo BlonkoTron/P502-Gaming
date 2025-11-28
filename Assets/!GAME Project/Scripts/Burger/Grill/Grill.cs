@@ -47,11 +47,11 @@ public class Grill : MonoBehaviour
                 GrillIcon.SetFloat("KnobTurn", knob.value);
                 GrillBarImage.fillAmount = knob.value;
 
-                if (knob.value >= 0.9f)
+                if (knob.value >= 0.7f)
                 {
                     GrillBarImage.color = Grillfull_C;
                 }
-                else if (knob.value > 0.5f && knob.value < 0.9f)
+                else if (knob.value > 0.2f && knob.value < 0.7f)
                 {
                     GrillBarImage.color = GrillHalf_C;
                 }
@@ -68,9 +68,9 @@ public class Grill : MonoBehaviour
     private void FixedUpdate()
     {
 
-        if (knob.value > 0.05f)
+        if (grillOn)
         {
-            if (turnOffTimer > 0)
+            if (turnOffTimer >= onThreshold)
             {
                 turnOffTimer -= Time.fixedDeltaTime;
             }

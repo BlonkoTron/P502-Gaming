@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 public class Order
 {
-
+    public List<BurgerIngredient> Burger;
+    public Drink SideOrderDrink;
+    public Material receiptMaterial;
     public Order(List<BurgerIngredient> burger,Drink drink, Material receiptMat)
     {
         Burger = burger;
@@ -24,22 +26,18 @@ public class Order
         Nebula_blast
     }
 
-    public List<BurgerIngredient> Burger;
-    public Drink SideOrderDrink;
-    public Material receiptMaterial;
-
     public bool CheckBurgerMatch(List<BurgerIngredient> otherBurger)
     {
         if (otherBurger==null) { return false; }
-        var count = 0;
-        foreach (var item in otherBurger)
+        int count = 0;
+        foreach (BurgerIngredient item in otherBurger)
         {
             if (Burger.Contains(item))
             {
                 count++;
             }
         }
-        if (count==otherBurger.Count)
+        if (count==Burger.Count)
         {
             return true;
         }
