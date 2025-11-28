@@ -124,6 +124,13 @@ MonoBehaviour:
   halt: 0
   timer: 15
   view: 0
+  TVNoice:
+    Guid:
+      Data1: -1844217339
+      Data2: 1278161550
+      Data3: -1571495282
+      Data4: 1890597035
+    Path: event:/WorldSFX/Testlong
   video:
   - {fileID: 2100000, guid: 49aa04ba5c7b76040a5c37b8ed643b4f, type: 2}
   - {fileID: 2100000, guid: be9bf4e3359328f43bb4e6b109cf61a2, type: 2}
