@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class Tv : MonoBehaviour
@@ -11,13 +13,18 @@ public class Tv : MonoBehaviour
 
     public int view = 0 ;
 
+    [SerializeField] private EventReference TVNoice;
+    private EventInstance TVaudio;
+
     //Set up list
     [Header("Ingredient Prefabs")]
     public List<Material> video;
 
     // Update is called once per frame
     void Update()
-    {  
+    {
+        Audiomanager.instance.UpdateSoundPosition(TVaudio, transform.position);
+
         if (halt == false)
         {
             halt = true;
@@ -26,6 +33,10 @@ public class Tv : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        TVaudio = Audiomanager.instance.PlaySound(TVNoice, transform.position);
+    }
     IEnumerator FiveSecondTimer()
     {
         Debug.Log("Timer started!");
