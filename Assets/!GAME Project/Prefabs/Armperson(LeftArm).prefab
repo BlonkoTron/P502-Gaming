@@ -110,11 +110,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3857225340447946005, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: leftHandRotationOffset.z
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3857225340447946005, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: rightHandRotationOffset.z
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 5034440762265891024, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_Enabled

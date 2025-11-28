@@ -371,6 +371,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9646be45b273d404486dd87cbd3a14ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Grabbed: 0
+  distanceThreshold: 1
+  respawnDelay: 30
 --- !u!4 &4327948425373752669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b08a6a142f682824d98789bc7fc42833, type: 3}

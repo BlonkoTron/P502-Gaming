@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e34d3f8c-e799-4d65-a001-b5de1a4e17d1}">
+		<property name="assetPath">
+			<value>ding-402325.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.71999999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3310dc39-3316-4a32-88ac-8feaff80e785}</destination>
+		</relationship>
+	</object>
+</objects>
