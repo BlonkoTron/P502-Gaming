@@ -96,7 +96,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7338144397485285429}
   - component: {fileID: 5313706454528665608}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Meat COL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
