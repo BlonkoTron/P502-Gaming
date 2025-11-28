@@ -1,6 +1,7 @@
 using Unity.VRTemplate;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Grill : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Grill : MonoBehaviour
     [SerializeField] private GameObject KnobObj;
     private XRKnob knob;
 
+    public UnityEvent OnGrillTUrnedOn;
+
 
     private void Start()
     {
@@ -34,6 +37,10 @@ public class Grill : MonoBehaviour
         {
             if (knob.value > onThreshold)
             { 
+                if (grillOn==false)
+                {
+                    OnGrillTUrnedOn.Invoke();
+                }
                 grillOn = true;
                 
             }
