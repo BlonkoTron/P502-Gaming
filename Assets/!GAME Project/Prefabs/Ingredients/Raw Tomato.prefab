@@ -149,6 +149,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4791480510759625972}
   m_SourcePrefab: {fileID: 100100000, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
+--- !u!4 &5619712610776839016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5477749408508380018, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
+  m_PrefabInstance: {fileID: 9080986617335943142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8270663794711048887 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c8dd39ef0bd32fb43993264998efadbe, type: 3}
@@ -249,7 +254,7 @@ MonoBehaviour:
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
   m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_PredictedVisualsTransform: {fileID: 5619712610776839016}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1

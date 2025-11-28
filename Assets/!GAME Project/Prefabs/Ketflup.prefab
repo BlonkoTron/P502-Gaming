@@ -166,7 +166,7 @@ MonoBehaviour:
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
   m_MovementType: 0
-  m_PredictedVisualsTransform: {fileID: 0}
+  m_PredictedVisualsTransform: {fileID: 5751976283417256399}
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -231,6 +231,7 @@ MonoBehaviour:
       Data3: 1780545197
       Data4: -1221424198
     Path: event:/WorldSFX/Condimentsplat
+  parent: {fileID: 0}
   raycastActive: 0
   rayDistance: 10
   sauce: {fileID: 1227420442543478760, guid: 7c8aae3795a4f1649b64e45de971df99, type: 3}
