@@ -31,7 +31,7 @@ public class TrackBents : MonoBehaviour
     private void Start()
     {
         UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
-        if(currentScene.name == "MainGameScene")
+        if(currentScene.name == "MainMenu")
         {
             tracking = false;
         }
@@ -40,7 +40,7 @@ public class TrackBents : MonoBehaviour
             tracking = true;
         }
 
-        if (playerSetUp.isRightArm)
+        if (playerSetUp.isRightArm == false)
         {
             shoulderJoint = shoulderJointRight;
             elbowJoint = elbowJointRight;
@@ -64,40 +64,44 @@ public class TrackBents : MonoBehaviour
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
-        if (!tracking)
-        { return; }
-        else
-        {
-            CheckBent();
-        }
+        Debug.Log("Bent Angle: " + angleDegrees);
+        CheckBent();
     }
 
 
-
-    private void CalculateBent(float c, float a, float b)
+    public void CalculateBent(float c, float a, float b)
     {
         bent = (Mathf.Pow(a,2)+Mathf.Pow(b,2)-Mathf.Pow(c,2))/(2.0*a*b);
         angleDegrees = Mathf.Acos((float)bent) * Mathf.Rad2Deg;
     }
 
+    public void UpdateAngleDegrees()
+    {
+        CalculateBent(cDistance, aDistance, bDistance);
+    }
+
     private void CheckBent()
     {
-        if (angleDegrees <= playerSetUp.bentROMIn && isReset)
+        if (tracking)
         {
-            playerStats.nrOfBentsIn += 1;
-            Debug.Log("BENT IN! Total Bents In: " + playerStats.nrOfBentsIn);
-            isReset = false;
+            if (angleDegrees <= playerSetUp.bentROMIn && isReset)
+            {
+                playerStats.nrOfBentsIn += 1;
+                Debug.Log("BENT IN! Total Bents In: " + playerStats.nrOfBentsIn);
+                isReset = false;
+            }
+            else if (angleDegrees >= playerSetUp.bentROMOut &&  isReset)
+            {
+                playerStats.nrOfBentsOut += 1;
+                Debug.Log("BENT OUT! Total Bents Out: " + playerStats.nrOfBentsOut);
+                isReset = false;
+            }
+            else if (angleDegrees > playerSetUp.bentROMIn && angleDegrees < playerSetUp.bentROMOut)
+            {
+                isReset = true;
+            }
         }
-        else if (angleDegrees >= playerSetUp.bentROMOut &&  isReset)
-        {
-            playerStats.nrOfBentsOut += 1;
-            Debug.Log("BENT OUT! Total Bents Out: " + playerStats.nrOfBentsOut);
-            isReset = false;
-        }
-        else if (angleDegrees > playerSetUp.bentROMIn && angleDegrees < playerSetUp.bentROMOut)
-        {
-            isReset = true;
-        }
+       
     }
 
 }

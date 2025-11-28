@@ -23,7 +23,7 @@ public class TrackRotations : MonoBehaviour
     private void Start()
     {
         UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "MainGameScene")
+        if (currentScene.name == "MainMenu")
         {
             tracking = false;
         }

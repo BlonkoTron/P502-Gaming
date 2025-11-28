@@ -68,10 +68,11 @@ public class PlayerCalibrations : MonoBehaviour
 
             if(isPressed)
             {
+                trackBents.UpdateAngleDegrees();
                 switch (autoConfigNr)
                 {
                     case 0:
-                        SetBentROMInAuto();
+                        SetBentROMIn();
                         Debug.Log("Bent In Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMIn, bentInCheckmark);
                         break;
@@ -343,9 +344,11 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-    public void SetBentROMInAuto()
+    public void SetBentROMIn()
     {
-       playerSetUp.bentROMIn = trackBents.angleDegrees;
+        Debug.Log("Setting Bent In ROM");
+        playerSetUp.bentROMIn = trackBents.angleDegrees;
+        Debug.Log("Bent In Set to: " + playerSetUp.bentROMIn);
     }
 
     public void SetBentROMDown()

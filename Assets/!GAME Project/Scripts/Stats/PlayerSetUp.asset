@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 133a72fb496a2d049bd001c811facc3e, type: 3}
   m_Name: PlayerSetUp
   m_EditorClassIdentifier: 
-  isRightArm: 1
-  bentROMIn: 65
+  isRightArm: 0
+  bentROMIn: 0
   bentROMOut: 0
-  rotationROMUp: 85
-  rotationROMDown: 85
+  rotationROMUp: 0
+  rotationROMDown: 0
   isConfigured: 0
   isManualConfig: 1
