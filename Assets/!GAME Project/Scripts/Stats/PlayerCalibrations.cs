@@ -26,20 +26,20 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private GameObject autoConfigButton;
 
     [Header("Auto Configuration")]
-    [SerializeField] TMP_Text bentInROMText;
-    [SerializeField] TMP_Text bentOutROMText;
-    [SerializeField] TMP_Text rotationUpROMText;
-    [SerializeField] TMP_Text rotationDownROMText;
+    [SerializeField] GameObject bentInROMText;
+    [SerializeField] GameObject bentOutROMText;
+    [SerializeField] GameObject rotationUpROMText;
+    [SerializeField] GameObject rotationDownROMText;
     
-    [SerializeField] private Button bentInButton;
-    [SerializeField] private Button bentOutButton;
-    [SerializeField] private Button rotationUpButton;
-    [SerializeField] private Button rotationDownButton;
+    [SerializeField] private Image bentInButton;
+    [SerializeField] private Image bentOutButton;
+    [SerializeField] private Image rotationUpButton;
+    [SerializeField] private Image rotationDownButton;
 
-    public bool configBentIn;
-    public bool configBentOut;
-    public bool configRotationUp;
-    public bool configRotationDown;
+    [SerializeField] private GameObject bentInCheckmark;
+    [SerializeField] private GameObject bentOutCheckmark;
+    [SerializeField] private GameObject rotationUpCheckmark;
+    [SerializeField] private GameObject rotationDownCheckmark;
 
     private int autoConfigNr;
 
@@ -47,7 +47,15 @@ public class PlayerCalibrations : MonoBehaviour
 
     private void Start()
     {
-        autoConfigNr = 0;
+        bentInROMText.SetActive(false);
+        bentOutROMText.SetActive(false);
+        rotationUpROMText.SetActive(false);
+        rotationDownROMText.SetActive(false);
+
+        bentInCheckmark.SetActive(false);
+        bentOutCheckmark.SetActive(false);
+        rotationUpCheckmark.SetActive(false);
+        rotationDownCheckmark.SetActive(false);
     }
 
 
@@ -60,34 +68,41 @@ public class PlayerCalibrations : MonoBehaviour
 
             if(isPressed)
             {
+                Debug.Log("Trigger pressed");
                 switch (autoConfigNr)
                 {
                     case 0:
-                        Debug.Log("Trigger pressed - Setting Bent ROM In");
                         SetBentROMInAuto();
-                        bentInROMText.text = "Bent ROM In: " + playerSetUp.bentROMIn.ToString();
-                        ActivateButton(bentInButton);
+                        CheckIfconfigured(playerSetUp.bentROMIn, bentInCheckmark);
                         break;
                     case 1:
                         SetBentROMDown();
-                        bentOutROMText.text = "Bent ROM Out: " + playerSetUp.bentROMOut.ToString();
-                        ActivateButton(bentOutButton);
+                        CheckIfconfigured(playerSetUp.bentROMOut, bentOutCheckmark);
                         break;
                     case 2:
                         SetRotationROMUp();
-                        rotationUpROMText.text = "Rotation ROM Up: " + playerSetUp.rotationROMUp.ToString();
-                        ActivateButton(rotationUpButton);
+                        CheckIfconfigured(playerSetUp.rotationROMUp, rotationUpCheckmark);
                         break;
                     case 3:
                         SetRotationROMDown();
-                        rotationDownROMText.text = "Rotation ROM Down: " + playerSetUp.rotationROMDown.ToString();
-                        ActivateButton(rotationDownButton);
+                        CheckIfconfigured(playerSetUp.rotationROMDown, rotationDownCheckmark);
                         break;
                 }
             }
         }
     }
 
+    public void CheckIfconfigured(float ROM, GameObject checkMark)
+    {         if (ROM > 0)
+        {
+            checkMark.SetActive(true);
+        }
+    }
+
+    public void setAutoConficNr(int nr)
+    {
+        autoConfigNr = nr;
+    }
 
     public void AddAutoConficNr()
     {
@@ -111,7 +126,7 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-    private void InitializeRightController()
+    private void InitializeLeftController()
     {
         List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
         InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
@@ -123,7 +138,7 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-    private void InitializeLeftController()
+    private void InitializeRightController()
     {
         List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
         InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
@@ -138,17 +153,72 @@ public class PlayerCalibrations : MonoBehaviour
     {
         playerSetUp.isRightArm = false;
         InitializeLeftController();
-        //leftButton.GetComponent<Image>().color = Color.green;
-        //rightButton.GetComponent<Image>().color = Color.white;
     }
 
     public void ChooseRightArm()
     {
         playerSetUp.isRightArm = true;
         InitializeRightController();
-        //rightButton.GetComponent<Image>().color = Color.green;
-        //leftButton.GetComponent<Image>().color = Color.white;
     }
+
+    public void PressBentIn()
+    {
+        SetColor(Color.green, bentInButton);
+        SetColor(Color.black, bentOutButton);
+        SetColor(Color.black, rotationUpButton);
+        SetColor(Color.black, rotationDownButton);
+
+        bentInROMText.SetActive(true);
+        bentOutROMText.SetActive(false);
+        rotationUpROMText.SetActive(false);
+        rotationDownROMText.SetActive(false);
+    }
+
+    public void PressBentOut()
+    {
+        SetColor(Color.black, bentInButton);
+        SetColor(Color.green, bentOutButton);
+        SetColor(Color.black, rotationUpButton);
+        SetColor(Color.black, rotationDownButton);
+
+        bentInROMText.SetActive(false);
+        bentOutROMText.SetActive(true);
+        rotationUpROMText.SetActive(false);
+        rotationDownROMText.SetActive(false);
+    }
+
+    public void PressRotationUp()
+    {
+        SetColor(Color.black, bentInButton);
+        SetColor(Color.black, bentOutButton);
+        SetColor(Color.green, rotationUpButton);
+        SetColor(Color.black, rotationDownButton);
+
+        bentInROMText.SetActive(false);
+        bentOutROMText.SetActive(false);
+        rotationUpROMText.SetActive(true);
+        rotationDownROMText.SetActive(false);
+    }
+
+    public void PressRotationDown()
+    {
+        SetColor(Color.black, bentInButton);
+        SetColor(Color.black, bentOutButton);
+        SetColor(Color.black, rotationUpButton);
+        SetColor(Color.green, rotationDownButton);
+
+        bentInROMText.SetActive(false);
+        bentOutROMText.SetActive(false);
+        rotationUpROMText.SetActive(false);
+        rotationDownROMText.SetActive(true);
+    }
+
+
+    public void SetColor(Color color, Image image)
+    {
+        image.color = color;
+    }
+
 
     public void ChooseManualConfig()
     {
