@@ -1795,7 +1795,7 @@ MonoBehaviour:
   handPositionOffsetleft: {x: 0.04, y: 0, z: -0.09}
   handPositionOffsetright: {x: 0, y: 0, z: -0.07}
   leftHandRotationOffset: {x: 0, y: 0, z: 180}
-  rightHandRotationOffset: {x: 0, y: 0, z: 0}
+  rightHandRotationOffset: {x: 0, y: 0, z: 180}
   elbowBendRatio: 0.5
   elbowOutwardOffset: 0.2
   elbowDownOffset: -0.3
