@@ -204,6 +204,13 @@ MonoBehaviour:
   MaxY: 0
   MaxX: 2
   MaxZ: 2
+  FodtubeSFX:
+    Guid:
+      Data1: 821308033
+      Data2: 1304731605
+      Data3: -2047146050
+      Data4: -1231560023
+    Path: event:/WorldSFX/Foodlaunch
 --- !u!1001 &707409658925510245
 PrefabInstance:
   m_ObjectHideFlags: 0

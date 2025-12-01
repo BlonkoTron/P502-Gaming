@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class IngredientFly : MonoBehaviour
@@ -32,10 +34,13 @@ public class IngredientFly : MonoBehaviour
     public float MaxX = 0;
     public float MaxZ = 0;
 
-   
 
+    private EventInstance FoodtubeSound;
+    [SerializeField] private EventReference FodtubeSFX;
     private void Update()
     {
+        Audiomanager.instance.UpdateSoundPosition(FoodtubeSound, transform.position);
+
         if (trigger == true)
         {
             LaunchRandomIngredient();
@@ -53,6 +58,8 @@ public class IngredientFly : MonoBehaviour
         float x = Random.Range(MinX, MaxX);
         float y = Random.Range(MinY, MaxY);
         float z = Random.Range(MinZ, MaxZ);
+
+        FoodtubeSound = Audiomanager.instance.PlaySound(FodtubeSFX, transform.position);
 
         //create a for loop for the amount of foodlaunches needed
         for (var i = 0; i < maxFoodLaunches; i++)
