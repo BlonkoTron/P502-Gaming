@@ -168,6 +168,7 @@ public class CookBeef : MonoBehaviour
     {
         Soundblock = false;
         Audiomanager.instance.StopSound(CookBeefSound);
+
         if (other.CompareTag("Grill"))
         {
             // Start checking rotation after leaving the grill

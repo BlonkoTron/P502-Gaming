@@ -5081,7 +5081,7 @@ MonoBehaviour:
   Burnt: {fileID: 2100000, guid: 926a443c17dff1944bee39ad32d40b89, type: 2}
   beef: {fileID: 5222391013609667947}
   DesiredCooktime: 20
-  flipTimeThreshold: 5
+  flipTimeThreshold: 10
   isflipped: 0
   Cookbeefsfx:
     Guid:
