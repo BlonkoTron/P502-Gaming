@@ -335,7 +335,7 @@ MonoBehaviour:
   cuttingTutorial: {fileID: 1276069687119143868}
   beefCookingTutorial: {fileID: 8344352240011493045}
   stoveKnobTutorial: {fileID: 8820060483457773579}
-  bellTutorial: {fileID: 5725226872667127440}
+  bellTutorial: {fileID: 3007393297962775330}
   sodaButtonTutorial: {fileID: 3931830565766695585}
   sodaHandleTutorial: {fileID: 7799414294840677266}
 --- !u!1 &3007393297962775330
@@ -573,7 +573,7 @@ Transform:
   m_GameObject: {fileID: 5725226872667127440}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.033, y: 0, z: 0.246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
