@@ -72,6 +72,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Doorpress: 0
   cooldown: 0
+  Roofsound:
+    Guid:
+      Data1: 1572241425
+      Data2: 1177203229
+      Data3: -1414125145
+      Data4: -104788473
+    Path: event:/WorldSFX/Airsuck
   Spacedoor: {fileID: 4096313597763595870}
   waitTime: 5
 --- !u!1 &4046387181847820865

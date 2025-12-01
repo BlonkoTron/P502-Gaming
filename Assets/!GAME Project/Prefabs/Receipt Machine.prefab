@@ -5199,6 +5199,13 @@ MonoBehaviour:
       Data4: -687028660
     Path: event:/WorldSFX/Faxorder
   receiptPrefab: {fileID: 1237147578233741238, guid: bcb4c6ae3980d27499a1727eb84f4c2f, type: 3}
+  OrderSFX:
+    Guid:
+      Data1: 998333915
+      Data2: 1100053495
+      Data3: 1816861619
+      Data4: -687028660
+    Path: event:/WorldSFX/Faxorder
 --- !u!1001 &5144341790738830972
 PrefabInstance:
   m_ObjectHideFlags: 0

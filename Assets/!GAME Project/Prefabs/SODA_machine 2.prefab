@@ -5390,6 +5390,13 @@ MonoBehaviour:
   onDisableAll:
     m_PersistentCalls:
       m_Calls: []
+  SodaPour:
+    Guid:
+      Data1: 1835223181
+      Data2: 1078766282
+      Data3: -708488278
+      Data4: -457615976
+    Path: event:/WorldSFX/Sodapourr
 --- !u!1 &584618398574349866
 GameObject:
   m_ObjectHideFlags: 0
@@ -5648,6 +5655,13 @@ MonoBehaviour:
   onDisableAll:
     m_PersistentCalls:
       m_Calls: []
+  SodaPour:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!54 &7862750782999718232
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13332,6 +13346,13 @@ MonoBehaviour:
   onDisableAll:
     m_PersistentCalls:
       m_Calls: []
+  SodaPour:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &3629205429333850335
 MonoBehaviour:
   m_ObjectHideFlags: 0
