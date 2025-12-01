@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{9dd2a54e-0f1d-4645-a38c-680685eddcf6}">
+		<property name="assetPath">
+			<value>happyalien.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4375056689342403</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{3310dc39-3316-4a32-88ac-8feaff80e785}</destination>
+		</relationship>
+	</object>
+</objects>
