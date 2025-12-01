@@ -72,6 +72,7 @@ public class MainMenuManager : MonoBehaviour
         StartCoroutine (DelayGoToPanel(0.5f, panel));
     }
 
+    // this needs to be changed when we have multiple scenes
     public void StartGame()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
