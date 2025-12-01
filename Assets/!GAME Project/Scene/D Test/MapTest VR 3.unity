@@ -6225,6 +6225,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: Belltester.Path
+      value: event:/WorldSFX/BellDing
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: Belltester.Guid.Data1
+      value: 1250555118
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: Belltester.Guid.Data2
+      value: 1279408929
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: Belltester.Guid.Data3
+      value: 1531734947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
+      propertyPath: Belltester.Guid.Data4
+      value: 316878270
+      objectReference: {fileID: 0}
+    - target: {fileID: 6561645088974127963, guid: 7acfdbff682ea6648ba09865159d3fee, type: 3}
       propertyPath: OnBellPressed.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -12113,6 +12133,14 @@ PrefabInstance:
     - target: {fileID: 390131541092105237, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_Name
       value: Armperson(RightArm)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594652004438968603, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6014137133832186401, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 7639319280419203448, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_LocalPosition.x
