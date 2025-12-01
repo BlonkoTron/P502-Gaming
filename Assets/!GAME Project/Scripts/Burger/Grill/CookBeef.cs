@@ -32,6 +32,8 @@ public class CookBeef : MonoBehaviour
     private bool isCooked = false;
     private bool isBurnt = false;
 
+    private bool Soundblock = false;
+
     private EventInstance CookBeefSound;
     [SerializeField] private EventReference Cookbeefsfx;
 
@@ -76,9 +78,14 @@ public class CookBeef : MonoBehaviour
         }
         else if (grill.grillOn)
         {
+            if (Soundblock == false)
+            {
+                CookBeefSound = Audiomanager.instance.PlaySound(Cookbeefsfx, transform.position);
+                Soundblock = true;
+            }
+
             // Reduce cooking time
             Cooktime -= Time.deltaTime;
-            CookBeefSound = Audiomanager.instance.PlaySound(Cookbeefsfx, transform.position);
 
             if (!cookingSteam.gameObject.activeSelf)
             {
@@ -102,7 +109,7 @@ public class CookBeef : MonoBehaviour
             // ---- SECOND SIDE ----
             if (halfCookedReached && isflipped)
             {
-                CookBeefSound = Audiomanager.instance.PlaySound(Cookbeefsfx, transform.position);
+                //CookBeefSound = Audiomanager.instance.PlaySound(Cookbeefsfx, transform.position);
                 if (Cooktime <= 0f && !isBurnt)
                 {
                     // Cooked first
@@ -144,6 +151,7 @@ public class CookBeef : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Soundblock = false;
         Audiomanager.instance.StopSound(CookBeefSound);
         if (other.CompareTag("Grill"))
         {
