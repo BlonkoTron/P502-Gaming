@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using TMPro;
+using FMOD.Studio;
+using FMODUnity;
 
 public class OrderFeedbackUI : MonoBehaviour
 {
@@ -12,6 +14,12 @@ public class OrderFeedbackUI : MonoBehaviour
     [SerializeField] private Sprite orderCorrectSprite, orderWrongSprite;
     [SerializeField] private TMP_Text orderCountText;
     private float panelAnimationTime = 4;
+
+    private EventInstance HappyAlien;
+    [SerializeField] private EventReference GladAlien;
+
+    private EventInstance SadAlien;
+    [SerializeField] private EventReference Saddestalien;
     void Start()
     {
         orderController = OrderController.Instance;
@@ -29,9 +37,11 @@ public class OrderFeedbackUI : MonoBehaviour
         if (correctOrder)
         {
             OrderFullfillImage.sprite = orderCorrectSprite;
+            HappyAlien = Audiomanager.instance.PlaySound(GladAlien, transform.position);
         } else
         {
             OrderFullfillImage.sprite = orderWrongSprite;
+            SadAlien = Audiomanager.instance.PlaySound(Saddestalien, transform.position);
         }
         UpdateOrderCountText();
     }

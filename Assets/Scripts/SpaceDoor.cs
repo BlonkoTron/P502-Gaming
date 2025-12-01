@@ -1,4 +1,7 @@
 using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
+using NUnit.Framework.Internal;
 using UnityEngine;
 
 public class SpaceDoor : MonoBehaviour
@@ -6,6 +9,9 @@ public class SpaceDoor : MonoBehaviour
     //Bool to activate door and set a cooldown for no double presses
     public bool Doorpress;
     public bool cooldown;
+
+    private EventInstance Roofopen;
+    [SerializeField] private EventReference Roofsound;
 
     //animator
     public Animator Spacedoor;
@@ -15,6 +21,7 @@ public class SpaceDoor : MonoBehaviour
 
     public void Update()
     {
+        Audiomanager.instance.UpdateSoundPosition(Roofopen, transform.position);
         if ((Doorpress == true) && (cooldown == false))
         {
             //activate sequence
@@ -28,6 +35,7 @@ public class SpaceDoor : MonoBehaviour
     public void opening()
     {
         ButtonOpenRoof();
+        Roofopen = Audiomanager.instance.PlaySound(Roofsound, transform.position);
         cooldown = true;
     }
 

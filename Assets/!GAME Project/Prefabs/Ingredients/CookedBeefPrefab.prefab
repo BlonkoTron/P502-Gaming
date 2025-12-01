@@ -5083,6 +5083,13 @@ MonoBehaviour:
   DesiredCooktime: 20
   flipTimeThreshold: 5
   isflipped: 0
+  Cookbeefsfx:
+    Guid:
+      Data1: 1288799780
+      Data2: 1340111678
+      Data3: -1923684688
+      Data4: -2043468656
+    Path: event:/WorldSFX/Cookbeef
   cookedParticle: {fileID: 4765213176015788571, guid: b186e89ec8a7afa4f99f0cf698d6f7b3, type: 3}
   burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
   cookingSteam: {fileID: 4545776129235160696}
