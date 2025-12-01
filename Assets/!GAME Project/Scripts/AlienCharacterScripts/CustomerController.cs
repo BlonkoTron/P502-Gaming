@@ -23,8 +23,8 @@ public class CustomerController : MonoBehaviour
 
     private void Update()
     {
-        Audiomanager.instance.UpdateSoundPosition(CustomerArrive, transform.position);
-        Audiomanager.instance.UpdateSoundPosition(Customerleave, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(CustomerArrive, Soundtrans.position);
+        Audiomanager.instance.UpdateSoundPosition(Customerleave, Soundtrans.position);
     }
 
     private void Start()
@@ -41,9 +41,9 @@ public class CustomerController : MonoBehaviour
         {
             Destroy(currentCustomer);
         }
-
-        currentCustomer = Instantiate(Customer);
         CustomerArrive = Audiomanager.instance.PlaySound(Customersound, Soundtrans.position);
+        currentCustomer = Instantiate(Customer);
+        
 
     }
 
@@ -51,8 +51,9 @@ public class CustomerController : MonoBehaviour
     {
         if (currentCustomer!=null)
         {
-            currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone");
             Customerleave = Audiomanager.instance.PlaySound(CustomerDone, Soundtrans.position);
+            currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone");
+            
         }
     }
 

@@ -110,6 +110,9 @@
 		<property name="timelockedOffset">
 			<value>42</value>
 		</property>
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="fadeInCurve">
 			<destination>{3c5c4d5c-cabb-4735-a8ee-93f17c80662f}</destination>
 		</relationship>
@@ -129,6 +132,9 @@
 		</property>
 		<property name="length">
 			<value>7.5369458128078808</value>
+		</property>
+		<property name="volume">
+			<value>10</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{0d91672a-823b-442b-8c4f-541567c21ff8}</destination>
@@ -158,6 +164,9 @@
 		<property name="length">
 			<value>0.1881220754717009</value>
 		</property>
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{67160bc9-f388-49e5-b0f8-003d8bfcd021}</destination>
 		</relationship>
@@ -168,6 +177,9 @@
 		</property>
 		<property name="length">
 			<value>0.2113481886792502</value>
+		</property>
+		<property name="volume">
+			<value>10</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{67160bc9-f388-49e5-b0f8-003d8bfcd021}</destination>
@@ -180,6 +192,9 @@
 		<property name="length">
 			<value>0.2113481886792502</value>
 		</property>
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{67160bc9-f388-49e5-b0f8-003d8bfcd021}</destination>
 		</relationship>
@@ -191,6 +206,9 @@
 		<property name="length">
 			<value>0.21134818867924665</value>
 		</property>
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{67160bc9-f388-49e5-b0f8-003d8bfcd021}</destination>
 		</relationship>
@@ -201,6 +219,9 @@
 		</property>
 		<property name="length">
 			<value>2.0961458333333334</value>
+		</property>
+		<property name="volume">
+			<value>10</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{d277f074-721e-4658-bf0f-2bee236b5b85}</destination>
@@ -224,6 +245,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{1aacf87e-82e4-4100-91fb-f3c41e0b91ec}">
+		<property name="volume">
+			<value>5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

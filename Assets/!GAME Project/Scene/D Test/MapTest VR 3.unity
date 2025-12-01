@@ -1805,6 +1805,7 @@ Transform:
   - {fileID: 2044330807}
   - {fileID: 96747757}
   - {fileID: 3593128616960142820}
+  - {fileID: 937493405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &131731103
@@ -6051,6 +6052,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &937493404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937493405}
+  m_Layer: 0
+  m_Name: Customersoundpos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &937493405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937493404}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.282, y: 0.044, z: 0.26}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 122618772}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &941672340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6062,7 +6094,7 @@ PrefabInstance:
     - target: {fileID: 28340202427359906, guid: f0dcd5746e16c274685cf58b38ac34bc, type: 3}
       propertyPath: Soundtrans
       value: 
-      objectReference: {fileID: 972883525}
+      objectReference: {fileID: 937493405}
     - target: {fileID: 28340202427359906, guid: f0dcd5746e16c274685cf58b38ac34bc, type: 3}
       propertyPath: CustomerDone.Path
       value: event:/WorldSFX/Leaving_space
@@ -12284,6 +12316,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1911374269741668469, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4612299407130568707, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -13037,7 +13073,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &1365655277
 MeshFilter:
   m_ObjectHideFlags: 10
