@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 
 public class TurnOnSodaMachine : MonoBehaviour
 {
@@ -22,6 +24,13 @@ public class TurnOnSodaMachine : MonoBehaviour
     private int currentActiveObject = 0; // 0 = none, 1 = object1, 2 = object2
     private Coroutine disableCoroutine;
 
+    private EventInstance SodaSound;
+    [SerializeField] private EventReference SodaPour;
+
+    private void Update()
+    {
+        Audiomanager.instance.UpdateSoundPosition(SodaSound, transform.position);
+    }
     void OnEnable()
     {
         // Subscribe to Unity Events
@@ -104,6 +113,7 @@ public class TurnOnSodaMachine : MonoBehaviour
     {
         if (objectToEnable1 != null)
         {
+            SodaSound = Audiomanager.instance.PlaySound(SodaPour, transform.position);
             objectToEnable1.SetActive(true);
         }
     }
@@ -122,6 +132,7 @@ public class TurnOnSodaMachine : MonoBehaviour
     {
         if (objectToEnable2 != null)
         {
+            SodaSound = Audiomanager.instance.PlaySound(SodaPour, transform.position);
             objectToEnable2.SetActive(true);
         }
     }
