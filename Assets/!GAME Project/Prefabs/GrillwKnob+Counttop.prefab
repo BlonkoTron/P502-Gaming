@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 433029701674559355}
   - component: {fileID: 825528881161124201}
   - component: {fileID: 1131113323909908007}
+  - component: {fileID: 2931957307668453915}
   m_Layer: 0
   m_Name: Grill
   m_TagString: Grill
@@ -462,6 +463,47 @@ MonoBehaviour:
   GrillHalf_C: {r: 1, g: 0.8601764, b: 0.28490567, a: 1}
   Grillfull_C: {r: 1, g: 0.46729827, b: 0, a: 1}
   KnobObj: {fileID: 8886271371108062568}
+  OnGrillTUrnedOn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2931957307668453915}
+        m_TargetAssemblyTypeName: ButtonClick, Assembly-CSharp
+        m_MethodName: StoveSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2931957307668453915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030082853391721970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4713ee34c3eab624aaf585f59c054679, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Buttonclick:
+    Guid:
+      Data1: 992812282
+      Data2: 1173867253
+      Data3: -1549243489
+      Data4: -1849948485
+    Path: event:/WorldSFX/Buttonpress
+  Stoveclick:
+    Guid:
+      Data1: 1036052148
+      Data2: 1098245779
+      Data3: -647699804
+      Data4: 1058679668
+    Path: event:/WorldSFX/Stoveclick
 --- !u!1 &6242116800407250675
 GameObject:
   m_ObjectHideFlags: 0

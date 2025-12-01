@@ -13,9 +13,6 @@ public class OrderControllerVisuals : MonoBehaviour
 
     [SerializeField] private GameObject receiptPrefab;
 
-    private EventInstance OrderSound;
-    [SerializeField] private EventReference OrderSFX;
-
     void Awake()
     {
         _orderController = GetComponent<OrderController>();
@@ -25,7 +22,7 @@ public class OrderControllerVisuals : MonoBehaviour
 
     private void Update()
     {
-        Audiomanager.instance.UpdateSoundPosition(OrderSound, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
     }
     private void OnNewOrder(Order order)
     {
@@ -46,12 +43,11 @@ public class OrderControllerVisuals : MonoBehaviour
             {
                 receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
             }
-            Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
         }
     }
 
     public void Ordersounds()
     {
-        OrderSound = Audiomanager.instance.PlaySound(OrderSFX, transform.position);
+        Orders = Audiomanager.instance.PlaySound(Ordersound, transform.position);
     }
 }
