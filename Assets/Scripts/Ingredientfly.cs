@@ -68,7 +68,7 @@ public class IngredientFly : MonoBehaviour
             counter++;
 
             // Create randomIndex and picks a random ingredient prefab from list
-            int randomIndex = Random.Range(0, ingredients.Count);
+            int randomIndex = i;
 
             //New gameobject which is the chosen ranodm ingidient
             GameObject chosenIngredient = ingredients[randomIndex];
