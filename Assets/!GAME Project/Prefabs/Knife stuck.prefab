@@ -134,6 +134,13 @@ MonoBehaviour:
   line: {fileID: 7949674345023137943}
   pos1: {fileID: 1204737001578611533}
   pos2: {fileID: 8321908353967223334}
+  Knifesfx:
+    Guid:
+      Data1: 1094950855
+      Data2: 1259876206
+      Data3: -577980032
+      Data4: 1801519607
+    Path: event:/WorldSFX/Knifepickup
 --- !u!120 &7949674345023137943
 LineRenderer:
   serializedVersion: 2

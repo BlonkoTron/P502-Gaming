@@ -191,7 +191,7 @@ MonoBehaviour:
   ingredients:
   - {fileID: 6145670217918332362, guid: 9478030194a1c3b49a22851cf6583043, type: 3}
   - {fileID: 667755094469889102, guid: ef066b3b4a589de4585f68b936a74b5d, type: 3}
-  - {fileID: 9186421766269536267, guid: 7694c106e330a1b419f913ffebe3505f, type: 3}
+  - {fileID: 6847485712896760778, guid: 1b7ecb835cc0ee248abdb1a89022a951, type: 3}
   - {fileID: 6346530925271436082, guid: aa15df2a2a5f18e4a843e7ada12aa2c3, type: 3}
   - {fileID: 8270663794711048887, guid: 3195255fdbeab204996a5176dda75112, type: 3}
   spawnPos: {fileID: 4031708282184896189}
@@ -204,6 +204,13 @@ MonoBehaviour:
   MaxY: 0
   MaxX: 2
   MaxZ: 2
+  FodtubeSFX:
+    Guid:
+      Data1: 821308033
+      Data2: 1304731605
+      Data3: -2047146050
+      Data4: -1231560023
+    Path: event:/WorldSFX/Foodlaunch
 --- !u!1001 &707409658925510245
 PrefabInstance:
   m_ObjectHideFlags: 0

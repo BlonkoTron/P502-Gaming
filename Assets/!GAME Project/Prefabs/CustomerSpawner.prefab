@@ -45,3 +45,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Customer: {fileID: 166332889491384019, guid: e1c4221a4a00107499b9a2c6f490b7ca, type: 3}
+  Customersound:
+    Guid:
+      Data1: -154307554
+      Data2: 1326929846
+      Data3: -443952979
+      Data4: 430112189
+    Path: event:/WorldSFX/Spaceship comes
+  CustomerDone:
+    Guid:
+      Data1: -820537247
+      Data2: 1335978435
+      Data3: 1904155537
+      Data4: -1792533013
+    Path: event:/WorldSFX/Leaving_space
+  Soundtrans: {fileID: 574641538611488994, guid: 15c56da8f133b80448867b57076d9a92, type: 3}

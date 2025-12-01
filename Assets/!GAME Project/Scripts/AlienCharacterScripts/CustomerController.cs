@@ -1,3 +1,5 @@
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class CustomerController : MonoBehaviour
@@ -6,9 +8,23 @@ public class CustomerController : MonoBehaviour
     [SerializeField] private GameObject Customer;
     private GameObject currentCustomer;
 
+    private EventInstance CustomerArrive;
+    [SerializeField] private EventReference Customersound;
+
+    private EventInstance Customerleave;
+    [SerializeField] private EventReference CustomerDone;
+
+    public Transform Soundtrans;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Update()
+    {
+        Audiomanager.instance.UpdateSoundPosition(CustomerArrive, Soundtrans.position);
+        Audiomanager.instance.UpdateSoundPosition(Customerleave, Soundtrans.position);
     }
 
     private void Start()
@@ -25,8 +41,9 @@ public class CustomerController : MonoBehaviour
         {
             Destroy(currentCustomer);
         }
-
+        CustomerArrive = Audiomanager.instance.PlaySound(Customersound, Soundtrans.position);
         currentCustomer = Instantiate(Customer);
+        
 
     }
 
@@ -34,7 +51,9 @@ public class CustomerController : MonoBehaviour
     {
         if (currentCustomer!=null)
         {
+            Customerleave = Audiomanager.instance.PlaySound(CustomerDone, Soundtrans.position);
             currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone");
+            
         }
     }
 

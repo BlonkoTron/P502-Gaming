@@ -208,6 +208,20 @@ MonoBehaviour:
   orderCorrectSprite: {fileID: 21300000, guid: 3c4db008396049348bf30a5b87487158, type: 3}
   orderWrongSprite: {fileID: 21300000, guid: bc1c64a146b875744b528393c324960e, type: 3}
   orderCountText: {fileID: 51949580459615487}
+  GladAlien:
+    Guid:
+      Data1: -345142300
+      Data2: 1220116199
+      Data3: 1585703833
+      Data4: 1676114627
+    Path: event:/WorldSFX/Happyalien
+  Saddestalien:
+    Guid:
+      Data1: 504275486
+      Data2: 1240526335
+      Data3: 1161125504
+      Data4: -119889038
+    Path: event:/WorldSFX/Sadalien
 --- !u!223 &7818031634233152137
 Canvas:
   m_ObjectHideFlags: 0

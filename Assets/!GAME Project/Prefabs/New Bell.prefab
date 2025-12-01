@@ -5296,6 +5296,13 @@ MonoBehaviour:
   OnBellPressed:
     m_PersistentCalls:
       m_Calls: []
+  Belltester:
+    Guid:
+      Data1: 1250555118
+      Data2: 1279408929
+      Data3: 1531734947
+      Data4: 316878270
+    Path: event:/WorldSFX/BellDing
 --- !u!1 &6815604141919545835
 GameObject:
   m_ObjectHideFlags: 0

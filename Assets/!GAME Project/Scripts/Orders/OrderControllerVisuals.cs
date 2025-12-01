@@ -19,6 +19,11 @@ public class OrderControllerVisuals : MonoBehaviour
 
         _orderController.OnNewOrderGenerated.AddListener(OnNewOrder);
     }
+
+    private void Update()
+    {
+        Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
+    }
     private void OnNewOrder(Order order)
     {
         PrintReceipt();
@@ -38,8 +43,11 @@ public class OrderControllerVisuals : MonoBehaviour
             {
                 receipt.UpdateReceiptMaterial(OrderController.Instance.ActiveOrder.receiptMaterial);
             }
-            Audiomanager.instance.UpdateSoundPosition(Orders, transform.position);
         }
     }
 
+    public void Ordersounds()
+    {
+        Orders = Audiomanager.instance.PlaySound(Ordersound, transform.position);
+    }
 }
