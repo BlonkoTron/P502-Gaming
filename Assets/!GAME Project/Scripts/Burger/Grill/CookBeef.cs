@@ -37,6 +37,15 @@ public class CookBeef : MonoBehaviour
     private EventInstance CookBeefSound;
     [SerializeField] private EventReference Cookbeefsfx;
 
+    private EventInstance HalfCookedsound;
+    [SerializeField] private EventReference HalfcookedSFX;
+
+    private EventInstance CookedDoneSound;
+    [SerializeField] private EventReference CookeddoneSFX;
+
+    private EventInstance BurntSound;
+    [SerializeField] private EventReference BurntSFX;
+
     [SerializeField] private GameObject cookedParticle, burntParticle, cookingSteam;
 
 
@@ -46,6 +55,9 @@ public class CookBeef : MonoBehaviour
     private void Update()
     {
         Audiomanager.instance.UpdateSoundPosition(CookBeefSound, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(HalfCookedsound, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(CookedDoneSound, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(BurntSound, transform.position);
     }
 
     void Start()
@@ -130,12 +142,14 @@ public class CookBeef : MonoBehaviour
     }
     private void BeefHalfCooked()
     {
+        HalfCookedsound = Audiomanager.instance.PlaySound(HalfcookedSFX, transform.position);
         beef.GetComponent<MeshRenderer>().material = HalfCooked;
         halfCookedReached = true;
         Instantiate(cookedParticle, transform.position, Quaternion.identity);
     }
     private void BeefCooked()
     {
+        CookedDoneSound = Audiomanager.instance.PlaySound(CookeddoneSFX, transform.position);
         beef.GetComponent<MeshRenderer>().material = Cooked;
         Instantiate(cookedParticle, transform.position, Quaternion.identity);
         ingredientStackable.enabled = true;
@@ -143,6 +157,7 @@ public class CookBeef : MonoBehaviour
     }
     private void BeefBurnt()
     {
+        BurntSound = Audiomanager.instance.PlaySound(BurntSFX, transform.position);
         beef.GetComponent<MeshRenderer>().material = Burnt;
         Instantiate(burntParticle, transform.position, Quaternion.identity);
         ingredientStackable.enabled = false;
