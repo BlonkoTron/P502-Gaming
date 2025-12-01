@@ -21681,6 +21681,10 @@ PrefabInstance:
       propertyPath: parent
       value: 
       objectReference: {fileID: 122618771}
+    - target: {fileID: 268039767254909158, guid: d4435aed715001241910246904057972, type: 3}
+      propertyPath: 'ingredients.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6847485712896760778, guid: 1b7ecb835cc0ee248abdb1a89022a951, type: 3}
     - target: {fileID: 6303597194782371038, guid: d4435aed715001241910246904057972, type: 3}
       propertyPath: m_Name
       value: Ingredient Dispenser
