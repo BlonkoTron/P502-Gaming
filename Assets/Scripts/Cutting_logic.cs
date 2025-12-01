@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class Cutting_logic : MonoBehaviour
@@ -14,6 +16,9 @@ public class Cutting_logic : MonoBehaviour
 
     //Get the current position of the ingredient which needs to be cut
     private Transform Ingredient_position;
+
+    private EventInstance CutSound;
+    [SerializeField] private EventReference Cutting;
 
 
     private void Start()
@@ -32,6 +37,7 @@ public class Cutting_logic : MonoBehaviour
         //If the knife is collided with the ingredient, it destroys it for another (which is the cut ingredient)
         if (other.gameObject.CompareTag("Knife"))
         {
+            CutSound = Audiomanager.instance.PlaySound(Cutting, transform.position);
             Destroy(Ingredient);
             Instantiate(Cut_Ingredient,Ingredient_position.transform.position, Quaternion.identity, parent:parentT);
         }

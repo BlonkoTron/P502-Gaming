@@ -96,6 +96,9 @@
 		<property name="length">
 			<value>0.75</value>
 		</property>
+		<property name="volume">
+			<value>10</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{d670421b-f7ec-4a73-bfb1-20202b5c4a6a}</destination>
 		</relationship>
@@ -123,6 +126,9 @@
 		</property>
 		<property name="timelockedOffset">
 			<value>0.80002343841556378</value>
+		</property>
+		<property name="volume">
+			<value>10</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{ce493a09-a52c-4373-9693-fc0fbb407d73}</destination>

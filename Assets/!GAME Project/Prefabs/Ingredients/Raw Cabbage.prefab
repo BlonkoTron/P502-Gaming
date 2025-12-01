@@ -108,6 +108,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ingredient: {fileID: 667755094469889102}
   Cut_Ingredient: {fileID: 2865726061224958163, guid: 84823e8cc4e42b0448b4ec8b18b50d00, type: 3}
+  Cutting:
+    Guid:
+      Data1: -691186598
+      Data2: 1278700510
+      Data3: -1662595169
+      Data4: -585274295
+    Path: event:/WorldSFX/Cutting_3
 --- !u!114 &3545579269838426600
 MonoBehaviour:
   m_ObjectHideFlags: 0
