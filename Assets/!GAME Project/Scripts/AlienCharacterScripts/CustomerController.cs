@@ -21,6 +21,12 @@ public class CustomerController : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        Audiomanager.instance.UpdateSoundPosition(CustomerArrive, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(Customerleave, transform.position);
+    }
+
     private void Start()
     {
         OrderController.Instance.OnOrderFullfilled.AddListener(EndOrder);
