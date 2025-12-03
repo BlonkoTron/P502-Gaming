@@ -45,7 +45,7 @@ public class PlayerCalibrations : MonoBehaviour
     }
 
 
-    //this needs to be changed 
+   
     private void FixedUpdate()
     {
         if (controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float triggerValue))
@@ -87,7 +87,7 @@ public class PlayerCalibrations : MonoBehaviour
     }
 
     public void CheckIfconfigured(float ROM, GameObject checkMark)
-    {         if (ROM > 0)
+    {         if (ROM != 0)
         {
             checkMark.SetActive(true);
         }

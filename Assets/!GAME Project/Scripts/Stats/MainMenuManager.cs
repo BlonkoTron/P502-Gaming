@@ -37,7 +37,7 @@ public class MainMenuManager : MonoBehaviour
     }
 
 
-    private void CheckIfConfigured()
+    public void CheckIfConfigured()
     {
         if (playerSetUp.isConfigured)
         {
