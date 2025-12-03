@@ -17,6 +17,10 @@ public class TriggeredRaycast : MonoBehaviour
     public bool raycastActive = false;
     public float rayDistance = 10f;
 
+    public ParticleSystem Condiment;
+
+    public bool rayer = false;
+
     XRGrabInteractable grab;
 
     [Header("Sauce to Spawn")]
@@ -53,11 +57,18 @@ public class TriggeredRaycast : MonoBehaviour
                 FireRaycast();
             }
         }
+
+        if (rayer == true)
+        {
+            FireRaycast();
+            rayer = false;
+        }
     }
 
     void FireRaycast()
     {
         RaycastHit hit;
+        Condiment.Play();
 
         Vector3 origin = transform.TransformPoint(positionOffset);
         Quaternion rot = transform.rotation * Quaternion.Euler(rotationOffset);
