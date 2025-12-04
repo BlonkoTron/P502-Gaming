@@ -15,9 +15,17 @@ public class GraphGenerator : MonoBehaviour
     private float graphWidth;
     private float graphHeight;
 
+
     // Internal storage
     private List<string> dates;
     private List<DayData> days;
+
+
+    [SerializeField] private GameObject legendPointA;
+    [SerializeField] private GameObject legendPointB;
+    [SerializeField] private GameObject legendLabelA;
+    [SerializeField] private GameObject legendLabelB;
+    [SerializeField] private TMP_Text subHeader;
 
 
 
@@ -33,6 +41,8 @@ public class GraphGenerator : MonoBehaviour
     void Start()
     {
         Redraw();
+        legendPointA.GetComponent<Image>().color = Color.cyan;
+        legendPointB.GetComponent<Image>().color = Color.green;
     }
 
     public void Redraw()
@@ -62,11 +72,19 @@ public class GraphGenerator : MonoBehaviour
             {
                 valsA.Add(days[i].nrOfBentsIn);
                 valsB.Add(days[i].nrOfBentsOut);
+
+                subHeader.text = "Bøjninger";
+                legendLabelA.GetComponent<TMP_Text>().text = "Indbøjnigner";
+                legendLabelB.GetComponent<TMP_Text>().text = "Udbøjninger";
             }
             else
             {
                 valsA.Add(days[i].nrOfRotationsUp);
                 valsB.Add(days[i].nrOfRotationsDown);
+
+                subHeader.text = "Rotationer";
+                legendLabelA.GetComponent<TMP_Text>().text = "Rotationer op";
+                legendLabelB.GetComponent<TMP_Text>().text = "Rotationer ned";
             }
         }
 
@@ -94,19 +112,19 @@ public class GraphGenerator : MonoBehaviour
             positionsB.Add(posB);
 
             // Draw A
-            CreatePoint(posA, Color.red, dotSize);   // Here to change color
-            CreateLabel(posA + Vector2.up * (labelSize * 0.25f), valsA[i].ToString(), labelSize);   //Here to change label offset
+            CreatePoint(posA, Color.cyan, dotSize);
+            CreateLabel(posA + Vector2.right * (labelSize * 0.8f), valsA[i].ToString(), labelSize * 0.8f);   //Here to change label offset
 
             // Draw B
-            CreatePoint(posB, Color.blue, dotSize);  // Here to change color
-            CreateLabel(posB + Vector2.up * (labelSize * 0.25f), valsB[i].ToString(), labelSize);  //Here to change label offset
+            CreatePoint(posB, Color.green, dotSize);
+            CreateLabel(posB + Vector2.right * (labelSize * 0.8f), valsB[i].ToString(), labelSize * 0.8f);  //Here to change label offset
 
             // Date labels
             CreateLabel(new Vector2(x, -labelSize * 2f), dates[i], labelSize * 0.8f);    //Here to change date label offset
         }
 
-        //DrawLines(positionsA, Color.red, lineThickness);
-        //DrawLines(positionsB, Color.blue, lineThickness);
+        //DrawLines(positionsA, Color.cyan, lineThickness);
+        //DrawLines(positionsB, Color.green, lineThickness);
     }
 
     void CreatePoint(Vector2 position, Color color, float size)
