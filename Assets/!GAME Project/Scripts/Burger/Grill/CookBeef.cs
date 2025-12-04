@@ -185,15 +185,15 @@ public class CookBeef : MonoBehaviour
     {
         // Give player time to flip
         yield return new WaitForSeconds(flipTimeThreshold);
-
-        float zRot = transform.eulerAngles.z;
-        float xRot = transform.eulerAngles.x;
+        isflipped = true;
+        //float zRot = transform.eulerAngles.z;
+        //float xRot = transform.eulerAngles.x;
 
         // If burger is turned around
-        if (Mathf.Abs(zRot - 180f) < 20f || Mathf.Abs(xRot - 180f) < 20f && halfCookedReached)
-        {
-            isflipped = true;
-        }
+        //if (Mathf.Abs(zRot - 180f) < 20f || Mathf.Abs(xRot - 180f) < 20f && halfCookedReached)
+        //{
+            
+        //}
     }
 
     }
