@@ -177,15 +177,19 @@ public class CookBeef : MonoBehaviour
                 cookingSteam.gameObject.SetActive(false);
             }
 
-            StartCoroutine(CheckFlip());
+            if (halfCookedReached == true )
+            {
+                StartCoroutine(CheckFlip());
+            }
         }
     }
 
     IEnumerator CheckFlip()
     {
         // Give player time to flip
-        yield return new WaitForSeconds(flipTimeThreshold);
         isflipped = true;
+        yield return new WaitForSeconds(flipTimeThreshold);
+        
         //float zRot = transform.eulerAngles.z;
         //float xRot = transform.eulerAngles.x;
 
