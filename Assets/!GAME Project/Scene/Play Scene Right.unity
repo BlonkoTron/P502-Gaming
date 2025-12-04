@@ -2955,6 +2955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrayManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3165948219023411666, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
+      propertyPath: snapRange
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6168343431301838855, guid: 3c683d59e8a14ac4191b168d0ccc98b8, type: 3}
       propertyPath: dailySaveSystem
       value: 

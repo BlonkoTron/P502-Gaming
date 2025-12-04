@@ -75,7 +75,18 @@ public class MainMenuManager : MonoBehaviour
     // this needs to be changed when we have multiple scenes
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        if(playerSetUp.bentROMOut < 0)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
+        else if (playerSetUp.bentROMOut > 180)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
+        else
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        }
     }
 
     IEnumerator DelayGoToPanel(float delay, GameObject panel)
