@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class GraphGenerator : MonoBehaviour
 {
-    public RectTransform graphPanel;  // Parent panel (280×160)
+    public RectTransform graphPanel;  // Parent panel (280×160)   220x150
     public GameObject pointPrefab;
     public GameObject linePrefab;
     public GameObject labelPrefab;
@@ -94,19 +94,19 @@ public class GraphGenerator : MonoBehaviour
             positionsB.Add(posB);
 
             // Draw A
-            CreatePoint(posA, Color.red, dotSize);
-            CreateLabel(posA + Vector2.up * (labelSize * 0.5f), valsA[i].ToString(), labelSize);
+            CreatePoint(posA, Color.red, dotSize);   // Here to change color
+            CreateLabel(posA + Vector2.up * (labelSize * 0.25f), valsA[i].ToString(), labelSize);   //Here to change label offset
 
             // Draw B
-            CreatePoint(posB, Color.blue, dotSize);
-            CreateLabel(posB + Vector2.up * (labelSize * 0.5f), valsB[i].ToString(), labelSize);
+            CreatePoint(posB, Color.blue, dotSize);  // Here to change color
+            CreateLabel(posB + Vector2.up * (labelSize * 0.25f), valsB[i].ToString(), labelSize);  //Here to change label offset
 
             // Date labels
-            CreateLabel(new Vector2(x, -labelSize * 1.2f), dates[i], labelSize * 0.8f);
+            CreateLabel(new Vector2(x, -labelSize * 2f), dates[i], labelSize * 0.8f);    //Here to change date label offset
         }
 
-        DrawLines(positionsA, Color.red, lineThickness);
-        DrawLines(positionsB, Color.blue, lineThickness);
+        //DrawLines(positionsA, Color.red, lineThickness);
+        //DrawLines(positionsB, Color.blue, lineThickness);
     }
 
     void CreatePoint(Vector2 position, Color color, float size)
