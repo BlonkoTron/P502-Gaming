@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GraphManager : MonoBehaviour
 {
-    public GraphGenerator graph;     // <-- reference to the new script
+    public GraphGenerator graph;
     public DailySaveSystem saveSystem;
 
     void Start()
