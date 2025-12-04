@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class GraphManager : MonoBehaviour
 {
-    public GraphGenerator graphGenerator;
+    public GraphGenerator graph;     // <-- reference to the new script
     public DailySaveSystem saveSystem;
 
     void Start()
     {
         DaysSave save = saveSystem.Load();
 
-        graphGenerator.InitializeGraph(save.dates, save.data);
+        graph.InitializeGraph(save.dates, save.data);
     }
 }
