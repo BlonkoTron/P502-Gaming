@@ -10,9 +10,11 @@ public class PlateManager : MonoBehaviour
     public Transform originalTopSnapPoint;
     public float snapRange = 0.05f;  // How close an ingredient must be to snap
 
+    [SerializeField] ParticleSystem snapEffect;
+
     public List<IngredientStackable> stackedIngredients = new List<IngredientStackable>();
 
-  
+
 
     public void TrySnap(IngredientStackable ingredient)
     {
@@ -23,7 +25,7 @@ public class PlateManager : MonoBehaviour
             ingredient.Unlock(); // Not close enough, unlock if it was locked
             return;
         }
-        
+
 
         // 2. Align ingredient position and rotation
         ingredient.transform.position = topSnapPoint.position - (ingredient.snapBottom.position - ingredient.transform.position);
@@ -47,6 +49,10 @@ public class PlateManager : MonoBehaviour
 
         // 7. Move top snap point upward
         MoveSnapPointUp(ingredient);
+
+        // 8. Play particle effect and/or sound effect
+        snapEffect.Play();
+
     }
 
     public void OnIngredientRemoved(IngredientStackable ingredient)
