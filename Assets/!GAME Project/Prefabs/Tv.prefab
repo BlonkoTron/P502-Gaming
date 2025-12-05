@@ -185,7 +185,7 @@ PrefabInstance:
     - target: {fileID: -4683669308469848369, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: -876546973899608171, guid: edd1304d735705a4595605d48ef338c0, type: 3}
+      objectReference: {fileID: -8848810374240701247, guid: 436757056de26e144b330984c539cecd, type: 3}
     - target: {fileID: 919132149155446097, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: m_Name
       value: Tv

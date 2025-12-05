@@ -9,12 +9,21 @@ public class Tv : MonoBehaviour
 {
     public bool halt = false;
 
+    public bool tvtime = false;
+
+    public bool channelshift = false;
+
     public int timer;
+
+    public int counter = 0;
 
     public int view = 0 ;
 
-    [SerializeField] private EventReference TVNoice;
-    private EventInstance TVaudio;
+    [SerializeField] private EventReference TVmusics;
+    private EventInstance TVmusicwhole;
+
+    [SerializeField] private EventReference TVbreak;
+    private EventInstance TVbreakSFX;
 
     //Set up list
     [Header("Ingredient Prefabs")]
@@ -23,20 +32,61 @@ public class Tv : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Audiomanager.instance.UpdateSoundPosition(TVaudio, transform.position);
-
-        if (halt == false)
+        if (halt == false && tvtime == false)
         {
+            TVmusicwhole = Audiomanager.instance.PlaySound(TVmusics, transform.position);
+            StartCoroutine(WaitForFMODToFinish(TVmusicwhole));
             halt = true;
-            StartCoroutine(FiveSecondTimer());
+        }
+        
+        Audiomanager.instance.UpdateSoundPosition(TVmusicwhole, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(TVbreakSFX, transform.position);
+
+        if (halt == false && tvtime == true && channelshift == false)
+        {
+            channelshift = true;
+            TVbreakSFX = Audiomanager.instance.PlaySound(TVbreak, transform.position);
+            StartCoroutine(OneSecondTimer());
         }
         
     }
 
-    private void Start()
+    IEnumerator OneSecondTimer()
     {
-        TVaudio = Audiomanager.instance.PlaySound(TVNoice, transform.position);
+        yield return new WaitForSeconds(1f);
+
+        StartCoroutine(FiveSecondTimer());
     }
+
+    IEnumerator WaitForFMODToFinish(EventInstance instance)
+    {
+        PLAYBACK_STATE state;
+
+        while (true)
+        {
+            instance.getPlaybackState(out state);
+
+            if (state == PLAYBACK_STATE.STOPPED)
+            {
+                Debug.Log("FMOD TV music finished playing!");
+                channelshift = true;
+                halt = false;
+                counter++;
+                if (counter == 3)
+                {
+                    tvtime = false;
+                    counter = 0;
+                }
+               
+                break;
+
+                
+            }
+
+            yield return null;
+        }
+    }
+
     IEnumerator FiveSecondTimer()
     {
         Debug.Log("Timer started!");
