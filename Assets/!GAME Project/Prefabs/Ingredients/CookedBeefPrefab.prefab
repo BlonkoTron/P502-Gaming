@@ -5117,7 +5117,7 @@ MonoBehaviour:
   burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
   cookingSteam: {fileID: 4545776129235160696}
   rayDistance: 0.001
-  targetTag: Grill
+  targetTag: GrillPhys
   directionOffset: {x: 0, y: -90, z: 0}
 --- !u!114 &871668504160185310
 MonoBehaviour:

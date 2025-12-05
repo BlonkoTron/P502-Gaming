@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 2321022661471458987}
   m_Layer: 0
   m_Name: GrillCollider
-  m_TagString: Untagged
+  m_TagString: GrillPhys
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

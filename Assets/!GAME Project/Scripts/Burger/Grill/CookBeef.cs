@@ -144,7 +144,7 @@ public class CookBeef : MonoBehaviour
                 }
                 else if (!halfCookedReached && Flipdirection == false)
                 {
-                    Beefreversehalfcooked()
+                    Beefreversehalfcooked();
                 }
 
                 // If player never flips → burn
