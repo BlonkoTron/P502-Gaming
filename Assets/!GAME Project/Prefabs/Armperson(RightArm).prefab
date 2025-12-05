@@ -13639,6 +13639,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 926213886232973931, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
+      propertyPath: m_TagString
+      value: PlayerHand
+      objectReference: {fileID: 0}
     - target: {fileID: 1082793904260096680, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
       propertyPath: m_CameraYOffset
       value: 1.45
