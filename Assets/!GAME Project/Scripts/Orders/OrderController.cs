@@ -8,6 +8,8 @@ public class OrderController : MonoBehaviour
     public static OrderController Instance;
 
     public OrderDataCollection orderDataCollection;
+    public OrderDataCollection orderQueue;
+
     private Order activeOrder;
     private int lastOrderIndex;
     public UnityEvent<Order> OnNewOrderGenerated;
@@ -19,6 +21,7 @@ public class OrderController : MonoBehaviour
         get { return activeOrder; }   
 
     }
+    public Queue<Order> premadeOrderQueue = new Queue<Order>();
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,6 +35,7 @@ public class OrderController : MonoBehaviour
     }
     private void Start()
     {
+        GenerateOrderQueue();
         bell = FindAnyObjectByType<Bell>();
         if (bell!=null)
         {
@@ -40,15 +44,40 @@ public class OrderController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        bell.OnBellPressed.RemoveListener(CheckOrder);
-
+        bell = FindAnyObjectByType<Bell>();
+        if (bell != null)
+        {
+            bell.OnBellPressed.AddListener(CheckOrder);
+        }
     }
     public void GenererateNewOrder()
+    {
+        if (premadeOrderQueue.Count>0)
+        {
+            activeOrder = GetPremadeOrder();
+        } else
+        {
+            activeOrder = GetRandomOrder();
+        }
+        OnNewOrderGenerated.Invoke(activeOrder);
+    }
+    private void GenerateOrderQueue()
+    {
+        for (int i=0;i<orderQueue.OrderDatas.Count; i++)
+        {
+            var newBurger = orderQueue.OrderDatas[i].burgerIngredients;
+            var newDrink = orderQueue.OrderDatas[i].drink;
+            var newMat = orderQueue.OrderDatas[i].receiptMaterial;
+            Order newOrder = new Order(newBurger, newDrink, newMat);
+            premadeOrderQueue.Enqueue(newOrder);
+        }
+    }
+    private Order GetRandomOrder()
     {
         // get a random index from the data of premade orders and make that the new order
         var newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
         // reroll if same as last order
-        while(newOrderIndex==lastOrderIndex &&orderDataCollection.OrderDatas.Count>1)
+        while (newOrderIndex == lastOrderIndex && orderDataCollection.OrderDatas.Count > 1)
         {
             newOrderIndex = Random.Range(0, orderDataCollection.OrderDatas.Count);
         }
@@ -57,8 +86,12 @@ public class OrderController : MonoBehaviour
         var newDrink = orderDataCollection.OrderDatas[newOrderIndex].drink;
         var newMat = orderDataCollection.OrderDatas[newOrderIndex].receiptMaterial;
         Order newOrder = new Order(newBurger, newDrink, newMat);
-        activeOrder = newOrder;
-        OnNewOrderGenerated.Invoke(newOrder);
+        return newOrder;
+    }
+    private Order GetPremadeOrder()
+    {
+        Order newOrder = premadeOrderQueue.Dequeue();
+        return newOrder;
     }
     public bool IsOrderFullfilled(List<Order.BurgerIngredient> burger, Order.Drink drink)
     {
