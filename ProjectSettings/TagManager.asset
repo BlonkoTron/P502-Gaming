@@ -42,6 +42,7 @@ TagManager:
   - RespawnZone
   - MoonJuiceZone
   - NebulaBlastZone
+  - PlayerHand
   layers:
   - Default
   - TransparentFX

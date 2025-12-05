@@ -74,15 +74,18 @@ public class TriggeredRaycast : MonoBehaviour
         Quaternion rot = transform.rotation * Quaternion.Euler(rotationOffset);
         Vector3 direction = rot * Vector3.forward;
 
+        float actualLength = rayDistance;
+
         if (Physics.Raycast(origin, direction, out hit, rayDistance))
         {
+            // shrink the ray to the hit point
+            actualLength = hit.distance;
+
             PlateManager plate = hit.collider.GetComponentInParent<PlateManager>();
 
             if (plate != null)
             {
-                // Spawn visually where the ray hits — actual snap happens after physics update
                 Vector3 spawnPos = hit.point;
-
                 SpawnSauce(plate, spawnPos);
                 Saucesquirt = Audiomanager.instance.PlaySound(saucesound, transform.position);
             }
@@ -96,8 +99,10 @@ public class TriggeredRaycast : MonoBehaviour
             StartCoroutine(CooldownRoutine());
         }
 
-        Debug.DrawRay(origin, direction * rayDistance, Color.red, 0.25f);
+        // ray only draws to the first thing it hits
+        Debug.DrawRay(origin, direction * actualLength, Color.red, 0.25f);
     }
+
 
     void SpawnSauce(PlateManager plate, Vector3 spawnPosition)
     {
