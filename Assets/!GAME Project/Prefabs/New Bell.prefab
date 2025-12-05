@@ -5012,7 +5012,7 @@ Transform:
   m_GameObject: {fileID: 1810807272157933401}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.045, z: 0}
+  m_LocalPosition: {x: 0, y: 0.04500001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5259,8 +5259,8 @@ MonoBehaviour:
     m_ConstantValue:
       m_PokeDirection: 5
       m_InteractionDepthOffset: 0
-      m_EnablePokeAngleThreshold: 1
-      m_PokeAngleThreshold: 45
+      m_EnablePokeAngleThreshold: 0
+      m_PokeAngleThreshold: 89.9
     m_Variable: {fileID: 0}
 --- !u!114 &9204494295271574383
 MonoBehaviour:
@@ -5354,8 +5354,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.09545325, y: 0.1037284, z: 0.09477694}
-  m_Center: {x: 0, y: -0.011566475, z: 0}
+  m_Size: {x: 0.18592834, y: 0.07249571, z: 0.16092634}
+  m_Center: {x: 0.012184143, y: -0.027182821, z: 0.0033638477}
 --- !u!1 &8278112581814289425
 GameObject:
   m_ObjectHideFlags: 0
