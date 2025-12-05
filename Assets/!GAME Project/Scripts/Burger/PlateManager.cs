@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
+using FMOD.Studio;
+using FMODUnity;
 
 public class PlateManager : MonoBehaviour
 {
@@ -13,6 +15,14 @@ public class PlateManager : MonoBehaviour
     [SerializeField] ParticleSystem snapEffect;
 
     public List<IngredientStackable> stackedIngredients = new List<IngredientStackable>();
+
+    private EventInstance Ingredientsnapsound;
+    [SerializeField] private EventReference IngredientsnapSFX;
+
+    private void Update()
+    {
+        Audiomanager.instance.UpdateSoundPosition(Ingredientsnapsound, transform.position);
+    }
 
 
 
@@ -52,6 +62,7 @@ public class PlateManager : MonoBehaviour
 
         // 8. Play particle effect and/or sound effect
         snapEffect.Play();
+        Ingredientsnapsound = Audiomanager.instance.PlaySound(IngredientsnapSFX, transform.position);
 
     }
 

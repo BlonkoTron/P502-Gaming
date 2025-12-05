@@ -808,6 +808,26 @@ PrefabInstance:
       propertyPath: originalTopSnapPoint
       value: 
       objectReference: {fileID: 7161608567832960667}
+    - target: {fileID: 7235223301384100802, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: IngredientsnapSFX.Path
+      value: event:/WorldSFX/Ingredientsnap
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235223301384100802, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: IngredientsnapSFX.Guid.Data1
+      value: 2031405751
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235223301384100802, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: IngredientsnapSFX.Guid.Data2
+      value: 1300457119
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235223301384100802, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: IngredientsnapSFX.Guid.Data3
+      value: -1527038060
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235223301384100802, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
+      propertyPath: IngredientsnapSFX.Guid.Data4
+      value: 766751421
+      objectReference: {fileID: 0}
     - target: {fileID: 8339965233462335708, guid: 250f40fc47561e84db41b2e2844c27e7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.021
