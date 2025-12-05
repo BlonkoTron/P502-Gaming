@@ -3,21 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using FMOD.Studio;
 using FMODUnity;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class Tv : MonoBehaviour
 {
     public bool halt = false;
 
-    public bool tvtime = false;
-
-    public bool channelshift = false;
+    public bool halt2 = false;
 
     public int timer;
 
-    public int counter = 0;
+    public int counterdelay = 0;
 
-    public int view = 0 ;
+    public PLAYBACK_STATE TVMUSIC;
+    public PLAYBACK_STATE TVADS;
+
 
     [SerializeField] private EventReference TVmusics;
     private EventInstance TVmusicwhole;
@@ -25,83 +27,85 @@ public class Tv : MonoBehaviour
     [SerializeField] private EventReference TVbreak;
     private EventInstance TVbreakSFX;
 
-    //Set up list
+    //Set up list of material on TV
     [Header("Ingredient Prefabs")]
     public List<Material> video;
+
+    private void Start()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = video[0];
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (halt == false && tvtime == false)
-        {
-            TVmusicwhole = Audiomanager.instance.PlaySound(TVmusics, transform.position);
-            StartCoroutine(WaitForFMODToFinish(TVmusicwhole));
-            halt = true;
-        }
-        
-        Audiomanager.instance.UpdateSoundPosition(TVmusicwhole, transform.position);
-        Audiomanager.instance.UpdateSoundPosition(TVbreakSFX, transform.position);
+        Audiomanager.instance.UpdateSoundPosition(TVmusicwhole, transform.position); //keep music position on tv
+        Audiomanager.instance.UpdateSoundPosition(TVbreakSFX, transform.position); //keep music position on tv
 
-        if (halt == false && tvtime == true && channelshift == false)
+        if (!TVmusicwhole.isValid() && halt == false) //check if music is valid and plays it once.
         {
-            channelshift = true;
-            TVbreakSFX = Audiomanager.instance.PlaySound(TVbreak, transform.position);
-            StartCoroutine(OneSecondTimer());
+            gameObject.GetComponent<MeshRenderer>().material = video[0];
+            halt = true;
+            TVmusicwhole = Audiomanager.instance.PlaySound(TVmusics, transform.position);
         }
-        
+
+        // 2. Continuously check playback state of the music
+        if (TVmusicwhole.isValid())
+        {
+            TVmusicwhole.getPlaybackState(out TVMUSIC);
+
+            // 3. When music actually finishes, trigger break SFX only once
+            if (TVMUSIC == FMOD.Studio.PLAYBACK_STATE.STOPPED && halt == true && halt2 == false)
+            {
+                TVmusicwhole.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                TVmusicwhole.release();
+                TVmusicwhole.clearHandle(); 
+
+                halt2 = true;
+                TVbreakSFX = Audiomanager.instance.PlaySound(TVbreak, transform.position);
+                StartCoroutine(OneSecondTimer());
+            }
+        }
     }
 
     IEnumerator OneSecondTimer()
     {
-        yield return new WaitForSeconds(1f);
-
-        StartCoroutine(FiveSecondTimer());
-    }
-
-    IEnumerator WaitForFMODToFinish(EventInstance instance)
-    {
-        PLAYBACK_STATE state;
-
-        while (true)
+        if (counterdelay != 3)
         {
-            instance.getPlaybackState(out state);
-
-            if (state == PLAYBACK_STATE.STOPPED)
-            {
-                Debug.Log("FMOD TV music finished playing!");
-                channelshift = true;
-                halt = false;
-                counter++;
-                if (counter == 3)
-                {
-                    tvtime = false;
-                    counter = 0;
-                }
-               
-                break;
-
-                
-            }
-
-            yield return null;
+            gameObject.GetComponent<MeshRenderer>().material = video[4];
+            yield return new WaitForSeconds(1f);
+            StartCoroutine(FiveSecondTimer());
         }
+        else
+        {
+            gameObject.GetComponent<MeshRenderer>().material = video[4];
+            halt = false;
+            halt2 = false;
+            counterdelay = 0;
+        }
+        
     }
 
     IEnumerator FiveSecondTimer()
     {
         Debug.Log("Timer started!");
+        counterdelay++;
+
+        if (counterdelay == 1)
+        {
+            gameObject.GetComponent<MeshRenderer>().material = video[1];
+        }
+        else if (counterdelay == 2)
+        {
+            gameObject.GetComponent<MeshRenderer>().material = video[2];
+        }
+        else if (counterdelay == 3)
+        {
+            gameObject.GetComponent<MeshRenderer>().material = video[3];
+        }
 
         yield return new WaitForSeconds(timer);
 
-        view++;
-
-        if (view == video.Count)
-        {
-            view = 0;
-        }
-
-        gameObject.GetComponent<MeshRenderer>().material = video[view];
-
-        halt = false;
+        StartCoroutine(OneSecondTimer());
     }
 }
