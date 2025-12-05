@@ -9,6 +9,7 @@ public class CookBeef : MonoBehaviour
     // Materials for the different stages of cooking
     public Material Raw;
     public Material HalfCooked;
+    public Material HalfCookedreverse;
     public Material Cooked;
     public Material Burnt;
 
@@ -31,6 +32,7 @@ public class CookBeef : MonoBehaviour
     private bool halfCookedReached = false;
     private bool isCooked = false;
     private bool isBurnt = false;
+    [SerializeField] private bool Flipdirection = false; 
 
     private bool Soundblock = false;
 
@@ -52,12 +54,41 @@ public class CookBeef : MonoBehaviour
     private IngredientStackable ingredientStackable;
     private Grill grill;
 
+    [Header("Raycast Settings")]
+    public float rayDistance = 5f;
+    public string targetTag = "Grill";
+
+    [Header("Direction Offsets (Local Space)")]
+    public Vector3 directionOffset = Vector3.zero;
+
+
     private void Update()
     {
         Audiomanager.instance.UpdateSoundPosition(CookBeefSound, transform.position);
         Audiomanager.instance.UpdateSoundPosition(HalfCookedsound, transform.position);
         Audiomanager.instance.UpdateSoundPosition(CookedDoneSound, transform.position);
         Audiomanager.instance.UpdateSoundPosition(BurntSound, transform.position);
+
+        // Base forward direction of the object
+        Vector3 baseDirection = transform.forward;
+
+        // Apply offset (in local space)
+        Vector3 finalDirection = transform.TransformDirection(baseDirection + directionOffset);
+
+        // Perform raycast
+        if (Physics.Raycast(transform.position, finalDirection, out RaycastHit hit, rayDistance))
+        {
+            if (hit.collider.CompareTag(targetTag))
+            {
+                Flipdirection = true;
+            }
+            else
+            {
+                Flipdirection = false;
+            }
+        }
+        // Debug ray
+        Debug.DrawRay(transform.position, finalDirection * rayDistance, Color.red);
     }
 
     void Start()
@@ -107,9 +138,13 @@ public class CookBeef : MonoBehaviour
             // ---- HALF COOKED SIDE ----
             if (Cooktime <= HalfwayPoint && !isflipped)
             {
-                if (!halfCookedReached)
+                if (!halfCookedReached && Flipdirection == true)
                 {
                     BeefHalfCooked();
+                }
+                else if (!halfCookedReached && Flipdirection == false)
+                {
+                    Beefreversehalfcooked()
                 }
 
                 // If player never flips → burn
@@ -144,6 +179,13 @@ public class CookBeef : MonoBehaviour
     {
         HalfCookedsound = Audiomanager.instance.PlaySound(HalfcookedSFX, transform.position);
         beef.GetComponent<MeshRenderer>().material = HalfCooked;
+        halfCookedReached = true;
+        Instantiate(cookedParticle, transform.position, Quaternion.identity);
+    }
+    private void Beefreversehalfcooked()
+    {
+        HalfCookedsound = Audiomanager.instance.PlaySound(HalfcookedSFX, transform.position);
+        beef.GetComponent<MeshRenderer>().material = HalfCookedreverse;
         halfCookedReached = true;
         Instantiate(cookedParticle, transform.position, Quaternion.identity);
     }
