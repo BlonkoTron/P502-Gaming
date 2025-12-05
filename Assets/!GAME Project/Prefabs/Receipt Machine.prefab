@@ -5175,6 +5175,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orderDataCollection: {fileID: 11400000, guid: ca50baf3c7a30284da4e9066493566a9, type: 2}
+  orderQueue: {fileID: 11400000, guid: f65fe55bcc7bfb34296ed85144bff526, type: 2}
   OnNewOrderGenerated:
     m_PersistentCalls:
       m_Calls:

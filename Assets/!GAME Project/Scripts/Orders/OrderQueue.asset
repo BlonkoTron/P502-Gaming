@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 587d749a2d92fe34d9457824700c4ab6, type: 3}
+  m_Name: OrderQueue
+  m_EditorClassIdentifier: 
+  OrderDatas:
+  - {fileID: 11400000, guid: 1d52e12b67d5d6042a2a2b06c526dd90, type: 2}
+  - {fileID: 11400000, guid: 83e8d00ceca6c504a92233e57cf70f5b, type: 2}
+  - {fileID: 11400000, guid: e2400a0a913f38442ad4a3faa9bd6036, type: 2}
+  - {fileID: 11400000, guid: 632aad8a64e67c7499ed37bcc548d516, type: 2}
+  - {fileID: 11400000, guid: 9a934fcd8a720a94d97438d275f31454, type: 2}
+  - {fileID: 11400000, guid: 824c602f8c10a6a489c2ed2669009d53, type: 2}
