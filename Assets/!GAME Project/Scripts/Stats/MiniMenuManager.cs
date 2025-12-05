@@ -26,7 +26,6 @@ public class MiniMenuManager : MonoBehaviour
         {
             if (primaryPressed && !wasPrimaryPressed)
             {
-                Debug.Log("Primary button pressed once");
                 ToggleCanvas();
             }
             wasPrimaryPressed = primaryPressed;
