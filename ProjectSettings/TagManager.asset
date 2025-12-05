@@ -43,6 +43,7 @@ TagManager:
   - MoonJuiceZone
   - NebulaBlastZone
   - PlayerHand
+  - GrillPhys
   layers:
   - Default
   - TransparentFX

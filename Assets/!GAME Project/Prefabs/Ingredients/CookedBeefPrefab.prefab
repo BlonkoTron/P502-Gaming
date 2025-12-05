@@ -5077,12 +5077,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Raw: {fileID: 2100000, guid: 41ef1fb5e20d4124998ca62631e05dc6, type: 2}
   HalfCooked: {fileID: 2100000, guid: cc4fb333163d47546a8808896a2e7255, type: 2}
+  HalfCookedreverse: {fileID: 2100000, guid: a4b63ddc6384bf346a91f0f8b7508823, type: 2}
   Cooked: {fileID: 2100000, guid: 599103bb17cf40a4bb2b27acfac423f2, type: 2}
   Burnt: {fileID: 2100000, guid: 926a443c17dff1944bee39ad32d40b89, type: 2}
   beef: {fileID: 5222391013609667947}
   DesiredCooktime: 20
   flipTimeThreshold: 3
   isflipped: 0
+  Flipdirection: 0
   Cookbeefsfx:
     Guid:
       Data1: 1288799780
@@ -5114,6 +5116,9 @@ MonoBehaviour:
   cookedParticle: {fileID: 4765213176015788571, guid: b186e89ec8a7afa4f99f0cf698d6f7b3, type: 3}
   burntParticle: {fileID: 2973699220167684522, guid: c35fb9e9493c5254abecda09512b2970, type: 3}
   cookingSteam: {fileID: 4545776129235160696}
+  rayDistance: 0.001
+  targetTag: GrillPhys
+  directionOffset: {x: 0, y: -90, z: 0}
 --- !u!114 &871668504160185310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5224,7 +5229,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 76d54aac5a70a2a41996f0006264aafd, type: 2}
+      objectReference: {fileID: 2100000, guid: a4b63ddc6384bf346a91f0f8b7508823, type: 2}
     - target: {fileID: 919132149155446097, guid: 5154e7f4b97532c468566619f0a462ac, type: 3}
       propertyPath: m_Name
       value: CookedBeefMesh
