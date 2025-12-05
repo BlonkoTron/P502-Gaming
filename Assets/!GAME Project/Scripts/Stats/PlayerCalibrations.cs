@@ -58,22 +58,22 @@ public class PlayerCalibrations : MonoBehaviour
                 {
                     case 0:
                         SetBentROMIn();
-                        Debug.Log("Bent In Angle: " + trackBents.angleDegrees);
+                        //Debug.Log("Bent In Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMIn, bentInCheckmark);
                         break;
                     case 1:
                         SetBentROMDown();
-                        Debug.Log("Bent Out Angle: " + trackBents.angleDegrees);
+                        //Debug.Log("Bent Out Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMOut, bentOutCheckmark);
                         break;
                     case 2:
                         SetRotationROMUp();
-                        Debug.Log("Rotation Up Angle: " + trackRotations.angleDegrees);
+                        //Debug.Log("Rotation Up Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMUp, rotationUpCheckmark);
                         break;
                     case 3:
                         SetRotationROMDown();
-                        Debug.Log("Rotation Down Angle: " + trackRotations.angleDegrees);
+                        //Debug.Log("Rotation Down Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMDown, rotationDownCheckmark);
                         break;
                 }
@@ -204,9 +204,8 @@ public class PlayerCalibrations : MonoBehaviour
 
     public void SetBentROMIn()
     {
-        Debug.Log("Setting Bent In ROM");
         playerSetUp.bentROMIn = trackBents.angleDegrees;
-        Debug.Log("Bent In Set to: " + playerSetUp.bentROMIn);
+        //Debug.Log("Bent In Set to: " + playerSetUp.bentROMIn);
     }
 
     public void SetBentROMDown()

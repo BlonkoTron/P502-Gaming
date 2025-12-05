@@ -1,66 +1,90 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 using UnityEngine.XR;
 
 public class MiniMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject miniMenuCanvas;
+    [Header("References")]
+    public Transform xrRigOrCamera;
+    public GameObject uiCanvas;
+    [SerializeField] private PlayerSetUp playerSetUp;
 
-    
-    private UnityEngine.XR.InputDevice leftController;
-    private UnityEngine.XR.InputDevice rightController;
+    [Header("Settings")]
+    public float distanceFromPlayer = 1.5f;
+    public float heightOffset = 0.0f;
 
-    void Start()
+    private InputDevice controller;
+    private bool isVisible = false;
+    private bool wasPrimaryPressed = false;
+
+    private void Update()
     {
-        // Get left controller
-        var leftHandedControllers = new List<UnityEngine.XR.InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandedControllers);
-        if (leftHandedControllers.Count > 0)
-            leftController = leftHandedControllers[0];
+        if (!controller.isValid)
+            TryInitializeController();
 
-        // Get right controller
-        var rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
-        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandedControllers);
-        if (rightHandedControllers.Count > 0)
-            rightController = rightHandedControllers[0];
-    }
-
-    void Update()
-    {
-        // X button on left controller
-        if (leftController.isValid &&
-            leftController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool xPressed) &&
-            xPressed)
+        if (controller.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryPressed))
         {
-            ToggleMiniMenu();
-        }
-
-        // A button on right controller
-        if (rightController.isValid &&
-            rightController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primaryButton, out bool aPressed) &&
-            aPressed)
-        {
-            ToggleMiniMenu();
+            if (primaryPressed && !wasPrimaryPressed)
+            {
+                Debug.Log("Primary button pressed once");
+                ToggleCanvas();
+            }
+            wasPrimaryPressed = primaryPressed;
         }
     }
 
-    public void ToggleMiniMenu()
+    private void TryInitializeController()
     {
-        if (miniMenuCanvas.activeSelf)
-        {
-            miniMenuCanvas.SetActive(false);
-        }
+        if (playerSetUp.isRightArm)
+            InitializeRightController();
         else
-        {
-            miniMenuCanvas.SetActive(true);
-        }
+            InitializeLeftController();
     }
 
-    public void GoToMainMenu()
+    public void ToggleCanvas()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        isVisible = !isVisible;
+        uiCanvas.SetActive(isVisible);
+
+        if (isVisible)
+            PositionCanvasInFront();
     }
 
+    private void PositionCanvasInFront()
+    {
+        if (xrRigOrCamera == null || uiCanvas == null) return;
+
+        Vector3 forward = xrRigOrCamera.forward;
+        forward.y = 0f;
+        forward.Normalize();
+
+        Vector3 targetPos = xrRigOrCamera.position + forward * distanceFromPlayer;
+        targetPos.y += heightOffset;
+
+        uiCanvas.transform.position = targetPos;
+
+        uiCanvas.transform.LookAt(xrRigOrCamera);
+        uiCanvas.transform.rotation = Quaternion.Euler(0, uiCanvas.transform.rotation.eulerAngles.y + 180f, 0);
+    }
+
+    private void InitializeLeftController()
+    {
+        List<InputDevice> devices = new List<InputDevice>();
+        InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller, devices);
+        if (devices.Count > 0)
+            controller = devices[0];
+    }
+
+    private void InitializeRightController()
+    {
+        List<InputDevice> devices = new List<InputDevice>();
+        InputDevices.GetDevicesWithCharacteristics(InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller, devices);
+        if (devices.Count > 0)
+            controller = devices[0];
+    }
+
+    public void ShowDebug()
+    {
+        Debug.Log("UI Button Pressed");
+    }
 }

@@ -67,13 +67,13 @@ public class TrackRotations : MonoBehaviour
         if (angleDegrees <= rotationDown && isReset)
         {
             playerStats.nrOfRotationsDown += 1;
-            Debug.Log("ROTATED DOWN! Total Rotations Down: " + playerStats.nrOfRotationsDown);
+            //Debug.Log("ROTATED DOWN! Total Rotations Down: " + playerStats.nrOfRotationsDown);
             isReset = false;
         }
         else if (angleDegrees >= rotationUp && isReset)
         {
             playerStats.nrOfRotationsUp += 1;
-            Debug.Log("ROTATED UP! Total Rotations Up: " + playerStats.nrOfRotationsUp);
+            //Debug.Log("ROTATED UP! Total Rotations Up: " + playerStats.nrOfRotationsUp);
             isReset = false;
         }
         else if (angleDegrees > 180 && angleDegrees < 200)

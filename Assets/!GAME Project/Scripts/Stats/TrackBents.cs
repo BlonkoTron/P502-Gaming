@@ -63,7 +63,7 @@ public class TrackBents : MonoBehaviour
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
         CalculateBent(cDistance, aDistance, bDistance);
-        Debug.Log("Bent Angle: " + angleDegrees);
+        //Debug.Log("Bent Angle: " + angleDegrees);
         CheckBent();
     }
 
@@ -86,13 +86,13 @@ public class TrackBents : MonoBehaviour
             if (angleDegrees <= playerSetUp.bentROMIn && isReset)
             {
                 playerStats.nrOfBentsIn += 1;
-                Debug.Log("BENT IN! Total Bents In: " + playerStats.nrOfBentsIn);
+                //Debug.Log("BENT IN! Total Bents In: " + playerStats.nrOfBentsIn);
                 isReset = false;
             }
             else if (angleDegrees >= playerSetUp.bentROMOut &&  isReset)
             {
                 playerStats.nrOfBentsOut += 1;
-                Debug.Log("BENT OUT! Total Bents Out: " + playerStats.nrOfBentsOut);
+                //Debug.Log("BENT OUT! Total Bents Out: " + playerStats.nrOfBentsOut);
                 isReset = false;
             }
             else if (angleDegrees > playerSetUp.bentROMIn && angleDegrees < playerSetUp.bentROMOut)
