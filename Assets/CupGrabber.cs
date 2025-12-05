@@ -43,7 +43,7 @@ public class Pocket_bateryspawner : MonoBehaviour
         if (!isInsideTrigger) return;
         if (Time.time - lastSpawnTime < spawnCooldown) return;
 
-        GameObject spawnedObject = Instantiate(objectToSpawn, handTransform.position, handTransform.rotation);
+        GameObject spawnedObject = Instantiate(objectToSpawn, handTransform.position, transform.rotation);
 
         // Attempt to auto-grab with the XR system
         XRGrabInteractable grabInteractable = spawnedObject.GetComponent<XRGrabInteractable>();

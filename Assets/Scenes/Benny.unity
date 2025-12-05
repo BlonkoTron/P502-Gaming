@@ -5474,6 +5474,87 @@ Transform:
   - {fileID: 1709305229}
   m_Father: {fileID: 156859411}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2036796714
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5533596
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5772358
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.3855195
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7010554
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.09229553
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70105946
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.09229606
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 593026844420111517, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: m_Name
+      value: Tv
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: timer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: TVmusics.Path
+      value: event:/WorldSFX/AleinTVMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: TVmusics.Guid.Data1
+      value: 1710122440
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: TVmusics.Guid.Data2
+      value: 1107270617
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: TVmusics.Guid.Data3
+      value: 942406277
+      objectReference: {fileID: 0}
+    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
+      propertyPath: TVmusics.Guid.Data4
+      value: 1862233068
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
 --- !u!1 &2039643804
 GameObject:
   m_ObjectHideFlags: 0
@@ -5815,83 +5896,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1311381157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &5156471787984221062
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.7435326
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -10.163563
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 247990902606145063, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 593026844420111517, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: m_Name
-      value: Tv
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: TVNoice.Path
-      value: event:/WorldSFX/Testlong
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: TVNoice.Guid.Data1
-      value: -1844217339
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: TVNoice.Guid.Data2
-      value: 1278161550
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: TVNoice.Guid.Data3
-      value: -1571495282
-      objectReference: {fileID: 0}
-    - target: {fileID: 4800816587765117526, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
-      propertyPath: TVNoice.Guid.Data4
-      value: 1890597035
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: dba74719bb350f04b9bdc9e15628c7eb, type: 3}
 --- !u!1001 &5505033321655405586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6027,7 +6031,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5134597495370845085, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7239905694942365538, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8531161548966731198, guid: 430ae43327489ed4f9a99e08d1af6a37, type: 3}
@@ -6065,7 +6070,6 @@ SceneRoots:
   - {fileID: 7693682855891362492}
   - {fileID: 1511427638}
   - {fileID: 928958805}
-  - {fileID: 5156471787984221062}
   - {fileID: 5505033321655405586}
   - {fileID: 1465857425}
   - {fileID: 1134511772}
@@ -6075,3 +6079,4 @@ SceneRoots:
   - {fileID: 922626577}
   - {fileID: 1918821067}
   - {fileID: 1878897977}
+  - {fileID: 2036796714}
