@@ -4848,6 +4848,7 @@ GameObject:
   - component: {fileID: 4875407762366504152}
   - component: {fileID: 2366832545756794345}
   - component: {fileID: 7321015041694901065}
+  - component: {fileID: 8749572782586108956}
   m_Layer: 0
   m_Name: Ketflup
   m_TagString: Untagged
@@ -5102,6 +5103,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ad9139ab0d26c149aa511c85d65898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8749572782586108956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6847021672090247825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f83e15472a31aa428b8650235254fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hapticIntensity: 0.5
+  hapticDuration: 0.2
 --- !u!1001 &5213381151656494628
 PrefabInstance:
   m_ObjectHideFlags: 0
