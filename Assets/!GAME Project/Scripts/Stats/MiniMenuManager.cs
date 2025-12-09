@@ -7,6 +7,7 @@ public class MiniMenuManager : MonoBehaviour
     [Header("References")]
     public Transform xrRigOrCamera;
     public GameObject uiCanvas;
+    public GameObject uiText;
     [SerializeField] private PlayerSetUp playerSetUp;
 
     [Header("Settings")]
@@ -44,6 +45,7 @@ public class MiniMenuManager : MonoBehaviour
     {
         isVisible = !isVisible;
         uiCanvas.SetActive(isVisible);
+        uiText.SetActive(isVisible);
 
         if (isVisible)
             PositionCanvasInFront();
