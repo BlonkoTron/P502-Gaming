@@ -471,6 +471,93 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &33907196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 22519142046477328, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+  m_PrefabInstance: {fileID: 1275112618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &33907199 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5837138227727955786, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+  m_PrefabInstance: {fileID: 1275112618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33907196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &33907201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33907196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0b9921bce4eeb49bd05815b1135ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractorSourceObject: {fileID: 33907199}
+  m_HapticImpulsePlayer: {fileID: 33907202}
+  m_PlaySelectEntered: 0
+  m_SelectEnteredData:
+    m_Amplitude: 0.5
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_PlaySelectExited: 0
+  m_SelectExitedData:
+    m_Amplitude: 0.5
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_PlaySelectCanceled: 0
+  m_SelectCanceledData:
+    m_Amplitude: 0.5
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_PlayHoverEntered: 0
+  m_HoverEnteredData:
+    m_Amplitude: 0.25
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_PlayHoverExited: 0
+  m_HoverExitedData:
+    m_Amplitude: 0.25
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_PlayHoverCanceled: 0
+  m_HoverCanceledData:
+    m_Amplitude: 0.25
+    m_Duration: 0.1
+    m_Frequency: 0
+  m_AllowHoverHapticsWhileSelecting: 0
+--- !u!114 &33907202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33907196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HapticOutput:
+    m_InputSourceMode: 2
+    m_InputAction:
+      m_Name: Haptic
+      m_Type: 2
+      m_ExpectedControlType: 
+      m_Id: 4472402a-d599-40ae-a971-65935849ed7a
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_InputActionReference: {fileID: -8785819595477538065, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    m_ObjectReferenceObject: {fileID: 0}
+  m_AmplitudeMultiplier: 1
 --- !u!1001 &96747756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2890,11 +2977,6 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6537726269001820602, guid: 23cbc58f6d3f8744196578f8b8bddeaf, type: 3}
   m_PrefabInstance: {fileID: 486683548}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &495160931 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2927885794556149002, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
-  m_PrefabInstance: {fileID: 1275112618}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &521853962
 GameObject:
@@ -12849,22 +12931,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Armperson(RightArm)
       objectReference: {fileID: 0}
-    - target: {fileID: 917725036791019477, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1625960279357631054, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: uiCanvas
       value: 
       objectReference: {fileID: 261110991}
-    - target: {fileID: 1625960279357631054, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
-      propertyPath: heightOffset
-      value: -0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2927885794556149002, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
-      propertyPath: m_TagString
-      value: PlayerHand
-      objectReference: {fileID: 0}
     - target: {fileID: 7639319280419203448, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.2780399
@@ -12909,12 +12979,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2927885794556149002, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 22519142046477328, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1689310916}
-    - targetCorrespondingSourceObject: {fileID: 2927885794556149002, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+      addedObject: {fileID: 33907202}
+    - targetCorrespondingSourceObject: {fileID: 22519142046477328, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1689310915}
+      addedObject: {fileID: 33907201}
   m_SourcePrefab: {fileID: 100100000, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
 --- !u!114 &1275112619 stripped
 MonoBehaviour:
@@ -15941,83 +16011,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5034440762265891024, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
   m_PrefabInstance: {fileID: 1275112618}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495160931}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4253f32900bcc4d499d675566142ded0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1689310915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495160931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0b9921bce4eeb49bd05815b1135ac2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractorSourceObject: {fileID: 1689310912}
-  m_HapticImpulsePlayer: {fileID: 1689310916}
-  m_PlaySelectEntered: 1
-  m_SelectEnteredData:
-    m_Amplitude: 0.5
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_PlaySelectExited: 0
-  m_SelectExitedData:
-    m_Amplitude: 0.5
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_PlaySelectCanceled: 0
-  m_SelectCanceledData:
-    m_Amplitude: 0.5
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_PlayHoverEntered: 0
-  m_HoverEnteredData:
-    m_Amplitude: 0.25
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_PlayHoverExited: 0
-  m_HoverExitedData:
-    m_Amplitude: 0.25
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_PlayHoverCanceled: 0
-  m_HoverCanceledData:
-    m_Amplitude: 0.25
-    m_Duration: 0.1
-    m_Frequency: 0
-  m_AllowHoverHapticsWhileSelecting: 0
---- !u!114 &1689310916
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495160931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b734f2bd29eeddd4d85afb0c266228c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HapticOutput:
-    m_InputSourceMode: 2
-    m_InputAction:
-      m_Name: Haptic
-      m_Type: 2
-      m_ExpectedControlType: 
-      m_Id: f6137548-4476-4aa3-b6e6-748bea3881b4
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_InputActionReference: {fileID: -8222252007134549311, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-    m_ObjectReferenceObject: {fileID: 0}
-  m_AmplitudeMultiplier: 1
 --- !u!1 &1759270665
 GameObject:
   m_ObjectHideFlags: 0
