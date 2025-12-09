@@ -35,14 +35,20 @@ public class HapticTouch : MonoBehaviour
         // Get the interactor (controller) that grabbed this object
         if (args.interactorObject is XRBaseInputInteractor inputInteractor)
         {
-            Debug.Log("HapticTouch: Sending haptic impulse - Intensity: " + hapticIntensity + ", Duration: " + hapticDuration);
-            // Send haptic impulse to the controller
-            inputInteractor.SendHapticImpulse(hapticIntensity, hapticDuration);
+            Debug.Log("HapticTouch: Starting haptic coroutine - Intensity: " + hapticIntensity + ", Duration: " + hapticDuration);
+            StartCoroutine(SendHapticFeedback(inputInteractor));
         }
         else
         {
             Debug.LogWarning("HapticTouch: Interactor is not XRBaseInputInteractor, it is: " + args.interactorObject.GetType());
         }
+    }
+
+    private IEnumerator SendHapticFeedback(XRBaseInputInteractor interactor)
+    {
+        // Send haptic impulse to the controller
+        interactor.SendHapticImpulse(hapticIntensity, hapticDuration);
+        yield return new WaitForSeconds(hapticDuration);
     }
 
     private void OnDestroy()
