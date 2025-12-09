@@ -82,6 +82,11 @@ public class MiniMenuManager : MonoBehaviour
             controller = devices[0];
     }
 
+    public void GoToMainMenu()
+    {
+               UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
     public void ShowDebug()
     {
         Debug.Log("UI Button Pressed");
