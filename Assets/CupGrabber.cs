@@ -7,56 +7,78 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class Pocket_bateryspawner : MonoBehaviour
 {
     [Header("Settings")]
-    public GameObject objectToSpawn;              // Prefab to spawn
-    public Transform handTransform;               // The VR hand/controller transform
-    public XRDirectInteractor directInteractor;   // The hand's XRDirectInteractor
-    public InputActionProperty grabAction;        // Input Action (Grip button)
+    public GameObject objectToSpawn;
+    public Transform handTransformR;
+    public Transform handTransformL;
+    public XRDirectInteractor directInteractorR;
+    public XRDirectInteractor directInteractorL;
+
+    public InputActionProperty grabActionR;
+    public InputActionProperty grabActionL;
+
     public float spawnCooldown = 0.2f;
 
-    private bool isInsideTrigger = false;
+    private bool rightHandInside = false;
+    private bool leftHandInside = false;
     private float lastSpawnTime = 0f;
 
     void OnEnable()
     {
-        grabAction.action.performed += OnGrab;
+        grabActionR.action.performed += OnRightGrab;
+        grabActionL.action.performed += OnLeftGrab;
     }
 
     void OnDisable()
     {
-        grabAction.action.performed -= OnGrab;
+        grabActionR.action.performed -= OnRightGrab;
+        grabActionL.action.performed -= OnLeftGrab;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("PlayerHand"))
-            isInsideTrigger = true;
+            rightHandInside = true;
+
+        if (other.CompareTag("PlayerHand"))
+            leftHandInside = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("PlayerHand"))
-            isInsideTrigger = false;
+            rightHandInside = false;
+
+        if (other.CompareTag("PlayerHand"))
+            leftHandInside = false;
     }
 
-    private void OnGrab(InputAction.CallbackContext context)
+    private void OnRightGrab(InputAction.CallbackContext ctx)
     {
-        if (!isInsideTrigger) return;
+        if (!rightHandInside) return;
         if (Time.time - lastSpawnTime < spawnCooldown) return;
 
-        GameObject spawnedObject = Instantiate(objectToSpawn, handTransform.position, transform.rotation);
+        SpawnInHand(handTransformR, directInteractorR);
+    }
 
-        // Attempt to auto-grab with the XR system
+    private void OnLeftGrab(InputAction.CallbackContext ctx)
+    {
+        if (!leftHandInside) return;
+        if (Time.time - lastSpawnTime < spawnCooldown) return;
+
+        SpawnInHand(handTransformL, directInteractorL);
+    }
+
+    private void SpawnInHand(Transform hand, XRDirectInteractor interactor)
+    {
+        GameObject spawnedObject = Instantiate(objectToSpawn, transform.position, transform.rotation);
+
         XRGrabInteractable grabInteractable = spawnedObject.GetComponent<XRGrabInteractable>();
-        if (grabInteractable != null && directInteractor != null)
-        {
-            // Use the interactor's interaction manager to start the grab
-            var interactionManager = directInteractor.interactionManager;
-            if (interactionManager != null)
-            {
-                // Newer API call (works in XRIT 2.3+)
-                interactionManager.SelectEnter((IXRSelectInteractor)directInteractor, (IXRSelectInteractable)grabInteractable);
-            }
-        }
+        if (grabInteractable == null || interactor == null)
+            return;
+
+        var manager = interactor.interactionManager;
+        if (manager != null)
+            manager.SelectEnter((IXRSelectInteractor)interactor,(IXRSelectInteractable)grabInteractable);
 
         lastSpawnTime = Time.time;
     }

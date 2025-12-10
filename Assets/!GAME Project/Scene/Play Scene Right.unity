@@ -12899,6 +12899,10 @@ PrefabInstance:
       propertyPath: uiCanvas
       value: 
       objectReference: {fileID: 1237747892}
+    - target: {fileID: 2472484049446380083, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+      propertyPath: m_PlaySelectEntered
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7639319280419203448, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.2780399
@@ -12964,6 +12968,11 @@ MonoBehaviour:
 --- !u!4 &1275112620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3535207063206653516, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
+  m_PrefabInstance: {fileID: 1275112618}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1275112621 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8568480803656038424, guid: ae47469e7177b0248afb07805a4905ed, type: 3}
   m_PrefabInstance: {fileID: 1275112618}
   m_PrefabAsset: {fileID: 0}
 --- !u!43 &1294895562
@@ -23112,9 +23121,49 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1275112620}
     - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: handTransformL
+      value: 
+      objectReference: {fileID: 1275112620}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: handTransformR
+      value: 
+      objectReference: {fileID: 1275112621}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
       propertyPath: directInteractor
       value: 
       objectReference: {fileID: 1689310912}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: directInteractorL
+      value: 
+      objectReference: {fileID: 33907199}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: directInteractorR
+      value: 
+      objectReference: {fileID: 1689310912}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionL.m_Reference
+      value: 
+      objectReference: {fileID: -6131295136447488360, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionR.m_Reference
+      value: 
+      objectReference: {fileID: 187161793506945269, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionL.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionR.m_UseReference
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionL.m_Action.m_Name
+      value: Grab Action L
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010916982060271328, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: grabActionR.m_Action.m_Name
+      value: Grab Action R
+      objectReference: {fileID: 0}
     - target: {fileID: 4496697059506729215, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
       propertyPath: m_Name
       value: Cup dispenser
@@ -23167,7 +23216,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7832998669115916869, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 839542994776755893, guid: e5f8a843f1adf2c47acfb1c705e3e783, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
