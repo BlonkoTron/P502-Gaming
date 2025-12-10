@@ -30,13 +30,13 @@ public class RotationTracker : MonoBehaviour
         UnityEngine.SceneManagement.Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "MainMenu")
         {
-            
+            ToggleVisibility(false);
         }
         else
         {
-           
             SetRotations();
             EnableRotationCollider();
+
         }
     }
 
@@ -77,4 +77,29 @@ public class RotationTracker : MonoBehaviour
            LeftTrackerCube.GetComponent<RotationCollider>().enabled = true;
        }
     }
+
+    public void ToggleVisibility(bool on)
+    {
+        if (playerSetUp.isRightArm)
+        {
+            LeftUp.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+            LeftDown.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+            LeftTrackerCube.GetComponent<MeshRenderer>().enabled = false;
+
+            RightUp.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = on;
+            RightDown.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = on;
+            RightTrackerCube.GetComponent<MeshRenderer>().enabled = on;
+        }
+        else
+        {
+            LeftUp.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = on;
+            LeftDown.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = on;
+            LeftTrackerCube.GetComponent<MeshRenderer>().enabled = on;
+
+            RightUp.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+            RightDown.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().enabled = false;
+            RightTrackerCube.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
 }
