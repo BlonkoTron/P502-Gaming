@@ -5303,6 +5303,7 @@ MonoBehaviour:
       Data3: 1531734947
       Data4: 316878270
     Path: event:/WorldSFX/BellDing
+  cooldownDuration: 1
 --- !u!1 &6815604141919545835
 GameObject:
   m_ObjectHideFlags: 0
