@@ -59,6 +59,26 @@ public class TrackBents : MonoBehaviour
     }
 
 
+    public void UpdateArm()
+    {
+        if (playerSetUp.isRightArm != false)
+        {
+            shoulderJoint = shoulderJointRight;
+            elbowJoint = elbowJointRight;
+            handJoint = handJointRight;
+        }
+        else
+        {
+            shoulderJoint = shoulderJointLeft;
+            elbowJoint = elbowJointLeft;
+            handJoint = handJointLeft;
+        }
+
+        aDistance = Vector3.Distance(elbowJoint.transform.position, handJoint.transform.position);
+        bDistance = Vector3.Distance(shoulderJoint.transform.position, elbowJoint.transform.position);
+    }
+
+
     private void FixedUpdate()
     {
         cDistance = Vector3.Distance(shoulderJoint.transform.position, handJoint.transform.position);
