@@ -235,10 +235,12 @@ public class PlayerCalibrations : MonoBehaviour
         if(playerSetUp.isRightArm)
         {
             rotationTracker.ToggleTPD(rotationTracker.tpdRightUp);
+            playerSetUp.rotationUp = rotationTracker.tpdRightUp.transform.localRotation;
         }
         else
         {
             rotationTracker.ToggleTPD(rotationTracker.tpdLeftUp);
+            playerSetUp.rotationUp = rotationTracker.tpdLeftUp.transform.localRotation;
         }
     }
 
@@ -247,10 +249,12 @@ public class PlayerCalibrations : MonoBehaviour
         if (playerSetUp.isRightArm)
         {
             rotationTracker.ToggleTPD(rotationTracker.tpdRightDown);
+            playerSetUp.rotationDown = rotationTracker.tpdRightDown.transform.localRotation;
         }
         else
         {
             rotationTracker.ToggleTPD(rotationTracker.tpdLeftDown);
+            playerSetUp.rotationDown = rotationTracker.tpdLeftDown.transform.localRotation;
         }
     }
 
