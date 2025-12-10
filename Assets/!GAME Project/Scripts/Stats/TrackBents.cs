@@ -39,7 +39,7 @@ public class TrackBents : MonoBehaviour
             tracking = true;
         }
 
-        if (playerSetUp.isRightArm == false)
+        if (playerSetUp.isRightArm != false)
         {
             shoulderJoint = shoulderJointRight;
             elbowJoint = elbowJointRight;

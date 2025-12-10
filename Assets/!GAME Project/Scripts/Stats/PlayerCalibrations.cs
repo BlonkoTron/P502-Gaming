@@ -215,12 +215,12 @@ public class PlayerCalibrations : MonoBehaviour
 
     public void SetRotationROMUp()
     {
-        playerSetUp.rotationROMUp = 190 + trackRotations.angleDegrees;
+        playerSetUp.rotationROMUp =  trackRotations.angleDegrees;
     }
 
     public void SetRotationROMDown()
     {
-        playerSetUp.rotationROMDown = 190 - trackRotations.angleDegrees;
+        playerSetUp.rotationROMDown =  trackRotations.angleDegrees;
     }
 
 

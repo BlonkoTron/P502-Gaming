@@ -12,6 +12,9 @@ public class Bell : MonoBehaviour
     private EventInstance Bellsound;
     [SerializeField] private EventReference Belltester;
 
+    [SerializeField] private float cooldownDuration = 15.0f;
+    private float lastRingTime = -Mathf.Infinity;
+
     private void Update()
     {
         Audiomanager.instance.UpdateSoundPosition(Bellsound, transform.position);
@@ -32,7 +35,14 @@ private void OnTriggerEnter(Collider other)
 } */
     public void BellPressed()
     {
-        OnBellPressed.Invoke();
         Bellsound = Audiomanager.instance.PlaySound(Belltester, transform.position);
+        if (Time.time < lastRingTime + cooldownDuration)
+        {
+            return; 
+        }
+        lastRingTime = Time.time;
+        OnBellPressed.Invoke();
+        
     }
 }
+
