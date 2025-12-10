@@ -7,8 +7,6 @@ public class RotationCollider : MonoBehaviour
     [SerializeField] private GameObject CubeUp;
     [SerializeField] private GameObject CubeDown;
 
-    private bool isReset = true;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject == CubeUp)

@@ -9,7 +9,7 @@ public class PlayerCalibrations : MonoBehaviour
 {
     [SerializeField] private PlayerSetUp playerSetUp;
     [SerializeField] TrackBents trackBents;
-    [SerializeField] TrackRotations trackRotations;
+    //[SerializeField] TrackRotations trackRotations;
     [SerializeField] RotationTracker rotationTracker;
 
     [Header("Auto Configuration")]
@@ -32,6 +32,11 @@ public class PlayerCalibrations : MonoBehaviour
 
     private UnityEngine.XR.InputDevice controller;
 
+    private bool triggerWasPressed = false;
+
+    private bool rotationUpConfigured;
+    private bool rotationDownConfigured;
+
     private void Start()
     {
         bentInROMText.SetActive(false);
@@ -46,49 +51,64 @@ public class PlayerCalibrations : MonoBehaviour
     }
 
 
-   
+
     private void FixedUpdate()
     {
         if (controller.TryGetFeatureValue(UnityEngine.XR.CommonUsages.trigger, out float triggerValue))
         {
-            bool isPressed = triggerValue > 0.1f; // Adjust threshold if needed
+            bool isPressed = triggerValue > 0.1f; // threshold
+            bool triggerJustPressed = isPressed && !triggerWasPressed;
 
-            if (isPressed)
+            if (triggerJustPressed)
             {
                 switch (autoConfigNr)
                 {
                     case 0:
                         SetBentROMIn();
-                        //Debug.Log("Bent In Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMIn, bentInCheckmark);
                         break;
+
                     case 1:
                         SetBentROMDown();
-                        //Debug.Log("Bent Out Angle: " + trackBents.angleDegrees);
                         CheckIfconfigured(playerSetUp.bentROMOut, bentOutCheckmark);
                         break;
+
                     case 2:
-                        SetRotationROMUp();
-                        //Debug.Log("Rotation Up Angle: " + trackRotations.angleDegrees);
-                        CheckIfconfigured(playerSetUp.rotationROMUp, rotationUpCheckmark);
+                        //SetRotationROMUp();
+                        CheckIfRotationconfigured(playerSetUp.rotationUp, rotationUpCheckmark);
                         SetNewRotationUp();
+                        rotationUpConfigured = true;
                         break;
+
                     case 3:
-                        SetRotationROMDown();
-                        //Debug.Log("Rotation Down Angle: " + trackRotations.angleDegrees);
-                        CheckIfconfigured(playerSetUp.rotationROMDown, rotationDownCheckmark);
+                        //SetRotationROMDown();
+                        CheckIfRotationconfigured(playerSetUp.rotationDown, rotationDownCheckmark);
                         SetNewRotationDown();
+                        rotationDownConfigured = true;
                         break;
                 }
 
-                if (playerSetUp.bentROMIn > 0 && playerSetUp.bentROMOut > 0 && playerSetUp.rotationROMUp > 0 && playerSetUp.rotationROMDown > 0)
+                if (playerSetUp.bentROMIn > 0 &&
+                    playerSetUp.bentROMOut > 0 &&
+                    rotationDownConfigured && rotationDownConfigured)
+
                 {
                     playerSetUp.isConfigured = true;
                 }
             }
+
+            // store state for next frame
+            triggerWasPressed = isPressed;
         }
     }
 
+    public void CheckIfRotationconfigured(Quaternion ROM, GameObject checkMark)
+    {
+        if (ROM != Quaternion.Euler(0f,0f,0f))
+        {
+            checkMark.SetActive(true);
+        }
+    }
     public void CheckIfconfigured(float ROM, GameObject checkMark)
     {         if (ROM != 0)
         {
