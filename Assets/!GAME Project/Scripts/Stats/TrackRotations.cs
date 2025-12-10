@@ -40,9 +40,23 @@ public class TrackRotations : MonoBehaviour
         {
             handJoint = handJointLeft;
         }
-        isReset = true;
         rotationDown = 190 - playerSetUp.rotationROMDown;
         rotationUp = 190 + playerSetUp.rotationROMUp;
+    }
+
+    public void UpdateArm()
+    {
+        if (playerSetUp.isRightArm)
+        {
+            handJoint = handJointRight;
+        }
+        else
+        {
+            handJoint = handJointLeft;
+        }
+        isReset = true;
+        rotationDown = playerSetUp.rotationROMDown;
+        rotationUp = playerSetUp.rotationROMUp;
     }
 
     private void FixedUpdate()
