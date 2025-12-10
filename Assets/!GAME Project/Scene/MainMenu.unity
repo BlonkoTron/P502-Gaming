@@ -5274,6 +5274,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1004097913474769433, guid: 56686f82f64b0af4688a89676403a500, type: 3}
   m_PrefabInstance: {fileID: 1164886998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1175343647 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4260124658116764001, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
+  m_PrefabInstance: {fileID: 9146218624733401414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204479074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6764,6 +6769,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306353142}
   m_CullTransparentMesh: 1
+--- !u!1 &1318542641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1481617113400406376, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
+  m_PrefabInstance: {fileID: 9146218624733401414}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1331245442
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,7 +8328,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 9146218624733401414}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a487b8b184571684b813b9c173079606, type: 3}
   m_Name: 
@@ -10600,6 +10610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1852068817890898020, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4126481320694575223, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
       propertyPath: m_Name
       value: ArmPerson(Both Hands)
@@ -10646,8 +10660,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8835329433086865439, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8835329433086865439, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
+      propertyPath: handJointLeft
+      value: 
+      objectReference: {fileID: 1175343647}
+    - target: {fileID: 8835329433086865439, guid: 5e4ef8f5500a66842bc2637575589362, type: 3}
+      propertyPath: handJointRight
+      value: 
+      objectReference: {fileID: 1318542641}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
