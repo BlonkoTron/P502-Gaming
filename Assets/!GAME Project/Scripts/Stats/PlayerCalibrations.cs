@@ -243,11 +243,13 @@ public class PlayerCalibrations : MonoBehaviour
     public void SetRotationROMUp()
     {
         playerSetUp.rotationROMUp = trackRotations.angleDegrees;
+        Debug.Log("Rotation Up Set to: " + playerSetUp.rotationROMUp);
     }
 
     public void SetRotationROMDown()
     {
         playerSetUp.rotationROMDown = trackRotations.angleDegrees;
+        Debug.Log("Rotation Down Set to: " + playerSetUp.rotationROMDown);
     }
 
     public void SetNewRotationUp()
