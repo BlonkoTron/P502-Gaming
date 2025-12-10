@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: be9bf4e3359328f43bb4e6b109cf61a2, type: 2}
+  - {fileID: 2100000, guid: 4bf90162a0337f54c8f6127e852b3800, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
       Data4: 1057327895
     Path: event:/WorldSFX/AleinTV
   video:
-  - {fileID: 2100000, guid: 71832093f9ebed5408d6253ecf750009, type: 2}
+  - {fileID: 2100000, guid: 4bf90162a0337f54c8f6127e852b3800, type: 2}
   - {fileID: 2100000, guid: 49aa04ba5c7b76040a5c37b8ed643b4f, type: 2}
   - {fileID: 2100000, guid: be9bf4e3359328f43bb4e6b109cf61a2, type: 2}
   - {fileID: 2100000, guid: e81c45103a904804fafc37dab7c5163c, type: 2}
@@ -157,15 +157,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.5533596
+      value: 24.526
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5772358
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.3855195
+      value: 8.27
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 97a4a148453cfaf46b47ab61fb68ce1c, type: 3}
       propertyPath: m_LocalRotation.w
