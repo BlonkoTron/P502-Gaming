@@ -161,7 +161,7 @@ public class PlayerCalibrations : MonoBehaviour
         playerSetUp.isRightArm = false;
         InitializeLeftController();
         trackBents.UpdateArm();
-        trackRotations.UpdateArm();
+        //trackRotations.UpdateArm();
     }
 
     public void ChooseRightArm()
@@ -169,7 +169,7 @@ public class PlayerCalibrations : MonoBehaviour
         playerSetUp.isRightArm = true;
         InitializeRightController();
         trackBents.UpdateArm();
-        trackRotations.UpdateArm();
+        //trackRotations.UpdateArm();
     }
 
     public void PressBentIn()
@@ -242,12 +242,12 @@ public class PlayerCalibrations : MonoBehaviour
 
     public void SetRotationROMUp()
     {
-        playerSetUp.rotationROMUp = trackRotations.angleDegrees;
+       // playerSetUp.rotationROMUp = trackRotations.angleDegrees;
     }
 
     public void SetRotationROMDown()
     {
-        playerSetUp.rotationROMDown = trackRotations.angleDegrees;
+      //  playerSetUp.rotationROMDown = trackRotations.angleDegrees;
     }
 
     public void SetNewRotationUp()
