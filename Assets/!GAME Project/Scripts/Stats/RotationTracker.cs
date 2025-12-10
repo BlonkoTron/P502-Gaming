@@ -77,7 +77,6 @@ public class RotationTracker : MonoBehaviour
 
         // Example: keep yaw, lock pitch and roll
         r.z = qua.eulerAngles.z;
-        r.y = qua.eulerAngles.y;
 
         GO.transform.rotation = Quaternion.Euler(r);
     }
