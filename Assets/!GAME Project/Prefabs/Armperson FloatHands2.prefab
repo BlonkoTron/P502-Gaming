@@ -7155,6 +7155,7 @@ GameObject:
   - component: {fileID: 5481941548546609735}
   - component: {fileID: 7748069549465433853}
   - component: {fileID: 7619507483631589425}
+  - component: {fileID: 3348737498435502651}
   m_Layer: 0
   m_Name: Armperson FloatHands2
   m_TagString: Untagged
@@ -7199,6 +7200,29 @@ MonoBehaviour:
   distanceFromPlayer: 0.5
   heightOffset: -0.1
 --- !u!114 &7619507483631589425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557360914542544682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c903ed7f33c9244b7384120f7253d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSetUp: {fileID: 11400000, guid: 4e64de0be8146d341831ccf3b5aae16f, type: 2}
+  objectsActiveWhenTrue:
+  - {fileID: 1060144971368154677}
+  - {fileID: 913756747256139475}
+  - {fileID: 8688265745373921495}
+  objectsActiveWhenFalse:
+  - {fileID: 6542860817610659142}
+  - {fileID: 5846151383482618588}
+  - {fileID: 6899885370512610483}
+  componentsActiveWhenTrue: []
+  componentsActiveWhenFalse: []
+--- !u!114 &3348737498435502651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14850,6 +14874,7 @@ MonoBehaviour:
   playerSetUp: {fileID: 11400000, guid: 4e64de0be8146d341831ccf3b5aae16f, type: 2}
   trackBents: {fileID: 0}
   trackRotations: {fileID: 0}
+  rotationTracker: {fileID: 0}
   bentInROMText: {fileID: 0}
   bentOutROMText: {fileID: 0}
   rotationUpROMText: {fileID: 0}
