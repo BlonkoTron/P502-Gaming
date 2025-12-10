@@ -9,5 +9,8 @@ public class PlayerSetUp : ScriptableObject
     public float rotationROMUp;
     public float rotationROMDown;
 
+    public Quaternion rotationUp;
+    public Quaternion rotationDown;
+
     public bool isConfigured;
 }

@@ -10,6 +10,7 @@ public class PlayerCalibrations : MonoBehaviour
     [SerializeField] private PlayerSetUp playerSetUp;
     [SerializeField] TrackBents trackBents;
     [SerializeField] TrackRotations trackRotations;
+    [SerializeField] RotationTracker rotationTracker;
 
     [Header("Auto Configuration")]
     [SerializeField] GameObject bentInROMText;
@@ -70,11 +71,13 @@ public class PlayerCalibrations : MonoBehaviour
                         SetRotationROMUp();
                         //Debug.Log("Rotation Up Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMUp, rotationUpCheckmark);
+                        SetNewRotationUp();
                         break;
                     case 3:
                         SetRotationROMDown();
                         //Debug.Log("Rotation Down Angle: " + trackRotations.angleDegrees);
                         CheckIfconfigured(playerSetUp.rotationROMDown, rotationDownCheckmark);
+                        SetNewRotationDown();
                         break;
                 }
 
@@ -110,7 +113,7 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-    private void InitializeLeftController()
+    private void InitializeRightController()
     {
         List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
         InputDeviceCharacteristics rightControllerCharacteristics = InputDeviceCharacteristics.Right | InputDeviceCharacteristics.Controller;
@@ -122,7 +125,7 @@ public class PlayerCalibrations : MonoBehaviour
         }
     }
 
-    private void InitializeRightController()
+    private void InitializeLeftController()
     {
         List<UnityEngine.XR.InputDevice> devices = new List<UnityEngine.XR.InputDevice>();
         InputDeviceCharacteristics leftControllerCharacteristics = InputDeviceCharacteristics.Left | InputDeviceCharacteristics.Controller;
@@ -137,12 +140,16 @@ public class PlayerCalibrations : MonoBehaviour
     {
         playerSetUp.isRightArm = false;
         InitializeLeftController();
+        trackBents.UpdateArm();
+        trackRotations.UpdateArm();
     }
 
     public void ChooseRightArm()
     {
         playerSetUp.isRightArm = true;
         InitializeRightController();
+        trackBents.UpdateArm();
+        trackRotations.UpdateArm();
     }
 
     public void PressBentIn()
@@ -215,14 +222,41 @@ public class PlayerCalibrations : MonoBehaviour
 
     public void SetRotationROMUp()
     {
-        playerSetUp.rotationROMUp = 190 + trackRotations.angleDegrees;
+        playerSetUp.rotationROMUp = trackRotations.angleDegrees;
     }
 
     public void SetRotationROMDown()
     {
-        playerSetUp.rotationROMDown = 190 - trackRotations.angleDegrees;
+        playerSetUp.rotationROMDown = trackRotations.angleDegrees;
     }
 
+    public void SetNewRotationUp()
+    {
+        if(playerSetUp.isRightArm)
+        {
+            rotationTracker.ToggleTPD(rotationTracker.tpdRightUp);
+            playerSetUp.rotationUp = rotationTracker.tpdRightUp.transform.localRotation;
+        }
+        else
+        {
+            rotationTracker.ToggleTPD(rotationTracker.tpdLeftUp);
+            playerSetUp.rotationUp = rotationTracker.tpdLeftUp.transform.localRotation;
+        }
+    }
+
+    public void SetNewRotationDown()
+    {
+        if (playerSetUp.isRightArm)
+        {
+            rotationTracker.ToggleTPD(rotationTracker.tpdRightDown);
+            playerSetUp.rotationDown = rotationTracker.tpdRightDown.transform.localRotation;
+        }
+        else
+        {
+            rotationTracker.ToggleTPD(rotationTracker.tpdLeftDown);
+            playerSetUp.rotationDown = rotationTracker.tpdLeftDown.transform.localRotation;
+        }
+    }
 
 
 }
