@@ -51,9 +51,8 @@ public class CustomerController : MonoBehaviour
     {
         if (currentCustomer!=null)
         {
-            Customerleave = Audiomanager.instance.PlaySound(CustomerDone, Soundtrans.position);
             currentCustomer.GetComponent<Animator>().SetTrigger("OrderDone");
-            
+            Customerleave = Audiomanager.instance.PlaySound(CustomerDone, Soundtrans.position);
         }
     }
 

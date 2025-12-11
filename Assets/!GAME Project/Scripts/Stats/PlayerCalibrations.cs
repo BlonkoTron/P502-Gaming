@@ -9,7 +9,7 @@ public class PlayerCalibrations : MonoBehaviour
 {
     [SerializeField] private PlayerSetUp playerSetUp;
     [SerializeField] TrackBents trackBents;
-    //[SerializeField] TrackRotations trackRotations;
+    [SerializeField] TrackRotations trackRotations;
     [SerializeField] RotationTracker rotationTracker;
 
     [Header("Auto Configuration")]
@@ -74,16 +74,16 @@ public class PlayerCalibrations : MonoBehaviour
                         break;
 
                     case 2:
-                        //SetRotationROMUp();
+                        SetRotationROMUp();
                         CheckIfRotationconfigured(playerSetUp.rotationUp, rotationUpCheckmark);
-                        SetNewRotationUp();
+                        //SetNewRotationUp();
                         rotationUpConfigured = true;
                         break;
 
                     case 3:
-                        //SetRotationROMDown();
+                        SetRotationROMDown();
                         CheckIfRotationconfigured(playerSetUp.rotationDown, rotationDownCheckmark);
-                        SetNewRotationDown();
+                       // SetNewRotationDown();
                         rotationDownConfigured = true;
                         break;
                 }
@@ -161,7 +161,7 @@ public class PlayerCalibrations : MonoBehaviour
         playerSetUp.isRightArm = false;
         InitializeLeftController();
         trackBents.UpdateArm();
-        //trackRotations.UpdateArm();
+        trackRotations.UpdateArm();
     }
 
     public void ChooseRightArm()
@@ -169,7 +169,7 @@ public class PlayerCalibrations : MonoBehaviour
         playerSetUp.isRightArm = true;
         InitializeRightController();
         trackBents.UpdateArm();
-        //trackRotations.UpdateArm();
+        trackRotations.UpdateArm();
     }
 
     public void PressBentIn()
@@ -242,12 +242,14 @@ public class PlayerCalibrations : MonoBehaviour
 
     public void SetRotationROMUp()
     {
-       // playerSetUp.rotationROMUp = trackRotations.angleDegrees;
+        playerSetUp.rotationROMUp = trackRotations.angleDegrees;
+        Debug.Log("Rotation Up Set to: " + playerSetUp.rotationROMUp);
     }
 
     public void SetRotationROMDown()
     {
-      //  playerSetUp.rotationROMDown = trackRotations.angleDegrees;
+        playerSetUp.rotationROMDown = trackRotations.angleDegrees;
+        Debug.Log("Rotation Down Set to: " + playerSetUp.rotationROMDown);
     }
 
     public void SetNewRotationUp()
