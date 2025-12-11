@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PlayerSetUp
   m_EditorClassIdentifier: 
   isRightArm: 0
-  bentROMIn: 37.92215
-  bentROMOut: 79.12135
-  rotationROMUp: 295.66907
-  rotationROMDown: 88.49788
+  bentROMIn: 0
+  bentROMOut: 0
+  rotationROMUp: 0
+  rotationROMDown: 0
   rotationUp: {x: 0, y: 0, z: 0, w: 0}
   rotationDown: {x: 0, y: 0, z: 0, w: 0}
-  isConfigured: 1
+  isConfigured: 0
