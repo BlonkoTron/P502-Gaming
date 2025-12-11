@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/!GAME Project/Scene/D Test/MapTest VR 3.unity
     guid: c39bf4b09781b114e8e4d9ca4b0d78d7
+  - enabled: 0
+    path: Assets/!GAME Project/Scene/MainMenu 1.unity
+    guid: ba17208cd3c745d42825819403a2659e
   - enabled: 1
     path: Assets/!GAME Project/Scene/Play Scene Right.unity
     guid: 689a9ca03c31ff848967b0b0a470aab3
