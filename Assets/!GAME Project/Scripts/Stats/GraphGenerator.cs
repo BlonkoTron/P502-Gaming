@@ -122,9 +122,6 @@ public class GraphGenerator : MonoBehaviour
             // Date labels
             CreateLabel(new Vector2(x, -labelSize * 2f), dates[i], labelSize * 0.8f);    //Here to change date label offset
         }
-
-        //DrawLines(positionsA, Color.cyan, lineThickness);
-        //DrawLines(positionsB, Color.green, lineThickness);
     }
 
     void CreatePoint(Vector2 position, Color color, float size)
