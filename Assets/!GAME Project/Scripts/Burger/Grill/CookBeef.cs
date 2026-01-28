@@ -175,6 +175,8 @@ public class CookBeef : MonoBehaviour
             }
         }
     }
+
+    //Differentstages of the beef, changesd material, plays audio and particles etc.
     private void BeefHalfCooked()
     {
         HalfCookedsound = Audiomanager.instance.PlaySound(HalfcookedSFX, transform.position);
