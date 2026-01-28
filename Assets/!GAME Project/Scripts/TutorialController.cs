@@ -27,11 +27,13 @@ public class TutorialController : MonoBehaviour
     }
     private void Start()
     {
+        // set all tutorial objects inactive
         GameObject[] objects = new GameObject[] { foodTubeTutorial, cuttingTutorial, beefCookingTutorial, stoveKnobTutorial, bellTutorial,sodaButtonTutorial,sodaHandleTutorial };
         foreach(GameObject t in objects)
         {
             t.SetActive(false);
         }
+        // set up event listeners to trigger tutorials
         hingeTrigger = FindAnyObjectByType<Hinge_trigger>();
         var knifeObj = GameObject.FindGameObjectWithTag("Knife");
         if (knifeObj != null)

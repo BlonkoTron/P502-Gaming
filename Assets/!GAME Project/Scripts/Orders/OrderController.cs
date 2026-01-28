@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class OrderController : MonoBehaviour
 {
     public static OrderController Instance;
-
+    // collection of all possible orders. used for getting a random order
     public OrderDataCollection orderDataCollection;
+    // set the sequence of orders in the inspector
     public OrderDataCollection orderQueue;
 
     private Order activeOrder;
@@ -36,6 +37,7 @@ public class OrderController : MonoBehaviour
     private void Start()
     {
         GenerateOrderQueue();
+        // check order when bell is pressed
         bell = FindAnyObjectByType<Bell>();
         if (bell!=null)
         {
@@ -106,6 +108,7 @@ public class OrderController : MonoBehaviour
             return false;
         }
     }
+    // starts the checks for if order is fullfilled correctly or not
     private void CheckOrder()
     {
         if (activeOrder==null)

@@ -26,6 +26,7 @@ public class Order
         Nebula_blast
     }
 
+    // checks if all necessary ingredients are in the burger
     public bool CheckBurgerMatch(List<BurgerIngredient> otherBurger)
     {
         if (otherBurger==null) { return false; }
