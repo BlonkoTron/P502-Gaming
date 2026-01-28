@@ -1,46 +1,61 @@
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// Manages soda dispensing logic in a VR game environment.
+/// Detects when a cup enters specific zones (MoonJuice or NebulaBlast),
+/// checks if the corresponding drink is enabled, and after maintaining
+/// contact for a required duration, dispenses the drink by changing
+/// the cup's material and enabling/disabling target objects.
+/// </summary>
 public class SodaLogic : MonoBehaviour
 {
+    // ===== INSPECTOR-ASSIGNED REFERENCES =====
     [Header("Target Objects")]
-    [SerializeField] private GameObject targetObject; // The object to enable/disable
-    [SerializeField] private GameObject MoonJuice; // First object to check if enabled
-    [SerializeField] private GameObject NebulaBlast; // Second object to check if enabled
-    [SerializeField] private Collider specificCollider; // The specific collider to detect contact with
-    [SerializeField] private Collider NebulaBlastColliderZone; // Collider for NebulaBlast
-    [SerializeField] private Collider MoonJuiceColliderZone; // Collider for MoonJuice
+    [SerializeField] private GameObject targetObject; // The object to enable/disable when action is triggered (e.g., soda dispenser effect)
+    [SerializeField] private GameObject MoonJuice; // Parent GameObject for MoonJuice drink option
+    [SerializeField] private GameObject NebulaBlast; // Parent GameObject for NebulaBlast drink option
+    [SerializeField] private Collider specificCollider; // Legacy: specific collider to detect contact with (for backward compatibility)
+    [SerializeField] private Collider NebulaBlastColliderZone; // Collider zone that triggers NebulaBlast dispensing
+    [SerializeField] private Collider MoonJuiceColliderZone; // Collider zone that triggers MoonJuice dispensing
 
     
     [Header("Child Object Names")]
-    [SerializeField] private string moonJuiceChildName = ""; // Name of child object to check in MoonJuice
-    [SerializeField] private string nebulaBlastChildName = ""; // Name of child object to check in NebulaBlast
+    [SerializeField] private string moonJuiceChildName = ""; // Name of child object within MoonJuice that indicates if this drink is enabled
+    [SerializeField] private string nebulaBlastChildName = ""; // Name of child object within NebulaBlast that indicates if this drink is enabled
     
     [Header("Material Settings")]
-    [SerializeField] private GameObject objectToChangeMaterial; // The object whose material will change
-    [SerializeField] private Material moonJuiceMaterial; // Material to apply when MoonJuice is enabled
-    [SerializeField] private Material nebulaBlastMaterial; // Material to apply when NebulaBlast is enabled
+    [SerializeField] private GameObject objectToChangeMaterial; // The cup/container object whose material will change to match the drink
+    [SerializeField] private Material moonJuiceMaterial; // Material to apply to cup when MoonJuice is dispensed
+    [SerializeField] private Material nebulaBlastMaterial; // Material to apply to cup when NebulaBlast is dispensed
     
     [Header("Settings")]
-    [SerializeField] private bool enableOnAction = true; // If true, enables object on action; if false, disables it
-    [SerializeField] private float requiredContactTime = 3f; // Time in seconds that contact must be maintained
+    [SerializeField] private bool enableOnAction = true; // If true, enables targetObject on action; if false, disables it
+    [SerializeField] private float requiredContactTime = 3f; // Duration (in seconds) that the cup must stay in the zone to trigger dispensing
     
-    private bool actionTriggered = false;
-    private bool isColliding = false;
-    private float currentContactTime = 3f;
-    private Renderer objectRenderer; // Cached renderer component
-    private GameObject moonJuiceChild; // Child object of MoonJuice to check
-    private GameObject nebulaBlastChild; // Child object of NebulaBlast to check
-    private bool isInMoonJuiceZone = false;
-    private bool isInNebulaBlastZone = false;
+    // ===== PRIVATE STATE VARIABLES =====
+    private bool actionTriggered = false; // Tracks if the dispense action has been triggered to prevent repeated triggers
+    private bool isColliding = false; // Legacy: tracks collision with specificCollider
+    private float currentContactTime = 3f; // Accumulator for time the cup has been in the zone
+    private Renderer objectRenderer; // Cached reference to the Renderer component for material changes
+    private GameObject moonJuiceChild; // Reference to the found child object in MoonJuice
+    private GameObject nebulaBlastChild; // Reference to the found child object in NebulaBlast
+    private bool isInMoonJuiceZone = false; // Tracks if the cup is currently in the MoonJuice zone
+    private bool isInNebulaBlastZone = false; // Tracks if the cup is currently in the NebulaBlast zone
 
-    public Order.Drink drinkType;
+    // ===== PUBLIC PROPERTIES =====
+    public Order.Drink drinkType; // The type of drink that was dispensed (used for order validation)
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// Initializes the script by finding required GameObjects and Colliders via tags,
+    /// locating child objects, and validating all necessary references.
+    /// This runs once when the GameObject is created.
+    /// </summary>
     void Start()
     {
-        
+        // ===== FIND COLLIDER ZONES =====
+        // Auto-find MoonJuice zone collider if not assigned in inspector
         if (MoonJuiceColliderZone == null)
         {
             MoonJuiceColliderZone = GameObject.FindWithTag("MoonJuiceZone")?.GetComponent<Collider>();
@@ -67,7 +82,8 @@ public class SodaLogic : MonoBehaviour
             }
         }
 
-        // Find MoonJuice and NebulaBlast GameObjects if not assigned
+        // ===== FIND DRINK GAMEOBJECTS =====
+        // Auto-find MoonJuice and NebulaBlast GameObjects if not assigned in inspector
         if (MoonJuice == null)
         {
             MoonJuice = GameObject.FindWithTag("MoonJuice");
@@ -94,6 +110,8 @@ public class SodaLogic : MonoBehaviour
             }
         }
 
+        // ===== FIND SODA MACHINE COLLIDER (LEGACY) =====
+        // Auto-find the soda machine collider for backward compatibility
         if (specificCollider == null)
         {
             GameObject sodaMachine = GameObject.FindWithTag("SodaMachine");
@@ -114,8 +132,8 @@ public class SodaLogic : MonoBehaviour
                 Debug.LogWarning("GameObject with tag 'SodaMachine' not found in scene!");
             }
         }
-        
-        // Find child objects if names are specified
+        // ===== LOCATE CHILD OBJECTS =====
+        // Find specific child objects within MoonJuice and NebulaBlast that determine if each drink is available
         if (MoonJuice != null && !string.IsNullOrEmpty(moonJuiceChildName))
         {
             Transform childTransform = MoonJuice.transform.Find(moonJuiceChildName);
@@ -153,8 +171,8 @@ public class SodaLogic : MonoBehaviour
         {
             Debug.LogWarning("NebulaBlast child name not specified!");
         }
-        
-        // Ensure all objects are assigned
+        // ===== VALIDATE REFERENCES =====
+        // Check that all required references are properly assigned and log warnings if missing
         if (targetObject == null)
         {
             Debug.LogWarning("Target object not assigned in SodaLogic!");
@@ -186,44 +204,57 @@ public class SodaLogic : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Called every frame. Continuously checks if the cup is in a zone,
+    /// if the corresponding drink is enabled, and manages the contact timer.
+    /// </summary>
     void Update()
     {
         // Check conditions and trigger action if met
         CheckConditionsAndTrigger();
     }
     
-    // Check if conditions are met: either object is enabled AND collision is happening
+    /// <summary>
+    /// Checks if the cup is in a valid zone AND the corresponding drink's child object is enabled.
+    /// If conditions are met, increments the contact timer. Once the required time is reached,
+    /// triggers the drink dispensing action and changes the cup's material.
+    /// Resets the timer if the cup leaves the zone or the drink becomes unavailable.
+    /// </summary>
     private void CheckConditionsAndTrigger()
     {
+        // Check if MoonJuice conditions are met: child object exists, is active, and cup is in the zone
         bool moonJuiceConditionMet = moonJuiceChild != null && moonJuiceChild.activeInHierarchy && isInMoonJuiceZone;
+        // Check if NebulaBlast conditions are met: child object exists, is active, and cup is in the zone
         bool nebulaBlastConditionMet = nebulaBlastChild != null && nebulaBlastChild.activeInHierarchy && isInNebulaBlastZone;
+        // At least one drink must have its conditions met for dispensing to occur
         bool conditionsActive = moonJuiceConditionMet || nebulaBlastConditionMet;
         
         if (conditionsActive && !actionTriggered)
         {
-            // Increment contact time while conditions are met
+            // Conditions are met: increment the contact timer
             currentContactTime += Time.deltaTime;
             
             // Check if we've maintained contact for the required duration
             if (currentContactTime >= requiredContactTime)
             {
-                // Log which condition object(s) are enabled
+                // Determine which drink to dispense and change the cup's material accordingly
                 LogActiveConditionObjects();
                 
+                // Enable/disable the target object (e.g., visual effects for dispensing)
                 TriggerAction();
                 Debug.Log($"Contact maintained for {currentContactTime:F2} seconds - Action triggered!");
             }
         }
         else
         {
-            // Reset contact time when conditions are no longer met
+            // Conditions no longer met (cup left zone or drink disabled): reset the timer
             if (currentContactTime > 0)
             {
                 Debug.Log($"Contact broken after {currentContactTime:F2} seconds - Timer reset");
             }
             currentContactTime = 0f;
             
+            // Allow the action to trigger again when conditions are met again
             if (!conditionsActive || !isColliding)
             {
                 actionTriggered = false;
@@ -231,7 +262,11 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Log which condition objects are currently active
+    /// <summary>
+    /// Determines which drink zone and child object combination is active,
+    /// logs the information, and triggers the appropriate material change.
+    /// If both conditions are met, MoonJuice takes priority.
+    /// </summary>
     private void LogActiveConditionObjects()
     {
         // Check which zone the object is in and which child is active
@@ -259,7 +294,10 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Change material to MoonJuice material
+    /// <summary>
+    /// Changes the cup's material to the MoonJuice material and sets the drink type.
+    /// This gives visual feedback to the player that MoonJuice was dispensed.
+    /// </summary>
     private void ChangeMaterialToMoonJuice()
     {
         if (objectRenderer != null && moonJuiceMaterial != null)
@@ -270,7 +308,10 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Change material to NebulaBlast material
+    /// <summary>
+    /// Changes the cup's material to the NebulaBlast material and sets the drink type.
+    /// This gives visual feedback to the player that NebulaBlast was dispensed.
+    /// </summary>
     private void ChangeMaterialToNebulaBlast()
     {
         if (objectRenderer != null && nebulaBlastMaterial != null)
@@ -281,7 +322,11 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Check if either of the condition objects is active/enabled
+    /// <summary>
+    /// Checks if at least one of the drink child objects (MoonJuice or NebulaBlast) is active.
+    /// Returns true if either drink is currently available for dispensing.
+    /// </summary>
+    /// <returns>True if at least one drink's child object is active in the hierarchy</returns>
     private bool IsEitherConditionObjectActive()
     {
         // Only check child objects
@@ -291,7 +336,11 @@ public class SodaLogic : MonoBehaviour
         return MoonJuiceActive || NebulaBlastActive;
     }
     
-    // Main method to handle the action and toggle object state
+    /// <summary>
+    /// Main action method that enables or disables the target object based on the enableOnAction setting.
+    /// Typically used to activate visual effects or sounds when a drink is dispensed.
+    /// Marks the action as triggered to prevent repeated triggers.
+    /// </summary>
     public void TriggerAction()
     {
         if (targetObject != null)
@@ -314,7 +363,10 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Alternative method to toggle between enabled/disabled
+    /// <summary>
+    /// Toggles the target object between enabled and disabled states.
+    /// Useful for manual control or testing purposes.
+    /// </summary>
     public void ToggleObject()
     {
         if (targetObject != null)
@@ -325,7 +377,10 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Method to specifically enable the object
+    /// <summary>
+    /// Explicitly enables the target object.
+    /// Can be called from external scripts or Unity Events.
+    /// </summary>
     public void EnableObject()
     {
         if (targetObject != null)
@@ -335,7 +390,10 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Method to specifically disable the object
+    /// <summary>
+    /// Explicitly disables the target object.
+    /// Can be called from external scripts or Unity Events.
+    /// </summary>
     public void DisableObject()
     {
         if (targetObject != null)
@@ -345,7 +403,12 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Collision detection - triggers when collision starts
+    /// <summary>
+    /// Detects when the cup enters a trigger collider zone.
+    /// Sets the appropriate zone flag (isInMoonJuiceZone or isInNebulaBlastZone)
+    /// to indicate which drink zone the cup has entered.
+    /// </summary>
+    /// <param name="other">The collider that was entered</param>
     private void OnTriggerEnter(Collider other)
     {
         if (MoonJuiceColliderZone != null && other == MoonJuiceColliderZone)
@@ -367,7 +430,12 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Collision detection - triggers when collision ends
+    /// <summary>
+    /// Detects when the cup exits a trigger collider zone.
+    /// Clears the appropriate zone flag and resets the contact timer,
+    /// allowing the action to be triggered again when the cup re-enters.
+    /// </summary>
+    /// <param name="other">The collider that was exited</param>
     private void OnTriggerExit(Collider other)
     {
         if (MoonJuiceColliderZone != null && other == MoonJuiceColliderZone)
@@ -395,7 +463,12 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Alternative collision detection using OnCollisionEnter (for non-trigger colliders)
+    /// <summary>
+    /// Alternative collision detection for non-trigger colliders.
+    /// Functions identically to OnTriggerEnter but for solid collisions.
+    /// Provides flexibility for different collider configurations.
+    /// </summary>
+    /// <param name="collision">The collision information</param>
     private void OnCollisionEnter(Collision collision)
     {
         if (MoonJuiceColliderZone != null && collision.collider == MoonJuiceColliderZone)
@@ -417,7 +490,12 @@ public class SodaLogic : MonoBehaviour
         }
     }
     
-    // Alternative collision detection using OnCollisionExit (for non-trigger colliders)
+    /// <summary>
+    /// Alternative collision detection for non-trigger colliders.
+    /// Functions identically to OnTriggerExit but for solid collisions.
+    /// Provides flexibility for different collider configurations.
+    /// </summary>
+    /// <param name="collision">The collision information</param>
     private void OnCollisionExit(Collision collision)
     {
         if (MoonJuiceColliderZone != null && collision.collider == MoonJuiceColliderZone)

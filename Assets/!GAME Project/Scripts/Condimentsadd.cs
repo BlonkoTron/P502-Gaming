@@ -43,6 +43,7 @@ public class TriggeredRaycast : MonoBehaviour
 
     void Update()
     {
+        //get control inputs
         var rightHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
         var leftHand = InputDevices.GetDeviceAtXRNode(XRNode.LeftHand);
 
@@ -58,6 +59,7 @@ public class TriggeredRaycast : MonoBehaviour
             }
         }
 
+        //manual testing bool
         if (rayer == true)
         {
             FireRaycast();
@@ -78,13 +80,14 @@ public class TriggeredRaycast : MonoBehaviour
 
         if (Physics.Raycast(origin, direction, out hit, rayDistance))
         {
-            // shrink the ray to the hit point
+            // shrink the ray to the hit point  if it hits
             actualLength = hit.distance;
 
             PlateManager plate = hit.collider.GetComponentInParent<PlateManager>();
 
             if (plate != null)
             {
+                //if plate is found it spawns the sauce at the raycast current end locationn of "hit"
                 Vector3 spawnPos = hit.point;
                 SpawnSauce(plate, spawnPos);
                 Saucesquirt = Audiomanager.instance.PlaySound(saucesound, transform.position);
@@ -125,7 +128,7 @@ public class TriggeredRaycast : MonoBehaviour
             return;
         }
 
-        // ---- MAIN FIX: Delay snapping until physics has updated ----
+        // Delay snapping until physics has updated to ensure snap
         StartCoroutine(DelayedSnap(plate, stackable));
 
         StartCoroutine(CooldownRoutine());
@@ -136,12 +139,13 @@ public class TriggeredRaycast : MonoBehaviour
         // Wait for physics to stabilize bounding box
         yield return new WaitForFixedUpdate();
 
-        // Now colliders have correct bounds → no giant offset
+        // Ingredietn snap
         plate.TrySnap(stackable);
     }
 
     IEnumerator CooldownRoutine()
     {
+        // Cooldown so playercannotsquirt at all times
         onCooldown = true;
         yield return new WaitForSeconds(cooldown);
         onCooldown = false;

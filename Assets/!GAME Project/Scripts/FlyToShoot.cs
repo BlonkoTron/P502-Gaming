@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs.Simulation;
 
 public class FlyToShoot : MonoBehaviour
 {
-
+    //door setup
     public Transform Outposition;
 
     public Rigidbody Rigidbody;
@@ -15,10 +15,12 @@ public class FlyToShoot : MonoBehaviour
 
     private void Start()
     {
+        // get components needed
         Spacedoorscript = GameObject.Find("Roof").GetComponent<SpaceDoor>();
         Outposition = GameObject.Find("Ingredient-kill-collider").transform;
         Rigidbody = GetComponent<Rigidbody>();
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +32,7 @@ public class FlyToShoot : MonoBehaviour
 
     public void flyouts()
     {
+        //give each ingredient in the world a force, so they fly towards the roof
         Vector3 direction = (Outposition.position - transform.position).normalized;
         Debug.Log("forceadd");
         // Apply force toward the target
